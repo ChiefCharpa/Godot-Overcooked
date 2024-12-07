@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpvujoa1bpf47"]
+
+[sub_resource type="GDScript" id="GDScript_w0ksy"]
+script/source = "extends CharacterBody3D
+
+const SPEED = 5.0
+@onready var player : CharacterBody3D = $\".\"
+
+func _physics_process(delta: float) -> void:
+
+	# Get the input direction and handle the movement/deceleration.
+	var input_dir := Input.get_vector(\"Left\", \"Right\", \"Forwards\", \"Backwards\")
+	var direction := (Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+
+		var target_rotation = atan2(-direction.x, -direction.z) #Calculates the angle between where the player is facing and the direction it is moving(-direction.x,-direction.z) its negative becasue godot is silly and facing forwards is facing towards -z
+		rotation.y = lerp_angle(rotation.y, target_rotation,0.2) #rotates from the current orientation(rotation.y) to the target rotation by 0.2
+	else:
+		velocity.x = 0
+		velocity.z = 0
+
+	move_and_slide()
+"
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lec0r"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f4xx0"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_u5lsi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4qwm"]
+albedo_color = Color(0.00184107, 0.00184107, 0.00184107, 1)
+
+[node name="Player" type="CharacterBody3D"]
+script = SubResource("GDScript_w0ksy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_lec0r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_f4xx0")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.304024, 0, 0, 0, 0.276733, 0, 0, 0, 0.225081, 0.170986, 0.540521, -0.389079)
+mesh = SubResource("SphereMesh_u5lsi")
+surface_material_override/0 = SubResource("StandardMaterial3D_j4qwm")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.304024, 0, 0, 0, 0.276733, 0, 0, 0, 0.225081, -0.162725, 0.540521, -0.389399)
+mesh = SubResource("SphereMesh_u5lsi")
+surface_material_override/0 = SubResource("StandardMaterial3D_j4qwm")
