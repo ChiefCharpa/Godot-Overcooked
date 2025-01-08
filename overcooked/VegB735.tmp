@@ -1,7 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgoeow6gqog3o"]
+[gd_scene load_steps=5 format=3 uid="uid://bgoeow6gqog3o"]
 
-[ext_resource type="Script" path="res://vegetable.gd" id="1_snrii"]
-[ext_resource type="Script" path="res://Objects/Pickups/Tomato_Resource.gd" id="2_5qs2s"]
+[sub_resource type="GDScript" id="GDScript_mgsf6"]
+script/source = "extends RigidBody3D
+
+func _ready():
+	linear_velocity = Vector3(0, 2, 0.5)
+	if not is_connected(\"body_entered\", Callable(self, \"_on_body_entered\")):
+		connect(\"body_entered\", Callable(self, \"_on_body_entered\"))
+		print(\"Signal connected\")
+	else:
+		print(\"Signal already connected\")
+
+func _on_body_entered(body):
+	print(\"Body entered\")
+	if body.is_in_group(\"player\"):
+		print(\"Collided with player, deleting object\")
+		queue_free()
+"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mhdnm"]
 
@@ -11,10 +26,7 @@
 albedo_color = Color(0.662745, 0.027451, 0.0470588, 1)
 
 [node name="Tomato" type="RigidBody3D"]
-axis_lock_linear_y = true
-script = ExtResource("1_snrii")
-resource_amount = 1
-resource_type = ExtResource("2_5qs2s")
+script = SubResource("GDScript_mgsf6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)

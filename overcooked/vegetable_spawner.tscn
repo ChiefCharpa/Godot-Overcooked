@@ -25,6 +25,7 @@ albedo_texture = ExtResource("2_a71rt")
 script = ExtResource("1_1wnfc")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
 autostart = true
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
