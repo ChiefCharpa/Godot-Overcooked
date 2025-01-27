@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgoeow6gqog3o"]
+[gd_scene load_steps=5 format=3 uid="uid://bgoeow6gqog3o"]
 
 [ext_resource type="Script" path="res://vegetable.gd" id="1_snrii"]
-[ext_resource type="Script" path="res://Objects/Pickups/Tomato_Resource.gd" id="2_5qs2s"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mhdnm"]
 
@@ -14,7 +13,6 @@ albedo_color = Color(0.662745, 0.027451, 0.0470588, 1)
 axis_lock_linear_y = true
 script = ExtResource("1_snrii")
 resource_amount = 1
-resource_type = ExtResource("2_5qs2s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
@@ -24,5 +22,3 @@ shape = SubResource("SphereShape3D_mhdnm")
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 mesh = SubResource("SphereMesh_y8ssd")
 surface_material_override/0 = SubResource("StandardMaterial3D_pdxic")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

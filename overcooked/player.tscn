@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpvujoa1bpf47"]
+[gd_scene load_steps=9 format=3 uid="uid://cpvujoa1bpf47"]
 
 [ext_resource type="Script" path="res://Inventory.gd" id="1_ushcw"]
+[ext_resource type="Script" path="res://InteractionChecker.gd" id="2_thgo5"]
 
 [sub_resource type="GDScript" id="GDScript_w0ksy"]
 script/source = "extends CharacterBody3D
@@ -16,13 +17,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed(\"print_inventory\"):
-		print_inventory()
-
-func print_inventory():
-	if inventory:
 		print(\"Current Inventory:\", inventory.resources_inventory)
-	else:
-		print(\"Inventory not initialized\")
 
 func _physics_process(_delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
@@ -50,6 +45,9 @@ func _physics_process(_delta: float) -> void:
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4qwm"]
 albedo_color = Color(0.00184107, 0.00184107, 0.00184107, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5s4uc"]
+size = Vector3(1, 1, 1.0166)
+
 [node name="Player" type="CharacterBody3D"]
 safe_margin = 0.08
 script = SubResource("GDScript_w0ksy")
@@ -72,3 +70,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_j4qwm")
 
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("1_ushcw")
+
+[node name="InteractionCheckerArea3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.5)
+script = ExtResource("2_thgo5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionCheckerArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+shape = SubResource("BoxShape3D_5s4uc")
