@@ -13,7 +13,7 @@ func _process(delta):
 		if body_to_activate.name == "Tomato":
 			body_to_activate.call("_activate", player_inventory)
 			body_to_activate = null
-		elif body_to_activate.name == "VegetableSpawner":
+		elif body_to_activate.name == "VegetableSpawner_Rigidbody":
 			body_to_activate.call("_activate")
 			body_to_activate = null
 

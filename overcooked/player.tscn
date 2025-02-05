@@ -18,6 +18,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed(\"print_inventory\"):
 		print(\"Current Inventory:\", inventory.resources_inventory)
+	if Input.is_action_just_pressed(\"Drop_Item\"):
+		for child in get_children():
+			if child.has_method(\"_drop_item\"):
+				child.call(\"_drop_item\")
+
 
 func _physics_process(_delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
