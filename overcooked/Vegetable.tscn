@@ -10,7 +10,6 @@
 albedo_color = Color(0.662745, 0.027451, 0.0470588, 1)
 
 [node name="Tomato" type="RigidBody3D"]
-axis_lock_linear_y = true
 script = ExtResource("1_snrii")
 resource_amount = 1
 

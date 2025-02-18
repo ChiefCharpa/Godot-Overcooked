@@ -73,7 +73,7 @@ transform = Transform3D(0.304024, 0, 0, 0, 0.276733, 0, 0, 0, 0.225081, -0.16272
 mesh = SubResource("SphereMesh_u5lsi")
 surface_material_override/0 = SubResource("StandardMaterial3D_j4qwm")
 
-[node name="Inventory" type="Node" parent="."]
+[node name="Inventory" type="Node3D" parent="."]
 script = ExtResource("1_ushcw")
 
 [node name="InteractionCheckerArea3D" type="Area3D" parent="."]
