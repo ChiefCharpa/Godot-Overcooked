@@ -7,6 +7,9 @@
 script/source = "extends CharacterBody3D
 
 const SPEED = 5.0
+
+const Gravity = 2.0
+
 @onready var player : CharacterBody3D = $\".\"
 var inventory : Inventory
 
@@ -28,6 +31,9 @@ func _physics_process(_delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir := Input.get_vector(\"Left\", \"Right\", \"Forwards\", \"Backwards\")
 	var direction := (Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
+	velocity.y = velocity.y - Gravity
+
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
