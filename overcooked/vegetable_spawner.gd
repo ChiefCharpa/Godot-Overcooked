@@ -10,7 +10,7 @@ const VEGETABLE = preload("res://Vegetable.tscn")
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed() and SpawnDelay and InRange:
-		if event.keycode == KEY_E:
+		if Input.is_action_pressed("Interact"):
 			var newVegetable = VEGETABLE.instantiate()
 			get_parent().add_child(newVegetable)
 			newVegetable.global_position=global_position+Vector3(0,0.4,0)
