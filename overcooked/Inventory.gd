@@ -25,7 +25,7 @@ func _drop_item():
 	if heldVegetable != null:
 		heldVegetable.get_parent().remove_child(heldVegetable) #removes the item being held from the player node
 		var new_root = get_tree().root.get_node("LevelNode") #gets the level node
-		new_root.add_child(heldVegetable) #adds the held item and adds it to the level node
+		new_root.add_child(heldVegetable) #adds the held item to the level node
 		heldVegetable.global_transform.origin = global_transform.origin + global_transform.basis.z * -1 + Vector3(0, 0.4, 0) #assigns its pos
 		heldVegetable.axis_lock_linear_y = false #unlocks ths y transform
 		heldVegetable = null

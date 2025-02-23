@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://5aocl1ky0vhb"]
+[gd_scene load_steps=11 format=3 uid="uid://5aocl1ky0vhb"]
 
 [ext_resource type="Script" path="res://vegetable_spawner.gd" id="1_1wnfc"]
 [ext_resource type="Texture2D" uid="uid://c80jcpto3yu41" path="res://Tomato.jpg" id="2_a71rt"]
@@ -21,10 +21,11 @@ albedo_texture = ExtResource("2_a71rt")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lcimn"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_73vvd"]
+
 [node name="VegetableSpawner" type="Node3D"]
 
 [node name="VegetableSpawner_Rigidbody" type="RigidBody3D" parent="."]
-script = ExtResource("1_1wnfc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="VegetableSpawner_Rigidbody"]
 transform = Transform3D(0.723, 0, 0, 0, 0.596, 0, 0, 0, 1, 0, 0, 0)
@@ -45,3 +46,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_2yhl6")
 transform = Transform3D(-1.2842e-08, 1, 0, 1.2842e-08, 1.91069e-15, -0.213359, -0.29379, -4.37114e-08, -9.32623e-09, 0.362885, 0, 0)
 material_override = SubResource("StandardMaterial3D_u4pyf")
 mesh = SubResource("PlaneMesh_lcimn")
+
+[node name="Area3D" type="Area3D" parent="VegetableSpawner_Rigidbody"]
+script = ExtResource("1_1wnfc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VegetableSpawner_Rigidbody/Area3D"]
+shape = SubResource("BoxShape3D_73vvd")
