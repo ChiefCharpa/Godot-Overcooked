@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://cpvujoa1bpf47"]
+
+[ext_resource type="Script" path="res://Inventory.gd" id="1_ushcw"]
+[ext_resource type="Script" path="res://InteractionChecker.gd" id="2_thgo5"]
+
+[sub_resource type="GDScript" id="GDScript_w0ksy"]
+script/source = "extends CharacterBody3D
+
+const SPEED = 5.0
+
+const Gravity = 2.0
+
+@onready var player : CharacterBody3D = $\".\"
+var inventory : Inventory
+
+func _ready() -> void:
+	# Check for an existing 'inventory' child node
+	inventory = $Inventory
+
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed(\"print_inventory\"):
+		print(\"Current Inventory:\", inventory.resources_inventory)
+	if Input.is_action_just_pressed(\"Drop_Item\"):
+		for child in get_children():
+			if child.has_method(\"_drop_item\"):
+				child.call(\"_drop_item\")
+
+
+func _physics_process(_delta: float) -> void:
+	# Get the input direction and handle the movement/deceleration.
+	var input_dir := Input.get_vector(\"Left\", \"Right\", \"Forwards\", \"Backwards\")
+	var direction := (Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
+	velocity.y = velocity.y - Gravity
+
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+
+		var target_rotation = atan2(-direction.x, -direction.z) # Calculates the angle between where the player is facing and the direction it is moving
+		rotation.y = lerp_angle(rotation.y, target_rotation, 0.2) # Rotates from the current orientation to the target rotation by 0.2
+	else:
+		velocity.x = 0
+		velocity.z = 0
+
+	move_and_slide()
+"
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lec0r"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f4xx0"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_u5lsi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4qwm"]
+albedo_color = Color(0.00184107, 0.00184107, 0.00184107, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5s4uc"]
+size = Vector3(1, 1, 1.0166)
+
+[node name="Player" type="CharacterBody3D"]
+safe_margin = 0.08
+script = SubResource("GDScript_w0ksy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_lec0r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_f4xx0")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.304024, 0, 0, 0, 0.276733, 0, 0, 0, 0.225081, 0.170986, 0.540521, -0.389079)
+mesh = SubResource("SphereMesh_u5lsi")
+surface_material_override/0 = SubResource("StandardMaterial3D_j4qwm")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.304024, 0, 0, 0, 0.276733, 0, 0, 0, 0.225081, -0.162725, 0.540521, -0.389399)
+mesh = SubResource("SphereMesh_u5lsi")
+surface_material_override/0 = SubResource("StandardMaterial3D_j4qwm")
+
+[node name="Inventory" type="Node3D" parent="."]
+script = ExtResource("1_ushcw")
+resources_inventory = null
+
+[node name="InteractionCheckerArea3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.5)
+script = ExtResource("2_thgo5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionCheckerArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+shape = SubResource("BoxShape3D_5s4uc")

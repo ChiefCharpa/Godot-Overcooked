@@ -3,6 +3,7 @@ extends Area3D
 var player_inventory = null
 var body_to_activate = null
 var resource_type = null
+var action_processed = false # flag to track if action is processed
 
 func _ready() -> void:
 	player_inventory = get_parent().get_node("Inventory")
@@ -10,17 +11,21 @@ func _ready() -> void:
 		self.connect("body_entered", Callable(self, "_on_body_entered"))
 
 func _process(delta):
-	if body_to_activate and Input.is_action_pressed("Interaction_Select"):
+	if body_to_activate and Input.is_action_pressed("Interaction_Select") and not action_processed:
+		action_processed = true # set the flag to true once action is processed
 		if resource_type == "Food":
 			body_to_activate.call("_activate", player_inventory) #calls the _activate func in each item
 			body_to_activate = null #clears body_to_acitvate after picking up the item
 		elif resource_type == "Interactable":
 			body_to_activate.call("_activate") #calls the _activate func in each interactable
+			##cannot repetedly pick up and place object
 			##for chopping/washing ect player xyz should be locked in front of station for the wash/chop event
 			##for chopping/washing ect do if 'B' (back) pressed it exits out of the wash/chop event
 			body_to_activate = null #clears body_to_acitvate after interacting
 		elif resource_type == "containers":
 			pass
+	elif not Input.is_action_pressed("Interaction_Select"):
+		action_processed = false # reset the flag when the action is not pressed
 
 func _on_body_entered(body):
 	if body.has_method("_activate"):
