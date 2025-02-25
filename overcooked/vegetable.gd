@@ -5,10 +5,9 @@ var player_inventory = null
 var resource_type = "Food"
 
 func _activate(player_inventory):
-	if player_inventory:
-		player_inventory.add_resources(self.name, resource_amount) #adds tomato to inventory 
-		queue_free() #removes tomato object
-
+	if player_inventory.resources_inventory.size() == 0:
+		player_inventory.add_resources(self.name, resource_amount) #adds veg to inventory 
+		queue_free() #removes object
 
 func get_some_variable():
 	return resource_type
