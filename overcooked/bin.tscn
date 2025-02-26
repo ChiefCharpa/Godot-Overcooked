@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c5cwrng738u2m"]
 
-[ext_resource type="Script" path="res://bin.gd" id="1_g00s2"]
+[ext_resource type="Script" path="res://Bin.gd" id="1_kh1em"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ojba4"]
 
@@ -32,7 +32,7 @@ mesh = SubResource("BoxMesh_0embw")
 surface_material_override/0 = SubResource("StandardMaterial3D_j0gcd")
 
 [node name="Area3D" type="Area3D" parent="."]
-script = ExtResource("1_g00s2")
+script = ExtResource("1_kh1em")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 0.7, 0, 0, 0, 1, 0, 0.200432, 0)

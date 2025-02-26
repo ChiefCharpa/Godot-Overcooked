@@ -1,9 +1,9 @@
 extends RigidBody3D
 var resource_type = "Interactable"
-const VEGETABLE = preload("res://Vegetable.tscn")
+var Tomato = Global.VegDictionary.get("Tomato")
 
 func _activate():
-	var newVegetable = VEGETABLE.instantiate()
+	var newVegetable = Tomato.instantiate()
 	get_parent().add_child(newVegetable)
 	newVegetable.global_position=global_position+Vector3(0,0.4,0) #sets tomato pos
 

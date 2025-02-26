@@ -10,17 +10,27 @@ func _ready() -> void:
 		self.connect("body_entered", Callable(self, "_on_body_entered"))
 
 func _process(delta):
-	if body_to_activate and Input.is_action_pressed("Interaction_Select"):
+	if body_to_activate != null and Input.is_action_pressed("Interaction_Select"):
 		if resource_type == "Food":
 			body_to_activate.call("_activate", player_inventory) #calls the _activate func in each item
 			body_to_activate = null #clears body_to_acitvate after picking up the item
 		elif resource_type == "Interactable":
-			body_to_activate.call("_activate") #calls the _activate func in each interactable
+			body_to_activate._activate() #calls the _activate func in each interactable
 			##for chopping/washing ect player xyz should be locked in front of station for the wash/chop event
 			##for chopping/washing ect do if 'B' (back) pressed it exits out of the wash/chop event
 			body_to_activate = null #clears body_to_acitvate after interacting
 		elif resource_type == "containers":
-			pass
+			body_to_activate.call("_activate")
+			body_to_activate = null
+
+func _on_timer_timeout():
+	var bodies = get_overlapping_bodies()
+	for body in bodies:
+		if body.has_method("_activate"):
+			body_to_activate = body
+			resource_type = body.get_some_variable()
+			return
+	body_to_activate = null
 
 func _on_body_entered(body):
 	if body.has_method("_activate"):

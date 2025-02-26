@@ -2,19 +2,16 @@ extends Node3D
 
 class_name Inventory
 
-@export var resources_inventory : Dictionary = { }
-var heldVegetable
-const VEGETABLE = preload("res://Vegetable.tscn") ##figure out a way to do any item
+var resources_inventory : Dictionary = { }
+var heldVegetable = null ##figure out a way to do any item
 var can_pickup = true
 
 ##Built only for tomatos
-func add_resources(name : String, amount : int):
+func add_resources(name : String):
 	if can_pickup == true:
-		if(resources_inventory.has(name)): 
-			resources_inventory[name] += amount #adds 1 to inventory item count
-		else:
-			resources_inventory[name] = amount #adds item to inventory
-			heldVegetable = VEGETABLE.instantiate() #spawns vegetable
+		if Global.Veglist.has(name):
+			resources_inventory[name] = 1 #adds item to inventory
+			heldVegetable = Global.VegDictionary.get(name).instantiate() #spawns vegetable
 			get_parent().add_child(heldVegetable) #adds held item to player node
 			heldVegetable.axis_lock_linear_y = true #locks y transform
 			heldVegetable.global_transform.origin = global_transform.origin + global_transform.basis.z * -1 + Vector3(0, 0.4, 0) #assigns its pos
@@ -25,6 +22,7 @@ func add_resources(name : String, amount : int):
 ##pressing g picks up the item like its still in the interaction collider
 func _drop_item():
 	if heldVegetable != null:
+		print("Dropping",heldVegetable)
 		heldVegetable.get_parent().remove_child(heldVegetable) #removes the item being held from the player node
 		var new_root = get_tree().root.get_node("LevelNode") #gets the level node
 		new_root.add_child(heldVegetable) #adds the held item to the level node
