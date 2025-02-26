@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dral0g73t3p7"]
+[gd_scene load_steps=9 format=3 uid="uid://dral0g73t3p7"]
 
 [ext_resource type="PackedScene" uid="uid://5aocl1ky0vhb" path="res://vegetable_spawner.tscn" id="1_8o4rb"]
 [ext_resource type="PackedScene" uid="uid://cpvujoa1bpf47" path="res://player.tscn" id="2_7ydw1"]
+[ext_resource type="PackedScene" uid="uid://c5cwrng738u2m" path="res://bin.tscn" id="3_o45tb"]
+[ext_resource type="PackedScene" uid="uid://bggii7f8r4i1w" path="res://Pot.tscn" id="4_q2pme"]
+[ext_resource type="Script" path="res://global.gd" id="5_lfh1b"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dppq4"]
 
@@ -28,10 +31,19 @@ shape = SubResource("ConcavePolygonShape3D_f1ml4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.313928, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0.731724, 5.74012, 7.58598)
+transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0.731724, 5.74012, 8.74616)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.883953, 0.467575, 0, -0.467575, 0.883953, 0, 3.7363, 5.13066)
 
 [node name="Player" parent="." instance=ExtResource("2_7ydw1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.28694, 1.12137, 2.23429)
+
+[node name="Bin" parent="." instance=ExtResource("3_o45tb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.69051, 0.247803, 5.92022)
+
+[node name="RigidBody3D" parent="." instance=ExtResource("4_q2pme")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35121, 0.742208, 5.75475)
+
+[node name="Global" type="Node3D" parent="."]
+script = ExtResource("5_lfh1b")
