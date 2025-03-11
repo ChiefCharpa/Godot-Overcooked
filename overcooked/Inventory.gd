@@ -36,7 +36,8 @@ func _drop_item(force):
 		print("Throw direction: ", throw_direction)
 		heldVegetable.apply_impulse(Vector3(), throw_direction * force)
 		heldVegetable = null
-
+		##end
+		 
 		resources_inventory.clear() #clears inventory
 		
 		can_pickup=false

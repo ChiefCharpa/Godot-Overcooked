@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://xpgpk7ho34wt"]
+
+[ext_resource type="Script" path="res://vegetable.gd" id="1_lgol0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2g5gr"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_yh3ul"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwyy8"]
+albedo_color = Color(0.16016, 0.42, 0.1512, 1)
+
+[node name="Lettuce" type="RigidBody3D"]
+script = ExtResource("1_lgol0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+shape = SubResource("SphereShape3D_2g5gr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("SphereMesh_yh3ul")
+surface_material_override/0 = SubResource("StandardMaterial3D_hwyy8")

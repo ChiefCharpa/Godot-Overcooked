@@ -2,15 +2,15 @@ extends RigidBody3D
 var resource_type = "Interactable"
 var inventory_node
 var currentCounter
-
+var Veg = Global.VegDictionary.get("Fish")
 func _ready():
 	inventory_node = get_node("/root/LevelNode/Player/Inventory")
 	currentCounter = self
 	
 func _activate():
 	if inventory_node:
-		if player_inventory and player_inventory.can_pickup ==true: #makes sure the player isnt holding something
-			var newVegetable = VEGETABLE.instantiate()
+		if inventory_node.resources_inventory.size() == 0:
+			var newVegetable = Veg.instantiate()
 			get_parent().add_child(newVegetable)
 			newVegetable.global_position=global_position+Vector3(0,0.4,0) #sets tomato pos
 		else:

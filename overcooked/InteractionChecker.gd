@@ -23,8 +23,6 @@ func _process(delta):
 	#checks if 'e' is pressed, if there is not an interatable obj, if the item in front is type food
 	#and that theres an item in the invt
 	if ((Input.is_action_just_pressed("Interaction_Select") and (body_to_activate == null or resource_type == "Food")) or Input.is_action_just_pressed("Throw_Item"))  and player_inventory.resources_inventory.size() != 0 and not action_processed:
-		if Input.is_action_just_pressed("Throw_Item"):
-			force = 10
 		inventory_node._drop_item(force) #calls the drop_item method
 		action_processed = true #set action_processed to true
 	
@@ -33,8 +31,10 @@ func _process(delta):
 		action_processed = true #sets action_processed to true
 		if resource_type == "Food":
 			body_to_activate.call("_activate", player_inventory) #calls the _activate method
+
 		elif resource_type == "Interactable":
 			body_to_activate.call("_activate") #calls the _activate method
+
 		elif resource_type == "containers":
 			body_to_activate.call("_activate")
 

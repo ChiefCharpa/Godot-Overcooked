@@ -1,18 +1,28 @@
-extends Area3D
+extends RigidBody3D
 
+var resource_type = "Interactable"
+var inventory_node
+var currentCounter
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	connect("body_entered", _on_body_entered)
+	inventory_node = get_node("/root/LevelNode/Player/Inventory")
+	currentCounter = self
 
-func _on_body_entered(body):
-	if body.get("resource_type") and body.resource_type == "Food": #if the object has a resource type and its food
-		var new_root = get_tree().root.get_node("LevelNode")
-		var parent = new_root.get_node("Player") #get the player
-		for child in parent.get_children(): #look through all the children
-			if child.name =="Inventory": #get the inventory child
-				child.resources_inventory.clear() #clear the inventory
-			if child.name == "InteractionCheckerArea3D":
-				child.body_to_activate = null
-		body.queue_free()  # Deletes the item
-		
+# Function to activate and interact with all counter objects
+func _activate():
+	if inventory_node:
+		if inventory_node.resources_inventory.size() > 0:
+			var new_root = get_tree().root.get_node("LevelNode")
+			var parent = new_root.get_node("Player") # Get the player
+			for child in parent.get_children(): # Look through all the children
+				if child.name == "Inventory": # Get the inventory child
+					child.resources_inventory.clear() # Clear the inventory
+				if child.has_method("get_some_variable"):
+					var resource_type = child.get_some_variable() # Get the resource type from the body
+					if resource_type == "Food":
+						child.queue_free() # Delete the item
+	else:
+		print("Player node is not set")
+
+func get_some_variable():
+	return resource_type
