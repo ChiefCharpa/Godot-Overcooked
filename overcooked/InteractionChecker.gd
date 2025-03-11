@@ -14,10 +14,12 @@ func _process(delta):
 	#gets the bodies overlapping with the area
 	var overlapping_bodies = get_overlapping_bodies()
 	body_to_activate = null #resets body_to_activate before checking for overlapping bodies
+	
 	for body in overlapping_bodies:
 		if body.has_method("_activate"):
 			resource_type = body.get_some_variable() #gets the resource type from the body
 			body_to_activate = body #sets body_to_activate to the current body
+
 	#checks if 'e' is pressed, if there is not an interatable obj, if the item in front is type food
 	#and that theres an item in the invt
 	if ((Input.is_action_just_pressed("Interaction_Select") and (body_to_activate == null or resource_type == "Food")) or Input.is_action_just_pressed("Throw_Item"))  and player_inventory.resources_inventory.size() != 0 and not action_processed:
@@ -25,6 +27,7 @@ func _process(delta):
 			force = 10
 		inventory_node._drop_item(force) #calls the drop_item method
 		action_processed = true #set action_processed to true
+	
 	#checks if 'e' is pressed, there is an item in the area and that there is no action currently being processed
 	elif Input.is_action_pressed("Interaction_Select") and body_to_activate and not action_processed:
 		action_processed = true #sets action_processed to true
@@ -33,7 +36,8 @@ func _process(delta):
 		elif resource_type == "Interactable":
 			body_to_activate.call("_activate") #calls the _activate method
 		elif resource_type == "containers":
-			pass
+			body_to_activate.call("_activate")
+
 	#resets action_processed to false when interaction select action is not pressed
 	elif not Input.is_action_pressed("Interaction_Select"):
 		action_processed = false
