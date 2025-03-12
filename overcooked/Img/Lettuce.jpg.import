@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c80jcpto3yu41"
-path.s3tc="res://.godot/imported/Tomato.jpg-47531081eaa8dcc60c3cef3105906425.s3tc.ctex"
+uid="uid://dxoobmx77raei"
+path.s3tc="res://.godot/imported/Lettuce.jpg-e2fffad3ff2fffe5483677ec7e374d74.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Tomato.jpg"
-dest_files=["res://.godot/imported/Tomato.jpg-47531081eaa8dcc60c3cef3105906425.s3tc.ctex"]
+source_file="res://Img/Lettuce.jpg"
+dest_files=["res://.godot/imported/Lettuce.jpg-e2fffad3ff2fffe5483677ec7e374d74.s3tc.ctex"]
 
 [params]
 

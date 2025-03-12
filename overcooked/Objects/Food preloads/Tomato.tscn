@@ -1,17 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgoeow6gqog3o"]
 
-[sub_resource type="GDScript" id="GDScript_mgsf6"]
-script/source = "extends RigidBody3D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	linear_velocity = Vector3(0,2,0.5)
-	
-
-func _on_body_entered(body):
-	print(\"Collided with \", body.name)
-"
+[ext_resource type="Script" path="res://vegetable.gd" id="1_3bmip"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mhdnm"]
 
@@ -21,7 +10,8 @@ func _on_body_entered(body):
 albedo_color = Color(0.662745, 0.027451, 0.0470588, 1)
 
 [node name="Tomato" type="RigidBody3D"]
-script = SubResource("GDScript_mgsf6")
+mass = 0.11
+script = ExtResource("1_3bmip")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
@@ -31,5 +21,3 @@ shape = SubResource("SphereShape3D_mhdnm")
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 mesh = SubResource("SphereMesh_y8ssd")
 surface_material_override/0 = SubResource("StandardMaterial3D_pdxic")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

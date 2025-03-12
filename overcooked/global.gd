@@ -1,6 +1,13 @@
 extends Node3D
 
-var VegDictionary = {"Tomato" : preload("res://Tomato.tscn")}
+var VegDictionary = {
+	"Tomato" : preload("res://Objects/Food preloads/Tomato.tscn"),
+	"Fish" : preload("res://Objects/Food preloads/Fish.tscn"),
+	"Onion" : preload("res://Objects/Food preloads/Onion.tscn"),
+	"Mushroom" : preload("res://Objects/Food preloads/Mushroom.tscn"),
+	"Lettuce" : preload("res://Objects/Food preloads/Lettuce.tscn"),
+	"Meat" : preload("res://Objects/Food preloads/Meat.tscn")
+	}
 var Veglist = VegDictionary.keys()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
