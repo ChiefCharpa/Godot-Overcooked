@@ -6,7 +6,7 @@ var resources_inventory : Dictionary = { }
 var heldVegetable = null ##figure out a way to do any item
 var can_pickup = true
 
-##Built only for tomatos
+
 func add_resources(name : String):
 	if can_pickup == true:
 		if Global.Veglist.has(name):

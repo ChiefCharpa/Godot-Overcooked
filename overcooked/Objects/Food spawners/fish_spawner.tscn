@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://ca0moxbfysoc7"]
 
-[ext_resource type="Script" path="res://Objects/Food spawners/Scripts/Fish_spawner.gd" id="1_5neau"]
+[ext_resource type="Script" uid="uid://dt8aejvseo8sv" path="res://Objects/Food spawners/Scripts/Fish_spawner.gd" id="1_5neau"]
 [ext_resource type="Texture2D" uid="uid://bog3bq7ctujyq" path="res://Img/Fish.jpeg" id="1_fcr7i"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_77oir"]
