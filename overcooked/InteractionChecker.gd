@@ -39,9 +39,9 @@ func _process(delta):
 		elif resource_type == "containers":
 			body_to_activate.call("_activate")
 		elif resource_type == "Plate":
-			if player_inventory.heldVegetable != null and player_inventory.heldVegetable.name != "Plate":
-				body_to_activate.call("add_vegetable",player_inventory.heldVegetable)
-			if pickupable == true and player_inventory.heldVegetable == null:
+			if player_inventory.heldVegetable != null and player_inventory.heldVegetable.name != "Plate": #if the player is holding somthing that isnt a plate
+				body_to_activate.call("add_vegetable",player_inventory.heldVegetable,player_inventory) #call add vegetable
+			elif pickupable == true and player_inventory.heldVegetable == null:
 				body_to_activate.call("pickup",player_inventory)
 				await get_tree().create_timer(0.2).timeout
 				pickupable = false

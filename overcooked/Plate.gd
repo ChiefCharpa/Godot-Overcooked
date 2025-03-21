@@ -7,14 +7,18 @@ var held_vegetables: Array = []
 func _ready():
 	resource_type = "Plate" # Define the plate as a container
 
-func add_vegetable(veg: Node3D):
+
+func add_vegetable(veg: Node3D,player_inventory):
 	if veg.resource_type == "Food":
-		held_vegetables.append(veg) # Remove from world
-		add_child(veg) # Attach to plate
-		veg.set_deferred("freeze", true) 
-		veg.global_transform.origin = global_transform.origin + Vector3(0, 0.1 * held_vegetables.size(), 0) # Stack veggies
-		veg.resource_type == "Plated" # Disable interaction with the vegetable
-		heldVegetable.get_parent().remove_child(heldVegetable)
+		held_vegetables.append(veg.name)
+		var newveg = Global.VegDictionary.get(veg.name).instantiate()
+		player_inventory.deletehelditem()
+		add_child(newveg)
+		var offset = Vector3(0, 0.1 + 0.2 * held_vegetables.size(), 0)
+		newveg.freeze = true
+		newveg.get_node("CollisionShape3D").disabled = true
+		newveg.transform.origin = offset
+
 
 func pickup(player_inventory):
 	player_inventory.add_resources("Plate")

@@ -16,7 +16,11 @@ func add_resources(name : String):
 			heldVegetable.axis_lock_linear_y = true #locks y transform
 			heldVegetable.global_transform.origin = global_transform.origin + global_transform.basis.z * -1 + Vector3(0, 0.4, 0) #assigns its pos
 	##do a 2nd inv for containers due to the secondary list in containers (pots, plates)
-
+func deletehelditem():
+	if heldVegetable != null:
+		heldVegetable.get_parent().remove_child(heldVegetable)
+		heldVegetable = null
+		resources_inventory.clear()
 ##as of rn it only will be able to hold tomatos due to the way it picks up the veg 
 ##dropped item dosnt seem to move x and z axis
 
