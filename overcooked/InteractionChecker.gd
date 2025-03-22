@@ -5,6 +5,7 @@ var resource_type = null #stores the type of resource
 var inventory_node #stores the inventory node
 var action_processed = false #tracks if the action is processed
 var force = 0
+var pickupable = true
 
 func _ready() -> void:
 	player_inventory = get_parent().get_node("Inventory") #gets the player's inventory
@@ -19,6 +20,7 @@ func _process(delta):
 		if body.has_method("_activate"):
 			resource_type = body.get_some_variable() #gets the resource type from the body
 			body_to_activate = body #sets body_to_activate to the current body
+			print(body_to_activate.name)
 
 	#checks if 'e' is pressed, if there is not an interatable obj, if the item in front is type food
 	#and that theres an item in the invt
@@ -32,10 +34,24 @@ func _process(delta):
 			body_to_activate.call("_activate", player_inventory) #calls the _activate method
 
 		elif resource_type == "Interactable":
+			if player_inventory.heldVegetable != null and player_inventory.heldVegetable.name == "Plate":
+				pickupable = true
 			body_to_activate.call("_activate") #calls the _activate method
 
 		elif resource_type == "containers":
 			body_to_activate.call("_activate")
+		elif resource_type == "Plate":
+			if player_inventory.heldVegetable != null and player_inventory.heldVegetable.name != "Plate": #if the player is holding somthing that isnt a plate
+				body_to_activate.call("add_vegetable",player_inventory.heldVegetable,player_inventory) #call add vegetable
+			elif pickupable == true and player_inventory.heldVegetable == null:
+				body_to_activate.call("pickup",player_inventory)
+				await get_tree().create_timer(0.2).timeout
+				pickupable = false
+			elif player_inventory.heldVegetable != null and pickupable == false and player_inventory.heldVegetable.name == "Plate" :
+				pickupable = true
+				inventory_node._drop_item(0)
+				
+			
 
 	#resets action_processed to false when interaction select action is not pressed
 	elif not Input.is_action_pressed("Interaction_Select"):
