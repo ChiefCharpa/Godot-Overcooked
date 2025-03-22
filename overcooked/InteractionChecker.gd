@@ -34,6 +34,8 @@ func _process(delta):
 			body_to_activate.call("_activate", player_inventory) #calls the _activate method
 
 		elif resource_type == "Interactable":
+			if player_inventory.heldVegetable != null and player_inventory.heldVegetable.name == "Plate":
+				pickupable = true
 			body_to_activate.call("_activate") #calls the _activate method
 
 		elif resource_type == "containers":
@@ -45,9 +47,10 @@ func _process(delta):
 				body_to_activate.call("pickup",player_inventory)
 				await get_tree().create_timer(0.2).timeout
 				pickupable = false
-			elif pickupable == false and player_inventory.heldVegetable.name == "Plate" :
-				inventory_node._drop_item(0)
+			elif player_inventory.heldVegetable != null and pickupable == false and player_inventory.heldVegetable.name == "Plate" :
 				pickupable = true
+				inventory_node._drop_item(0)
+				
 			
 
 	#resets action_processed to false when interaction select action is not pressed

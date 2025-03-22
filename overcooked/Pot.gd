@@ -7,6 +7,7 @@ var can_delete = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	connect("body_entered", _on_body_entered)
+	get_parent().freeze = true
 
 func _on_body_entered(body): #take the item that is dropped, adds it to the pot inventory and the deletes the item
 	if body.get("resource_type") and body.resource_type == "Food" and can_delete and Global.Veglist.has(body.name) : #if the object has a resource type and its food

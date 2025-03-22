@@ -16,6 +16,15 @@ func add_resources(name : String):
 			heldVegetable.axis_lock_linear_y = true #locks y transform
 			heldVegetable.global_transform.origin = global_transform.origin + global_transform.basis.z * -1 + Vector3(0, 0.4, 0) #assigns its pos
 	##do a 2nd inv for containers due to the secondary list in containers (pots, plates)
+func add_container(container: Node3D):
+	if can_pickup:
+		container.get_parent().remove_child(container)
+		get_parent().add_child(container)
+		resources_inventory[container.name]=1
+		container.axis_lock_linear_y = true #locks y transform
+		container.global_transform.origin = global_transform.origin + global_transform.basis.z * -1 + Vector3(0, 0.4, 0)
+		container.freeze = true
+		heldVegetable = container
 func deletehelditem():
 	if heldVegetable != null:
 		heldVegetable.get_parent().remove_child(heldVegetable)
@@ -26,6 +35,7 @@ func deletehelditem():
 
 func _drop_item(force):
 	if heldVegetable != null:
+		heldVegetable.freeze = false
 		print("Dropping",heldVegetable)
 		heldVegetable.get_parent().remove_child(heldVegetable) #removes the item being held from the player node
 		var new_root = get_tree().root.get_node("LevelNode") #gets the level node

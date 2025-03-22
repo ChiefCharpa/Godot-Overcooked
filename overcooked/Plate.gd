@@ -21,8 +21,7 @@ func add_vegetable(veg: Node3D,player_inventory):
 
 
 func pickup(player_inventory):
-	player_inventory.add_resources("Plate")
-	queue_free()
+	player_inventory.add_container(self)
 
 func place(player_inventory):
 	player_inventory._drop_item(0)
