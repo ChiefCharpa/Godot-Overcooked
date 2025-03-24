@@ -12,6 +12,10 @@ func _ready() -> void:
 	inventory_node = get_node("/root/LevelNode/Player/Inventory") #gets the inventorys node path
 
 func _process(delta):
+	if player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() != "Plate": #fixes issues with plate counter
+		pickupable = true
+	elif player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() == "Plate":
+		pickupable = false
 	#gets the bodies overlapping with the area
 	var overlapping_bodies = get_overlapping_bodies()
 	body_to_activate = null #resets body_to_activate before checking for overlapping bodies
@@ -20,7 +24,6 @@ func _process(delta):
 		if body.has_method("_activate"):
 			resource_type = body.get_some_variable() #gets the resource type from the body
 			body_to_activate = body #sets body_to_activate to the current body
-			print(body_to_activate.name)
 
 	#checks if 'e' is pressed, if there is not an interatable obj, if the item in front is type food
 	#and that theres an item in the invt
@@ -34,20 +37,20 @@ func _process(delta):
 			body_to_activate.call("_activate", player_inventory) #calls the _activate method
 
 		elif resource_type == "Interactable":
-			if player_inventory.heldVegetable != null and player_inventory.heldVegetable.name == "Plate":
-				pickupable = true
+			if player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() == "Plate":
+				pickupable = true #used to make plate pickupable after being placed on a counter
 			body_to_activate.call("_activate") #calls the _activate method
 
 		elif resource_type == "containers":
 			body_to_activate.call("_activate")
 		elif resource_type == "Plate":
-			if player_inventory.heldVegetable != null and player_inventory.heldVegetable.name != "Plate": #if the player is holding somthing that isnt a plate
+			if player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() != "Plate": #if the player is holding somthing that isnt a plate
 				body_to_activate.call("add_vegetable",player_inventory.heldVegetable,player_inventory) #call add vegetable
 			elif pickupable == true and player_inventory.heldVegetable == null:
 				body_to_activate.call("pickup",player_inventory)
 				await get_tree().create_timer(0.2).timeout
 				pickupable = false
-			elif player_inventory.heldVegetable != null and pickupable == false and player_inventory.heldVegetable.name == "Plate" :
+			elif player_inventory.heldVegetable != null and pickupable == false and player_inventory.heldVegetable.get_some_variable() == "Plate" :
 				pickupable = true
 				inventory_node._drop_item(0)
 				
