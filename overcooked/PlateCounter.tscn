@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgkmdmvjhvk6t"]
+[gd_scene load_steps=7 format=3 uid="uid://dskgg5ydxt6mi"]
 
-[ext_resource type="Script" uid="uid://3d2h6e658v6p" path="res://counter_Script.gd" id="1_xewjb"]
+[ext_resource type="Script" uid="uid://dagvc25q1n864" path="res://PlateCounter.gd" id="1_ag1y0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4q843"]
 
@@ -18,7 +18,7 @@ albedo_color = Color(0.63, 0.496755, 0.3339, 1)
 [node name="Counter" type="Node3D"]
 
 [node name="Counter_Rigidbody" type="RigidBody3D" parent="."]
-script = ExtResource("1_xewjb")
+script = ExtResource("1_ag1y0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Counter_Rigidbody"]
 transform = Transform3D(0.723, 0, 0, 0, 0.596, 0, 0, 0, 1, 0, 0, 0)

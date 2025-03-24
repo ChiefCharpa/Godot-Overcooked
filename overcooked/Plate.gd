@@ -5,6 +5,7 @@ var resource_type
 var held_vegetables: Array = []
 
 func _ready():
+	self.freeze = true
 	resource_type = "Plate" # Define the plate as a container
 
 
