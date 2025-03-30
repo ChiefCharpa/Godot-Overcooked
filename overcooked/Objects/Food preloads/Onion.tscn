@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://070oqtwdfkpp"]
+
+[ext_resource type="Script" path="res://vegetable.gd" id="1_dsi6k"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_35cir"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_og5nn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e8lhw"]
+albedo_color = Color(0.73, 0.3942, 0.2263, 1)
+
+[node name="Onion" type="RigidBody3D"]
+mass = 0.11
+script = ExtResource("1_dsi6k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+shape = SubResource("SphereShape3D_35cir")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("SphereMesh_og5nn")
+surface_material_override/0 = SubResource("StandardMaterial3D_e8lhw")

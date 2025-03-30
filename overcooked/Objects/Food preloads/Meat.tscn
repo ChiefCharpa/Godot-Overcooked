@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://drhc1kra4186v"]
+
+[ext_resource type="Script" path="res://vegetable.gd" id="1_t7x2l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j4nl4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7ttww"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0twl6"]
+albedo_color = Color(0.7, 0.308, 0.308, 1)
+
+[node name="Meat" type="RigidBody3D"]
+script = ExtResource("1_t7x2l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.15, 0, 0, 0, 0.3, 0, 0, 0)
+shape = SubResource("BoxShape3D_j4nl4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.15, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("BoxMesh_7ttww")
+surface_material_override/0 = SubResource("StandardMaterial3D_0twl6")
