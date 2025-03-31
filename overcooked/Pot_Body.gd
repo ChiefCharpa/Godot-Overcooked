@@ -9,9 +9,9 @@ func _activate():
 	for child in parent.get_children():
 			if child.name=="Inventory":
 				PlayerInventory = child
-				if PlayerInventory.heldVegetable != null and PlayerInventory.heldVegetable.get_some_variable() == "Food":
+				if PlayerInventory.heldVegetable != null and PlayerInventory.heldVegetable.get_some_variable() == "Food" and len(areachild.resources_inventory)<3:
 					PlayerInventory._drop_item(0)
-	if areachild.resources_inventory != []:
+	if areachild.resources_inventory != [] and PlayerInventory.heldVegetable == null:
 		var lastitem = areachild.resources_inventory[-1]
 		print(areachild.resources_inventory)  # See what the array contains
 		print(areachild.resources_inventory[-1])

@@ -13,6 +13,7 @@ func _activate():
 			var newVegetable = Veg.instantiate()
 			get_parent().add_child(newVegetable)
 			newVegetable.global_position=global_position+Vector3(0,0.4,0) #sets tomato pos
+			newVegetable.call("_activate",inventory_node)
 		else:
 			inventory_node._place_item(currentCounter.get_path())  # Passing the NodePath of the current counter
 		

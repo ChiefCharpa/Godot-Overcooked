@@ -3,6 +3,7 @@ extends Area3D
 var resources_inventory = []
 var heldVegetable = null
 var can_delete = true
+var pot = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,7 +11,7 @@ func _ready():
 	get_parent().freeze = true
 
 func _on_body_entered(body): #take the item that is dropped, adds it to the pot inventory and the deletes the item
-	if body.get("resource_type") and body.resource_type == "Food" and can_delete and Global.Veglist.has(body.name) : #if the object has a resource type and its food
+	if body.get("resource_type") and body.resource_type == "Food" and can_delete and Global.Veglist.has(body.name) and len(resources_inventory)<3: #if the object has a resource type and its food
 		resources_inventory.append(body.get_name()) #adds item name to inventory
 		body.queue_free()
 		var new_root = get_tree().root.get_node("LevelNode")
