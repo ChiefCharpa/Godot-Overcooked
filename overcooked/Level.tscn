@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://dral0g73t3p7"]
+[gd_scene load_steps=19 format=3 uid="uid://dral0g73t3p7"]
 
 [ext_resource type="PackedScene" uid="uid://5aocl1ky0vhb" path="res://Objects/Food spawners/tomato_spawner.tscn" id="1_8o4rb"]
+[ext_resource type="AudioStream" uid="uid://b40f3yo5mmulx" path="res://Overcooked SFX/LevelStart.mp3" id="1_esphl"]
 [ext_resource type="PackedScene" uid="uid://cpvujoa1bpf47" path="res://player.tscn" id="2_7ydw1"]
 [ext_resource type="PackedScene" uid="uid://cgkmdmvjhvk6t" path="res://counter.tscn" id="3_fpono"]
 [ext_resource type="PackedScene" uid="uid://c5cwrng738u2m" path="res://bin.tscn" id="3_o45tb"]
@@ -25,6 +26,11 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 
 [node name="LevelNode" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.773004)
+
+[node name="LevelStartSFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_esphl")
+autoplay = true
+max_distance = 4096.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
