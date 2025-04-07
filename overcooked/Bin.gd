@@ -5,6 +5,7 @@ var inventory_node
 var currentCounter
 
 func _ready():
+	self.freeze = true
 	inventory_node = get_node("/root/LevelNode/Player/Inventory")
 	currentCounter = self
 
@@ -19,7 +20,7 @@ func _activate():
 					child.resources_inventory.clear() # Clear the inventory
 				if child.has_method("get_some_variable"):
 					var resource_type = child.get_some_variable() # Get the resource type from the body
-					if resource_type == "Food":
+					if resource_type == "Food" or resource_type == "Plate":
 						child.queue_free() # Delete the item
 	else:
 		print("Player node is not set")

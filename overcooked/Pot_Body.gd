@@ -4,12 +4,14 @@ var PlayerInventory
 # Called when the node enters the scene tree for the first time.
 func _activate():
 	var areachild = get_node("Area3D")
-	if areachild.resources_inventory != []:
-		var new_root = get_tree().root.get_node("LevelNode")
-		var parent = new_root.get_node("Player") 
-		for child in parent.get_children():
+	var new_root = get_tree().root.get_node("LevelNode")
+	var parent = new_root.get_node("Player") 
+	for child in parent.get_children():
 			if child.name=="Inventory":
 				PlayerInventory = child
+				if PlayerInventory.heldVegetable != null and PlayerInventory.heldVegetable.get_some_variable() == "Food":
+					PlayerInventory._drop_item(0)
+	if areachild.resources_inventory != []:
 		var lastitem = areachild.resources_inventory[-1]
 		print(areachild.resources_inventory)  # See what the array contains
 		print(areachild.resources_inventory[-1])

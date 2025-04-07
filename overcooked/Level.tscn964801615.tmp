@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dral0g73t3p7"]
+[gd_scene load_steps=16 format=3 uid="uid://dral0g73t3p7"]
 
 [ext_resource type="PackedScene" uid="uid://5aocl1ky0vhb" path="res://Objects/Food spawners/tomato_spawner.tscn" id="1_8o4rb"]
 [ext_resource type="PackedScene" uid="uid://cpvujoa1bpf47" path="res://player.tscn" id="2_7ydw1"]
@@ -12,8 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://i2cdc004kggq" path="res://Objects/Food spawners/meat_spawner.tscn" id="10_gurdb"]
 [ext_resource type="PackedScene" uid="uid://4wxdxe24k3si" path="res://Objects/Food spawners/mushroom_spawner.tscn" id="11_gpwvn"]
 [ext_resource type="PackedScene" uid="uid://c7lxi3gungtv8" path="res://Objects/Food spawners/onion_spawner.tscn" id="12_o5h6v"]
-[ext_resource type="PackedScene" uid="uid://coxwa40uuhpw5" path="res://Plate.tscn" id="13_sypgb"]
-[ext_resource type="PackedScene" uid="uid://dskgg5ydxt6mi" path="res://PlateCounter.tscn" id="14_dn5x0"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dppq4"]
 
@@ -83,9 +81,3 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.368
 
 [node name="OnionSpawner" parent="." instance=ExtResource("12_o5h6v")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.357, 0.314, 0)
-
-[node name="Plate" parent="." instance=ExtResource("13_sypgb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22377, 0.235308, 6.43494)
-
-[node name="Counter3" parent="." instance=ExtResource("14_dn5x0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.85112, 0.307325, 3.84833)

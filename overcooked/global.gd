@@ -6,7 +6,8 @@ var VegDictionary = {
 	"Onion" : preload("res://Objects/Food preloads/Onion.tscn"),
 	"Mushroom" : preload("res://Objects/Food preloads/Mushroom.tscn"),
 	"Lettuce" : preload("res://Objects/Food preloads/Lettuce.tscn"),
-	"Meat" : preload("res://Objects/Food preloads/Meat.tscn")
+	"Meat" : preload("res://Objects/Food preloads/Meat.tscn"),
+	"Plate" : preload("res://Plate.tscn")
 	}
 var Veglist = VegDictionary.keys()
 # Called when the node enters the scene tree for the first time.
