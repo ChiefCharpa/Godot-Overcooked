@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqcj5d8k12fne"]
+
+[ext_resource type="Script" uid="uid://cdpgsea5wnnv6" path="res://vegetable.gd" id="1_gofvi"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_55pk7"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_o64op"]
+
+[node name="Fish" type="RigidBody3D"]
+script = ExtResource("1_gofvi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 0, 0, 0, 0.3, 0, 0, 0)
+shape = SubResource("CylinderShape3D_55pk7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("CylinderMesh_o64op")

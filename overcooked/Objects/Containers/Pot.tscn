@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bggii7f8r4i1w"]
 
-[ext_resource type="Script" uid="uid://t1sbek6jbgpo" path="res://Pot_Body.gd" id="1_wn77w"]
-[ext_resource type="Script" uid="uid://defgsfkl76crd" path="res://Pot.gd" id="2_lvymh"]
+[ext_resource type="Script" uid="uid://t1sbek6jbgpo" path="res://Objects/Containers/Container Scripts/Pot_Body.gd" id="1_wn77w"]
+[ext_resource type="Script" uid="uid://defgsfkl76crd" path="res://Objects/Containers/Container Scripts/Pot.gd" id="2_lvymh"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_otkmc"]
 
