@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://3aegjuif6mfk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ytds0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0mcq6"]
+albedo_color = Color(0.393316, 0.293962, 0.164876, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5csdr"]
+size = Vector3(0.723, 0.596, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4chds"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8xvf"]
+albedo_color = Color(0.364706, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xmswh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cueyg"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Stove" type="Node3D"]
+
+[node name="Stove_RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Stove_RigidBody3D"]
+transform = Transform3D(0.723, 0, 0, 0, 0.596, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_ytds0")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_0mcq6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stove_RigidBody3D"]
+transform = Transform3D(1.00067, 0, 0, 0, 1.00067, 0, 0, 0, 1.00067, 0, 0, 0)
+shape = SubResource("BoxShape3D_5csdr")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Stove_RigidBody3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.1, 0, 0, 0, 1, 0.04, 0.35, 0)
+mesh = SubResource("BoxMesh_4chds")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_l8xvf")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Stove_RigidBody3D/MeshInstance3D3"]
+transform = Transform3D(0.75, 0, 0, 0, 0.2, 0, 0, 0, 0.7, 0, 0.51, 0)
+mesh = SubResource("CylinderMesh_xmswh")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_cueyg")
