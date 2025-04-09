@@ -1,19 +1,22 @@
-[gd_scene load_steps=18 format=3 uid="uid://dral0g73t3p7"]
+[gd_scene load_steps=21 format=3 uid="uid://dral0g73t3p7"]
 
-[ext_resource type="PackedScene" uid="uid://5aocl1ky0vhb" path="res://Objects/Food spawners/tomato_spawner.tscn" id="1_8o4rb"]
+[ext_resource type="PackedScene" uid="uid://5aocl1ky0vhb" path="res://Objects/Counters/tomato_spawner.tscn" id="1_8o4rb"]
 [ext_resource type="PackedScene" uid="uid://cpvujoa1bpf47" path="res://player.tscn" id="2_7ydw1"]
-[ext_resource type="PackedScene" uid="uid://cgkmdmvjhvk6t" path="res://counter.tscn" id="3_fpono"]
-[ext_resource type="PackedScene" uid="uid://c5cwrng738u2m" path="res://bin.tscn" id="3_o45tb"]
-[ext_resource type="PackedScene" uid="uid://hm5rraqj5dr3" path="res://cutting_board.tscn" id="4_4a0cr"]
-[ext_resource type="PackedScene" uid="uid://bggii7f8r4i1w" path="res://Pot.tscn" id="4_q2pme"]
+[ext_resource type="PackedScene" uid="uid://cgkmdmvjhvk6t" path="res://Objects/Counters/counter.tscn" id="3_fpono"]
+[ext_resource type="PackedScene" uid="uid://c5cwrng738u2m" path="res://Objects/Containers/bin.tscn" id="3_o45tb"]
+[ext_resource type="PackedScene" uid="uid://hm5rraqj5dr3" path="res://Objects/Counters/cutting_board.tscn" id="4_4a0cr"]
+[ext_resource type="PackedScene" uid="uid://bggii7f8r4i1w" path="res://Objects/Containers/Pot.tscn" id="4_q2pme"]
 [ext_resource type="Script" uid="uid://cuskgh4l3byo0" path="res://global.gd" id="5_lfh1b"]
-[ext_resource type="PackedScene" uid="uid://ca0moxbfysoc7" path="res://Objects/Food spawners/fish_spawner.tscn" id="8_6pg1l"]
-[ext_resource type="PackedScene" uid="uid://pl3q7upb7b28" path="res://Objects/Food spawners/lettuce_spawner.tscn" id="9_2quax"]
-[ext_resource type="PackedScene" uid="uid://i2cdc004kggq" path="res://Objects/Food spawners/meat_spawner.tscn" id="10_gurdb"]
-[ext_resource type="PackedScene" uid="uid://4wxdxe24k3si" path="res://Objects/Food spawners/mushroom_spawner.tscn" id="11_gpwvn"]
-[ext_resource type="PackedScene" uid="uid://c7lxi3gungtv8" path="res://Objects/Food spawners/onion_spawner.tscn" id="12_o5h6v"]
-[ext_resource type="PackedScene" uid="uid://coxwa40uuhpw5" path="res://Plate.tscn" id="13_sypgb"]
-[ext_resource type="PackedScene" uid="uid://dskgg5ydxt6mi" path="res://PlateCounter.tscn" id="14_dn5x0"]
+[ext_resource type="PackedScene" uid="uid://ca0moxbfysoc7" path="res://Objects/Counters/fish_spawner.tscn" id="8_6pg1l"]
+[ext_resource type="PackedScene" uid="uid://pl3q7upb7b28" path="res://Objects/Counters/lettuce_spawner.tscn" id="9_2quax"]
+[ext_resource type="PackedScene" uid="uid://i2cdc004kggq" path="res://Objects/Counters/meat_spawner.tscn" id="10_gurdb"]
+[ext_resource type="PackedScene" uid="uid://4wxdxe24k3si" path="res://Objects/Counters/mushroom_spawner.tscn" id="11_gpwvn"]
+[ext_resource type="PackedScene" uid="uid://c7lxi3gungtv8" path="res://Objects/Counters/onion_spawner.tscn" id="12_o5h6v"]
+[ext_resource type="PackedScene" uid="uid://coxwa40uuhpw5" path="res://Objects/Containers/Plate.tscn" id="13_sypgb"]
+[ext_resource type="PackedScene" uid="uid://dskgg5ydxt6mi" path="res://Objects/Counters/PlateCounter.tscn" id="14_dn5x0"]
+[ext_resource type="PackedScene" uid="uid://dki8m5mfco4f3" path="res://Objects/Containers/Plate_Dirty.tscn" id="15_esphl"]
+[ext_resource type="PackedScene" uid="uid://brlop6qo3v6ib" path="res://Objects/Counters/service_counter.tscn" id="16_dcckh"]
+[ext_resource type="PackedScene" uid="uid://3aegjuif6mfk" path="res://Objects/Counters/stove.tscn" id="17_jftiw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dppq4"]
 
@@ -89,3 +92,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22377, 0.235308, 6.43494)
 
 [node name="Counter3" parent="." instance=ExtResource("14_dn5x0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.85112, 0.307325, 3.84833)
+
+[node name="Plate_Dirty" parent="." instance=ExtResource("15_esphl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34632, 0.135989, 3.88029)
+
+[node name="Service_Counter" parent="." instance=ExtResource("16_dcckh")]
+transform = Transform3D(-0.0157248, 0, -0.999876, 0, 1, 0, 0.999876, 0, -0.0157248, -4.968, 0.3, -2.524)
+
+[node name="Stove" parent="." instance=ExtResource("17_jftiw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.23655, 0.461903, 2.89116)
