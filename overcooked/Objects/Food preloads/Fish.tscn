@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqcj5d8k12fne"]
+
+[ext_resource type="Script" path="res://vegetable.gd" id="1_gofvi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0h6ij"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fr01v"]
+
+[node name="RigidBody3D" type="RigidBody3D"]
+script = ExtResource("1_gofvi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.15, 0, 0, 0, 0.3, 0, 0, 0)
+shape = SubResource("BoxShape3D_0h6ij")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.15, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("BoxMesh_fr01v")
