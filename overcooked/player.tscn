@@ -7,7 +7,7 @@
 script/source = "extends CharacterBody3D
 
 const SPEED = 5.0
-
+var freeze = false
 const Gravity = 2.0
 
 @onready var player : CharacterBody3D = $\".\"
@@ -30,7 +30,7 @@ func _physics_process(_delta: float) -> void:
 
 	velocity.y = velocity.y - Gravity
 
-	if direction:
+	if direction and freeze == false:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 
@@ -41,6 +41,12 @@ func _physics_process(_delta: float) -> void:
 		velocity.z = 0
 
 	move_and_slide()
+
+func Freeze():
+	if freeze == false:
+		freeze = true
+	else:
+		freeze = false
 "
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lec0r"]
