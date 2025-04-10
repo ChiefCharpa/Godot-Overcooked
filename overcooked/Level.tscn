@@ -86,6 +86,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.357,
 
 [node name="Plate" parent="." instance=ExtResource("13_sypgb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22377, 0.235308, 6.43494)
+script = null
 
 [node name="Counter3" parent="." instance=ExtResource("14_dn5x0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.85112, 0.307325, 3.84833)
