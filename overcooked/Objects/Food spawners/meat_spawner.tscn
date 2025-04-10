@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://i2cdc004kggq"]
 
-[ext_resource type="Script" uid="uid://dyyhu6e0w7xf1" path="res://Objects/Counters/Scripts/Meat_spawner.gd" id="1_hmvoq"]
+[ext_resource type="Script" path="res://Objects/Food spawners/Scripts/Meat_spawner.gd" id="1_hmvoq"]
 [ext_resource type="Texture2D" uid="uid://iqfhq25i7q62" path="res://Img/meat.jpg" id="1_noyub"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_77oir"]

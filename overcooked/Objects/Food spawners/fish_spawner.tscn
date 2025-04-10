@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://pl3q7upb7b28"]
+[gd_scene load_steps=10 format=3 uid="uid://ca0moxbfysoc7"]
 
-[ext_resource type="Script" uid="uid://bots666x4tc26" path="res://Objects/Counters/Scripts/Lettuce_spawner.gd" id="1_3u86k"]
-[ext_resource type="Texture2D" uid="uid://dxoobmx77raei" path="res://Img/Lettuce.jpg" id="1_apt7y"]
+[ext_resource type="Script" uid="uid://dt8aejvseo8sv" path="res://Objects/Food spawners/Scripts/Fish_spawner.gd" id="1_5neau"]
+[ext_resource type="Texture2D" uid="uid://bog3bq7ctujyq" path="res://Img/Fish.jpeg" id="1_fcr7i"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_77oir"]
 
@@ -16,15 +16,15 @@ size = Vector3(0.723, 0.596, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qu4gd"]
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4udr6"]
-albedo_texture = ExtResource("1_apt7y")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bx1fs"]
+albedo_texture = ExtResource("1_fcr7i")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_68n3f"]
 
-[node name="LettuceSpawner" type="Node3D"]
+[node name="FishSpawner" type="Node3D"]
 
 [node name="VegetableSpawner_Rigidbody" type="RigidBody3D" parent="."]
-script = ExtResource("1_3u86k")
+script = ExtResource("1_5neau")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="VegetableSpawner_Rigidbody"]
 transform = Transform3D(0.723, 0, 0, 0, 0.596, 0, 0, 0, 1, 0, 0, 0)
@@ -43,5 +43,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qu4gd")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="VegetableSpawner_Rigidbody"]
 transform = Transform3D(-1.2842e-08, 1, 0, 1.2842e-08, 1.91069e-15, -0.213359, -0.29379, -4.37114e-08, -9.32623e-09, 0.362885, 0, 0)
-material_override = SubResource("StandardMaterial3D_4udr6")
+material_override = SubResource("StandardMaterial3D_bx1fs")
 mesh = SubResource("PlaneMesh_68n3f")

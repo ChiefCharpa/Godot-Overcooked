@@ -7,16 +7,15 @@ var heldVegetable = null ##figure out a way to do any item
 var can_pickup = true
 
 
-func add_resources(food : Node3D):
+func add_resources(name : String):
 	if can_pickup == true:
-		if Global.Veglist.has(food.name):
-			food.get_parent().remove_child(food)
-			get_parent().add_child(food)
-			resources_inventory[food.name]=1
-			food.axis_lock_linear_y = true #locks y transform
-			food.global_transform.origin = global_transform.origin + global_transform.basis.z * -1 + Vector3(0, 0.4, 0)
-			food.freeze = true
-			heldVegetable = food
+		if Global.Veglist.has(name):
+			resources_inventory[name] = 1 #adds item to inventory
+			heldVegetable = Global.VegDictionary.get(name).instantiate() #spawns vegetable
+			get_parent().add_child(heldVegetable) #adds held item to player node
+			heldVegetable.axis_lock_linear_y = true #locks y transform
+			heldVegetable.global_transform.origin = global_transform.origin + global_transform.basis.z * -1 + Vector3(0, 0.4, 0) #assigns its pos
+	##do a 2nd inv for containers due to the secondary list in containers (pots, plates)
 func add_container(container: Node3D):
 	if can_pickup:
 		container.get_parent().remove_child(container)
@@ -31,6 +30,8 @@ func deletehelditem():
 		heldVegetable.get_parent().remove_child(heldVegetable)
 		heldVegetable = null
 		resources_inventory.clear()
+##as of rn it only will be able to hold tomatos due to the way it picks up the veg 
+##dropped item dosnt seem to move x and z axis
 
 func _drop_item(force):
 	if heldVegetable != null:

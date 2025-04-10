@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://5aocl1ky0vhb"]
 
-[ext_resource type="Script" uid="uid://ih1mekjg3k71" path="res://Objects/Counters/Scripts/Tomato_spawner.gd" id="1_5xx2i"]
+[ext_resource type="Script" path="res://Objects/Food spawners/Scripts/Tomato_spawner.gd" id="1_5xx2i"]
 [ext_resource type="Texture2D" uid="uid://c80jcpto3yu41" path="res://Img/Tomato.jpg" id="2_a71rt"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5m26l"]
