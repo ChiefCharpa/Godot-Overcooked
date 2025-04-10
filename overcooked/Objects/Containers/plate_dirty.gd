@@ -5,8 +5,7 @@ var resource_type = "Food"
 
 func _activate(player_inventory):
 	if player_inventory and player_inventory.can_pickup ==true: #makes sure the player isnt holding something
-		player_inventory.add_resources(self) #adds tomato to inventory 
-
+		player_inventory.add_resources(self) #adds to inventory 
 
 func get_some_variable():
 	return resource_type
