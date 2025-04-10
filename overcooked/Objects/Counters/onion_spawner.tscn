@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c7lxi3gungtv8"]
 
 [ext_resource type="Texture2D" uid="uid://byvu6vtsbde0k" path="res://Img/onion.jpg" id="1_jg4r4"]
-[ext_resource type="Script" path="res://Objects/Food spawners/Scripts/Onion_spawner.gd" id="1_u4ht5"]
+[ext_resource type="Script" uid="uid://fbwir83mu6bi" path="res://Objects/Counters/Scripts/Onion_spawner.gd" id="1_u4ht5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_77oir"]
 

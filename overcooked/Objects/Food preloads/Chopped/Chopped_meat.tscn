@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0r26b72swqko"]
+
+[ext_resource type="Script" uid="uid://cdpgsea5wnnv6" path="res://vegetable.gd" id="1_wltg3"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wltg3"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gjpfs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0twl6"]
+albedo_color = Color(0.7, 0.308, 0.308, 1)
+
+[node name="Chopped_Meat" type="RigidBody3D"]
+script = ExtResource("1_wltg3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.025, 0, 0, 0, 0.4, 0, 0, 0)
+shape = SubResource("CylinderShape3D_wltg3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.025, 0, 0, 0, 0.4, 0, 0, 0)
+mesh = SubResource("CylinderMesh_gjpfs")
+surface_material_override/0 = SubResource("StandardMaterial3D_0twl6")

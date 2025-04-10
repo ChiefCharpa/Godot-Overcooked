@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://2o5oavjjywa7"
+path="res://.godot/imported/RestaurantBell.mp3-7f8de743bfb27dbd468d582423638539.mp3str"
+
+[deps]
+
+source_file="res://Overcooked SFX/RestaurantBell.mp3"
+dest_files=["res://.godot/imported/RestaurantBell.mp3-7f8de743bfb27dbd468d582423638539.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
