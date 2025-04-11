@@ -25,7 +25,6 @@ func _process(delta):
 		if body.has_method("_activate"):
 			resource_type = body.get_some_variable() #gets the resource type from the body
 			body_to_activate = body #sets body_to_activate to the current body
-	print(body_to_activate)
 
 	if Input.is_action_just_pressed("Chop"): #if you press chop, then look again but this time for a counter
 		for body in overlapping_bodies:
