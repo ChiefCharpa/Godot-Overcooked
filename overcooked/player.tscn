@@ -45,8 +45,10 @@ func _physics_process(_delta: float) -> void:
 func Freeze():
 	if freeze == false:
 		freeze = true
+		print(\"freeze\")
 	else:
 		freeze = false
+		print(\"unfreeze\")
 "
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lec0r"]
