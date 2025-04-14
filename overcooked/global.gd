@@ -20,6 +20,7 @@ var VegDictionary = {
 	
 	}
 var Veglist = VegDictionary.keys()
+var Platelist = ["Chopped_Tomato","Chopped_Fish","Chopped_Onion","Chopped_Mushroom","Chopped_Lettuce","Chopped_Meat","Cooked_Fish","Cooked_Meat"]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
