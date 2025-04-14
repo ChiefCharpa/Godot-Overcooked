@@ -1,11 +1,31 @@
 extends RigidBody3D
 
 var player_inventory = null
-var resource_type = "Food"
+var resource_type = "Plate"
+var held_vegetables: Array = []
+var childlist: Array = []
 
-func _activate(player_inventory):
-	if player_inventory and player_inventory.can_pickup ==true: #makes sure the player isnt holding something
-		player_inventory.add_resources(self) #adds to inventory 
+func add_vegetable(veg: Node3D,player_inventory):
+	pass
+
+func pickup(player_inventory):
+	player_inventory.add_container(self)
+
+func place(player_inventory):
+	player_inventory._drop_item(0)
+
+func _activate():
+	pass
 
 func get_some_variable():
 	return resource_type
+
+func freeme():
+	queue_free()
+
+func clear_plate():
+	if held_vegetables.size() > 0:
+		for child in get_children():
+			if !childlist.has(child.name):
+				child.queue_free()
+		held_vegetables.clear()

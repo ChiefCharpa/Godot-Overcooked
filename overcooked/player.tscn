@@ -61,7 +61,7 @@ func Freeze():
 albedo_color = Color(0.00184107, 0.00184107, 0.00184107, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5s4uc"]
-size = Vector3(1, 1, 1.0166)
+size = Vector3(1, 1, 0.688843)
 
 [node name="Player" type="CharacterBody3D"]
 safe_margin = 0.08
@@ -91,7 +91,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -0.6)
 script = ExtResource("2_thgo5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionCheckerArea3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.336121)
 shape = SubResource("BoxShape3D_5s4uc")
 
 [node name="Timer" type="Timer" parent="InteractionCheckerArea3D"]
