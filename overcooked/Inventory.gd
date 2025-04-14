@@ -17,6 +17,16 @@ func add_resources(food : Node3D):
 			food.global_transform.origin = global_transform.origin + global_transform.basis.z * -1 + Vector3(0, 0.4, 0)
 			food.freeze = true
 			heldVegetable = food
+func add_from_container(food : Node3D):
+	if can_pickup == true:
+		if Global.Veglist.has(food.name):
+			get_parent().add_child(food)
+			resources_inventory[food.name]=1
+			food.axis_lock_linear_y = true #locks y transform
+			food.global_transform.origin = global_transform.origin + global_transform.basis.z * -1 + Vector3(0, 0.4, 0)
+			food.freeze = true
+			heldVegetable = food
+	
 func add_container(container: Node3D):
 	if can_pickup:
 		container.get_parent().remove_child(container)
