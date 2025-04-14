@@ -17,8 +17,8 @@ func _ready():
 	
 func _chop(Player: CharacterBody3D):
 	var chop = false
-	for child in self.get_children():
-		if Global.Veglist.has(child.name):
+	for child in get_children():
+		if Global.Veglist.has(child.name) and Global.Veglist.has("Chopped_"+child.name) :
 			veg = child
 			chop = true
 	if chop and not chopping:
@@ -55,9 +55,9 @@ func _on_timer_timeout() -> void:
 		playerref.Freeze()
 		var chopped_key = "Chopped_" + veg.name
 		var chopped_veg =  Global.VegDictionary[chopped_key].instantiate()
-		print(chopped_veg.name)
 		get_parent().add_child(chopped_veg)
-		chopped_veg.global_position = veg.global_position
+		chopped_veg.freeze = true
+		chopped_veg.global_transform.origin = self.global_transform.origin+Vector3(0, .5, 0)
 		veg.queue_free()
 		timer.stop()
 		timer.wait_time = 10

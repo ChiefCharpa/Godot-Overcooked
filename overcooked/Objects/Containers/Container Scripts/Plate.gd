@@ -12,7 +12,7 @@ func _ready():
 
 
 func add_to_plate(veg: Node3D, player_inventory):
-	if veg.resource_type == "Food":
+	if Global.Platelist.has(veg.name):
 		held_vegetables.append(veg.name)
 		veg.queue_free()
 		var newveg = Global.VegDictionary.get(veg.name).instantiate()
@@ -22,7 +22,7 @@ func add_to_plate(veg: Node3D, player_inventory):
 		newveg.get_node("CollisionShape3D").disabled = true
 		newveg.transform.origin = offset
 func add_vegetable(veg: Node3D,player_inventory):
-	if veg.resource_type == "Food":
+	if Global.Platelist.has(veg.name):
 		held_vegetables.append(veg.name)
 		var newveg = Global.VegDictionary.get(veg.name).instantiate()
 		player_inventory.deletehelditem()

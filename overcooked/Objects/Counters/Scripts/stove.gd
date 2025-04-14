@@ -11,13 +11,15 @@ func _ready() -> void:
 
 func spawn():
 		var spawned = preload("res://Objects/Containers/Pan.tscn").instantiate()
-		spawned.global_position = self.global_position + Vector3(0,0.45,0.7)
+		spawned.global_position = self.global_position + Vector3(0.08,0.5,0.78)
 		get_parent().get_parent().add_child(spawned)
+		spawned.onstove = true
 
 func _activate():
 	if inventory_node:
 		if inventory_node.resources_inventory.size() > 0:
 			if inventory_node.heldVegetable.has_method("ispan"):
+				inventory_node.heldVegetable.cook()
 				inventory_node._place_item(currentCounter.get_path())  # Passing the NodePath of the current counter
 	else:
 		print("Player node is not set")

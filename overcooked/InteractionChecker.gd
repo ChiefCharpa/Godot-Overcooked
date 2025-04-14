@@ -28,7 +28,6 @@ func _process(delta):
 			if body_to_activate.has_method("Iscuttingboard"):
 				resource_type = body.get_some_variable()
 				body_to_activate.call("_chop",self.get_parent())
-	print(body_to_activate)
 	#checks if 'e' is pressed, if there is not an interatable obj, if the item in front is type food
 	#and that theres an item in the invt
 	if ((Input.is_action_just_pressed("Interaction_Select") and (body_to_activate == null or resource_type == "Food")) #if you pressed e and youre interacting with nothing or food,
@@ -54,6 +53,8 @@ func _process(delta):
 				body_to_activate.call("add_vegetable",player_inventory.heldVegetable,player_inventory) #call add vegetable
 			elif player_inventory.heldVegetable == null:
 				body_to_activate.call("pickup",player_inventory)
+				if player_inventory.heldVegetable.has_method("ispan"):
+					body_to_activate.call("cook")
 	elif Input.is_action_just_pressed("Interaction_Select") and (body_to_activate == null or resource_type == "Food") or Input.is_action_just_pressed("Throw_Item") and player_inventory.resources_inventory.size() != 0:
 		inventory_node._drop_item(force)
 		action_processed = true

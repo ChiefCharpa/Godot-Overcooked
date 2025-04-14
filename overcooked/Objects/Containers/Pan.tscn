@@ -30,3 +30,8 @@ shape = SubResource("CylinderShape3D_d3jei")
 transform = Transform3D(0.034202, 0.187939, 0, -0.0939693, 0.068404, 0, 0, 0, 0.1, 0.334698, 0.0316562, 0.00738776)
 mesh = SubResource("CapsuleMesh_d3jei")
 surface_material_override/0 = SubResource("StandardMaterial3D_ko0d4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

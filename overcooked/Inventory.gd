@@ -75,7 +75,10 @@ func _place_item(currentCounter: NodePath):
 			var new_root = get_tree().get_root().get_node(currentCounter) # gets the current selected counter node
 			if new_root != null:
 				new_root.add_child(heldVegetable) # adds the held item to the current selected counter node
-				heldVegetable.global_transform.origin = new_root.global_transform.origin + Vector3(0, .5, 0) # places the item on top of the counter
+				if heldVegetable.has_method("ispan"):
+					heldVegetable.global_transform.origin = new_root.global_transform.origin + Vector3(0.1, .5, 0)
+				else:
+					heldVegetable.global_transform.origin = new_root.global_transform.origin + Vector3(0, .5, 0) # places the item on top of the counter
 				heldVegetable = null
 				resources_inventory.clear() # clears inventory
 			else:
