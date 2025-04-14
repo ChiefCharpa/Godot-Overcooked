@@ -17,6 +17,7 @@ var VegDictionary = {
 	"Chopped_Meat" : preload("res://Objects/Food preloads/Chopped/Chopped_Meat.tscn"),
 	"Cooked_Fish" : preload("res://Objects/Food preloads/Cooked/Cooked_Fish.tscn"),
 	"Cooked_Meat" : preload("res://Objects/Food preloads/Cooked/Cooked_Meat.tscn")
+	
 	}
 var Veglist = VegDictionary.keys()
 # Called when the node enters the scene tree for the first time.

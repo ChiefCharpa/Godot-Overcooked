@@ -6,9 +6,12 @@ var currentCounter
 var veg
 var playerref
 var chopping = false
+var childlist : Array = []
 @onready var timer = $Timer
 
 func _ready():
+	for child in get_children():
+		childlist.append(child.name)
 	inventory_node = get_node("/root/LevelNode/Player/Inventory")
 	currentCounter = self	
 	
@@ -33,11 +36,12 @@ func _chop(Player: CharacterBody3D):
 # Function to activate and interact with all counter objects
 func _activate():
 	if inventory_node:
-		if inventory_node.resources_inventory.size() > 0:
+		if inventory_node.resources_inventory.size() > 0 and inventory_node.heldVegetable.get_some_variable() == "Food":
 			inventory_node._place_item(currentCounter.get_path())  # Passing the NodePath of the current counter
-		##if player holds nothing, while there is a food item on cutting board
-			##lock the player in front of the cutting board
-			##when player press 'x' chop 
+		elif inventory_node.resources_inventory.size() > 0 and inventory_node.heldVegetable.get_some_variable() == "Plate":
+			for child in get_children():
+				if !childlist.has(child.name):
+					inventory_node.heldVegetable.add_to_plate(child,inventory_node)
 	else:
 		print("Player node is not set")
 ##func process
