@@ -28,16 +28,20 @@ func _process(delta):
 			if body_to_activate.has_method("Iscuttingboard"):
 				resource_type = body.get_some_variable()
 				body_to_activate.call("_chop",self.get_parent())
-		
+	print(body_to_activate)
 	#checks if 'e' is pressed, if there is not an interatable obj, if the item in front is type food
 	#and that theres an item in the invt
-	if ((Input.is_action_just_pressed("Interaction_Select") and (body_to_activate == null or resource_type == "Food")) or Input.is_action_just_pressed("Throw_Item"))  and player_inventory.resources_inventory.size() != 0 and not action_processed:
+	if ((Input.is_action_just_pressed("Interaction_Select") and (body_to_activate == null or resource_type == "Food")) #if you pressed e and youre interacting with nothing or food,
+	or (Input.is_action_just_pressed("Throw_Item")) #or you pressed f
+	and player_inventory.resources_inventory.size() != 0) and (player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() != "Plate") and not action_processed: # and your holding something other than a plate
 		inventory_node._drop_item(force) #calls the drop_item method
 		action_processed = true #set action_processed to true
 	#checks if 'e' is pressed, there is an item in the area and that there is no ation currently being processed
 	elif Input.is_action_pressed("Interaction_Select") and body_to_activate and not action_processed:
 		action_processed = true #sets action_processed to true
-		if resource_type == "Food":
+		if player_inventory.heldVegetable != null and resource_type == "Food" and player_inventory.heldVegetable.get_some_variable() == "Plate":
+			player_inventory.heldVegetable.add_to_plate(body_to_activate, player_inventory)
+		elif resource_type == "Food":
 			body_to_activate.call("_activate", player_inventory) #calls the _activate method
 
 		elif resource_type == "Interactable":
@@ -50,7 +54,9 @@ func _process(delta):
 				body_to_activate.call("add_vegetable",player_inventory.heldVegetable,player_inventory) #call add vegetable
 			elif player_inventory.heldVegetable == null:
 				body_to_activate.call("pickup",player_inventory)
-
+	elif Input.is_action_just_pressed("Interaction_Select") and (body_to_activate == null or resource_type == "Food") or Input.is_action_just_pressed("Throw_Item") and player_inventory.resources_inventory.size() != 0:
+		inventory_node._drop_item(force)
+		action_processed = true
 	#resets action_processed to false when interaction select action is not pressed
 	elif not Input.is_action_pressed("Interaction_Select"):
 		action_processed = false

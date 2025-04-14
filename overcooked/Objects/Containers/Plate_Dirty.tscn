@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dki8m5mfco4f3"]
 
-[ext_resource type="Script" uid="uid://b7t6fyf3h3hu6" path="res://Objects/Containers/plate_dirty.gd" id="1_wyc47"]
+[ext_resource type="Script" uid="uid://b7t6fyf3h3hu6" path="res://Objects/Containers/Container Scripts/plate_dirty.gd" id="1_wyc47"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xik1j"]
 

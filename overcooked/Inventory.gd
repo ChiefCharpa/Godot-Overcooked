@@ -68,7 +68,6 @@ func _drop_item(force):
 		can_pickup = true
 	
 ##these 2 functions can be mixed together but it will be complex
-
 func _place_item(currentCounter: NodePath):
 	if heldVegetable != null:
 		if currentCounter != null and get_tree().get_root().has_node(currentCounter):
