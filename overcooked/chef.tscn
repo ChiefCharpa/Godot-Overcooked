@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwvej06aaeh46"]
+
+[ext_resource type="PackedScene" uid="uid://ndulmolfu8u5" path="res://Godot converted/untitled.glb" id="1_mivr5"]
+[ext_resource type="PackedScene" uid="uid://d21rohj5b6v5t" path="res://Overcooked Assets/Chef/idle_anim.FBX" id="2_j8bwy"]
+
+[node name="Chef" type="Node3D"]
+
+[node name="untitled" parent="." instance=ExtResource("1_mivr5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.590251, 0, 0.170439)
+
+[node name="idle_anim" parent="untitled" instance=ExtResource("2_j8bwy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00988328, 0, 0.0722396)
