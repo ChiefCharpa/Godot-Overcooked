@@ -3,43 +3,62 @@ extends RigidBody3D
 var resource_type = "Interactable"
 var inventory_node
 var currentCounter
-var currentItem = null
-var choppedAmmount
-var Veg = Global.VegDictionary
-var choppedVeg = Global.choppedVegDictionary
-var spawnVeg
-	
-func _ready():
-	inventory_node = get_node("/root/LevelNode/Player/Inventory")
-	currentCounter = self
+var veg
+var playerref
+var chopping = false
+var childlist : Array = []
+@onready var timer = $Timer
 
+func _ready():
+	for child in get_children():
+		childlist.append(child.name)
+	inventory_node = get_node("/root/LevelNode/Player/Inventory")
+	currentCounter = self	
+	
+func _chop(Player: CharacterBody3D):
+	var chop = false
+	for child in get_children():
+		if Global.Veglist.has(child.name) and Global.Veglist.has("Chopped_"+child.name) :
+			veg = child
+			chop = true
+	if chop and not chopping:
+		playerref = Player
+		chopping = true
+		playerref.Freeze()
+		timer.start()
+	elif chop and chopping:
+		chopping = false
+		playerref.Freeze()
+		timer.wait_time = timer.time_left
+		timer.stop()
+
+	
 # Function to activate and interact with all counter objects
 func _activate():
 	if inventory_node:
-		if inventory_node.resources_inventory.size() > 0:
-			var foodPos = 1
-			var foodAngle = 0
-			currentItem = inventory_node.heldVegetable
-			choppedAmmount = 5
-			if inventory_node.heldVegetable.has_method("placedInSink"):
-				inventory_node.heldVegetable.placedInSink()
-			inventory_node._place_item(currentCounter.get_path(), foodPos, foodAngle)  # Passing the NodePath of the current counter
+		if inventory_node.resources_inventory.size() > 0 and inventory_node.heldVegetable.get_some_variable() == "Food":
+			inventory_node._place_item(currentCounter.get_path())  # Passing the NodePath of the current counter
+		elif inventory_node.resources_inventory.size() > 0 and inventory_node.heldVegetable.get_some_variable() == "Plate":
+			for child in get_children():
+				if !childlist.has(child.name):
+					inventory_node.heldVegetable.add_to_plate(child,inventory_node)
 
-	if currentItem != null and inventory_node.resources_inventory.size() == 0 and currentItem.name in Veg:
-		choppedAmmount -= 1
-		print(choppedAmmount)
-		if choppedAmmount == 0:
-			var choppedItem = "Chopped_" + currentItem.name
-			if choppedVeg.has(choppedItem):
-				spawnVeg = choppedVeg[choppedItem]
-				currentItem.queue_free()
-				var spawnedVeg = spawnVeg.instantiate()
-				spawnedVeg.global_position = self.global_position + Vector3(0, 0.6, 0.8)
-				get_parent().get_parent().add_child(spawnedVeg)
-			else:
-				print("Could not find chopped version for:", choppedItem)
 	else:
-		print("Player node is not seTTTTTTTTTTTTTTTTt")
+		print("Player node is not set")
 
 func get_some_variable():
 	return resource_type
+func Iscuttingboard():
+	pass
+
+func _on_timer_timeout() -> void:
+		playerref.Freeze()
+		var chopped_key = "Chopped_" + veg.name
+		var chopped_veg =  Global.VegDictionary[chopped_key].instantiate()
+		get_parent().add_child(chopped_veg)
+		chopped_veg.freeze = true
+		chopped_veg.global_transform.origin = self.global_transform.origin+Vector3(0, .5, 0)
+		veg.queue_free()
+		timer.stop()
+		timer.wait_time = 10
+		chopping = false

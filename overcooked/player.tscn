@@ -7,7 +7,7 @@
 script/source = "extends CharacterBody3D
 
 const SPEED = 5.0
-
+var freeze = false
 const Gravity = 2.0
 
 @onready var player : CharacterBody3D = $\".\"
@@ -30,7 +30,7 @@ func _physics_process(_delta: float) -> void:
 
 	velocity.y = velocity.y - Gravity
 
-	if direction:
+	if direction and freeze == false:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 
@@ -41,6 +41,14 @@ func _physics_process(_delta: float) -> void:
 		velocity.z = 0
 
 	move_and_slide()
+
+func Freeze():
+	if freeze == false:
+		freeze = true
+		print(\"freeze\")
+	else:
+		freeze = false
+		print(\"unfreeze\")
 "
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lec0r"]
@@ -53,7 +61,7 @@ func _physics_process(_delta: float) -> void:
 albedo_color = Color(0.00184107, 0.00184107, 0.00184107, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5s4uc"]
-size = Vector3(1, 1, 1.0166)
+size = Vector3(1, 1, 0.688843)
 
 [node name="Player" type="CharacterBody3D"]
 safe_margin = 0.08
@@ -83,7 +91,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -0.5)
 script = ExtResource("2_thgo5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionCheckerArea3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.336121)
 shape = SubResource("BoxShape3D_5s4uc")
 
 [node name="Timer" type="Timer" parent="InteractionCheckerArea3D"]

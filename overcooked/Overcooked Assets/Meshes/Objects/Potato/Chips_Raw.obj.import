@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://jpd8q5io357d"
+path="res://.godot/imported/Chips_Raw.obj-2b8292d6da49b2c05bfa82d7f74a51e6.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Chips_Raw.obj-2b8292d6da49b2c05bfa82d7f74a51e6.mesh"]
+
+source_file="res://Overcooked Assets/Meshes/Objects/Potato/Chips_Raw.obj"
+dest_files=["res://.godot/imported/Chips_Raw.obj-2b8292d6da49b2c05bfa82d7f74a51e6.mesh", "res://.godot/imported/Chips_Raw.obj-2b8292d6da49b2c05bfa82d7f74a51e6.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

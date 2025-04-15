@@ -16,7 +16,7 @@ func _activate():
 		print(areachild.resources_inventory)  # See what the array contains
 		print(areachild.resources_inventory[-1])
 		if Global.Veglist.has(lastitem) and PlayerInventory.can_pickup:
-			PlayerInventory.add_resources(lastitem)
+			PlayerInventory.add_from_container(Global.VegDictionary.get(lastitem).instantiate())
 			areachild.resources_inventory.pop_back()
 			get_node("Area3D").can_delete = false
 			await get_tree().create_timer(0.2).timeout

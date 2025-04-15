@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5cwrng738u2m"]
+[gd_scene load_steps=7 format=3 uid="uid://c5cwrng738u2m"]
 
 [ext_resource type="Script" uid="uid://d0ufop2404xu3" path="res://Objects/Containers/Container Scripts/Bin.gd" id="1_kh1em"]
-[ext_resource type="Script" uid="uid://c45m1j6qltgb0" path="res://Objects/Containers/Container Scripts/Bin_area_script.gd" id="2_y6fw4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ojba4"]
 
@@ -14,8 +13,6 @@ albedo_color = Color(0.0400077, 0.407278, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j0gcd"]
 albedo_color = Color(0.00566115, 0.00566115, 0.00566115, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0g6g0"]
 
 [node name="Bin" type="RigidBody3D"]
 script = ExtResource("1_kh1em")
@@ -32,9 +29,3 @@ shape = SubResource("BoxShape3D_lbcbd")
 transform = Transform3D(0.9, 0, 0, 0, 0.1, 0, 0, 0, 0.9, 0, 0.20032, 0)
 mesh = SubResource("BoxMesh_0embw")
 surface_material_override/0 = SubResource("StandardMaterial3D_j0gcd")
-
-[node name="Area3D" type="Area3D" parent="."]
-script = ExtResource("2_y6fw4")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("BoxShape3D_0g6g0")

@@ -14,10 +14,15 @@ var choppedVegDictionary = {
 	"Chopped_Onion" : preload("res://Objects/Food preloads/Chopped/Chopped_Onion.tscn"),
 	"Chopped_Mushroom" : preload("res://Objects/Food preloads/Chopped/Chopped_Mushroom.tscn"),
 	"Chopped_Lettuce" : preload("res://Objects/Food preloads/Chopped/Chopped_Lettuce.tscn"),
-	"Chopped_Meat" : preload("res://Objects/Food preloads/Chopped/Chopped_Meat.tscn")
-}
+
+	"Chopped_Meat" : preload("res://Objects/Food preloads/Chopped/Chopped_Meat.tscn"),
+	"Cooked_Fish" : preload("res://Objects/Food preloads/Cooked/Cooked_Fish.tscn"),
+	"Cooked_Meat" : preload("res://Objects/Food preloads/Cooked/Cooked_Meat.tscn")
+	
+	}
 var Veglist = VegDictionary.keys()
-var choppedVeglist = choppedVegDictionary.keys()
+var Platelist = ["Chopped_Tomato","Chopped_Fish","Chopped_Onion","Chopped_Mushroom","Chopped_Lettuce","Chopped_Meat","Cooked_Fish","Cooked_Meat"]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

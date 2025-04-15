@@ -6,8 +6,9 @@ var canPickup = true
 
 func _activate(player_inventory):
 	if player_inventory and player_inventory.can_pickup ==true: #makes sure the player isnt holding something
-		if canPickup == true:
-			player_inventory.add_resources(self) #adds tomato to inventory 
+  
+		player_inventory.add_resources(self) #adds tomato to inventory 
+		#queue_free() #removes tomato object
 
 func placedInSink():
 	canPickup = false

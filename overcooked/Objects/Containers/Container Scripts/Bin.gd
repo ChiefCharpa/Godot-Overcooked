@@ -3,6 +3,7 @@ extends RigidBody3D
 var resource_type = "Interactable"
 var inventory_node
 var currentCounter
+var inventory
 
 func _ready():
 	self.freeze = true
@@ -17,11 +18,14 @@ func _activate():
 			var parent = new_root.get_node("Player") # Get the player
 			for child in parent.get_children(): # Look through all the children
 				if child.name == "Inventory": # Get the inventory child
-					child.resources_inventory.clear() # Clear the inventory
+					inventory = child
 				if child.has_method("get_some_variable"):
 					var resource_type = child.get_some_variable() # Get the resource type from the body
-					if resource_type == "Food" or resource_type == "Plate":
+					if resource_type == "Food":
+						inventory.resources_inventory.clear()
 						child.queue_free() # Delete the item
+					elif resource_type =="Plate":
+						child.clear_plate() 
 	else:
 		print("Player node is not set")
 

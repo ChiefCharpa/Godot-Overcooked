@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://hm5rraqj5dr3"]
 
-[ext_resource type="Script" uid="uid://bwrnxx6bwm4v7" path="res://Objects/Counters/Scripts/cutting_board_Script.gd" id="1_ih4ek"]
+[ext_resource type="Script" uid="uid://ca7eub0di4r1s" path="res://Objects/Counters/Scripts/cutting_board_Script.gd" id="1_ih4ek"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ytds0"]
 
@@ -46,3 +46,8 @@ transform = Transform3D(0.297801, 0, 0, 0, 1, 0, 0, 0, 0.457237, 0.148851, 0.51,
 mesh = SubResource("PlaneMesh_sk14o")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_txt3y")
+
+[node name="Timer" type="Timer" parent="CuttingBoard_RigidBody3D"]
+wait_time = 10.0
+
+[connection signal="timeout" from="CuttingBoard_RigidBody3D/Timer" to="CuttingBoard_RigidBody3D" method="_on_timer_timeout"]

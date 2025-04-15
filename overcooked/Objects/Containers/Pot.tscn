@@ -38,5 +38,4 @@ surface_material_override/0 = SubResource("StandardMaterial3D_y2p17")
 script = ExtResource("2_lvymh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("BoxShape3D_fno4w")
