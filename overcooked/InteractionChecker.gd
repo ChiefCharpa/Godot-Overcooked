@@ -4,9 +4,7 @@ var body_to_activate = null #stores the body to be activated
 var resource_type = null #stores the type of resource
 var inventory_node #stores the inventory node
 var action_processed = false #tracks if the action is processed
-var force = 0
-
-
+var force = 0`
 
 func _ready() -> void:
 	player_inventory = get_parent().get_node("Inventory") #gets the player's inventory
@@ -19,8 +17,13 @@ func _process(delta):
 	
 	for body in overlapping_bodies:
 		if body.has_method("_activate"):
-			resource_type = body.get_some_variable() #gets the resource type from the body
-			body_to_activate = body #sets body_to_activate to the current body
+			if body.name in Veg or body.get_some_variable() == "dirtyPlate":
+				if body.canPickup == true:
+					resource_type = body.get_some_variable() #gets the resource type from the body
+					body_to_activate = body #sets body_to_activate to the current body
+			else:
+				resource_type = body.get_some_variable() #gets the resource type from the body
+				body_to_activate = body #sets body_to_activate to the current body
 
 	if Input.is_action_just_pressed("Chop"): #if you press chop, then look again but this time for a counter
 		for body in overlapping_bodies:
@@ -35,12 +38,14 @@ func _process(delta):
 	and player_inventory.resources_inventory.size() != 0) and (player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() != "Plate") and not action_processed: # and your holding something other than a plate
 		inventory_node._drop_item(force) #calls the drop_item method
 		action_processed = true #set action_processed to true
+
 	#checks if 'e' is pressed, there is an item in the area and that there is no ation currently being processed
 	elif Input.is_action_pressed("Interaction_Select") and body_to_activate and not action_processed:
 		action_processed = true #sets action_processed to true
 		if player_inventory.heldVegetable != null and resource_type == "Food" and player_inventory.heldVegetable.get_some_variable() == "Plate":
 			player_inventory.heldVegetable.add_to_plate(body_to_activate, player_inventory)
 		elif resource_type == "Food":
+
 			body_to_activate.call("_activate", player_inventory) #calls the _activate method
 
 		elif resource_type == "Interactable":
@@ -48,6 +53,7 @@ func _process(delta):
 
 		elif resource_type == "containers":
 			body_to_activate.call("_activate")
+
 		elif resource_type == "Plate":
 			if player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() != "Plate": #if the player is holding somthing that isnt a plate
 				body_to_activate.call("add_vegetable",player_inventory.heldVegetable,player_inventory) #call add vegetable

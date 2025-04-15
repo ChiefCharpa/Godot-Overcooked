@@ -42,10 +42,10 @@ func _activate():
 			for child in get_children():
 				if !childlist.has(child.name):
 					inventory_node.heldVegetable.add_to_plate(child,inventory_node)
+
 	else:
 		print("Player node is not set")
-##func process
-	##if player presses 'b' unlcok player
+
 func get_some_variable():
 	return resource_type
 func Iscuttingboard():

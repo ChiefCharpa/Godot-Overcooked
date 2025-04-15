@@ -3,9 +3,8 @@ extends Node3D
 class_name Inventory
 
 var resources_inventory : Dictionary = { }
-var heldVegetable = null ##figure out a way to do any item
+var heldVegetable = null
 var can_pickup = true
-
 
 func add_resources(food : Node3D):
 	if can_pickup == true:
@@ -29,13 +28,14 @@ func add_from_container(food : Node3D):
 	
 func add_container(container: Node3D):
 	if can_pickup:
-		container.get_parent().remove_child(container)
-		get_parent().add_child(container)
-		resources_inventory[container.name]=1
-		container.axis_lock_linear_y = true #locks y transform
-		container.global_transform.origin = global_transform.origin + global_transform.basis.z * -1 + Vector3(0, 0.4, 0)
-		container.freeze = true
-		heldVegetable = container
+		item.get_parent().remove_child(item)
+		get_parent().add_child(item)
+		resources_inventory[item.name]=1
+		item.axis_lock_linear_y = true #locks y transform
+		item.global_transform.origin = global_transform.origin + global_transform.basis.z * -1 + Vector3(0, 0.4, 0)
+		item.freeze = true
+		heldVegetable = item
+
 func deletehelditem():
 	if heldVegetable != null:
 		heldVegetable.get_parent().remove_child(heldVegetable)
@@ -69,6 +69,7 @@ func _drop_item(force):
 	
 ##these 2 functions can be mixed together but it will be complex
 func _place_item(currentCounter: NodePath):
+
 	if heldVegetable != null:
 		if currentCounter != null and get_tree().get_root().has_node(currentCounter):
 			heldVegetable.get_parent().remove_child(heldVegetable) # removes the item being held from the player node
