@@ -1,0 +1,129 @@
+[gd_scene load_steps=14 format=3 uid="uid://b0wg5s24v0st4"]
+
+[ext_resource type="Script" uid="uid://cp4u7de1xqfvv" path="res://Objects/Counters/Scripts/sink_plater_spawner_rigidbody.gd" id="1_xmdk7"]
+[ext_resource type="Script" uid="uid://bexij1iab3dd6" path="res://Objects/Counters/Scripts/sink_script.gd" id="2_xmdk7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xmdk7"]
+size = Vector3(0.1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4tus"]
+albedo_color = Color(0.329412, 0.333333, 0.345098, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4q843"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ov2ff"]
+albedo_color = Color(0.393316, 0.293962, 0.164876, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_reikc"]
+size = Vector3(0.723, 0.596, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xmdk7"]
+albedo_color = Color(0.223529, 0.227451, 0.235294, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oh1wk"]
+material = SubResource("StandardMaterial3D_xmdk7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ejj3q"]
+albedo_color = Color(0, 0.392157, 0.392157, 0.564706)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_oocld"]
+material = SubResource("StandardMaterial3D_ejj3q")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yefr5"]
+albedo_color = Color(0.442911, 0.442911, 0.442911, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rrr62"]
+material = SubResource("StandardMaterial3D_yefr5")
+
+[node name="Sink" type="Node3D"]
+
+[node name="PlateSpawner_Rigidbody" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("1_xmdk7")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="PlateSpawner_Rigidbody"]
+transform = Transform3D(0.5, 0, 0, 0, 0.03, 0, 0, 0, 0.5, -0.15, 0.37, 0)
+mesh = SubResource("BoxMesh_xmdk7")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_y4tus")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="PlateSpawner_Rigidbody"]
+transform = Transform3D(0.5, 0, 0, 0, 0.03, 0, 0, 0, 0.5, -0.25, 0.37, 0)
+mesh = SubResource("BoxMesh_xmdk7")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_y4tus")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="PlateSpawner_Rigidbody"]
+transform = Transform3D(0.5, 0, 0, 0, 0.03, 0, 0, 0, 0.5, -0.05, 0.37, 0)
+mesh = SubResource("BoxMesh_xmdk7")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_y4tus")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="PlateSpawner_Rigidbody"]
+transform = Transform3D(0.5, 0, 0, 0, 0.03, 0, 0, 0, 0.5, 0.05, 0.37, 0)
+mesh = SubResource("BoxMesh_xmdk7")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_y4tus")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="PlateSpawner_Rigidbody"]
+transform = Transform3D(0.5, 0, 0, 0, 0.03, 0, 0, 0, 0.5, 0.15, 0.37, 0)
+mesh = SubResource("BoxMesh_xmdk7")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_y4tus")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="PlateSpawner_Rigidbody"]
+transform = Transform3D(0.5, 0, 0, 0, 0.03, 0, 0, 0, 0.5, 0.25, 0.37, 0)
+mesh = SubResource("BoxMesh_xmdk7")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_y4tus")
+
+[node name="Sink_Rigidbody" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("2_xmdk7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sink_Rigidbody"]
+transform = Transform3D(0.723, 0, 0, 0, 0.596, 0, 0, 0, 2, 0, 0, -0.5)
+mesh = SubResource("BoxMesh_4q843")
+surface_material_override/0 = SubResource("StandardMaterial3D_ov2ff")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sink_Rigidbody"]
+transform = Transform3D(1.001, 0, 0, 0, 1.001, 0, 0, 0, 2.001, 0, 0, -0.5)
+shape = SubResource("BoxShape3D_reikc")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Sink_Rigidbody"]
+transform = Transform3D(0.8, 0, 0, 0, 0.07, 0, 0, 0, 2, 0.04, 0.333, -0.5)
+mesh = SubResource("BoxMesh_oh1wk")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Sink_Rigidbody"]
+transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.3, 0.116198, 0.368361, 0)
+transparency = 0.5
+mesh = SubResource("PlaneMesh_oocld")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Sink_Rigidbody"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.265392, 0.441752, 0)
+mesh = SubResource("CylinderMesh_rrr62")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Sink_Rigidbody"]
+transform = Transform3D(0.0707107, 0.0707107, 0, -0.0707107, 0.0707107, 0, 0, 0, 0.1, -0.21, 0.564, 0)
+mesh = SubResource("CylinderMesh_rrr62")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Sink_Rigidbody"]
+transform = Transform3D(-4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 0, 0, 0.1, -0.06406, 0.618993, 0)
+mesh = SubResource("CylinderMesh_rrr62")
+skeleton = NodePath("")
