@@ -3,11 +3,19 @@ extends Area3D
 var resources_inventory = []
 var heldVegetable = null
 var can_delete = true
+@onready var mesh = $"../MeshInstance3D3"
+@onready var camera = get_node("/root/LevelNode/Camera3D")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	connect("body_entered", _on_body_entered)
 	get_parent().freeze = true
+
+
+func _process(delta: float):
+	mesh.look_at(camera.global_transform.origin)
+	mesh.rotate_x(rad_to_deg(170))
+	mesh.rotate_y(rad_to_deg(180))
 
 func _on_body_entered(body): #take the item that is dropped, adds it to the pot inventory and the deletes the item
 	if body.get("resource_type") and body.resource_type == "Food" and can_delete and Global.Veglist.has(body.name) : #if the object has a resource type and its food
