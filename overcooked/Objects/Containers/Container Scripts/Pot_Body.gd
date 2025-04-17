@@ -1,26 +1,108 @@
 extends RigidBody3D
-var resource_type = "Interactable"
-var PlayerInventory
-# Called when the node enters the scene tree for the first time.
+
+var resource_type
+var held_vegetable: Array = []
+var veg
+var cooking = false
+var onstove = false
+var partial = false
+@onready var timer =$Timer 
+@onready var mesh = $MeshInstance3D3
+@onready var camera = get_node("/root/LevelNode/Camera3D")
+
+func _ready():
+	self.freeze = true
+	resource_type = "Plate" # Define the plate as a container
+	
+func _process(delta: float) -> void:
+	print(timer.time_left)
+
+func add_vegetable(veg: Node3D,player_inventory):
+	var parts = veg.name.split("_")
+	if Global.Veglist.has("Soup_"+parts[-1]) and veg.name.begins_with("Chopped") and held_vegetable.size()<3:
+		held_vegetable.append(veg.name)
+		var newveg = Global.VegDictionary.get(veg.name).instantiate()
+		player_inventory.deletehelditem()
+		add_child(newveg)
+		var offset = Vector3(0, 0.05, 0)
+		newveg.freeze = true
+		newveg.get_node("CollisionShape3D").disabled = true
+		newveg.transform.origin = offset
+		if onstove == true:
+			cook()
+func take_from_pan():
+	if held_vegetable != [] and held_vegetable[0].begins_with("Soup") and held_vegetable.size() == 3:
+		for child in get_children():
+				if child.name == held_vegetable[0]:
+					var returnchild = child
+					clear_plate()
+					partial = false
+					return returnchild
+func clear_plate():
+	if held_vegetable != []:
+		for child in get_children():
+			for veg in held_vegetable:
+				if child.name == veg:
+					child.queue_free()
+					held_vegetable = []
+func cook():
+	var cook = false
+	for child in self.get_children():
+		if Global.Veglist.has(child.name):
+			veg = child
+			cook = true
+	if cook and onstove:
+		print("cooking")
+		cooking = true
+		if timer.is_stopped() and not partial : #if timer is stopped and nothing has been cooked
+			timer.wait_time = 5*held_vegetable.size()
+			timer.start()
+			partial = true
+		elif timer.is_stopped() and partial: #if timer is stopped and something has been cooked
+			print("wait timer is ", timer.wait_time)
+			for veg in held_vegetable:
+				if veg.begins_with("Chopped"):
+					timer.wait_time +=5
+					print(timer.wait_time)
+			timer.wait_time -= 5
+			print(timer.wait_time)
+			timer.start()
+		elif not timer.is_stopped(): #if timer is running
+			timer.timer_left += 5
+	elif cook and not onstove:
+		print("Not cooking")
+		cooking = false
+		timer.wait_time = timer.time_left
+		timer.stop()
+
+func pickup(player_inventory):
+	player_inventory.add_container(self)
+
+func place(player_inventory):
+	player_inventory._drop_item(0)
+
 func _activate():
-	var areachild = get_node("Area3D")
-	var new_root = get_tree().root.get_node("LevelNode")
-	var parent = new_root.get_node("Player") 
-	for child in parent.get_children():
-			if child.name=="Inventory":
-				PlayerInventory = child
-				if PlayerInventory.heldVegetable != null and PlayerInventory.heldVegetable.get_some_variable() == "Food":
-					PlayerInventory._drop_item(0)
-	if areachild.resources_inventory != []:
-		var lastitem = areachild.resources_inventory[-1]
-		print(areachild.resources_inventory)  # See what the array contains
-		print(areachild.resources_inventory[-1])
-		if Global.Veglist.has(lastitem) and PlayerInventory.can_pickup:
-			PlayerInventory.add_from_container(Global.VegDictionary.get(lastitem).instantiate())
-			areachild.resources_inventory.pop_back()
-			get_node("Area3D").can_delete = false
-			await get_tree().create_timer(0.2).timeout
-			get_node("Area3D").can_delete = true
+	pass
 
 func get_some_variable():
 	return resource_type
+func ispot():
+	pass
+func ispan():
+	pass
+
+
+func _on_timer_timeout():
+	var cooked_key = "Soup_"+veg.name.split("_")[1]
+	var cooked_veg =  Global.VegDictionary[cooked_key].instantiate()
+	cooked_veg.name = cooked_key
+	add_child(cooked_veg)
+	held_vegetable = []
+	held_vegetable.append(cooked_veg.name)
+	cooked_veg.transform.origin = Vector3(0, 0.05, 0)
+	cooked_veg.freeze = true
+	cooked_veg.get_node("CollisionShape3D").disabled = true
+	veg.queue_free()
+	timer.stop()
+	timer.wait_time = 5
+	cooking = false

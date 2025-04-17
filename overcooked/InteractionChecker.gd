@@ -21,7 +21,6 @@ func _process(delta):
 		if body.has_method("_activate"):
 			resource_type = body.get_some_variable() #gets the resource type from the body
 			body_to_activate = body #sets body_to_activate to the current body
-
 	if Input.is_action_just_pressed("Chop"): #if you press chop, then look again but this time for a counter
 		for body in overlapping_bodies:
 			body_to_activate = body
@@ -40,6 +39,8 @@ func _process(delta):
 		action_processed = true #sets action_processed to true
 		if player_inventory.heldVegetable != null and resource_type == "Food" and player_inventory.heldVegetable.get_some_variable() == "Plate":
 			player_inventory.heldVegetable.add_to_plate(body_to_activate, player_inventory)
+		elif player_inventory.heldVegetable != null and body_to_activate.has_method("ispan") and player_inventory.heldVegetable.get_some_variable() == "Plate":
+			player_inventory.heldVegetable.add_to_plate(body_to_activate.take_from_pan(), player_inventory)
 		elif resource_type == "Food":
 			body_to_activate.call("_activate", player_inventory) #calls the _activate method
 

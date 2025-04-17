@@ -12,6 +12,7 @@ func _ready():
 
 
 func add_to_plate(veg: Node3D, player_inventory):
+	print(veg.name)
 	if Global.Platelist.has(veg.name):
 		held_vegetables.append(veg.name)
 		veg.queue_free()
