@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnmxv1lamjdyj"]
+
+[ext_resource type="Script" uid="uid://njawwihyt5mv" path="res://Inventory.gd" id="1_7q55s"]
+[ext_resource type="PackedScene" uid="uid://ndulmolfu8u5" path="res://Godot converted/untitled.glb" id="1_vmk5g"]
+[ext_resource type="Script" uid="uid://dkkuh2tj0x18s" path="res://InteractionChecker.gd" id="2_vmk5g"]
+
+[sub_resource type="GDScript" id="GDScript_w0ksy"]
+script/source = "extends CharacterBody3D
+
+const SPEED = 5.0
+var freeze = false
+const Gravity = 2.0
+
+@onready var player : CharacterBody3D = $\".\"
+var inventory : Inventory
+
+func _ready() -> void:
+	# Check for an existing 'inventory' child node
+	inventory = $Inventory
+
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed(\"print_inventory\"):
+		print(\"Current Inventory:\", inventory.resources_inventory)
+
+
+func _physics_process(_delta: float) -> void:
+	# Get the input direction and handle the movement/deceleration.
+	var input_dir := Input.get_vector(\"Left\", \"Right\", \"Forwards\", \"Backwards\")
+	var direction := (Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
+	velocity.y = velocity.y - Gravity
+
+	if direction and freeze == false:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+
+		var target_rotation = atan2(-direction.x, -direction.z) # Calculates the angle between where the player is facing and the direction it is moving
+		rotation.y = lerp_angle(rotation.y, target_rotation, 0.2) # Rotates from the current orientation to the target rotation by 0.2
+	else:
+		velocity.x = 0
+		velocity.z = 0
+
+	move_and_slide()
+
+func Freeze():
+	if freeze == false:
+		freeze = true
+		print(\"freeze\")
+	else:
+		freeze = false
+		print(\"unfreeze\")
+"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f4xx0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5s4uc"]
+size = Vector3(1, 1, 0.688843)
+
+[node name="Player" type="CharacterBody3D"]
+safe_margin = 0.08
+script = SubResource("GDScript_w0ksy")
+
+[node name="ChefMesh" parent="." instance=ExtResource("1_vmk5g")]
+transform = Transform3D(-1.88033, 0, 0.0719062, 0, 1.8817, 0, -0.0719062, 0, -1.88033, 0, -1.34282, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_f4xx0")
+
+[node name="Inventory" type="Node3D" parent="."]
+script = ExtResource("1_7q55s")
+
+[node name="InteractionCheckerArea3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -0.6)
+script = ExtResource("2_vmk5g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionCheckerArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.336121)
+shape = SubResource("BoxShape3D_5s4uc")
+
+[node name="Timer" type="Timer" parent="InteractionCheckerArea3D"]
+autostart = true
+
+[connection signal="timeout" from="InteractionCheckerArea3D/Timer" to="InteractionCheckerArea3D" method="_on_timer_timeout"]
