@@ -13,9 +13,6 @@ var partial = false
 func _ready():
 	self.freeze = true
 	resource_type = "Plate" # Define the plate as a container
-	
-func _process(delta: float) -> void:
-	print(timer.time_left)
 
 func add_vegetable(veg: Node3D,player_inventory):
 	var parts = veg.name.split("_")
@@ -31,7 +28,7 @@ func add_vegetable(veg: Node3D,player_inventory):
 		if onstove == true:
 			cook()
 func take_from_pan():
-	if held_vegetable != [] and held_vegetable[0].begins_with("Soup") and held_vegetable.size() == 3:
+	if held_vegetable != [] and held_vegetable[0].begins_with("Soup") and held_vegetable[0]:
 		for child in get_children():
 				if child.name == held_vegetable[0]:
 					var returnchild = child
@@ -63,9 +60,7 @@ func cook():
 			for veg in held_vegetable:
 				if veg.begins_with("Chopped"):
 					timer.wait_time +=5
-					print(timer.wait_time)
 			timer.wait_time -= 5
-			print(timer.wait_time)
 			timer.start()
 		elif not timer.is_stopped(): #if timer is running
 			timer.timer_left += 5
@@ -93,16 +88,19 @@ func ispan():
 
 
 func _on_timer_timeout():
-	var cooked_key = "Soup_"+veg.name.split("_")[1]
-	var cooked_veg =  Global.VegDictionary[cooked_key].instantiate()
-	cooked_veg.name = cooked_key
-	add_child(cooked_veg)
-	held_vegetable = []
-	held_vegetable.append(cooked_veg.name)
-	cooked_veg.transform.origin = Vector3(0, 0.05, 0)
-	cooked_veg.freeze = true
-	cooked_veg.get_node("CollisionShape3D").disabled = true
-	veg.queue_free()
-	timer.stop()
-	timer.wait_time = 5
-	cooking = false
+	var temp = held_vegetable.duplicate()
+	for veg in temp:
+		print(veg)
+		var cooked_key = "Soup_"+veg.split("_")[1]
+		var cooked_veg =  Global.VegDictionary[cooked_key].instantiate()
+		add_child(cooked_veg)
+		cooked_veg.name = cooked_key
+		held_vegetable.erase(veg)
+		held_vegetable.append("Soup_"+veg.split("_")[1])
+		cooked_veg.transform.origin = Vector3(0, 0.05, 0)
+		cooked_veg.freeze = true
+		cooked_veg.get_node("CollisionShape3D").disabled = true
+		timer.stop()
+		timer.wait_time = 5
+		cooking = false
+		print(held_vegetable)

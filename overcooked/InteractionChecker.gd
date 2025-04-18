@@ -54,6 +54,8 @@ func _process(delta):
 				body_to_activate.call("add_vegetable",player_inventory.heldVegetable,player_inventory) #call add vegetable
 			elif player_inventory.heldVegetable == null:
 				body_to_activate.call("pickup",player_inventory)
+				if player_inventory.heldVegetable.has_method("ispot"):
+					body_to_activate.onstove = false
 				if player_inventory.heldVegetable.has_method("ispan"):
 					body_to_activate.call("cook")
 	elif Input.is_action_just_pressed("Interaction_Select") and (body_to_activate == null or resource_type == "Food") or Input.is_action_just_pressed("Throw_Item") and player_inventory.resources_inventory.size() != 0:

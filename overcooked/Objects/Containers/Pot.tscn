@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bggii7f8r4i1w"]
 
-[ext_resource type="Script" uid="uid://t1sbek6jbgpo" path="res://Objects/Containers/Container Scripts/Pot_Body.gd" id="1_wn77w"]
+[ext_resource type="Script" uid="uid://t1sbek6jbgpo" path="res://Objects/Containers/Container Scripts/Pot.gd" id="1_wn77w"]
 [ext_resource type="Texture2D" uid="uid://dxoobmx77raei" path="res://Img/Lettuce.jpg" id="3_oohfq"]
 [ext_resource type="Texture2D" uid="uid://byvu6vtsbde0k" path="res://Img/onion.jpg" id="4_c8qmu"]
 [ext_resource type="Texture2D" uid="uid://c80jcpto3yu41" path="res://Img/Tomato.jpg" id="5_848bv"]

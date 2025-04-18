@@ -19,6 +19,7 @@ func _activate():
 	if inventory_node:
 		if inventory_node.resources_inventory.size() > 0:
 			if inventory_node.heldVegetable.has_method("ispan"):
+				inventory_node.heldVegetable.onstove = true
 				inventory_node.heldVegetable.cook()
 				inventory_node._place_item(currentCounter.get_path())  # Passing the NodePath of the current counter
 	else:
