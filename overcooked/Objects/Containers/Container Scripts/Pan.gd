@@ -1,7 +1,7 @@
 extends RigidBody3D
 
 var resource_type
-var held_vegetables = null
+var held_vegetable = null
 var veg
 var cooking = false
 var onstove = false
@@ -12,8 +12,9 @@ func _ready():
 	resource_type = "Plate" # Define the plate as a container
 
 func add_vegetable(veg: Node3D,player_inventory):
-	if Global.Veglist.has("Cooked_"+veg.name) or veg.name.begins_with("Chopped"):
-		held_vegetables = veg.name
+	var parts = veg.name.split("_")
+	if Global.Veglist.has("Cooked_"+parts[-1]) and veg.name.begins_with("Chopped") and held_vegetable == null:
+		held_vegetable = veg.name
 		var newveg = Global.VegDictionary.get(veg.name).instantiate()
 		player_inventory.deletehelditem()
 		add_child(newveg)
@@ -23,12 +24,19 @@ func add_vegetable(veg: Node3D,player_inventory):
 		newveg.transform.origin = offset
 		if onstove == true:
 			cook()
-func clear_plate():
-	if held_vegetables != null:
+func take_from_pan():
+	if held_vegetable != null:
 		for child in get_children():
-				if child.name == held_vegetables:
+				if child.name == held_vegetable:
+					var returnchild = child
+					clear_plate()
+					return returnchild
+func clear_plate():
+	if held_vegetable != null:
+		for child in get_children():
+				if child.name == held_vegetable:
 					child.queue_free()
-					held_vegetables = null
+					held_vegetable = null
 func cook():
 	var cook = false
 	for child in self.get_children():
@@ -65,8 +73,9 @@ func ispan():
 func _on_timer_timeout():
 	var cooked_key = "Cooked_"+veg.name.split("_")[1]
 	var cooked_veg =  Global.VegDictionary[cooked_key].instantiate()
+	cooked_veg.name = cooked_key
 	add_child(cooked_veg)
-	held_vegetables = cooked_veg.name
+	held_vegetable = cooked_veg.name
 	cooked_veg.transform.origin = Vector3(0, 0.05, 0)
 	cooked_veg.freeze = true
 	cooked_veg.get_node("CollisionShape3D").disabled = true

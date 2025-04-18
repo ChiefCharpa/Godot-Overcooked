@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dral0g73t3p7"]
+[gd_scene load_steps=21 format=3 uid="uid://dral0g73t3p7"]
 
 [ext_resource type="PackedScene" uid="uid://5aocl1ky0vhb" path="res://Objects/Counters/tomato_spawner.tscn" id="1_8o4rb"]
 [ext_resource type="PackedScene" uid="uid://cgkmdmvjhvk6t" path="res://Objects/Counters/counter.tscn" id="3_fpono"]
@@ -15,7 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://dki8m5mfco4f3" path="res://Objects/Containers/Plate_Dirty.tscn" id="15_esphl"]
 [ext_resource type="PackedScene" uid="uid://brlop6qo3v6ib" path="res://Objects/Counters/service_counter.tscn" id="16_dcckh"]
 [ext_resource type="PackedScene" uid="uid://bnmxv1lamjdyj" path="res://playerChef.tscn" id="17_dcckh"]
-[ext_resource type="PackedScene" uid="uid://3aegjuif6mfk" path="res://Objects/Counters/stove.tscn" id="17_jftiw"]
+[ext_resource type="PackedScene" uid="uid://3aegjuif6mfk" path="res://Objects/Counters/Stove(Pan).tscn" id="17_jftiw"]
+[ext_resource type="PackedScene" uid="uid://u34pilek63et" path="res://Objects/Counters/Stove(Pot).tscn" id="17_yye10"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dppq4"]
 
@@ -42,7 +43,7 @@ shape = SubResource("ConcavePolygonShape3D_f1ml4")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.313928, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.617654, 0.78645, 0, -0.78645, 0.617654, -0.63733, 6.4459, 8.13923)
+transform = Transform3D(0.999996, 0.000691604, 0.0025906, -0.00246523, 0.617146, 0.786845, -0.00105459, -0.786848, 0.617146, -0.63733, 6.4459, 8.13923)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.883953, 0.467575, 0, -0.467575, 0.883953, 0, 3.7363, 5.13066)
@@ -63,7 +64,7 @@ transform = Transform3D(0.0315156, 0, -0.999503, 0, 1, 0, 0.999503, 0, 0.0315156
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.69051, 0.247803, 5.92022)
 
 [node name="RigidBody3D" parent="." instance=ExtResource("4_q2pme")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35121, 0.742208, 5.75475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35121, 0.742208, 4.03997)
 
 [node name="Global" type="Node3D" parent="."]
 script = ExtResource("5_lfh1b")
@@ -98,3 +99,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.23655, 0.461903, 2.89116)
 
 [node name="Player" parent="." instance=ExtResource("17_dcckh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.20844, 1.36336, 2.68581)
+
+[node name="Stove(Pan)" parent="." instance=ExtResource("17_yye10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.803237, 0.298001, 5.89061)

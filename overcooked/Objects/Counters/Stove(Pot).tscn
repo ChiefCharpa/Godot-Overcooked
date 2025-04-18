@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://3aegjuif6mfk"]
+[gd_scene load_steps=9 format=3 uid="uid://u34pilek63et"]
 
-[ext_resource type="Script" uid="uid://y81a7ybgehdo" path="res://Objects/Counters/Scripts/stove.gd" id="1_a3nav"]
+[ext_resource type="Script" uid="uid://rvv5i1sm606o" path="res://Objects/Counters/Scripts/stove(Pot).gd" id="1_1mgh3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ytds0"]
 
@@ -20,10 +20,10 @@ albedo_color = Color(0.364706, 0, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cueyg"]
 albedo_color = Color(0, 0, 0, 1)
 
-[node name="Stove" type="Node3D"]
+[node name="Stove(Pan)" type="Node3D"]
 
 [node name="Stove_RigidBody3D" type="RigidBody3D" parent="."]
-script = ExtResource("1_a3nav")
+script = ExtResource("1_1mgh3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Stove_RigidBody3D"]
 transform = Transform3D(0.723, 0, 0, 0, 0.596, 0, 0, 0, 1, 0, 0, 0)
