@@ -18,9 +18,16 @@ func _process(delta):
 	body_to_activate = null #resets body_to_activate before checking for overlapping bodies
 	
 	for body in overlapping_bodies:
-		if body.has_method("_activate"):
+		if body_to_activate == "Plate" and body == "Plate" and body_to_activate < body:
 			resource_type = body.get_some_variable() #gets the resource type from the body
 			body_to_activate = body #sets body_to_activate to the current body
+		elif body.has_method("dirtyPlate") and body.pickupable == true:
+			resource_type = body.get_some_variable() #gets the resource type from the body
+			body_to_activate = body #sets body_to_activate to the current body
+		elif body.has_method("_activate") and not body.has_method("dirtyPlate"):
+			resource_type = body.get_some_variable() #gets the resource type from the body
+			body_to_activate = body #sets body_to_activate to the current body
+
 
 	if Input.is_action_just_pressed("Chop"): #if you press chop, then look again but this time for a counter
 		for body in overlapping_bodies:

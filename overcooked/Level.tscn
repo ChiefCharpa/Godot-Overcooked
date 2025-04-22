@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dral0g73t3p7"]
+[gd_scene load_steps=21 format=3 uid="uid://dral0g73t3p7"]
 
 [ext_resource type="PackedScene" uid="uid://5aocl1ky0vhb" path="res://Objects/Counters/tomato_spawner.tscn" id="1_8o4rb"]
 [ext_resource type="PackedScene" uid="uid://cgkmdmvjhvk6t" path="res://Objects/Counters/counter.tscn" id="3_fpono"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://brlop6qo3v6ib" path="res://Objects/Counters/service_counter.tscn" id="16_dcckh"]
 [ext_resource type="PackedScene" uid="uid://bnmxv1lamjdyj" path="res://playerChef.tscn" id="17_dcckh"]
 [ext_resource type="PackedScene" uid="uid://3aegjuif6mfk" path="res://Objects/Counters/stove.tscn" id="17_jftiw"]
+[ext_resource type="PackedScene" uid="uid://ccjshm25fqapr" path="res://Objects/Counters/Sink.tscn" id="17_yye10"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dppq4"]
 
@@ -86,10 +87,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.357,
 [node name="Counter3" parent="." instance=ExtResource("14_dn5x0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.85112, 0.307325, 3.84833)
 
-[node name="Plate_Dirty" parent="." instance=ExtResource("15_esphl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34632, 0.135989, 3.88029)
-script = null
-
 [node name="Service_Counter" parent="." instance=ExtResource("16_dcckh")]
 transform = Transform3D(-0.0157248, 0, -0.999876, 0, 1, 0, 0.999876, 0, -0.0157248, -4.968, 0.3, -2.524)
 
@@ -98,3 +95,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.23655, 0.461903, 2.89116)
 
 [node name="Player" parent="." instance=ExtResource("17_dcckh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.20844, 1.36336, 2.68581)
+
+[node name="Sink" parent="." instance=ExtResource("17_yye10")]
+transform = Transform3D(0.0128452, 0, -0.999918, 0, 1, 0, 0.999918, 0, 0.0128452, -0.734083, 0.298, -2.67023)
+
+[node name="Plate_Dirty" parent="." instance=ExtResource("15_esphl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03755, 0.83696, 3.70283)
+
+[node name="Plate_Dirty2" parent="." instance=ExtResource("15_esphl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8015, 0.83696, -2.31949)

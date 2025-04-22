@@ -87,3 +87,15 @@ func _place_item(currentCounter: NodePath):
 			print("Error: currentCounter is an invalid path")
 	else:
 		print("No item is being held")
+
+func sink_place_item(currentCounter: NodePath, itemPos: float, itemAngle: float):
+	if heldVegetable != null:
+		if currentCounter != null and get_tree().get_root().has_node(currentCounter):
+			heldVegetable.get_parent().remove_child(heldVegetable) # removes the item being held from the player node
+			var new_root = get_tree().get_root().get_node(currentCounter) # gets the current selected counter node
+			if new_root != null:
+				new_root.add_child(heldVegetable) # adds the held item to the current selected counter node
+				heldVegetable.global_transform.origin = new_root.global_transform.origin + Vector3(-.7, itemPos/2.0, 0) # places the item on top of the counter
+				heldVegetable.global_transform.basis = Basis(Vector3(0, 0, 1), itemAngle)
+				heldVegetable = null
+				resources_inventory.clear() # clears inventory

@@ -6,7 +6,7 @@ func _ready() -> void:
 	spawn()
 
 func spawn():
-		var spawnedplate = Global.VegDictionary.get("Plate").instantiate()
+		var spawnedplate = Global.VegDictionary.get("Plate_Dirty").instantiate()
 		spawnedplate.global_position = self.global_position + Vector3(0,0.6,0.8)
 		get_parent().get_parent().add_child(spawnedplate)
 
