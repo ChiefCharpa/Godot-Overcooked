@@ -4,6 +4,7 @@ var player_inventory = null
 var resource_type = "Plate"
 var held_vegetables: Array = []
 var childlist: Array = []
+var pickupable = true
 
 func add_vegetable(veg: Node3D,player_inventory):
 	pass
@@ -19,6 +20,9 @@ func _activate():
 
 func get_some_variable():
 	return resource_type
+
+func dirtyPlate():
+	pickupable = false
 
 func freeme():
 	queue_free()
