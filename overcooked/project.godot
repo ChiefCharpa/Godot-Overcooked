@@ -23,6 +23,10 @@ Global="*res://global.gd"
 
 version_control/plugin_name="global.gd"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 Forwards={

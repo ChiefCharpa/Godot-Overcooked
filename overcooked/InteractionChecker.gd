@@ -47,6 +47,8 @@ func _process(delta):
 		action_processed = true #sets action_processed to true
 		if player_inventory.heldVegetable != null and resource_type == "Food" and player_inventory.heldVegetable.get_some_variable() == "Plate":
 			player_inventory.heldVegetable.add_to_plate(body_to_activate, player_inventory)
+		elif player_inventory.heldVegetable != null and body_to_activate.has_method("ispan") and player_inventory.heldVegetable.get_some_variable() == "Plate":
+			player_inventory.heldVegetable.add_to_plate(body_to_activate.take_from_pan(), player_inventory)
 		elif resource_type == "Food":
 			body_to_activate.call("_activate", player_inventory) #calls the _activate method
 
@@ -60,6 +62,8 @@ func _process(delta):
 				body_to_activate.call("add_vegetable",player_inventory.heldVegetable,player_inventory) #call add vegetable
 			elif player_inventory.heldVegetable == null:
 				body_to_activate.call("pickup",player_inventory)
+				if player_inventory.heldVegetable.has_method("ispot"):
+					body_to_activate.onstove = false
 				if player_inventory.heldVegetable.has_method("ispan"):
 					body_to_activate.call("cook")
 	elif Input.is_action_just_pressed("Interaction_Select") and (body_to_activate == null or resource_type == "Food") or Input.is_action_just_pressed("Throw_Item") and player_inventory.resources_inventory.size() != 0:

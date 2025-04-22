@@ -6,7 +6,6 @@ var resources_inventory : Dictionary = { }
 var heldVegetable = null ##figure out a way to do any item
 var can_pickup = true
 
-
 func add_resources(food : Node3D):
 	if can_pickup == true:
 		if Global.Veglist.has(food.name):
@@ -75,8 +74,10 @@ func _place_item(currentCounter: NodePath):
 			var new_root = get_tree().get_root().get_node(currentCounter) # gets the current selected counter node
 			if new_root != null:
 				new_root.add_child(heldVegetable) # adds the held item to the current selected counter node
-				if heldVegetable.has_method("ispan"):
-					heldVegetable.global_transform.origin = new_root.global_transform.origin + Vector3(0.1, .5, 0)
+				if heldVegetable.has_method("ispot"):
+					heldVegetable.global_transform.origin = new_root.global_transform.origin + Vector3(0.1, 0.8, 0)
+				elif heldVegetable.has_method("ispan"):
+					heldVegetable.global_transform.origin = new_root.global_transform.origin + Vector3(0.1, 0.5, 0)
 				else:
 					heldVegetable.global_transform.origin = new_root.global_transform.origin + Vector3(0, .5, 0) # places the item on top of the counter
 				heldVegetable = null
