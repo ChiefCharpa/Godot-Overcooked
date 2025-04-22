@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://ccjshm25fqapr"]
 
 [ext_resource type="Script" uid="uid://dvdpxyvnwfpju" path="res://Objects/Counters/Scripts/Sink_script.gd" id="1_yvriu"]
-[ext_resource type="Script" uid="uid://ch2hx4oajfeyb" path="res://Objects/Counters/Clean_plate_spawn.gd" id="2_4n7t5"]
+[ext_resource type="Script" uid="uid://ch2hx4oajfeyb" path="res://Objects/Counters/Scripts/Clean_plate_spawn.gd" id="2_4n7t5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4q843"]
 

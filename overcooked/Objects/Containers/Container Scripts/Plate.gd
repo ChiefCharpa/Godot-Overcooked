@@ -52,3 +52,6 @@ func get_some_variable():
 	return resource_type
 func freeme():
 	queue_free()
+	
+func cleanPlate():
+	pass
