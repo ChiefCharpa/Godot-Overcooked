@@ -13,58 +13,68 @@ func _ready() -> void:
 	inventory_node = get_node("/root/LevelNode/Player/Inventory") #gets the inventorys node path
 
 func _process(delta):
-	#gets the bodies overlapping with the area
 	var overlapping_bodies = get_overlapping_bodies()
-	body_to_activate = null #resets body_to_activate before checking for overlapping bodies
+	body_to_activate = null
 	
 	for body in overlapping_bodies:
-		if body.has_method("dirtyPlate") and body.pickupable == true:
-			resource_type = body.get_some_variable() #gets the resource type from the body
-			body_to_activate = body #sets body_to_activate to the current body
-		elif body.has_method("_activate") and not body.has_method("dirtyPlate"):
-			resource_type = body.get_some_variable() #gets the resource type from the body
-			body_to_activate = body #sets body_to_activate to the current body
-
-	if Input.is_action_just_pressed("Chop"): #if you press chop, then look again but this time for a counter
-		for body in overlapping_bodies:
+		if body.has_method("dirtyPlate") and body.pickupable:
+			resource_type = body.get_some_variable()
 			body_to_activate = body
-			if body_to_activate.has_method("Iscuttingboard"):
+		elif body.has_method("_activate") and not body.has_method("dirtyPlate"):
+			resource_type = body.get_some_variable()
+			body_to_activate = body
+
+	# Chopping check
+	if Input.is_action_just_pressed("Chop"):
+		for body in overlapping_bodies:
+			if body.has_method("Iscuttingboard"):
 				resource_type = body.get_some_variable()
-				body_to_activate.call("_chop",self.get_parent())
-	#checks if 'e' is pressed, if there is not an interatable obj, if the item in front is type food
-	#and that theres an item in the invt
-	if ((Input.is_action_just_pressed("Interaction_Select") and (body_to_activate == null or resource_type == "Food")) #if you pressed e and youre interacting with nothing or food,
-	or (Input.is_action_just_pressed("Throw_Item")) #or you pressed f
-	and player_inventory.resources_inventory.size() != 0) and (player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() != "Plate") and not action_processed: # and your holding something other than a plate
-		inventory_node._drop_item(force) #calls the drop_item method
-		action_processed = true #set action_processed to true
-	#checks if 'e' is pressed, there is an item in the area and that there is no ation currently being processed
+				body.call("_chop", self.get_parent())
+
+	##variable simplification for readability
+	var press_interact := Input.is_action_just_pressed("Interaction_Select")
+	var press_throw := Input.is_action_just_pressed("Throw_Item")
+	var has_item : bool = player_inventory.resources_inventory.size() != 0
+	var held_not_plate : bool = player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() != "Plate"
+	var nothing_or_food : bool = (body_to_activate == null or resource_type == "Food")
+
+	# Drop item if player presses interact/throw with food or nothing
+	if ((press_interact and nothing_or_food) or press_throw) and has_item and held_not_plate and not action_processed:
+		if press_throw:
+			force = 10
+		else:
+			force = 0
+		inventory_node._drop_item(force)
+		action_processed = true
+
+	# Interact logic
 	elif Input.is_action_pressed("Interaction_Select") and body_to_activate and not action_processed:
-		action_processed = true #sets action_processed to true
-		if player_inventory.heldVegetable != null and resource_type == "Food" and player_inventory.heldVegetable.get_some_variable() == "Plate":
+		action_processed = true
+		var held_plate : bool = player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() == "Plate"
+
+		if held_plate and resource_type == "Food":
 			player_inventory.heldVegetable.add_to_plate(body_to_activate, player_inventory)
-		elif player_inventory.heldVegetable != null and body_to_activate.has_method("ispan") and player_inventory.heldVegetable.get_some_variable() == "Plate":
+		elif held_plate and body_to_activate.has_method("ispan"):
 			player_inventory.heldVegetable.add_to_plate(body_to_activate.take_from_pan(), player_inventory)
 		elif resource_type == "Food":
-			body_to_activate.call("_activate", player_inventory) #calls the _activate method
-
-		elif resource_type == "Interactable":
-			body_to_activate.call("_activate") #calls the _activate method
-
-		elif resource_type == "containers":
+			body_to_activate.call("_activate", player_inventory)
+		elif resource_type in ["Interactable", "containers"]:
 			body_to_activate.call("_activate")
 		elif resource_type == "Plate":
-			if player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() != "Plate": #if the player is holding somthing that isnt a plate
-				body_to_activate.call("add_vegetable",player_inventory.heldVegetable,player_inventory) #call add vegetable
+			if player_inventory.heldVegetable != null and not held_plate:
+				body_to_activate.call("add_vegetable", player_inventory.heldVegetable, player_inventory)
 			elif player_inventory.heldVegetable == null:
-				body_to_activate.call("pickup",player_inventory)
+				body_to_activate.call("pickup", player_inventory)
 				if player_inventory.heldVegetable.has_method("ispot"):
 					body_to_activate.onstove = false
 				if player_inventory.heldVegetable.has_method("ispan"):
 					body_to_activate.call("cook")
-	elif Input.is_action_just_pressed("Interaction_Select") and (body_to_activate == null or resource_type == "Food") or Input.is_action_just_pressed("Throw_Item") and player_inventory.resources_inventory.size() != 0:
+
+	# Backup drop logic (optional, could remove if above block covers everything)
+	elif (press_interact and nothing_or_food or press_throw) and has_item:
 		inventory_node._drop_item(force)
 		action_processed = true
-	#resets action_processed to false when interaction select action is not pressed
+
+	# Reset interaction flag
 	elif not Input.is_action_pressed("Interaction_Select"):
 		action_processed = false

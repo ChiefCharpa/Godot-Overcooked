@@ -7,6 +7,7 @@ var cookedDish
 var recipes: Array = [["Soup_Tomato"], ["Soup_Onion"], ["Soup_Mushroom"]]
 var orders: Array = []
 var plateSpawnNode
+var score = 0
 @onready var order_Timer = $place_Order_Timer
 
 func _ready():
@@ -14,53 +15,65 @@ func _ready():
 	plateSpawnNode = get_node("/root/LevelNode/Service_Counter/Counter_Rigidbody")
 	currentCounter = self
 	start_random_timer()
-	_on_RandomTimer_timeout()
 
 func start_random_timer():
-	var new_time = randf_range(10.0, 30.0)
+	var new_time = randf_range(20.0, 30.0)
+	print(new_time)
 	order_Timer.wait_time = new_time
 	order_Timer.start()
-
-func _on_RandomTimer_timeout():
+	
+func _on_place_order_timer_timeout() -> void:
+	print("hiodw")
 	var random_number = randi_range(0, 2)
-	orders.append(recipes[random_number])
-	print("new order", orders)
-	# Restart with a new randomized time
+	var new_order = {
+		"recipe": recipes[random_number],
+		"time_added": Time.get_ticks_msec() / 1000.0  # Convert to seconds
+	}
+	orders.append(new_order)
+	print("new order", new_order)
 	start_random_timer()
+
+func _process(delta):
+	var current_time = Time.get_ticks_msec() / 1000.0
+	for i in range(orders.size() - 1, -1, -1):
+		if current_time - orders[i].time_added >= 60.0:
+			print("Order expired:", orders[i].recipe)
+			orders.remove_at(i)
+			score -= 5  # Penalty
+
 
 func _activate():
 	if inventory_node:
 		if inventory_node.resources_inventory.size() > 0:
-			if inventory_node.heldVegetable.has_method("cleanPlate"):
+			if inventory_node.heldVegetable and inventory_node.heldVegetable.has_method("cleanPlate"):
 				cookedDish = inventory_node.heldVegetable
-				inventory_node._place_item(currentCounter.get_path())  # Passing the NodePath of the current counter
-				for order in orders:
-					print(order)
-					print(cookedDish.held_vegetables)
-					
-					# If held_vegetables contains strings, directly append them to the list
-					var held_vegetable_names = []
-					for item in cookedDish.held_vegetables:
-						held_vegetable_names.append(str(item))  # Convert StringName to String
-					held_vegetable_names.sort()
-					order.sort()
+				inventory_node._place_item(currentCounter.get_path())
 
-					# Check if the sorted lists match
-					if held_vegetable_names == order:
+				var held_vegetable_names = []
+				for item in cookedDish.held_vegetables:
+					held_vegetable_names.append(str(item))
+				held_vegetable_names.sort()
 
-						# Order is complete, remove the cookedDish and erase the order
+				for i in range(orders.size() - 1, -1, -1):
+					var recipe = orders[i].recipe
+					var sorted_recipe = recipe.duplicate()
+					sorted_recipe.sort()
+
+					if held_vegetable_names == sorted_recipe:
 						cookedDish.queue_free()
-						orders.erase(order)
+						orders.remove_at(i)
 						plateSpawnNode.call("spawn")
-						print("Order completed and removed:", order)
+						print("Order completed and removed:", recipe)
+						score += 10
+						return
 					else:
-						print("Order doesn't match:", order)
+						print("Order doesn't match:", recipe)
+			else:
+				print("Held vegetable is invalid or has no cleanPlate method")
+		else:
+			print("Inventory is empty")
 	else:
 		print("Player node is not set")
 
-
-
-
 func get_some_variable():
 	return resource_type
-	

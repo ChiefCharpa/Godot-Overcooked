@@ -8,48 +8,59 @@
 script/source = "extends CharacterBody3D
 
 const SPEED = 5.0
-var freeze = false
-const Gravity = 2.0
+const DASH_MULTIPLIER = 2.5
+const GRAVITY = 2.0
+const DASH_DURATION = 0.3  # Dash lasts 0.3 seconds
 
-@onready var player : CharacterBody3D = $\".\"
-var inventory : Inventory
+var freeze: bool = false
+var dashing: bool = false
+var dash_timer: float = 0.0
+var last_direction: Vector3 = Vector3.ZERO
 
-func _ready() -> void:
-	# Check for an existing 'inventory' child node
-	inventory = $Inventory
+@onready var inventory: Inventory = $Inventory
 
-
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed(\"print_inventory\"):
 		print(\"Current Inventory:\", inventory.resources_inventory)
 
+	if Input.is_action_just_pressed(\"Dash\") and last_direction != Vector3.ZERO and not dashing:
+		dashing = true
+		dash_timer = DASH_DURATION
 
-func _physics_process(_delta: float) -> void:
-	# Get the input direction and handle the movement/deceleration.
-	var input_dir := Input.get_vector(\"Left\", \"Right\", \"Forwards\", \"Backwards\")
-	var direction := (Vector3(input_dir.x, 0, input_dir.y)).normalized()
+func _physics_process(delta: float) -> void:
+	var input_dir = Input.get_vector(\"Left\", \"Right\", \"Forwards\", \"Backwards\")
+	var move_dir = Vector3(input_dir.x, 0, input_dir.y).normalized()
 
-	velocity.y = velocity.y - Gravity
+	# Apply gravity
+	velocity.y -= GRAVITY
 
-	if direction and freeze == false:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+	if not freeze:
+		if move_dir != Vector3.ZERO:
+			last_direction = move_dir  # Update direction only when there's movement
 
-		var target_rotation = atan2(-direction.x, -direction.z) # Calculates the angle between where the player is facing and the direction it is moving
-		rotation.y = lerp_angle(rotation.y, target_rotation, 0.2) # Rotates from the current orientation to the target rotation by 0.2
-	else:
-		velocity.x = 0
-		velocity.z = 0
+		if dashing:
+			velocity.x = last_direction.x * SPEED * DASH_MULTIPLIER
+			velocity.z = last_direction.z * SPEED * DASH_MULTIPLIER
+
+			dash_timer -= delta
+			if dash_timer <= 0.0:
+				dashing = false  # End dash
+		elif move_dir != Vector3.ZERO:
+			velocity.x = move_dir.x * SPEED
+			velocity.z = move_dir.z * SPEED
+		else:
+			velocity.x = 0
+			velocity.z = 0
+
+		# Smooth rotation toward last direction
+		var target_rotation = atan2(-last_direction.x, -last_direction.z)
+		rotation.y = lerp_angle(rotation.y, target_rotation, 0.2)
 
 	move_and_slide()
 
 func Freeze():
-	if freeze == false:
-		freeze = true
-		print(\"freeze\")
-	else:
-		freeze = false
-		print(\"unfreeze\")
+	freeze = not freeze
+	print(\"freeze\" if freeze else \"unfreeze\")
 "
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f4xx0"]

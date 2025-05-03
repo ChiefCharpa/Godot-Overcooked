@@ -90,4 +90,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_dt300")
 [node name="plate_Timer" type="Timer" parent="Counter_Rigidbody"]
 wait_time = 5.0
 
+[connection signal="timeout" from="Service_Counter_Rigidbody/place_Order_Timer" to="Service_Counter_Rigidbody" method="_on_place_order_timer_timeout"]
 [connection signal="timeout" from="Counter_Rigidbody/plate_Timer" to="Counter_Rigidbody" method="_on_plate_timer_timeout"]
