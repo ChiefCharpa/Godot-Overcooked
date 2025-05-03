@@ -44,28 +44,29 @@ func deletehelditem():
 func _drop_item(force):
 	if heldVegetable != null:
 		heldVegetable.freeze = false
-		print("Dropping",heldVegetable)
-		heldVegetable.get_parent().remove_child(heldVegetable) #removes the item being held from the player node
-		var new_root = get_tree().root.get_node("LevelNode") #gets the level node
-		new_root.add_child(heldVegetable) #adds the held item to the level node
-		heldVegetable.global_transform.origin = global_transform.origin + global_transform.basis.z * -1 + Vector3(0, 0.4, 0) #assigns its pos
-		heldVegetable.axis_lock_linear_y = false #unlocks ths y transform
+		print("Dropping", heldVegetable)
+		heldVegetable.get_parent().remove_child(heldVegetable)
+		var new_root = get_tree().root.get_node("LevelNode")
+		new_root.add_child(heldVegetable)
 		
-		#throw the held object
-		##not currently working
-		var throw_direction = -global_transform.basis.z.normalized()
-		print("Throwing vegetable with force: ", force)
-		print("Throw direction: ", throw_direction)
-		heldVegetable.apply_impulse(Vector3(), throw_direction * force)
+		# Place the item just in front of the player
+		var drop_position = global_transform.origin + global_transform.basis.z * -1 + Vector3(0, 0.4, 0)
+		heldVegetable.global_transform.origin = drop_position
+		
+		heldVegetable.axis_lock_linear_y = false
+		
+		# Apply a throwing force if requested
+		if force > 0 and heldVegetable is RigidBody3D:
+			var direction = -global_transform.basis.z.normalized()
+			heldVegetable.linear_velocity = direction * force + Vector3(0, 2, 0)  # arc upward a bit
+
 		heldVegetable = null
-		##end
 		 
-		resources_inventory.clear() #clears inventory
-		
-		can_pickup=false
-		await get_tree().create_timer(0.2).timeout  #makes sure the player doesnt drop and the immedietly pickup and fuse two objects
+		resources_inventory.clear()
+		can_pickup = false
+		await get_tree().create_timer(0.2).timeout
 		can_pickup = true
-	
+
 ##these 2 functions can be mixed together but it will be complex
 func _place_item(currentCounter: NodePath):
 	if heldVegetable != null:

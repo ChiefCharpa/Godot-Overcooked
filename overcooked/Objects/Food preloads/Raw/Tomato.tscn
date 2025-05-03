@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgoeow6gqog3o"]
 
-[ext_resource type="Script" path="res://vegetable.gd" id="1_3bmip"]
+[ext_resource type="Script" uid="uid://cdpgsea5wnnv6" path="res://vegetable.gd" id="1_3bmip"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mhdnm"]
 
@@ -10,7 +10,6 @@
 albedo_color = Color(0.662745, 0.027451, 0.0470588, 1)
 
 [node name="Tomato" type="RigidBody3D"]
-mass = 0.11
 script = ExtResource("1_3bmip")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
