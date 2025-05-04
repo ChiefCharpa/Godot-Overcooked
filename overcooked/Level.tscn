@@ -1,10 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://dral0g73t3p7"]
+[gd_scene load_steps=21 format=3 uid="uid://dral0g73t3p7"]
 
 [ext_resource type="PackedScene" uid="uid://5aocl1ky0vhb" path="res://Objects/Counters/tomato_spawner.tscn" id="1_8o4rb"]
 [ext_resource type="PackedScene" uid="uid://cgkmdmvjhvk6t" path="res://Objects/Counters/counter.tscn" id="3_fpono"]
 [ext_resource type="PackedScene" uid="uid://c5cwrng738u2m" path="res://Objects/Containers/bin.tscn" id="3_o45tb"]
 [ext_resource type="PackedScene" uid="uid://hm5rraqj5dr3" path="res://Objects/Counters/cutting_board.tscn" id="4_4a0cr"]
-[ext_resource type="PackedScene" uid="uid://bggii7f8r4i1w" path="res://Objects/Containers/Pot.tscn" id="4_q2pme"]
 [ext_resource type="Script" uid="uid://cuskgh4l3byo0" path="res://global.gd" id="5_lfh1b"]
 [ext_resource type="PackedScene" uid="uid://ca0moxbfysoc7" path="res://Objects/Counters/fish_spawner.tscn" id="8_6pg1l"]
 [ext_resource type="PackedScene" uid="uid://pl3q7upb7b28" path="res://Objects/Counters/lettuce_spawner.tscn" id="9_2quax"]
@@ -12,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://4wxdxe24k3si" path="res://Objects/Counters/mushroom_spawner.tscn" id="11_gpwvn"]
 [ext_resource type="PackedScene" uid="uid://c7lxi3gungtv8" path="res://Objects/Counters/onion_spawner.tscn" id="12_o5h6v"]
 [ext_resource type="PackedScene" uid="uid://dskgg5ydxt6mi" path="res://Objects/Counters/PlateCounter.tscn" id="14_dn5x0"]
-[ext_resource type="PackedScene" uid="uid://dki8m5mfco4f3" path="res://Objects/Containers/Plate_Dirty.tscn" id="15_esphl"]
 [ext_resource type="PackedScene" uid="uid://brlop6qo3v6ib" path="res://Objects/Counters/service_counter.tscn" id="16_dcckh"]
 [ext_resource type="PackedScene" uid="uid://bnmxv1lamjdyj" path="res://playerChef.tscn" id="17_dcckh"]
 [ext_resource type="PackedScene" uid="uid://3aegjuif6mfk" path="res://Objects/Counters/Stove(Pan).tscn" id="17_jftiw"]
@@ -42,7 +40,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_x8tvl")
 shape = SubResource("ConcavePolygonShape3D_f1ml4")
 
 [node name="TomatoSpawner" parent="." instance=ExtResource("1_8o4rb")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.313928, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.13846, 0.313928, 2.16709)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.999996, 0.000691604, 0.0025906, -0.00246523, 0.617146, 0.786845, -0.00105459, -0.786848, 0.617146, -0.63733, 6.4459, 8.13923)
@@ -51,64 +49,64 @@ transform = Transform3D(0.999996, 0.000691604, 0.0025906, -0.00246523, 0.617146,
 transform = Transform3D(1, 0, 0, 0, 0.883953, 0.467575, 0, -0.467575, 0.883953, 0, 3.7363, 5.13066)
 
 [node name="Counter" parent="." instance=ExtResource("3_fpono")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.55, -5.8)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.07153, 0.3, 4.18273)
 
 [node name="Counter2" parent="." instance=ExtResource("3_fpono")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.96521, 1.0009, 1.46244)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0346729, 0.3, 6.3367)
 
 [node name="Cutting_board" parent="." instance=ExtResource("4_4a0cr")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.073, 0.55, 3.03541)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.073, 0.302947, 3.035)
 
 [node name="Cutting_board2" parent="." instance=ExtResource("4_4a0cr")]
-transform = Transform3D(0.0315156, 0, -0.999503, 0, 1, 0, 0.999503, 0, 0.0315156, -2.7527, 0.55, 4.03541)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.07, 0.3, 5.3201)
 
 [node name="Bin" parent="." instance=ExtResource("3_o45tb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.69051, 0.247803, 5.92022)
-
-[node name="RigidBody3D" parent="." instance=ExtResource("4_q2pme")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35121, 0.742208, 4.03997)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.45818, 0.247803, 1.9823)
 
 [node name="Global" type="Node3D" parent="."]
 script = ExtResource("5_lfh1b")
 
 [node name="FishSpawner" parent="." instance=ExtResource("8_6pg1l")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.707, 0.314, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.70667, 0.314, 8.18071)
 
 [node name="LettuceSpawner" parent="." instance=ExtResource("9_2quax")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.201, 0.314, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, -0.00588173, 0.999983, 2.57098e-10, 0.999983, 0.00588173, -4.37106e-08, 1.03039, 0.314, 2.16911)
 
 [node name="MeatSpawner" parent="." instance=ExtResource("10_gurdb")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.59, 0.314, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.26611, 0.314, 2.09002)
 
 [node name="MushroomSpawner" parent="." instance=ExtResource("11_gpwvn")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.368, 0.314, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.12186, 0.314, 2.11645)
 
 [node name="OnionSpawner" parent="." instance=ExtResource("12_o5h6v")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.357, 0.314, 0)
-
-[node name="Counter3" parent="." instance=ExtResource("14_dn5x0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.85112, 0.307325, 3.84833)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.68377, 0.319913, 2.0586)
 
 [node name="Service_Counter" parent="." instance=ExtResource("16_dcckh")]
-transform = Transform3D(-0.0157248, 0, -0.999876, 0, 1, 0, 0.999876, 0, -0.0157248, -4.968, 0.3, -2.524)
+transform = Transform3D(-0.0157248, 0, -0.999876, 0, 1, 0, 0.999876, 0, -0.0157248, -4.968, 0.3, 6.24334)
 
 [node name="Stove" parent="." instance=ExtResource("17_jftiw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.23655, 0.461903, 2.89116)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.82476, 0.3, 4.23482)
 
 [node name="Player" parent="." instance=ExtResource("17_dcckh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.20844, 1.36336, 2.68581)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38917, 1.36336, 4.07691)
 
 [node name="Stove(Pan)" parent="." instance=ExtResource("17_yye10")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.803237, 0.298001, 5.89061)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.18728, 0.298001, 6.31901)
 
 [node name="Sink" parent="." instance=ExtResource("18_s1kns")]
-transform = Transform3D(0.0128452, 0, -0.999918, 0, 1, 0, 0.999918, 0, 0.0128452, -0.734083, 0.298, -2.67023)
-
-[node name="Plate_Dirty" parent="." instance=ExtResource("15_esphl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03755, 0.83696, 3.70283)
-
-[node name="Plate_Dirty2" parent="." instance=ExtResource("15_esphl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8015, 0.83696, -2.31949)
+transform = Transform3D(0.0128452, 0, -0.999918, 0, 1, 0, 0.999918, 0, 0.0128452, 1.65026, 0.298, 6.29827)
 
 [node name="BunSpawner" parent="." instance=ExtResource("19_yye10")]
-transform = Transform3D(-0.0066148, 0, -0.999978, 0, 1, 0, 0.999978, 0, -0.0066148, 5.94734, 0.298, 0.103347)
+transform = Transform3D(-0.0066148, 0, -0.999978, 0, 1, 0, 0.999978, 0, -0.0066148, -5.78356, 0.298, 2.03623)
+
+[node name="Counter3" parent="." instance=ExtResource("3_fpono")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.78976, 0.3, 5.46655)
+
+[node name="Counter4" parent="." instance=ExtResource("3_fpono")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -0.0505071, 0.3, 2.16854)
+
+[node name="Counter6" parent="." instance=ExtResource("3_fpono")]
+transform = Transform3D(1, 0, 1.74846e-07, -3.66779e-09, 0.99978, 0.0209773, -1.74807e-07, -0.0209773, 0.99978, -6.84843, 0.3, 3.04279)
+
+[node name="Counter5" parent="." instance=ExtResource("14_dn5x0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.04202, 0.298, 6.36959)
