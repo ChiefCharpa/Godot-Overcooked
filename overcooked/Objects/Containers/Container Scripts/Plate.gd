@@ -12,7 +12,7 @@ func _ready():
 
 
 func add_to_plate(veg: Node3D, player_inventory):
-	if Global.Platelist.has(veg.name):
+	if veg!= null and Global.Platelist.has(veg.name):
 		held_vegetables.append(veg.name)
 		veg.queue_free()
 		var newveg = Global.VegDictionary.get(veg.name).instantiate()
@@ -21,7 +21,10 @@ func add_to_plate(veg: Node3D, player_inventory):
 		newveg.freeze = true
 		newveg.get_node("CollisionShape3D").disabled = true
 		newveg.transform.origin = offset
+		BurgerCheck()
+
 func add_vegetable(veg: Node3D,player_inventory):
+	print(veg.name)
 	if Global.Platelist.has(veg.name):
 		held_vegetables.append(veg.name)
 		var newveg = Global.VegDictionary.get(veg.name).instantiate()
@@ -31,6 +34,7 @@ func add_vegetable(veg: Node3D,player_inventory):
 		newveg.freeze = true
 		newveg.get_node("CollisionShape3D").disabled = true
 		newveg.transform.origin = offset
+		BurgerCheck()
 func clear_plate():
 	if held_vegetables.size() > 0:
 		for child in get_children():
@@ -38,6 +42,19 @@ func clear_plate():
 				child.queue_free()
 		held_vegetables.clear()
 
+func BurgerCheck():
+		if held_vegetables.has("Bun") and held_vegetables.has("Cooked_Meat"):
+			held_vegetables.erase(&"Bun")
+			held_vegetables.erase(&"Cooked_Meat")
+			held_vegetables.append("Burger")
+		if held_vegetables.has("Chopped_Lettuce") and held_vegetables.has("Burger"):
+			held_vegetables.erase("Burger")
+			held_vegetables.erase(&"Chopped_Lettuce")
+			held_vegetables.append("Burger+Lettuce")
+		if held_vegetables.has("Chopped_Tomato") and held_vegetables.has("Burger+Lettuce"):
+			held_vegetables.erase("Burger+Lettuce")
+			held_vegetables.erase(&"Chopped_Tomato")
+			held_vegetables.append("Burger+Lettuce+Tomato")
 
 func pickup(player_inventory):
 	player_inventory.add_container(self)
@@ -52,3 +69,6 @@ func get_some_variable():
 	return resource_type
 func freeme():
 	queue_free()
+	
+func cleanPlate():
+	pass

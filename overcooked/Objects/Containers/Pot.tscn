@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bggii7f8r4i1w"]
+[gd_scene load_steps=13 format=3 uid="uid://bggii7f8r4i1w"]
 
-[ext_resource type="Script" uid="uid://t1sbek6jbgpo" path="res://Objects/Containers/Container Scripts/Pot_Body.gd" id="1_wn77w"]
-[ext_resource type="Script" uid="uid://defgsfkl76crd" path="res://Objects/Containers/Container Scripts/Pot.gd" id="2_lvymh"]
+[ext_resource type="Script" uid="uid://t1sbek6jbgpo" path="res://Objects/Containers/Container Scripts/Pot.gd" id="1_wn77w"]
+[ext_resource type="Texture2D" uid="uid://dxoobmx77raei" path="res://Img/Lettuce.jpg" id="3_oohfq"]
+[ext_resource type="Texture2D" uid="uid://byvu6vtsbde0k" path="res://Img/onion.jpg" id="4_c8qmu"]
+[ext_resource type="Texture2D" uid="uid://c80jcpto3yu41" path="res://Img/Tomato.jpg" id="5_848bv"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_otkmc"]
 
@@ -15,27 +17,78 @@ albedo_color = Color(0.404511, 0.404511, 0.404511, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2p17"]
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_fno4w"]
+[sub_resource type="QuadMesh" id="QuadMesh_bhe24"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_c8qmu"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_848bv"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_c8qmu")
 
 [node name="RigidBody3D" type="RigidBody3D"]
 script = ExtResource("1_wn77w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.2, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("CylinderShape3D_otkmc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.6, 0, 0, 0, 0.25, 0, 0, 0, 0.6, 0, 0, 0)
 mesh = SubResource("CylinderMesh_q0k3m")
 surface_material_override/0 = SubResource("StandardMaterial3D_yrq0w")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.8, 0, 0, 0, 0.1, 0, 0, 0, 0.8, 0, 0.402068, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.1, 0, 0, 0, 0.5, 0, 0.156422, 0)
 mesh = SubResource("CylinderMesh_85b1a")
 surface_material_override/0 = SubResource("StandardMaterial3D_y2p17")
 
-[node name="Area3D" type="Area3D" parent="."]
-script = ExtResource("2_lvymh")
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("BoxShape3D_fno4w")
+[node name="Control" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport/Control"]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 170.0
+offset_bottom = 200.0
+texture = ExtResource("3_oohfq")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="SubViewport/Control"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 170.0
+offset_right = 340.0
+offset_bottom = 200.0
+grow_horizontal = 0
+texture = ExtResource("4_c8qmu")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="SubViewport/Control"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 340.0
+offset_right = 510.0
+offset_bottom = 200.0
+grow_horizontal = 0
+texture = ExtResource("5_848bv")
+expand_mode = 1
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999962, 3.81449e-10, 0.00872654, -0.0045228, 0.427605, 0.518261, -0.00746303, -0.25914, 0.855178, -0.0369201, 0.827108, 0.0700111)
+mesh = SubResource("QuadMesh_bhe24")
+surface_material_override/0 = SubResource("StandardMaterial3D_848bv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.001
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

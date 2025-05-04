@@ -1,0 +1,105 @@
+[gd_scene load_steps=19 format=3 uid="uid://brlop6qo3v6ib"]
+
+[ext_resource type="Script" uid="uid://dagvc25q1n864" path="res://Objects/Counters/Scripts/PlateCounter.gd" id="1_7qbhm"]
+[ext_resource type="Script" uid="uid://c0lkeghq4m1ai" path="res://Objects/Counters/Scripts/service_counter_script.gd" id="1_66ipc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4q843"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ov2ff"]
+albedo_color = Color(0.393316, 0.293962, 0.164876, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_hu2w8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7qbhm"]
+albedo_color = Color(0.385493, 0.385492, 0.385492, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_reikc"]
+size = Vector3(0.723, 0.596, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cot1o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_255jg"]
+albedo_color = Color(0.63, 0.496755, 0.3339, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2728q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ac5pr"]
+albedo_color = Color(0.509804, 0.509804, 0.509804, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_66ipc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1wwj"]
+albedo_color = Color(0.393316, 0.293962, 0.164876, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rb22l"]
+size = Vector3(0.723, 0.596, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2728q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_egbnv"]
+albedo_color = Color(0.230315, 0.230315, 0.230315, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ul1oo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dt300"]
+albedo_color = Color(0.329412, 0.333333, 0.345098, 1)
+
+[node name="Service_Counter" type="Node3D"]
+
+[node name="Service_Counter_Rigidbody" type="RigidBody3D" parent="."]
+script = ExtResource("1_66ipc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Service_Counter_Rigidbody"]
+transform = Transform3D(0.723, 0, 0, 0, 0.596, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("BoxMesh_4q843")
+surface_material_override/0 = SubResource("StandardMaterial3D_ov2ff")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Service_Counter_Rigidbody"]
+transform = Transform3D(0.723, 0, 0, 0, 0.596, 0, 0, 0, 2, 0, 1.45, 0)
+mesh = SubResource("PrismMesh_hu2w8")
+surface_material_override/0 = SubResource("StandardMaterial3D_7qbhm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Service_Counter_Rigidbody"]
+transform = Transform3D(1.001, 0, 0, 0, 1.001, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_reikc")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Service_Counter_Rigidbody"]
+transform = Transform3D(0.8, 0, 0, 0, 0.1, 0, 0, 0, 2, 0.04, 0.35, 0)
+mesh = SubResource("BoxMesh_cot1o")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_255jg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Service_Counter_Rigidbody/MeshInstance3D3"]
+transform = Transform3D(0.45, 0, 0, 0, 1, 0, 0, 0, 0.45, 0, 0.51, 0)
+mesh = SubResource("PlaneMesh_2728q")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_ac5pr")
+
+[node name="place_Order_Timer" type="Timer" parent="Service_Counter_Rigidbody"]
+wait_time = 30.0
+autostart = true
+
+[node name="Counter_Rigidbody" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+script = ExtResource("1_7qbhm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Counter_Rigidbody"]
+transform = Transform3D(0.723, 0, 0, 0, 0.596, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_66ipc")
+surface_material_override/0 = SubResource("StandardMaterial3D_s1wwj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Counter_Rigidbody"]
+transform = Transform3D(1.00067, 0, 0, 0, 1.00067, 0, 0, 0, 1.00067, 0, 0, 0)
+shape = SubResource("BoxShape3D_rb22l")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Counter_Rigidbody"]
+transform = Transform3D(0.8, 0, 0, 0, 0.07, 0, 0, 0, 1, 0.04, 0.333, 0)
+mesh = SubResource("BoxMesh_2728q")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_egbnv")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Counter_Rigidbody"]
+transform = Transform3D(0.5, 0, 0, 0, 0.03, 0, 0, 0, 0.5, 0.045, 0.37, 0)
+mesh = SubResource("CylinderMesh_ul1oo")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_dt300")
