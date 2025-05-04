@@ -4,7 +4,7 @@ var resource_type = "Interactable"
 var inventory_node
 var currentCounter
 var cookedDish
-var recipes: Array = [["Soup_Tomato"], ["Soup_Onion"], ["Soup_Mushroom"]]
+var recipes: Array = [["Soup_Tomato"], ["Soup_Onion"], ["Soup_Mushroom"],["Burger"],["Burger+Lettuce"],["Burger+Lettuce+Tomato"]]
 var orders: Array = []
 var plateSpawnNode
 var score = 0
@@ -24,7 +24,7 @@ func start_random_timer():
 	
 func _on_place_order_timer_timeout() -> void:
 	print("hiodw")
-	var random_number = randi_range(0, 2)
+	var random_number = randi_range(0, 5)
 	var new_order = {
 		"recipe": recipes[random_number],
 		"time_added": Time.get_ticks_msec() / 1000.0  # Convert to seconds
