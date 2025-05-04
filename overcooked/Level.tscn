@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dral0g73t3p7"]
+[gd_scene load_steps=23 format=3 uid="uid://dral0g73t3p7"]
 
 [ext_resource type="PackedScene" uid="uid://5aocl1ky0vhb" path="res://Objects/Counters/tomato_spawner.tscn" id="1_8o4rb"]
 [ext_resource type="PackedScene" uid="uid://cgkmdmvjhvk6t" path="res://Objects/Counters/counter.tscn" id="3_fpono"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://3aegjuif6mfk" path="res://Objects/Counters/Stove(Pan).tscn" id="17_jftiw"]
 [ext_resource type="PackedScene" uid="uid://u34pilek63et" path="res://Objects/Counters/Stove(Pot).tscn" id="17_yye10"]
 [ext_resource type="PackedScene" uid="uid://ccjshm25fqapr" path="res://Objects/Counters/Sink.tscn" id="18_s1kns"]
+[ext_resource type="PackedScene" uid="uid://dt7af76asgoed" path="res://Objects/Counters/Bun_spawner.tscn" id="19_yye10"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dppq4"]
 
@@ -108,3 +109,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03755, 0.83696, 3.70283)
 
 [node name="Plate_Dirty2" parent="." instance=ExtResource("15_esphl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8015, 0.83696, -2.31949)
+
+[node name="BunSpawner" parent="." instance=ExtResource("19_yye10")]
+transform = Transform3D(-0.0066148, 0, -0.999978, 0, 1, 0, 0.999978, 0, -0.0066148, 5.94734, 0.298, 0.103347)
