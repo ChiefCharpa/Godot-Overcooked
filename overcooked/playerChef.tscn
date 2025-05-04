@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bnmxv1lamjdyj"]
 
 [ext_resource type="Script" uid="uid://njawwihyt5mv" path="res://Inventory.gd" id="1_7q55s"]
-[ext_resource type="PackedScene" uid="uid://ndulmolfu8u5" path="res://Godot converted/untitled.glb" id="1_vmk5g"]
+[ext_resource type="PackedScene" uid="uid://c67vmj3s6nei8" path="res://Overcooked Assets/Chef/ChefAnim/chefRigged.gltf" id="1_vmk5g"]
 [ext_resource type="Script" uid="uid://dkkuh2tj0x18s" path="res://InteractionChecker.gd" id="2_vmk5g"]
 
 [sub_resource type="GDScript" id="GDScript_w0ksy"]
@@ -72,8 +72,16 @@ size = Vector3(1, 1, 0.688843)
 safe_margin = 0.08
 script = SubResource("GDScript_w0ksy")
 
-[node name="ChefMesh" parent="." instance=ExtResource("1_vmk5g")]
-transform = Transform3D(-1.88033, 0, 0.0719062, 0, 1.8817, 0, -0.0719062, 0, -1.88033, 0, -1.34282, 0)
+[node name="chefRigged" parent="." instance=ExtResource("1_vmk5g")]
+transform = Transform3D(-1.56531, 0, 0.0141929, 0, 1.51143, 0, -0.014398, 0, -1.54302, 0, -1.22458, 0)
+
+[node name="Skeleton3D" parent="chefRigged/Armature" index="0"]
+bones/4/rotation = Quaternion(0.00950368, 0.139085, -0.814633, 0.562972)
+bones/5/rotation = Quaternion(0.0503653, 0.000748072, -0.3441, 0.937581)
+bones/6/rotation = Quaternion(0.654682, -0.0594076, 0.037972, 0.752609)
+bones/7/rotation = Quaternion(-0.0529767, -0.136779, 0.810106, 0.567638)
+bones/8/rotation = Quaternion(0.30171, -0.0385104, 0.247632, 0.919873)
+bones/9/rotation = Quaternion(0.534904, -0.0192079, -0.110463, 0.83744)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_f4xx0")
@@ -93,3 +101,5 @@ shape = SubResource("BoxShape3D_5s4uc")
 autostart = true
 
 [connection signal="timeout" from="InteractionCheckerArea3D/Timer" to="InteractionCheckerArea3D" method="_on_timer_timeout"]
+
+[editable path="chefRigged"]
