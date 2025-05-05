@@ -1,10 +1,9 @@
 extends RigidBody3D
 var resource_type = "Interactable"
-var inventory_node
+var inventory_node= null
 var currentCounter
 func _ready() -> void:
 	await get_tree().process_frame
-	inventory_node = get_node("/root/LevelNode/Player/Inventory")
 	currentCounter = self
 	self.freeze = true
 	spawn()
@@ -15,7 +14,7 @@ func spawn():
 		get_parent().get_parent().add_child(spawned)
 		spawned.onstove = true
 
-func _activate():
+func _activate(inventory_node):
 	if inventory_node:
 		if inventory_node.resources_inventory.size() > 0:
 			if inventory_node.heldVegetable.has_method("ispan"):

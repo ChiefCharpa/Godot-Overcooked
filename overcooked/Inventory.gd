@@ -16,6 +16,7 @@ func add_resources(food : Node3D):
 			food.global_transform.origin = global_transform.origin + global_transform.basis.z * -1 + Vector3(0, 0.4, 0)
 			food.freeze = true
 			heldVegetable = food
+
 func add_from_container(food : Node3D):
 	if can_pickup == true:
 		if Global.Veglist.has(food.name):
@@ -25,7 +26,8 @@ func add_from_container(food : Node3D):
 			food.global_transform.origin = global_transform.origin + global_transform.basis.z * -1 + Vector3(0, 0.4, 0)
 			food.freeze = true
 			heldVegetable = food
-	
+
+@rpc("any_peer", "reliable", "call_local")
 func add_container(container: Node3D):
 	if can_pickup:
 		container.get_parent().remove_child(container)
@@ -35,12 +37,15 @@ func add_container(container: Node3D):
 		container.global_transform.origin = global_transform.origin + global_transform.basis.z * -1 + Vector3(0, 0.4, 0)
 		container.freeze = true
 		heldVegetable = container
+
+@rpc("any_peer", "reliable", "call_local")
 func deletehelditem():
 	if heldVegetable != null:
 		heldVegetable.get_parent().remove_child(heldVegetable)
 		heldVegetable = null
 		resources_inventory.clear()
 
+@rpc("any_peer", "reliable", "call_local")
 func _drop_item(force):
 	if heldVegetable != null:
 		heldVegetable.freeze = false

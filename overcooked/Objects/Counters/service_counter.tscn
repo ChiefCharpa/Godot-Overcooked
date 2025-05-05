@@ -68,7 +68,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_ac5pr")
 
 [node name="place_Order_Timer" type="Timer" parent="Service_Counter_Rigidbody"]
-wait_time = 30.0
+wait_time = 2.0
 autostart = true
 
 [node name="Counter_Rigidbody" type="RigidBody3D" parent="."]

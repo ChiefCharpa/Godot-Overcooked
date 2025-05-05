@@ -11,26 +11,35 @@ func _ready():
 	self.freeze = true
 	resource_type = "Plate" # Define the plate as a container
 
-func add_vegetable(veg: Node3D,player_inventory):
+@rpc("any_peer", "reliable", "call_local")
+func add_vegetable(veg: Node3D, player_inventory):
 	var parts = veg.name.split("_")
-	if Global.Veglist.has("Cooked_"+parts[-1]) and veg.name.begins_with("Chopped") and held_vegetable == null:
+	if Global.Veglist.has("Cooked_" + parts[-1]) and veg.name.begins_with("Chopped") and held_vegetable == null:
 		held_vegetable = veg.name
-		var newveg = Global.VegDictionary.get(veg.name).instantiate()
-		player_inventory.deletehelditem()
-		add_child(newveg)
-		var offset = Vector3(0, 0.05, 0)
-		newveg.freeze = true
-		newveg.get_node("CollisionShape3D").disabled = true
-		newveg.transform.origin = offset
-		if onstove == true:
-			cook()
-func take_from_pan():
+		_spawn_vegetable.rpc(veg.name)  # Call on all peers to spawn the vegetable
+		player_inventory.deletehelditem.rpc()
+
+@rpc("any_peer", "reliable", "call_local")
+func _spawn_vegetable(veg_name: String):
+	var newveg = Global.VegDictionary.get(veg_name).instantiate()
+	add_child(newveg)
+	var offset = Vector3(0, 0.05, 0)
+	newveg.freeze = true
+	newveg.get_node("CollisionShape3D").disabled = true
+	newveg.transform.origin = offset
+	if onstove == true:
+		cook()
+
+
+func take_from_pan() -> Node:
 	if held_vegetable != null:
 		for child in get_children():
-				if child.name == held_vegetable:
-					var returnchild = child
-					clear_plate()
-					return returnchild
+			if child.name == held_vegetable:
+				var returnchild = child
+				clear_plate()
+				return returnchild  # Ensure you return the actual node (not null)
+	return null  # Ensure you return null if no valid node is found
+
 func clear_plate():
 	if held_vegetable != null:
 		for child in get_children():
@@ -53,8 +62,9 @@ func cook():
 		timer.wait_time = timer.time_left
 		timer.stop()
 
+@rpc("any_peer", "reliable", "call_local")
 func pickup(player_inventory):
-	player_inventory.add_container(self)
+	player_inventory.add_container.rpc(self)
 
 func place(player_inventory):
 	player_inventory._drop_item(0)

@@ -1,7 +1,7 @@
 extends RigidBody3D
 
 var resource_type = "Interactable"
-var inventory_node
+var inventory_node = null
 var currentCounter
 var cookedDish
 var recipes: Array = [["Soup_Tomato"], ["Soup_Onion"], ["Soup_Mushroom"],["Burger"],["Burger+Lettuce"],["Burger+Lettuce+Tomato"]]
@@ -11,7 +11,6 @@ var score = 0
 @onready var order_Timer = $place_Order_Timer
 
 func _ready():
-	inventory_node = get_node("/root/LevelNode/Player/Inventory")
 	plateSpawnNode = get_node("/root/LevelNode/Service_Counter/Counter_Rigidbody")
 	currentCounter = self
 	start_random_timer()
@@ -23,12 +22,8 @@ func start_random_timer():
 	order_Timer.start()
 	
 func _on_place_order_timer_timeout() -> void:
-	print("hiodw")
 	var random_number = randi_range(0, 5)
-	var new_order = {
-		"recipe": recipes[random_number],
-		"time_added": Time.get_ticks_msec() / 1000.0  # Convert to seconds
-	}
+	var new_order = {"recipe": recipes[random_number],"time_added": Time.get_ticks_msec() / 1000.0}
 	orders.append(new_order)
 	print("new order", new_order)
 	start_random_timer()
@@ -39,16 +34,24 @@ func _process(delta):
 		if current_time - orders[i].time_added >= 60.0:
 			print("Order expired:", orders[i].recipe)
 			orders.remove_at(i)
-			score -= 5  # Penalty
+			score -= 5
+		
+@rpc("any_peer", "reliable", "call_local")
+func place(inventory_path: NodePath):
+	var inventory_node = get_node_or_null(inventory_path)
+	if inventory_node == null:
+		print("Inventory node not found at path:", inventory_path)
+		return
 
+	if inventory_node.resources_inventory.size() > 0:
+		inventory_node._place_item(currentCounter.get_path())
 
-func _activate():
+func _activate(inventory_node):
 	if inventory_node:
 		if inventory_node.resources_inventory.size() > 0:
 			if inventory_node.heldVegetable and inventory_node.heldVegetable.has_method("cleanPlate"):
 				cookedDish = inventory_node.heldVegetable
-				inventory_node._place_item(currentCounter.get_path())
-
+				place.rpc(inventory_node.get_path())
 				var held_vegetable_names = []
 				for item in cookedDish.held_vegetables:
 					held_vegetable_names.append(str(item))
@@ -62,7 +65,7 @@ func _activate():
 					if held_vegetable_names == sorted_recipe:
 						cookedDish.queue_free()
 						orders.remove_at(i)
-						plateSpawnNode.call("spawn")
+						plateSpawnNode.spawn.rpc()
 						print("Order completed and removed:", recipe)
 						score += 10
 						return

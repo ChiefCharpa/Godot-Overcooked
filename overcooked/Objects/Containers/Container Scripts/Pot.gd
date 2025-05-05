@@ -14,12 +14,14 @@ func _ready():
 	self.freeze = true
 	resource_type = "Plate" # Define the plate as a container
 
+#i lost my mind with this function - Ted
+@rpc("any_peer", "reliable", "call_local")
 func add_vegetable(veg: Node3D,player_inventory):
 	var parts = veg.name.split("_")
 	if Global.Veglist.has("Soup_"+parts[-1]) and veg.name.begins_with("Chopped") and held_vegetable.size()<3:
 		held_vegetable.append(veg.name)
 		var newveg = Global.VegDictionary.get(veg.name).instantiate()
-		player_inventory.deletehelditem()
+		player_inventory.deletehelditem.rpc()
 		add_child(newveg)
 		var offset = Vector3(0, 0.05, 0)
 		newveg.freeze = true
@@ -27,14 +29,18 @@ func add_vegetable(veg: Node3D,player_inventory):
 		newveg.transform.origin = offset
 		if onstove == true:
 			cook()
-func take_from_pan():
+			
+
+func take_from_pan() -> Node:
 	if held_vegetable != [] and held_vegetable[0].begins_with("Soup") and held_vegetable[0]:
 		for child in get_children():
-				if child.name == held_vegetable[0]:
-					var returnchild = child
-					clear_plate()
-					partial = false
-					return returnchild
+			if child.name == held_vegetable[0]:
+				var returnchild = child
+				clear_plate()
+				partial = false
+				return returnchild  # Ensure you return the actual node (not null)
+	return null  # Ensure you return null if no valid node is found
+
 func clear_plate():
 	if held_vegetable != []:
 		for child in get_children():
@@ -70,6 +76,7 @@ func cook():
 		timer.wait_time = timer.time_left
 		timer.stop()
 
+@rpc("any_peer", "reliable", "call_local")
 func pickup(player_inventory):
 	player_inventory.add_container(self)
 

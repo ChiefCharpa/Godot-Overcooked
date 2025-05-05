@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bnmxv1lamjdyj"]
+[gd_scene load_steps=8 format=3 uid="uid://bnmxv1lamjdyj"]
 
 [ext_resource type="Script" uid="uid://njawwihyt5mv" path="res://Inventory.gd" id="1_7q55s"]
 [ext_resource type="PackedScene" uid="uid://c67vmj3s6nei8" path="res://Overcooked Assets/Chef/ChefAnim/chefRigged.gltf" id="1_vmk5g"]
@@ -20,53 +20,66 @@ var last_direction: Vector3 = Vector3.ZERO
 @onready var inventory: Inventory = $Inventory
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed(\"print_inventory\"):
-		print(\"Current Inventory:\", inventory.resources_inventory)
+	if is_multiplayer_authority():
+		if Input.is_action_just_pressed(\"print_inventory\"):
+			print(\"Current Inventory:\", inventory.resources_inventory)
 
-	if Input.is_action_just_pressed(\"Dash\") and last_direction != Vector3.ZERO and not dashing:
-		dashing = true
-		dash_timer = DASH_DURATION
+		if Input.is_action_just_pressed(\"Dash\") and last_direction != Vector3.ZERO and not dashing:
+			dashing = true
+			dash_timer = DASH_DURATION
 
 func _physics_process(delta: float) -> void:
-	var input_dir = Input.get_vector(\"Left\", \"Right\", \"Forwards\", \"Backwards\")
-	var move_dir = Vector3(input_dir.x, 0, input_dir.y).normalized()
+	if is_multiplayer_authority():
+		var input_dir = Input.get_vector(\"Left\", \"Right\", \"Forwards\", \"Backwards\")
+		var move_dir = Vector3(input_dir.x, 0, input_dir.y).normalized()
 
-	# Apply gravity
-	velocity.y -= GRAVITY
+		# Apply gravity
+		velocity.y -= GRAVITY
 
-	if not freeze:
-		if move_dir != Vector3.ZERO:
-			last_direction = move_dir  # Update direction only when there's movement
+		if not freeze:
+			if move_dir != Vector3.ZERO:
+				last_direction = move_dir  # Update direction only when there's movement
 
-		if dashing:
-			velocity.x = last_direction.x * SPEED * DASH_MULTIPLIER
-			velocity.z = last_direction.z * SPEED * DASH_MULTIPLIER
+			if dashing:
+				velocity.x = last_direction.x * SPEED * DASH_MULTIPLIER
+				velocity.z = last_direction.z * SPEED * DASH_MULTIPLIER
 
-			dash_timer -= delta
-			if dash_timer <= 0.0:
-				dashing = false  # End dash
-		elif move_dir != Vector3.ZERO:
-			velocity.x = move_dir.x * SPEED
-			velocity.z = move_dir.z * SPEED
-		else:
-			velocity.x = 0
-			velocity.z = 0
+				dash_timer -= delta
+				if dash_timer <= 0.0:
+					dashing = false  # End dash
+			elif move_dir != Vector3.ZERO:
+				velocity.x = move_dir.x * SPEED
+				velocity.z = move_dir.z * SPEED
+			else:
+				velocity.x = 0
+				velocity.z = 0
 
-		# Smooth rotation toward last direction
-		var target_rotation = atan2(-last_direction.x, -last_direction.z)
-		rotation.y = lerp_angle(rotation.y, target_rotation, 0.2)
+			# Smooth rotation toward last direction
+			var target_rotation = atan2(-last_direction.x, -last_direction.z)
+			rotation.y = lerp_angle(rotation.y, target_rotation, 0.2)
 
 	move_and_slide()
 
 func Freeze():
 	freeze = not freeze
 	print(\"freeze\" if freeze else \"unfreeze\")
+	
+func _enter_tree():
+	set_multiplayer_authority(name.to_int())
 "
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f4xx0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5s4uc"]
 size = Vector3(1, 1, 0.688843)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vmk5g"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D"]
 safe_margin = 0.08
@@ -99,6 +112,9 @@ shape = SubResource("BoxShape3D_5s4uc")
 
 [node name="Timer" type="Timer" parent="InteractionCheckerArea3D"]
 autostart = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_vmk5g")
 
 [connection signal="timeout" from="InteractionCheckerArea3D/Timer" to="InteractionCheckerArea3D" method="_on_timer_timeout"]
 

@@ -9,8 +9,11 @@ var pickupable = true
 func add_vegetable(veg: Node3D,player_inventory):
 	pass
 
-func pickup(player_inventory):
-	player_inventory.add_container(self)
+@rpc("any_peer", "reliable", "call_local")
+func pickup(player_inventory_path: NodePath):
+	var player_inventory = get_node_or_null(player_inventory_path)
+	if player_inventory:
+		player_inventory.add_container(self)
 
 func place(player_inventory):
 	player_inventory._drop_item(0)

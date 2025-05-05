@@ -1,21 +1,20 @@
 extends RigidBody3D
 
 var resource_type = "Interactable"
-var inventory_node
+var inventory_node = null
 var currentCounter
 var inventory
 
 func _ready():
 	self.freeze = true
-	inventory_node = get_node("/root/LevelNode/Player/Inventory")
 	currentCounter = self
 
 # Function to activate and interact with all counter objects
-func _activate():
+func _activate(inventory_node):
 	if inventory_node:
 		if inventory_node.resources_inventory.size() > 0:
 			var new_root = get_tree().root.get_node("LevelNode")
-			var parent = new_root.get_node("Player") # Get the player
+			var parent = inventory_node.get_parent()
 			for child in parent.get_children(): # Look through all the children
 				if child.name == "Inventory": # Get the inventory child
 					inventory = child
@@ -25,7 +24,7 @@ func _activate():
 						inventory.resources_inventory.clear()
 						child.queue_free() # Delete the item
 					elif resource_type =="Plate":
-						child.clear_plate() 
+						child.clear_plate()
 	else:
 		print("Player node is not set")
 

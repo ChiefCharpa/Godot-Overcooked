@@ -10,20 +10,26 @@ func _ready():
 	for child in get_children():
 		childlist.append(child.name)
 
-
+@rpc("any_peer", "reliable", "call_local")
 func add_to_plate(veg: Node3D, player_inventory):
-	if veg!= null and Global.Platelist.has(veg.name):
+	if veg != null and Global.Platelist.has(veg.name):
 		held_vegetables.append(veg.name)
 		veg.queue_free()
-		var newveg = Global.VegDictionary.get(veg.name).instantiate()
-		add_child(newveg)
-		var offset = Vector3(0, 0.1 + 0.2 * held_vegetables.size(), 0)
-		newveg.freeze = true
-		newveg.get_node("CollisionShape3D").disabled = true
-		newveg.transform.origin = offset
+		_spawn_vegetable.rpc(veg.name)
 		BurgerCheck()
 
+@rpc("any_peer", "reliable", "call_local")
+func _spawn_vegetable(veg_name: String):
+	var newveg = Global.VegDictionary.get(veg_name).instantiate()
+	add_child(newveg)
+	var offset = Vector3(0, 0.1 + 0.2 * held_vegetables.size(), 0)
+	newveg.freeze = true
+	newveg.get_node("CollisionShape3D").disabled = true
+	newveg.transform.origin = offset
+
+
 func add_vegetable(veg: Node3D,player_inventory):
+	print("eh")
 	print(veg.name)
 	if Global.Platelist.has(veg.name):
 		held_vegetables.append(veg.name)
@@ -56,8 +62,11 @@ func BurgerCheck():
 			held_vegetables.erase(&"Chopped_Tomato")
 			held_vegetables.append("Burger+Lettuce+Tomato")
 
-func pickup(player_inventory):
-	player_inventory.add_container(self)
+@rpc("any_peer", "reliable", "call_local")
+func pickup(player_inventory_path: NodePath):
+	var player_inventory = get_node_or_null(player_inventory_path)
+	if player_inventory:
+		player_inventory.add_container(self)
 
 func place(player_inventory):
 	player_inventory._drop_item(0)
