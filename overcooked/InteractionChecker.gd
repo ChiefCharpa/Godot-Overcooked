@@ -20,7 +20,7 @@ func _process(delta):
 		if body.has_method("dirtyPlate") and body.pickupable:
 			resource_type = body.get_some_variable()
 			body_to_activate = body
-		elif body.has_method("_activate") and not body.has_method("dirtyPlate"):
+		elif body.has_method("_activate") and not body.has_method("dirtyPlate") and body != player_inventory.heldVegetable:
 			resource_type = body.get_some_variable()
 			body_to_activate = body
 
@@ -54,7 +54,7 @@ func _process(delta):
 
 		if held_plate and resource_type == "Food":
 			player_inventory.heldVegetable.add_to_plate(body_to_activate, player_inventory)
-		elif held_plate and body_to_activate.has_method("ispan"):
+		elif held_plate and body_to_activate.has_method("ispan") and !player_inventory.heldVegetable.has_method("ispan"):
 			player_inventory.heldVegetable.add_to_plate(body_to_activate.take_from_pan(), player_inventory)
 		elif resource_type == "Food":
 			body_to_activate.call("_activate", player_inventory)
@@ -69,6 +69,8 @@ func _process(delta):
 					body_to_activate.onstove = false
 				if player_inventory.heldVegetable.has_method("ispan"):
 					body_to_activate.call("cook")
+			elif player_inventory.heldVegetable != null:
+				body_to_activate.place(player_inventory)
 
 	# Backup drop logic (optional, could remove if above block covers everything)
 	elif (press_interact and nothing_or_food or press_throw) and has_item:
