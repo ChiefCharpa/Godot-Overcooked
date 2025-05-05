@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dral0g73t3p7"]
+[gd_scene load_steps=22 format=3 uid="uid://dral0g73t3p7"]
 
 [ext_resource type="PackedScene" uid="uid://5aocl1ky0vhb" path="res://Objects/Counters/tomato_spawner.tscn" id="1_8o4rb"]
 [ext_resource type="PackedScene" uid="uid://cgkmdmvjhvk6t" path="res://Objects/Counters/counter.tscn" id="3_fpono"]
@@ -15,12 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://bnmxv1lamjdyj" path="res://playerChef.tscn" id="17_dcckh"]
 [ext_resource type="PackedScene" uid="uid://3aegjuif6mfk" path="res://Objects/Counters/Stove(Pan).tscn" id="17_jftiw"]
 [ext_resource type="PackedScene" uid="uid://u34pilek63et" path="res://Objects/Counters/Stove(Pot).tscn" id="17_yye10"]
+[ext_resource type="PackedScene" uid="uid://bo52nln3vdv1o" path="res://UI.tscn" id="18_jftiw"]
 [ext_resource type="PackedScene" uid="uid://ccjshm25fqapr" path="res://Objects/Counters/Sink.tscn" id="18_s1kns"]
-[ext_resource type="Texture2D" uid="uid://4pv6heclgo8p" path="res://UI/ScoreCoin.png" id="18_yye10"]
-[ext_resource type="Texture2D" uid="uid://bee8vpcuides5" path="res://UI/Time.png" id="19_pd0bf"]
 [ext_resource type="PackedScene" uid="uid://dt7af76asgoed" path="res://Objects/Counters/Bun_spawner.tscn" id="19_yye10"]
-[ext_resource type="Script" uid="uid://377sarpqwofw" path="res://Timer.gd" id="20_pd0bf"]
-[ext_resource type="Texture2D" uid="uid://bcwdnl717f0rm" path="res://UI/Recipes/Burgers/Recipe_Burger_2.png" id="21_viiqw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dppq4"]
 
@@ -115,57 +112,4 @@ transform = Transform3D(1, 0, 1.74846e-07, -3.66779e-09, 0.99978, 0.0209773, -1.
 [node name="Counter5" parent="." instance=ExtResource("14_dn5x0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.04202, 0.298, 6.36959)
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="HUD Node" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ScoreCoin" type="Sprite2D" parent="UI/HUD Node"]
-position = Vector2(100, 640)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("18_yye10")
-
-[node name="ScoreText" type="RichTextLabel" parent="UI/HUD Node/ScoreCoin"]
-offset_left = -100.0
-offset_top = -60.0
-offset_right = 105.0
-offset_bottom = 50.0
-theme_override_colors/default_color = Color(0.992675, 1, 0.86778, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 15
-theme_override_font_sizes/normal_font_size = 80
-text = "0
-"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-horizontal_alignment = 1
-
-[node name="Time" type="Sprite2D" parent="UI/HUD Node"]
-position = Vector2(1175, 630)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("19_pd0bf")
-script = ExtResource("20_pd0bf")
-
-[node name="TimeText" type="RichTextLabel" parent="UI/HUD Node/Time"]
-offset_left = -100.0
-offset_top = -50.0
-offset_right = 105.0
-offset_bottom = 60.0
-theme_override_colors/default_color = Color(0.992675, 1, 0.86778, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 15
-theme_override_font_sizes/normal_font_size = 80
-text = "00:00
-"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-horizontal_alignment = 1
-
-[node name="RecipeBurger2" type="Sprite2D" parent="UI"]
-position = Vector2(77, 110)
-texture = ExtResource("21_viiqw")
+[node name="UI" parent="." instance=ExtResource("18_jftiw")]
