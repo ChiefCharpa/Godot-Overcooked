@@ -1,4 +1,4 @@
-extends Node3D
+extends Node
 @export var Transitionpath: String;
 @export var holdPath: String;
 @export var holdingStatusName: String;
