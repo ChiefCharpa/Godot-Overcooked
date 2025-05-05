@@ -1,10 +1,10 @@
 extends Control
 
-@export var recipeScene : PackedScene
-@export var recipeSpacing := 10 # Space between 'slots'
-@export var recipeWidth := 150 # How wide each recipe 'slot' is
+const UI_RECIPE_DISPLAY = preload("res://ui_recipe_display.tscn")
+@export var recipeSpacing := 3 # Space between 'slots'
+@export var recipeWidth := 300 # A Base measure for how wide each recipe 'slot' is
 
-var slideDur := 0.5
+var slideDur := 2.0
 var endPos : Vector2
 var displayedRecipes : Array = []
 
@@ -20,13 +20,19 @@ func positioning(pos : Vector2):
 
 # Displays recipe by instantiating it in the top right and then sliding it to the position it should be in
 func displayRecipe(image : Texture2D):
-	var recipeSlot = recipeScene.instantiate()
+	var recipeSlot = UI_RECIPE_DISPLAY.instantiate()
 	add_child(recipeSlot)
 	recipeSlot.recipeImage(image)
-	var spawnPoint = Vector2(size.x, 10)
+	recipeWidth = recipeSlot.size.x
+	
+	var spawnPoint = Vector2(get_viewport_rect().size.x + 200, 0) # Spawn Pos
 	recipeSlot.position = spawnPoint
 	var slotIndex = displayedRecipes.size()
-	var endPos = Vector2(size.x - ((recipeWidth + recipeSpacing) * (slotIndex + 1)), 10)
+	
+	var temp = 0
+	for i in displayedRecipes: # Calculating End Pos (x)
+		temp += i.size.x + recipeSpacing
+	var endPos = Vector2((temp), 0) # End Pos
 	
 	recipeSlot.positioning(endPos)
 	displayedRecipes.append(recipeSlot)

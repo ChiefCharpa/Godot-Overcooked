@@ -1,9 +1,10 @@
 extends Node
 
-
 @export var levelDuration := 90
 var timeLeft := 0.0
 var timerOn := false;
+
+@onready var recipe_display: Control = $"../../RecipeDisplay"
 
 # Update timer display
 func updateTimer(timeLeft : float):
@@ -28,6 +29,14 @@ func finishTimer():
 
 func _ready() -> void:
 	startTimer(levelDuration)
+	var recipeTexture = load("res://UI/Recipes/Burgers/Recipe_Burger_4.png")
+	recipe_display.displayRecipe(recipeTexture)
+	var time_in_seconds = 1
+	await get_tree().create_timer(time_in_seconds).timeout
+	recipeTexture = load("res://UI/Recipes/Burgers/Recipe_Burger_2.png")
+	recipe_display.displayRecipe(recipeTexture)
+	recipeTexture = load("res://UI/Recipes/Burgers/Recipe_Burger_3.png")
+	recipe_display.displayRecipe(recipeTexture)
 
 func _process(delta):
 	if timerOn == true:
