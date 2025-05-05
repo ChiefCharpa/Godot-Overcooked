@@ -29,19 +29,14 @@ func finishTimer():
 
 func _ready() -> void:
 	startTimer(levelDuration)
-	var recipeTexture = load("res://UI/Recipes/Burgers/Recipe_Burger_4.png")
-	recipe_display.displayRecipe(recipeTexture)
-	var time_in_seconds = 1
-	await get_tree().create_timer(time_in_seconds).timeout
-	recipeTexture = load("res://UI/Recipes/Burgers/Recipe_Burger_2.png")
-	recipe_display.displayRecipe(recipeTexture)
-	recipeTexture = load("res://UI/Recipes/Burgers/Recipe_Burger_3.png")
-	recipe_display.displayRecipe(recipeTexture)
+	$"../Score".resetScore() # Sets score to 0 at start of level
+	
+	#var recipeTexture = load("res://UI/Recipes/Burgers/Recipe_Burger_4.png")
+	#recipe_display.displayRecipe(recipeTexture)
 
 func _process(delta):
 	if timerOn == true:
 		timeLeft -= delta # Counts down the timer
-		
 		if timeLeft <= 0: # Checks for timer running out
 			timerOn = false
 			finishTimer()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bo52nln3vdv1o"]
+[gd_scene load_steps=6 format=3 uid="uid://bo52nln3vdv1o"]
 
 [ext_resource type="Texture2D" uid="uid://bee8vpcuides5" path="res://UI/Time.png" id="1_tks4x"]
 [ext_resource type="Texture2D" uid="uid://4pv6heclgo8p" path="res://UI/ScoreCoin.png" id="2_ln680"]
 [ext_resource type="Script" uid="uid://377sarpqwofw" path="res://Timer.gd" id="2_vrfts"]
 [ext_resource type="PackedScene" uid="uid://ckv45ee2whk4d" path="res://ui_recipe_display.tscn" id="4_qui0h"]
+[ext_resource type="Script" uid="uid://dtn7tpfixj66k" path="res://Score.gd" id="4_vrfts"]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -49,6 +50,7 @@ offset_top = 508.0
 offset_right = 217.0
 offset_bottom = 748.0
 texture = ExtResource("2_ln680")
+script = ExtResource("4_vrfts")
 metadata/_edit_use_anchors_ = true
 
 [node name="ScoreText" type="RichTextLabel" parent="StatDisplay/Score"]

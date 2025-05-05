@@ -17,22 +17,20 @@ func positioning(pos : Vector2):
 	endPos = pos
 	var transition = create_tween()
 	transition.tween_property(self, "position", endPos, slideDur).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	
+func destroyRecipe():
+	queue_free()
 
 # Displays recipe by instantiating it in the top right and then sliding it to the position it should be in
 func displayRecipe(image : Texture2D):
 	var recipeSlot = UI_RECIPE_DISPLAY.instantiate()
 	add_child(recipeSlot)
 	recipeSlot.recipeImage(image)
-	recipeWidth = recipeSlot.size.x
 	
-	var spawnPoint = Vector2(get_viewport_rect().size.x + 200, 0) # Spawn Pos
+	var spawnPoint = Vector2(get_viewport_rect().size.x + 200, 0)
 	recipeSlot.position = spawnPoint
 	var slotIndex = displayedRecipes.size()
-	
-	var temp = 0
-	for i in displayedRecipes: # Calculating End Pos (x)
-		temp += i.size.x + recipeSpacing
-	var endPos = Vector2((temp), 0) # End Pos
+	var endPos = Vector2((recipeWidth + recipeSpacing) * slotIndex, 0)
 	
 	recipeSlot.positioning(endPos)
 	displayedRecipes.append(recipeSlot)
