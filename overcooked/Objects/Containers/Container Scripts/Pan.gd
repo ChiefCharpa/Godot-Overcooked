@@ -83,3 +83,4 @@ func _on_timer_timeout():
 	timer.stop()
 	timer.wait_time = 10
 	cooking = false
+	veg = null
