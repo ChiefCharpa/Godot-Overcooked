@@ -4,7 +4,7 @@ extends Node
 var timeLeft := 0.0
 var timerOn := false;
 
-@onready var recipe_display: Control = $"../../RecipeDisplay"
+@onready var recipe_display: Control = get_node("../../RecipeDisplay")
 
 # Update timer display
 func updateTimer(timeLeft : float):
