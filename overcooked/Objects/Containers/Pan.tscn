@@ -1,37 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfe3tv3qc0jnn"]
+[gd_scene load_steps=4 format=3 uid="uid://bfe3tv3qc0jnn"]
 
 [ext_resource type="Script" uid="uid://d0uyeyrwebkal" path="res://Objects/Containers/Container Scripts/Pan.gd" id="1_d3jei"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_aktyp"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aktyp"]
-albedo_color = Color(0.377919, 0.377919, 0.377919, 1)
+[ext_resource type="ArrayMesh" uid="uid://df1es4h7g30sk" path="res://Overcooked Assets/Meshes/Objects/Frying Pan/FryingPan.obj" id="2_ko0d4"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_d3jei"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_d3jei"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ko0d4"]
-albedo_color = Color(0, 0, 0, 1)
-
 [node name="Pan" type="RigidBody3D"]
 script = ExtResource("1_d3jei")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.01, 0, 0, 0, 0.5, 0, 0, 0)
-mesh = SubResource("CylinderMesh_aktyp")
-surface_material_override/0 = SubResource("StandardMaterial3D_aktyp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.1, 0, 0, 0, 0.5, 0, 0.0695533, 0)
 shape = SubResource("CylinderShape3D_d3jei")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.034202, 0.187939, 0, -0.0939693, 0.068404, 0, 0, 0, 0.1, 0.334698, 0.0316562, 0.00738776)
-mesh = SubResource("CapsuleMesh_d3jei")
-surface_material_override/0 = SubResource("StandardMaterial3D_ko0d4")
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
+
+[node name="FryingPan" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, -0.380065, 0)
+mesh = ExtResource("2_ko0d4")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

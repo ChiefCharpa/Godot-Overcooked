@@ -1,10 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://dxnv7dssult20"]
 
 [ext_resource type="Script" uid="uid://cdpgsea5wnnv6" path="res://vegetable.gd" id="1_kom3n"]
+[ext_resource type="PackedScene" uid="uid://ddtki710i2mcl" path="res://Overcooked Assets/Meshes/Objects/Mushroom/Mushroom.fbx" id="2_oq3r4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qmbqx"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_krj21"]
 
 [node name="Mushroom" type="RigidBody3D"]
 script = ExtResource("1_kom3n")
@@ -13,6 +12,5 @@ script = ExtResource("1_kom3n")
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 shape = SubResource("SphereShape3D_qmbqx")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-mesh = SubResource("SphereMesh_krj21")
+[node name="Mushroom" parent="." instance=ExtResource("2_oq3r4")]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 2.88551, -0.0897095, -1.44014)

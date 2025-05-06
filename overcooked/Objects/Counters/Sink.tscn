@@ -1,25 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccjshm25fqapr"]
+[gd_scene load_steps=6 format=3 uid="uid://ccjshm25fqapr"]
 
 [ext_resource type="Script" uid="uid://dvdpxyvnwfpju" path="res://Objects/Counters/Scripts/Sink_script.gd" id="1_yvriu"]
 [ext_resource type="Script" uid="uid://ch2hx4oajfeyb" path="res://Objects/Counters/Scripts/Clean_plate_spawn.gd" id="2_4n7t5"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_4q843"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ov2ff"]
-albedo_color = Color(0.393316, 0.293962, 0.164876, 1)
+[ext_resource type="ArrayMesh" uid="uid://8ql5uoc8g3l2" path="res://Overcooked Assets/Meshes/Environment/Washing Station/WashingStation.obj" id="3_lmiww"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_reikc"]
 size = Vector3(0.723, 0.596, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_cot1o"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_255jg"]
-albedo_color = Color(0.63, 0.496755, 0.3339, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_2728q"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ac5pr"]
-albedo_color = Color(0.509804, 0.509804, 0.509804, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lmiww"]
 
@@ -34,26 +20,9 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_yvriu")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Sink_Rigidbody"]
-transform = Transform3D(0.723, 0, 0, 0, 0.596, 0, 0, 0, 2, 0, 0, 0)
-mesh = SubResource("BoxMesh_4q843")
-surface_material_override/0 = SubResource("StandardMaterial3D_ov2ff")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sink_Rigidbody"]
 transform = Transform3D(1.001, 0, 0, 0, 1.001, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("BoxShape3D_reikc")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Sink_Rigidbody"]
-transform = Transform3D(0.8, 0, 0, 0, 0.1, 0, 0, 0, 2, 0.04, 0.35, 0)
-mesh = SubResource("BoxMesh_cot1o")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_255jg")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Sink_Rigidbody/MeshInstance3D3"]
-transform = Transform3D(0.45, 0, 0, 0, 1, 0, 0, 0, 0.45, 0, 0.51, 0)
-mesh = SubResource("PlaneMesh_2728q")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_ac5pr")
 
 [node name="Timer" type="Timer" parent="Sink_Rigidbody"]
 
@@ -63,5 +32,9 @@ script = ExtResource("2_4n7t5")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 1, 0.04, 0.9, -0.5)
 shape = SubResource("BoxShape3D_lmiww")
+
+[node name="WashingStation" type="MeshInstance3D" parent="."]
+transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 1.27845, 0, 0.8, 0, -3.49691e-08, -0.142304, -0.271695, 0.00226283)
+mesh = ExtResource("3_lmiww")
 
 [connection signal="timeout" from="Sink_Rigidbody/Timer" to="Sink_Rigidbody" method="_on_timer_timeout"]
