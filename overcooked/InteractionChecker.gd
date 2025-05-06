@@ -51,7 +51,7 @@ func _process(delta):
 		action_processed = true
 
 	# Interact logic
-	elif Input.is_action_pressed("Interaction_Select") and body_to_activate and not action_processed and !chopping::
+	elif Input.is_action_pressed("Interaction_Select") and body_to_activate and not action_processed and !chopping:
 		$SFX/Pickup_2.play()
 		action_processed = true
 		var held_plate : bool = player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() == "Plate"
