@@ -26,14 +26,13 @@ func _chop(Player: CharacterBody3D):
 		chopping = true
 		playerref.Freeze()
 		timer.start()
-		Player.get_child(3).chopping = true
+		Player.get_child(2).chopping = true
 	elif chop and chopping:
-		Player.get_child(3).chopping = false
+		Player.get_child(2).chopping = false
 		chopping = false
 		playerref.Freeze()
 		timer.wait_time = timer.time_left
 		timer.stop()
-
 	
 # Function to activate and interact with all counter objects
 func _activate():
@@ -64,4 +63,4 @@ func _on_timer_timeout() -> void:
 		timer.stop()
 		timer.wait_time = 6
 		chopping = false
-		playerref.get_child(3).chopping = false
+		playerref.get_child(2).chopping = false

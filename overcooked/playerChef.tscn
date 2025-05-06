@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bnmxv1lamjdyj"]
+[gd_scene load_steps=47 format=3 uid="uid://bnmxv1lamjdyj"]
 
 [ext_resource type="Script" uid="uid://njawwihyt5mv" path="res://Inventory.gd" id="1_7q55s"]
 [ext_resource type="Script" uid="uid://dkkuh2tj0x18s" path="res://InteractionChecker.gd" id="2_vmk5g"]
@@ -810,8 +810,25 @@ graph_offset = Vector2(63, -1)
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rpdoq"]
 animation = &"Anim/idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_slkoe"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5npo0"]
 animation = &"Anim/walk"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ltt70"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6h3ag"]
+break_loop_at_end = true
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8ksqh"]
+states/Anim_walk/node = SubResource("AnimationNodeAnimation_5npo0")
+states/Anim_walk/position = Vector2(545, 100)
+transitions = ["Start", "Anim_walk", SubResource("AnimationNodeStateMachineTransition_ltt70"), "Anim_walk", "End", SubResource("AnimationNodeStateMachineTransition_6h3ag")]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_yxfm2"]
 
@@ -841,32 +858,60 @@ input_4/auto_advance = false
 input_4/break_loop_at_end = false
 input_4/reset = true
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nklg3"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8ksqh"]
 animation = &"Anim/chop"
+use_custom_timeline = true
+timeline_length = 0.9
+stretch_time_scale = false
+start_offset = 0.0
+loop_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0rcj6"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rpdoq"]
+xfade_time = 0.3
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_slkoe"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yxfm2"]
+states/Anim_chop/node = SubResource("AnimationNodeAnimation_8ksqh")
+states/Anim_chop/position = Vector2(499, 100)
+transitions = ["Anim_chop", "End", SubResource("AnimationNodeStateMachineTransition_rpdoq"), "Start", "Anim_chop", SubResource("AnimationNodeStateMachineTransition_slkoe")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_owvmd"]
 animation = &"Anim/griddy"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a32lt"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y86u8"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_rpdoq"]
+states/Anim_griddy/node = SubResource("AnimationNodeAnimation_owvmd")
+states/Anim_griddy/position = Vector2(558, 100)
+transitions = ["Start", "Anim_griddy", SubResource("AnimationNodeStateMachineTransition_a32lt"), "Anim_griddy", "End", SubResource("AnimationNodeStateMachineTransition_y86u8")]
+
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gpxxo"]
-graph_offset = Vector2(-672.302, 159.311)
+graph_offset = Vector2(-865.353, 241.288)
 nodes/Hold/node = SubResource("AnimationNodeStateMachine_y86u8")
 nodes/Hold/position = Vector2(-500, 620)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_rpdoq")
 nodes/Idle/position = Vector2(-220, 0)
-nodes/Move/node = SubResource("AnimationNodeAnimation_slkoe")
-nodes/Move/position = Vector2(-460, 180)
+"nodes/Move /node" = SubResource("AnimationNodeStateMachine_8ksqh")
+"nodes/Move /position" = Vector2(-500, 180)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_cnw7c")
 nodes/TimeScale/position = Vector2(-200, 380)
 "nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_yxfm2")
 "nodes/TimeScale 2/position" = Vector2(-220, 180)
 nodes/Transition/node = SubResource("AnimationNodeTransition_3poyc")
 nodes/Transition/position = Vector2(220, 180)
-nodes/chop/node = SubResource("AnimationNodeAnimation_nklg3")
-nodes/chop/position = Vector2(-480, 400)
-nodes/griddy/node = SubResource("AnimationNodeAnimation_0rcj6")
-nodes/griddy/position = Vector2(-460, 880)
+nodes/chop/node = SubResource("AnimationNodeStateMachine_yxfm2")
+nodes/chop/position = Vector2(-500, 400)
+"nodes/griddy 2/node" = SubResource("AnimationNodeStateMachine_rpdoq")
+"nodes/griddy 2/position" = Vector2(-500, 860)
 nodes/output/position = Vector2(580, 140)
-node_connections = [&"TimeScale", 0, &"chop", &"TimeScale 2", 0, &"Move", &"Transition", 0, &"Idle", &"Transition", 1, &"TimeScale 2", &"Transition", 2, &"TimeScale", &"Transition", 3, &"Hold", &"Transition", 4, &"griddy", &"output", 0, &"Transition"]
+node_connections = [&"TimeScale", 0, &"chop", &"TimeScale 2", 0, &"Move ", &"Transition", 0, &"Idle", &"Transition", 1, &"TimeScale 2", &"Transition", 2, &"TimeScale", &"Transition", 3, &"Hold", &"Transition", 4, &"griddy 2", &"output", 0, &"Transition"]
 
 [node name="Player" type="CharacterBody3D"]
 safe_margin = 0.08
