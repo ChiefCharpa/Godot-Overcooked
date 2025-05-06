@@ -59,6 +59,8 @@ func _process(delta):
 			force = 0
 		inventory_node._drop_item(force)
 		action_processed = true
+		animatePlayer.call("_changeHolding")
+		currently_hold = false;
 
 	# Interact logic
 	elif press_interact and body_to_activate and not action_processed and !chopping:
@@ -89,6 +91,8 @@ func _process(delta):
 	elif (press_interact and nothing_or_food or press_throw) and has_item and !chopping:
 		inventory_node._drop_item(force)
 		action_processed = true
+		animatePlayer.call("_changeHolding")
+		currently_hold = false;
 
 	# Reset interaction flag
 	elif not Input.is_action_pressed("Interaction_Select") and !chopping:
