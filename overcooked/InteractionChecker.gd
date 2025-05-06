@@ -10,7 +10,7 @@ var inventory_node #stores the inventory node
 var action_processed = false #tracks if the action is processed
 var force = 0
 var currently_hold = false # records if the player if currently holding item
-
+var chopping = false
 
 
 func _ready() -> void:
