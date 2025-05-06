@@ -5,7 +5,9 @@ var held_vegetable = null
 var veg
 var cooking = false
 var onstove = false
-@onready var timer =	$Timer 
+var stove
+@onready var timer =	$Timer
+@onready var burn_timer = $TimerBurn
 
 func _ready():
 	self.freeze = true
@@ -23,7 +25,7 @@ func add_vegetable(veg: Node3D,player_inventory):
 		newveg.get_node("CollisionShape3D").disabled = true
 		newveg.transform.origin = offset
 		if onstove == true:
-			cook()
+			cook(stove)
 func take_from_pan():
 	if held_vegetable != null:
 		for child in get_children():
@@ -37,7 +39,9 @@ func clear_plate():
 				if child.name == held_vegetable:
 					child.queue_free()
 					held_vegetable = null
-func cook():
+func cook(currentCounter: NodePath):
+	stove = currentCounter
+	print(stove)
 	var cook = false
 	for child in self.get_children():
 		if Global.Veglist.has(child.name):
@@ -54,6 +58,7 @@ func cook():
 		timer.stop()
 
 func pickup(player_inventory):
+	stove = null
 	player_inventory.add_container(self)
 
 func place(player_inventory):
@@ -83,4 +88,21 @@ func _on_timer_timeout():
 	timer.stop()
 	timer.wait_time = 10
 	cooking = false
+	veg = cooked_veg
+	burn_timer.start()
+
+func _on_timer_burn_timeout():
+	var stoveNode = get_node(stove)
+	stoveNode.onFire()
+	print("Food is burnt!")
+	var burnt_key = "Burnt_" + veg.name.split("_")[1]
+	if Global.VegDictionary.has(burnt_key):
+		var burnt_veg = Global.VegDictionary[burnt_key].instantiate()
+		burnt_veg.name = burnt_key
+		add_child(burnt_veg)
+		held_vegetable = burnt_key
+		burnt_veg.transform.origin = Vector3(0, 0.05, 0)
+		burnt_veg.freeze = true
+		burnt_veg.get_node("CollisionShape3D").disabled = true
+	veg.queue_free()
 	veg = null
