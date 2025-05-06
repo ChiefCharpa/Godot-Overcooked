@@ -1,8 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bnmxv1lamjdyj"]
+[gd_scene load_steps=12 format=3 uid="uid://bnmxv1lamjdyj"]
 
 [ext_resource type="Script" uid="uid://njawwihyt5mv" path="res://Inventory.gd" id="1_7q55s"]
 [ext_resource type="PackedScene" uid="uid://c67vmj3s6nei8" path="res://Overcooked Assets/Chef/ChefAnim/chefRigged.gltf" id="1_vmk5g"]
 [ext_resource type="Script" uid="uid://dkkuh2tj0x18s" path="res://InteractionChecker.gd" id="2_vmk5g"]
+[ext_resource type="AudioStream" uid="uid://klqxp01vojg7" path="res://Overcooked SFX/ItemPickUp1.mp3" id="4_5npo0"]
+[ext_resource type="AudioStream" uid="uid://xlwtm252slnx" path="res://Overcooked SFX/ItemPickUp2.mp3" id="5_jdnac"]
+[ext_resource type="AudioStream" uid="uid://denxftivtll8v" path="res://Overcooked SFX/ItemPickUp3.mp3" id="6_ltt70"]
+[ext_resource type="AudioStream" uid="uid://bwspukhux5yka" path="res://Overcooked SFX/Dash.mp3" id="7_5npo0"]
+[ext_resource type="AudioStream" uid="uid://00mw8owbot60" path="res://Overcooked SFX/SingleChop.mp3" id="7_6h3ag"]
 
 [sub_resource type="GDScript" id="GDScript_w0ksy"]
 script/source = "extends CharacterBody3D
@@ -25,6 +30,7 @@ func _process(_delta: float) -> void:
 
 	if Input.is_action_just_pressed(\"Dash\") and last_direction != Vector3.ZERO and not dashing:
 		dashing = true
+		$SFX/Dash.play()
 		dash_timer = DASH_DURATION
 
 func _physics_process(delta: float) -> void:
@@ -99,6 +105,33 @@ shape = SubResource("BoxShape3D_5s4uc")
 
 [node name="Timer" type="Timer" parent="InteractionCheckerArea3D"]
 autostart = true
+
+[node name="SFX" type="Node" parent="InteractionCheckerArea3D"]
+
+[node name="Pickup_1" type="AudioStreamPlayer3D" parent="InteractionCheckerArea3D/SFX"]
+stream = ExtResource("4_5npo0")
+volume_db = -13.0
+bus = &"Pickup"
+
+[node name="Pickup_2" type="AudioStreamPlayer3D" parent="InteractionCheckerArea3D/SFX"]
+stream = ExtResource("5_jdnac")
+volume_db = -3.0
+bus = &"Pickup"
+
+[node name="Pickup_3" type="AudioStreamPlayer3D" parent="InteractionCheckerArea3D/SFX"]
+stream = ExtResource("6_ltt70")
+bus = &"Pickup"
+
+[node name="Chopping" type="AudioStreamPlayer3D" parent="InteractionCheckerArea3D/SFX"]
+stream = ExtResource("7_6h3ag")
+bus = &"Chopping"
+parameters/looping = false
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Dash" type="AudioStreamPlayer3D" parent="SFX"]
+stream = ExtResource("7_5npo0")
+bus = &"Dash"
 
 [connection signal="timeout" from="InteractionCheckerArea3D/Timer" to="InteractionCheckerArea3D" method="_on_timer_timeout"]
 

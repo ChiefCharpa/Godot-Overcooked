@@ -30,6 +30,7 @@ func _process(delta):
 			if body.has_method("Iscuttingboard"):
 				resource_type = body.get_some_variable()
 				body.call("_chop", self.get_parent())
+				$SFX/Chopping.play()
 
 	##variable simplification for readability
 	var press_interact := Input.is_action_just_pressed("Interaction_Select")
@@ -45,10 +46,12 @@ func _process(delta):
 		else:
 			force = 0
 		inventory_node._drop_item(force)
+		$SFX/Pickup_1.play()
 		action_processed = true
 
 	# Interact logic
 	elif Input.is_action_pressed("Interaction_Select") and body_to_activate and not action_processed:
+		$SFX/Pickup_2.play()
 		action_processed = true
 		var held_plate : bool = player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() == "Plate"
 
