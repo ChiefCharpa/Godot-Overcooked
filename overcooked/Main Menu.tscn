@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhb8d2j7crk53"]
+
+[ext_resource type="Texture2D" uid="uid://nnlt0ta2do8t" path="res://UI/Background.png" id="1_5b7ti"]
+[ext_resource type="Texture2D" uid="uid://whaw44sa1dhr" path="res://UI/Overcooked.png" id="2_dvdtt"]
+[ext_resource type="Texture2D" uid="uid://crqnulujmn6nn" path="res://UI/ControlsButton.png" id="3_wlsky"]
+[ext_resource type="Texture2D" uid="uid://swrxul0id7vp" path="res://UI/Level1Button.png" id="4_ht6vt"]
+[ext_resource type="Texture2D" uid="uid://4qbrkm3ceewg" path="res://UI/Level2Button.png" id="5_bcalf"]
+[ext_resource type="Texture2D" uid="uid://dtyykgslrf22m" path="res://UI/Level3Button.png" id="6_6viy2"]
+[ext_resource type="Texture2D" uid="uid://b0xytudi2rp7" path="res://UI/Level4Button.png" id="7_4gws7"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_5b7ti")
+
+[node name="Overcooked Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -344.0
+offset_right = 936.0
+offset_bottom = 480.0
+grow_horizontal = 2
+scale = Vector2(0.575, 0.575)
+texture = ExtResource("2_dvdtt")
+
+[node name="Controls" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = 248.0
+offset_right = -318.0
+offset_bottom = 338.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wlsky")
+
+[node name="Level1" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -45.0
+offset_right = 111.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ht6vt")
+
+[node name="Level2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = 55.0
+offset_right = 111.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_bcalf")
+
+[node name="Level3" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = 155.0
+offset_right = 111.0
+offset_bottom = 245.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_6viy2")
+
+[node name="Level4" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = 255.0
+offset_right = 111.0
+offset_bottom = 345.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_4gws7")
