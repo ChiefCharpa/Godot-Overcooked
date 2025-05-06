@@ -1,22 +1,16 @@
 extends Area3D
-
-@export var AnimPlayer: String; # calls the path of the animation player
-
-var animatePlayer = null
 var player_inventory = null #stores the player's inventory
 var body_to_activate = null #stores the body to be activated
 var resource_type = null #stores the type of resource
 var inventory_node #stores the inventory node
 var action_processed = false #tracks if the action is processed
 var force = 0
-var currently_hold = false # records if the player if currently holding item
-var chopping = false
+
 
 
 func _ready() -> void:
-	player_inventory = get_parent().get_node("Inventory") #gets the player's inventory
-	inventory_node = get_node("/root/LevelNode/Player/Inventory") #gets the inventorys node path
-	animatePlayer = get_parent().get_node(AnimPlayer);## gets the players animation script
+	player_inventory = get_parent().get_node("Inventory2") #gets the player's inventory
+	inventory_node = get_node("/root/LevelNode/Player2/Inventory2") #gets the inventorys node path
 
 func _process(delta):
 	var overlapping_bodies = get_overlapping_bodies()
@@ -31,40 +25,30 @@ func _process(delta):
 			body_to_activate = body
 
 	# Chopping check
-	if Input.is_action_just_pressed("Chop"):
+	if Input.is_action_just_pressed("Chop2"):
 		for body in overlapping_bodies:
 			if body.has_method("Iscuttingboard"):
 				resource_type = body.get_some_variable()
-				body.call("_chop", self.get_parent())
-				##Calls animation Player for action 3
-				animatePlayer.call("_changeState", 3)
-
-##variable simplification for readability
-	var press_interact := Input.is_action_just_pressed("Interaction_Select")
-	var press_throw := Input.is_action_just_pressed("Throw_Item")
+				body._chop(self.get_parent())
+				
+	##variable simplification for readability
+	var press_interact := Input.is_action_just_pressed("Interaction_Select2")
+	var press_throw := Input.is_action_just_pressed("Throw_Item2")
 	var has_item : bool = player_inventory.resources_inventory.size() != 0
 	var held_not_plate : bool = player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() != "Plate"
 	var nothing_or_food : bool = (body_to_activate == null or resource_type == "Food")
 
-
-	if (!currently_hold and has_item):
-		animatePlayer.call("_changeState", 4)
-		currently_hold = true;
-
-
 	# Drop item if player presses interact/throw with food or nothing
-	if ((press_interact and nothing_or_food) or press_throw) and has_item and held_not_plate and not action_processed and !chopping:
+	if ((press_interact and nothing_or_food) or press_throw) and has_item and held_not_plate and not action_processed:
 		if press_throw:
 			force = 10
 		else:
 			force = 0
 		inventory_node._drop_item(force)
 		action_processed = true
-		animatePlayer.call("_changeHolding")
-		currently_hold = false;
 
-	elif press_interact and body_to_activate and not action_processed and !chopping:
-
+	# Interact logic
+	elif press_interact and body_to_activate and not action_processed:
 		action_processed = true
 		var held_plate : bool = player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() == "Plate"
 
@@ -89,18 +73,10 @@ func _process(delta):
 				body_to_activate.place(player_inventory)
 
 	# Backup drop logic (optional, could remove if above block covers everything)
-	elif (press_interact and nothing_or_food or press_throw) and has_item and !chopping:
+	elif (press_interact and nothing_or_food or press_throw) and has_item:
 		inventory_node._drop_item(force)
 		action_processed = true
-		animatePlayer.call("_changeHolding")
-		currently_hold = false;
 
 	# Reset interaction flag
-	elif not Input.is_action_pressed("Interaction_Select")and !chopping:
+	elif not Input.is_action_pressed("Interaction_Select"):
 		action_processed = false
-		
-	
-	if (currently_hold and !has_item):
-		animatePlayer.call("_changeHolding");
-		currently_hold = false;
-	
