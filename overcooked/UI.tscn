@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://bo52nln3vdv1o"]
+
+[ext_resource type="Texture2D" uid="uid://bee8vpcuides5" path="res://UI/Time.png" id="1_tks4x"]
+[ext_resource type="Texture2D" uid="uid://4pv6heclgo8p" path="res://UI/ScoreCoin.png" id="2_ln680"]
+[ext_resource type="Script" uid="uid://377sarpqwofw" path="res://Timer.gd" id="2_vrfts"]
+[ext_resource type="PackedScene" uid="uid://ckv45ee2whk4d" path="res://ui_recipe_display.tscn" id="4_qui0h"]
+[ext_resource type="Script" uid="uid://dtn7tpfixj66k" path="res://Score.gd" id="4_vrfts"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="StatDisplay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Time" type="TextureRect" parent="StatDisplay"]
+layout_mode = 0
+offset_left = 1044.0
+offset_top = 493.0
+offset_right = 1284.0
+offset_bottom = 733.0
+texture = ExtResource("1_tks4x")
+script = ExtResource("2_vrfts")
+metadata/_edit_use_anchors_ = true
+
+[node name="TimeText" type="RichTextLabel" parent="StatDisplay/Time"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 73.0
+offset_right = 225.0
+offset_bottom = 183.0
+theme_override_colors/default_color = Color(0.992675, 1, 0.86778, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/normal_font_size = 80
+text = "00:00
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Score" type="TextureRect" parent="StatDisplay"]
+layout_mode = 0
+offset_left = -23.0
+offset_top = 508.0
+offset_right = 217.0
+offset_bottom = 748.0
+texture = ExtResource("2_ln680")
+script = ExtResource("4_vrfts")
+metadata/_edit_use_anchors_ = true
+
+[node name="ScoreText" type="RichTextLabel" parent="StatDisplay/Score"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 58.0
+offset_right = 229.0
+offset_bottom = 168.0
+theme_override_colors/default_color = Color(0.992675, 1, 0.86778, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/normal_font_size = 80
+text = "0
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RecipeDisplay" parent="." instance=ExtResource("4_qui0h")]

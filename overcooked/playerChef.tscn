@@ -842,7 +842,7 @@ transitions = ["Start", "Anim_walk", SubResource("AnimationNodeStateMachineTrans
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_cnw7c"]
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_3poyc"]
-xfade_time = 0.1
+xfade_time = 0.2
 allow_transition_to_self = true
 input_0/name = "idle"
 input_0/auto_advance = false
@@ -923,7 +923,6 @@ states/Anim_wash/position = Vector2(567, 101)
 transitions = ["Start", "Anim_wash", SubResource("AnimationNodeStateMachineTransition_yxfm2"), "Anim_wash", "End", SubResource("AnimationNodeStateMachineTransition_cnw7c")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gpxxo"]
-graph_offset = Vector2(-648.731, 120.823)
 nodes/Hold/node = SubResource("AnimationNodeStateMachine_y86u8")
 nodes/Hold/position = Vector2(-500, 620)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_rpdoq")
