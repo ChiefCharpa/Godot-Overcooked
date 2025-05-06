@@ -12,7 +12,6 @@ var childlist : Array = []
 func _ready():
 	for child in get_children():
 		childlist.append(child.name)
-	inventory_node = get_node("/root/LevelNode/Player/Inventory")
 	currentCounter = self	
 	
 func _chop(Player: CharacterBody3D):
@@ -34,7 +33,7 @@ func _chop(Player: CharacterBody3D):
 
 	
 # Function to activate and interact with all counter objects
-func _activate():
+func _activate(inventory_node):
 	if inventory_node:
 		if inventory_node.resources_inventory.size() > 0 and inventory_node.heldVegetable.get_some_variable() == "Food":
 			inventory_node._place_item(currentCounter.get_path())  # Passing the NodePath of the current counter

@@ -9,8 +9,8 @@ var force = 0
 
 
 func _ready() -> void:
-	player_inventory = get_parent().get_node("Inventory") #gets the player's inventory
-	inventory_node = get_node("/root/LevelNode/Player/Inventory") #gets the inventorys node path
+	player_inventory = get_parent().get_node("Inventory2") #gets the player's inventory
+	inventory_node = get_node("/root/LevelNode/Player2/Inventory2") #gets the inventorys node path
 
 func _process(delta):
 	var overlapping_bodies = get_overlapping_bodies()
@@ -25,15 +25,15 @@ func _process(delta):
 			body_to_activate = body
 
 	# Chopping check
-	if Input.is_action_just_pressed("Chop"):
+	if Input.is_action_just_pressed("Chop2"):
 		for body in overlapping_bodies:
 			if body.has_method("Iscuttingboard"):
 				resource_type = body.get_some_variable()
 				body._chop(self.get_parent())
 				
 	##variable simplification for readability
-	var press_interact := Input.is_action_just_pressed("Interaction_Select")
-	var press_throw := Input.is_action_just_pressed("Throw_Item")
+	var press_interact := Input.is_action_just_pressed("Interaction_Select2")
+	var press_throw := Input.is_action_just_pressed("Throw_Item2")
 	var has_item : bool = player_inventory.resources_inventory.size() != 0
 	var held_not_plate : bool = player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() != "Plate"
 	var nothing_or_food : bool = (body_to_activate == null or resource_type == "Food")

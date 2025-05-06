@@ -11,7 +11,6 @@ var score = 0
 @onready var order_Timer = $place_Order_Timer
 
 func _ready():
-	inventory_node = get_node("/root/LevelNode/Player/Inventory")
 	plateSpawnNode = get_node("/root/LevelNode/Service_Counter/Counter_Rigidbody")
 	currentCounter = self
 	start_random_timer()
@@ -42,7 +41,7 @@ func _process(delta):
 			score -= 5  # Penalty
 
 
-func _activate():
+func _activate(inventory_node):
 	if inventory_node:
 		if inventory_node.resources_inventory.size() > 0:
 			if inventory_node.heldVegetable and inventory_node.heldVegetable.has_method("cleanPlate"):

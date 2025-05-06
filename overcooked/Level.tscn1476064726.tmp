@@ -113,4 +113,4 @@ transform = Transform3D(1, 0, 1.74846e-07, -3.66779e-09, 0.99978, 0.0209773, -1.
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.04202, 0.298, 6.36959)
 
 [node name="Player2" parent="." instance=ExtResource("18_jftiw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35381, 1.22458, 4.42322)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91619, 1.22458, 4.54892)
