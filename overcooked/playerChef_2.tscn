@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://jfq2gfrt5cgn"]
+
+[ext_resource type="Script" uid="uid://01hs8i25f6ey" path="res://player2.gd" id="1_iux4j"]
+[ext_resource type="PackedScene" uid="uid://c67vmj3s6nei8" path="res://Overcooked Assets/Chef/ChefAnim/chefRigged.gltf" id="2_hu10p"]
+[ext_resource type="Script" uid="uid://d07yimsx645j4" path="res://Inventory2.gd" id="3_hd3k6"]
+[ext_resource type="Script" uid="uid://cxgkq62emqrk3" path="res://InteractionChecker2.gd" id="4_o4rxg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mlwch"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f4xx0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5s4uc"]
+size = Vector3(1, 1, 0.688843)
+
+[node name="Player2" type="CharacterBody3D"]
+safe_margin = 0.08
+script = ExtResource("1_iux4j")
+
+[node name="chefRigged" parent="." instance=ExtResource("2_hu10p")]
+transform = Transform3D(-1.56531, 0, 0.0141929, 0, 1.51143, 0, -0.014398, 0, -1.54302, 0, -1.22458, 0)
+
+[node name="Skeleton3D" parent="chefRigged/Armature" index="0"]
+bones/4/rotation = Quaternion(0.150556, -0.181008, -0.87691, 0.419044)
+bones/5/rotation = Quaternion(0.00165592, -0.0550218, -0.00298264, 0.998479)
+bones/6/rotation = Quaternion(0.753097, -0.0153978, -0.0832298, 0.652442)
+bones/7/rotation = Quaternion(0.111438, 0.179759, 0.870789, 0.443841)
+bones/8/rotation = Quaternion(0.00343389, -0.0178398, 0.0020712, 0.999833)
+bones/9/rotation = Quaternion(0.807575, -0.113802, 0.00851562, 0.578618)
+
+[node name="ChefTest1" parent="chefRigged/Armature/Skeleton3D" index="0"]
+surface_material_override/4 = SubResource("StandardMaterial3D_mlwch")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_f4xx0")
+
+[node name="Inventory2" type="Node3D" parent="."]
+script = ExtResource("3_hd3k6")
+
+[node name="InteractionCheckerArea3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.6)
+script = ExtResource("4_o4rxg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionCheckerArea3D"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0.5, -0.336)
+shape = SubResource("BoxShape3D_5s4uc")
+
+[node name="Timer" type="Timer" parent="InteractionCheckerArea3D"]
+autostart = true
+
+[connection signal="timeout" from="InteractionCheckerArea3D/Timer" to="InteractionCheckerArea3D" method="_on_timer_timeout"]
+
+[editable path="chefRigged"]

@@ -3,7 +3,9 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
+
 uid="uid://dkglradml6skc"
+
 path="res://.godot/imported/RoadIntersection.glb-3d71f06af038c08e11ea6783a4ffb139.scn"
 
 [deps]

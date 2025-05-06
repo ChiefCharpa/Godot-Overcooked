@@ -4,10 +4,9 @@ var inventory_node
 var currentCounter
 var Veg = Global.VegDictionary.get("Onion")
 func _ready():
-	inventory_node = get_node("/root/LevelNode/Player/Inventory")
 	currentCounter = self
 	
-func _activate():
+func _activate(inventory_node):
 	if inventory_node:
 		if inventory_node.resources_inventory.size() == 0:
 			var newVegetable = Veg.instantiate()
