@@ -57,16 +57,17 @@ func _process(delta):
 
 
 	# Drop item if player presses interact/throw with food or nothing
-	if ((press_interact and nothing_or_food) or press_throw) and has_item and held_not_plate and not action_processed and !chopping:
-		if press_throw:
-			force = 10
-		else:
-			force = 0
-		inventory_node._drop_item(force)
-		$SFX/Pickup_1.play()
-		action_processed = true
-		animatePlayer.call("_changeHolding")
-		currently_hold = false;
+	if ((press_interact and nothing_or_food) or press_throw) and has_item and not action_processed and !chopping:
+		if player_inventory.heldVegetable.get_some_variable() != "Plate":
+			if press_throw:
+				force = 10
+			else:
+				force = 0
+			inventory_node._drop_item(force)
+			$SFX/Pickup_1.play()
+			action_processed = true
+			animatePlayer.call("_changeHolding")
+			currently_hold = false;
 
 	# Interact logic
 	elif Input.is_action_pressed("Interaction_Select") and body_to_activate and not action_processed and !chopping:

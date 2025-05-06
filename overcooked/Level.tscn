@@ -48,10 +48,12 @@ parameters/looping = true
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 2.90132, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("PlaneMesh_dppq4")
 surface_material_override/0 = SubResource("StandardMaterial3D_x8tvl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1.00098, 0, 0, 0, 1.00098, 0, 0, 0, 1.00098, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_f1ml4")
 
 [node name="TomatoSpawner" parent="." instance=ExtResource("1_8o4rb")]
