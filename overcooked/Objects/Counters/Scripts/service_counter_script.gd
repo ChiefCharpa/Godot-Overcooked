@@ -8,8 +8,8 @@ var cookedDish
 var recipes: Array = [["Soup_Tomato"], ["Soup_Onion"], ["Soup_Mushroom"],["Burger"],["Burger+Lettuce"],["Burger+Lettuce+Tomato"],["Chopped_Lettuce"],["Salad+Tomato"]]
 var orders: Array = []
 var plateSpawnNode
-var score = 0
 
+@onready var scoreNode = get_node("/root/LevelNode/UI/StatDisplay/Score")
 @onready var recipe_display: Control = get_node("/root/LevelNode/UI/RecipeDisplay")
 @onready var order_Timer = $place_Order_Timer
 
@@ -43,7 +43,7 @@ func _process(delta):
 		if current_time - orders[i].time_added >= 60.0:
 			print("Order expired:", orders[i].recipe)
 			orders.remove_at(i)
-			score -= 5  # Penalty
+			scoreNode.addScore(-5)  # Penalty
 
 
 func _activate():
@@ -68,7 +68,7 @@ func _activate():
 						orders.remove_at(i)
 						plateSpawnNode.call("spawn")
 						print("Order completed and removed:", recipe)
-						score += 10
+						scoreNode.addScore(10)
 						return
 					else:
 						print("Order doesn't match:", recipe)

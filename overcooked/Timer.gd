@@ -1,6 +1,6 @@
 extends Node
 
-@export var levelDuration := 90
+@export var levelDuration := 150
 var timeLeft := 0.0
 var timerOn := false;
 
