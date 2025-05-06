@@ -9,6 +9,7 @@ extends Node
 @export var chopStateName: String;
 @export var holdStateName: String;
 @export var danceStateName: String;
+@export var washStateName: String;
 
 var holding: bool;
 var transition: AnimationNodeTransition;
@@ -35,6 +36,8 @@ func _changeState(val: int):
 		holding = true;
 	elif (val == 5 and !holding):
 		animationTree.set(Transitionpath, danceStateName);
+	elif (val == 6 and !holding):
+		animationTree.set(Transitionpath, washStateName);
 	else:
 		var current = animationTree.get(Transitionpath);
 		if (hold.get_current_node() == "Anim_idle" and holding == true):
