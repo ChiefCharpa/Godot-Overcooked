@@ -790,6 +790,7 @@ switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jdnac"]
+switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_y86u8"]
@@ -847,7 +848,7 @@ animation = &"Anim/chop"
 animation = &"Anim/griddy"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gpxxo"]
-graph_offset = Vector2(-560.475, 97.7801)
+graph_offset = Vector2(-672.302, 159.311)
 nodes/Hold/node = SubResource("AnimationNodeStateMachine_y86u8")
 nodes/Hold/position = Vector2(-500, 620)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_rpdoq")
@@ -917,7 +918,7 @@ tree_root = SubResource("AnimationNodeBlendTree_gpxxo")
 anim_player = NodePath("../AnimationPlayer")
 parameters/TimeScale/scale = 3.34
 "parameters/TimeScale 2/scale" = 1.26
-parameters/Transition/current_state = "hold"
+parameters/Transition/current_state = "idle"
 parameters/Transition/transition_request = ""
 parameters/Transition/current_index = 0.08
 script = ExtResource("6_5npo0")
