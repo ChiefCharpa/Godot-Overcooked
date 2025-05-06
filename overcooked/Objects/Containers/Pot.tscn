@@ -75,9 +75,4 @@ wait_time = 0.001
 [node name="CookPot" parent="." instance=ExtResource("5_c8qmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21342, 0)
 
-[node name="TimerBurn" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
-
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="TimerBurn" to="." method="_on_timer_burn_timeout"]

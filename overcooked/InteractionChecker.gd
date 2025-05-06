@@ -96,6 +96,10 @@ func _process(delta):
 				body_to_activate.call("add_vegetable", player_inventory.heldVegetable, player_inventory)
 			elif player_inventory.heldVegetable == null:
 				body_to_activate.call("pickup", player_inventory)
+				if player_inventory.heldVegetable != null and player_inventory.heldVegetable.has_method("ispot"):
+					body_to_activate.onstove = false
+				if player_inventory.heldVegetable != null and player_inventory.heldVegetable.has_method("ispan"):
+					body_to_activate.call("cook")
 			elif player_inventory.heldVegetable != null:
 				body_to_activate.place(player_inventory)
 

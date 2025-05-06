@@ -6,14 +6,10 @@ var veg
 var cooking = false
 var onstove = false
 var partial = false
-var stove
-var burning = false
-var parts
 var childlist: Array = []
 @onready var timer =$Timer 
 @onready var mesh = $MeshInstance3D3
 @onready var camera = get_node("/root/LevelNode/Camera3D")
-@onready var burn_timer = $TimerBurn
 
 func _ready():
 	self.freeze = true
@@ -43,8 +39,8 @@ func add_vegetable(veg: Node3D,player_inventory):
 		newveg.freeze = true
 		newveg.get_node("CollisionShape3D").disabled = true
 		newveg.transform.origin = offset
-		if onstove == true and held_vegetable.size() == 3:
-			cook(stove)
+		if onstove == true:
+			cook()
 func take_from_pan():
 	if held_vegetable != [] and held_vegetable[0].begins_with("Soup"):
 		for child in get_children():
@@ -63,16 +59,13 @@ func clear_plate():
 		for child in get_children():
 			if !childlist.has(child.name):
 				child.queue_free()
-func cook(currentCounter: NodePath):
-	stove = currentCounter
+func cook():
 	var cook = false
 	for child in self.get_children():
 		if Global.Veglist.has(child.name):
 			veg = child
 			cook = true
-			parts = veg.name.split("_")
-			print(parts[0])
-	if cook and onstove and parts[0] != "Soup":
+	if cook and onstove:
 		print("cooking")
 		cooking = true
 		if timer.is_stopped() and not partial : #if timer is stopped and nothing has been cooked
@@ -88,22 +81,13 @@ func cook(currentCounter: NodePath):
 			timer.start()
 		elif not timer.is_stopped(): #if timer is running
 			timer.timer_left += 5
-	elif cook and not onstove and parts[0] != "Soup":
+	elif cook and not onstove:
 		print("Not cooking")
 		cooking = false
 		timer.wait_time = timer.time_left
 		timer.stop()
-	elif cook and parts[0] == "Soup":
-		print("Burning")
-		burning = true
-		burn_timer.start()
-
 
 func pickup(player_inventory):
-	cooking = false
-	burning = false
-	onstove = false
-	stove = null
 	player_inventory.add_container(self)
 
 func place(player_inventory):
@@ -121,41 +105,20 @@ func ispan():
 
 
 func _on_timer_timeout():
-	if cooking and not burning:
-		var temp = held_vegetable.duplicate()
-		for veg in temp:
-			print(veg)
-			var cooked_key = "Soup_"+veg.split("_")[1]
-			var cooked_veg =  Global.VegDictionary[cooked_key].instantiate()
-			add_child(cooked_veg)
-			cooked_veg.visible = false
-			cooked_veg.name = cooked_key
-			held_vegetable.erase(veg)
-			held_vegetable.append("Soup_"+veg.split("_")[1])
-			cooked_veg.transform.origin = Vector3(0, 0.05, 0)
-			cooked_veg.freeze = true
-			cooked_veg.get_node("CollisionShape3D").disabled = true
-			timer.stop()
-			timer.wait_time = 5
-			cooking = false
-			print(held_vegetable)
-			burning = true
-			cooking = false
-			burn_timer.start()
-
-func _on_timer_burn_timeout():
-	if burning and not cooking and held_vegetable.size() > 0:
-		var stoveNode = get_node(stove)
-		stoveNode.onFire()
-		print("Food is burnt!")
-		var burnt_key = "Burnt_" + veg.name.split("_")[1]
-		if Global.VegDictionary.has(burnt_key):
-			var burnt_veg = Global.VegDictionary[burnt_key].instantiate()
-			burnt_veg.name = burnt_key
-			add_child(burnt_veg)
-			held_vegetable = burnt_key
-			burnt_veg.transform.origin = Vector3(0, 0.05, 0)
-			burnt_veg.freeze = true
-			burnt_veg.get_node("CollisionShape3D").disabled = true
-		veg.queue_free()
-		veg = null
+	var temp = held_vegetable.duplicate()
+	for veg in temp:
+		print(veg)
+		var cooked_key = "Soup_"+veg.split("_")[1]
+		var cooked_veg =  Global.VegDictionary[cooked_key].instantiate()
+		add_child(cooked_veg)
+		cooked_veg.visible = false
+		cooked_veg.name = cooked_key
+		held_vegetable.erase(veg)
+		held_vegetable.append("Soup_"+veg.split("_")[1])
+		cooked_veg.transform.origin = Vector3(0, 0.05, 0)
+		cooked_veg.freeze = true
+		cooked_veg.get_node("CollisionShape3D").disabled = true
+		timer.stop()
+		timer.wait_time = 5
+		cooking = false
+		print(held_vegetable)

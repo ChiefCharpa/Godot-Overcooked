@@ -14,13 +14,15 @@ func spawn():
 		spawned.global_position = self.global_position + Vector3(0.08,0.5,0.78)
 		get_parent().get_parent().add_child(spawned)
 		spawned.onstove = true
-		spawned.stove = currentCounter.get_path()
+		if not spawned.has_method("ispot"):
+			spawned.stove = currentCounter.get_path()
 
 func _activate(inventory_node):
 	if not burning and inventory_node:
 		if inventory_node.resources_inventory.size() > 0:
 			if inventory_node.heldVegetable.has_method("ispan"): 
-				inventory_node.heldVegetable.onstove = true
+				if inventory_node.heldVegetable.has_method("ispot"):
+					inventory_node.heldVegetable.onstove = true
 				inventory_node.heldVegetable.cook(currentCounter.get_path())
 				inventory_node._place_item(currentCounter.get_path())  # Passing the NodePath of the current counter
 	else:
