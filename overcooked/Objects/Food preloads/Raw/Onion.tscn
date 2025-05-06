@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://070oqtwdfkpp"]
 
 [ext_resource type="Script" uid="uid://cdpgsea5wnnv6" path="res://vegetable.gd" id="1_dsi6k"]
-[ext_resource type="ArrayMesh" uid="uid://bcs1ibe0axt21" path="res://Overcooked Assets/Meshes/Objects/Onion/Onion.obj" id="2_8uy2s"]
+[ext_resource type="PackedScene" uid="uid://dec06mtecwus0" path="res://Overcooked Assets/Food/Raw Veg/Onion.glb" id="2_8uy2s"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_35cir"]
 
@@ -12,6 +12,5 @@ script = ExtResource("1_dsi6k")
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 shape = SubResource("SphereShape3D_35cir")
 
-[node name="Onion" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.151647, 0)
-mesh = ExtResource("2_8uy2s")
+[node name="Onion2" parent="." instance=ExtResource("2_8uy2s")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

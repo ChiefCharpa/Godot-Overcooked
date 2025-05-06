@@ -31,7 +31,7 @@ func add_vegetable(veg: Node3D,player_inventory):
 		if onstove == true:
 			cook()
 func take_from_pan():
-	if held_vegetable != [] and held_vegetable[0].begins_with("Soup") and held_vegetable[0]:
+	if held_vegetable != [] and held_vegetable[0].begins_with("Soup"):
 		for child in get_children():
 				if child.name == held_vegetable[0]:
 					var returnchild = child
@@ -100,6 +100,7 @@ func _on_timer_timeout():
 		var cooked_key = "Soup_"+veg.split("_")[1]
 		var cooked_veg =  Global.VegDictionary[cooked_key].instantiate()
 		add_child(cooked_veg)
+		cooked_veg.visible = false
 		cooked_veg.name = cooked_key
 		held_vegetable.erase(veg)
 		held_vegetable.append("Soup_"+veg.split("_")[1])

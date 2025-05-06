@@ -861,7 +861,7 @@ shape = SubResource("CapsuleShape3D_f4xx0")
 script = ExtResource("2_3411m")
 
 [node name="InteractionCheckerArea3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.6)
+transform = Transform3D(0.4, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.6)
 script = ExtResource("3_3yngf")
 AnimPlayer = "chef2/AnimationTree"
 

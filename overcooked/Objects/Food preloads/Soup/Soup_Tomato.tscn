@@ -1,23 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6tfh6mgkvo7h"]
+[gd_scene load_steps=4 format=3 uid="uid://c6tfh6mgkvo7h"]
 
 [ext_resource type="Script" uid="uid://cdpgsea5wnnv6" path="res://vegetable.gd" id="1_26r74"]
+[ext_resource type="PackedScene" uid="uid://tttflf3rt4vt" path="res://Overcooked Assets/Food/Soups/TomatoSoup.glb" id="2_giw1f"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mhdnm"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_y8ssd"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdxic"]
-albedo_color = Color(0.662745, 0.027451, 0.0470588, 1)
 
 [node name="Tomato" type="RigidBody3D"]
 mass = 0.11
 script = ExtResource("1_26r74")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.299999, 0.000115988, 0.000657308, -0.000347692, 0.0999999, -0.0001243, -0.000657451, 4.11793e-05, 0.299999, 0, 0, 0)
+transform = Transform3D(0.699998, 0.000115988, 0.00153372, -0.000811282, 0.0999999, -0.000290034, -0.00153405, 4.11793e-05, 0.699998, 0, 0, 0)
 shape = SubResource("SphereShape3D_mhdnm")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.3, 0, 0, 0)
-mesh = SubResource("SphereMesh_y8ssd")
-surface_material_override/0 = SubResource("StandardMaterial3D_pdxic")
+[node name="TomatoSoup" parent="." instance=ExtResource("2_giw1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
