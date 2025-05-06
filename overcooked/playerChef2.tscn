@@ -786,7 +786,7 @@ animation = &"Anim/chop"
 animation = &"Anim/griddy"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gpxxo"]
-graph_offset = Vector2(-672.302, 159.311)
+graph_offset = Vector2(-500, 159.311)
 nodes/Hold/node = SubResource("AnimationNodeStateMachine_y86u8")
 nodes/Hold/position = Vector2(-500, 620)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_rpdoq")
@@ -809,6 +809,7 @@ node_connections = [&"TimeScale", 0, &"chop", &"TimeScale 2", 0, &"Move", &"Tran
 [node name="Player2" type="CharacterBody3D"]
 safe_margin = 0.08
 script = ExtResource("1_tkgjp")
+AnimPlayer = "chef2/AnimationTree"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_f4xx0")
@@ -819,6 +820,7 @@ script = ExtResource("2_3411m")
 [node name="InteractionCheckerArea3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.6)
 script = ExtResource("3_3yngf")
+AnimPlayer = "chef2/AnimationTree"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionCheckerArea3D"]
 transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0.5, -0.336)

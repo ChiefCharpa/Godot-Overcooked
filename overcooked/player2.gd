@@ -1,5 +1,10 @@
 extends CharacterBody3D
 
+
+@export var AnimPlayer: String; # calls the path of the animation player
+
+var animatePlayer = null
+
 const SPEED = 5.0
 const DASH_MULTIPLIER = 2.5
 const GRAVITY = 2.0
@@ -11,6 +16,10 @@ var dash_timer: float = 0.0
 var last_direction: Vector3 = Vector3.ZERO
 
 @onready var inventory: Inventory2 = $Inventory
+
+func _ready() -> void:
+	animatePlayer = get_node(AnimPlayer);## gets the players animation script
+
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("print_inventory"):
@@ -44,6 +53,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = 0
 			velocity.z = 0
+			animatePlayer.call("_changeState", 2)
 
 		# Smooth rotation toward last direction
 		var target_rotation = atan2(-last_direction.x, -last_direction.z)

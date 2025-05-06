@@ -892,7 +892,6 @@ states/Anim_griddy/position = Vector2(558, 100)
 transitions = ["Start", "Anim_griddy", SubResource("AnimationNodeStateMachineTransition_a32lt"), "Anim_griddy", "End", SubResource("AnimationNodeStateMachineTransition_y86u8")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gpxxo"]
-graph_offset = Vector2(-748.675, 299.203)
 nodes/Hold/node = SubResource("AnimationNodeStateMachine_y86u8")
 nodes/Hold/position = Vector2(-500, 620)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_rpdoq")
