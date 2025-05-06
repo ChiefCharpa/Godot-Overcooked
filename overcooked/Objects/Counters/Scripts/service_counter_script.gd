@@ -19,7 +19,7 @@ func _ready():
 	_on_place_order_timer_timeout()
 
 func start_random_timer():
-	var new_time = randf_range(10.0, 20.0)
+	var new_time = randf_range(40.0, 60.0)
 	print(new_time)
 	order_Timer.wait_time = new_time
 	order_Timer.start()
@@ -39,7 +39,7 @@ func _on_place_order_timer_timeout() -> void:
 func _process(delta):
 	var current_time = Time.get_ticks_msec() / 1000.0
 	for i in range(orders.size() - 1, -1, -1):
-		if current_time - orders[i].time_added >= 20.0:
+		if current_time - orders[i].time_added >= 60.0:
 			print("Order expired:", orders[i].recipe)
 			recipe_display.destroyRecipe()
 			orders.remove_at(i)
