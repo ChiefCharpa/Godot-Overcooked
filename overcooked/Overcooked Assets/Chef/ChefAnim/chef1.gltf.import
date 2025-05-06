@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bt3jagv2tqljv"
-path="res://.godot/imported/RestarauntPeople1.glb-731c09dc44f49c0ed3c007538da96734.scn"
+uid="uid://d5fn7d1tm5ro"
+path="res://.godot/imported/chef1.gltf-fa88dd9f0a980998a6d59c4c6fad169c.scn"
 
 [deps]
 
-source_file="res://Overcooked Assets/Decorations/People/RestarauntPeople1.glb"
-dest_files=["res://.godot/imported/RestarauntPeople1.glb-731c09dc44f49c0ed3c007538da96734.scn"]
+source_file="res://Overcooked Assets/Chef/ChefAnim/chef1.gltf"
+dest_files=["res://.godot/imported/chef1.gltf-fa88dd9f0a980998a6d59c4c6fad169c.scn"]
 
 [params]
 
@@ -33,5 +33,5 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-gltf/naming_version=0
+gltf/naming_version=1
 gltf/embedded_image_handling=1

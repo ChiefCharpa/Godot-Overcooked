@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://blerun66mp8m5"
+uid="uid://d1o0h6k5v2kmm"
 path="res://.godot/imported/RoadIntersection.glb-3d71f06af038c08e11ea6783a4ffb139.scn"
 
 [deps]
@@ -33,5 +33,5 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-gltf/naming_version=1
+gltf/naming_version=0
 gltf/embedded_image_handling=1
