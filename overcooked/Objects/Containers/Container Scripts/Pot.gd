@@ -6,6 +6,7 @@ var veg
 var cooking = false
 var onstove = false
 var partial = false
+var childlist: Array = []
 @onready var timer =$Timer 
 @onready var mesh = $MeshInstance3D3
 @onready var camera = get_node("/root/LevelNode/Camera3D")
@@ -13,6 +14,8 @@ var partial = false
 func _ready():
 	self.freeze = true
 	resource_type = "Plate" # Define the plate as a container
+	for child in get_children():
+		childlist.append(child.name)
 
 func add_vegetable(veg: Node3D,player_inventory):
 	var parts = veg.name.split("_")
@@ -42,6 +45,9 @@ func clear_plate():
 				if child.name == veg:
 					child.queue_free()
 					held_vegetable = []
+		for child in get_children():
+			if !childlist.has(child.name):
+				child.queue_free()
 func cook():
 	var cook = false
 	for child in self.get_children():

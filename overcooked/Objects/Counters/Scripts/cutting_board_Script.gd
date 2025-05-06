@@ -26,7 +26,9 @@ func _chop(Player: CharacterBody3D):
 		chopping = true
 		playerref.Freeze()
 		timer.start()
+		Player.get_child(3).chopping = true
 	elif chop and chopping:
+		Player.get_child(3).chopping = false
 		chopping = false
 		playerref.Freeze()
 		timer.wait_time = timer.time_left
@@ -60,5 +62,6 @@ func _on_timer_timeout() -> void:
 		chopped_veg.global_transform.origin = self.global_transform.origin+Vector3(0, .5, 0)
 		veg.queue_free()
 		timer.stop()
-		timer.wait_time = 10
+		timer.wait_time = 6
 		chopping = false
+		playerref.get_child(3).chopping = false
