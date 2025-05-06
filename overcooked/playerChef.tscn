@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bnmxv1lamjdyj"]
+[gd_scene load_steps=57 format=3 uid="uid://bnmxv1lamjdyj"]
 
 [ext_resource type="Script" uid="uid://njawwihyt5mv" path="res://Inventory.gd" id="1_7q55s"]
 [ext_resource type="Script" uid="uid://dkkuh2tj0x18s" path="res://InteractionChecker.gd" id="2_vmk5g"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://denxftivtll8v" path="res://Overcooked SFX/ItemPickUp3.mp3" id="6_ltt70"]
 [ext_resource type="AudioStream" uid="uid://bwspukhux5yka" path="res://Overcooked SFX/Dash.mp3" id="7_5npo0"]
 [ext_resource type="AudioStream" uid="uid://00mw8owbot60" path="res://Overcooked SFX/SingleChop.mp3" id="7_6h3ag"]
+[ext_resource type="Animation" uid="uid://ba6rs8vs1ykam" path="res://Animations/chefAnimations/wash.res" id="10_owvmd"]
 
 [sub_resource type="GDScript" id="GDScript_w0ksy"]
 script/source = "extends CharacterBody3D
@@ -766,7 +767,8 @@ _data = {
 &"chop_001": SubResource("Animation_oprdd"),
 &"griddy": ExtResource("4_jghgm"),
 &"idle": SubResource("Animation_shnck"),
-&"walk": ExtResource("5_ochdj")
+&"walk": ExtResource("5_ochdj"),
+&"wash": ExtResource("10_owvmd")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jdnac"]
@@ -862,6 +864,10 @@ input_4/name = "griddy"
 input_4/auto_advance = false
 input_4/break_loop_at_end = false
 input_4/reset = true
+input_5/name = "wash"
+input_5/auto_advance = false
+input_5/break_loop_at_end = false
+input_5/reset = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8ksqh"]
 animation = &"Anim/chop"
@@ -897,7 +903,27 @@ states/Anim_griddy/node = SubResource("AnimationNodeAnimation_owvmd")
 states/Anim_griddy/position = Vector2(558, 100)
 transitions = ["Start", "Anim_griddy", SubResource("AnimationNodeStateMachineTransition_a32lt"), "Anim_griddy", "End", SubResource("AnimationNodeStateMachineTransition_y86u8")]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cdisw"]
+animation = &"Anim/wash"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yxfm2"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cnw7c"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3poyc"]
+states/Anim_wash/node = SubResource("AnimationNodeAnimation_cdisw")
+states/Anim_wash/position = Vector2(567, 101)
+transitions = ["Start", "Anim_wash", SubResource("AnimationNodeStateMachineTransition_yxfm2"), "Anim_wash", "End", SubResource("AnimationNodeStateMachineTransition_cnw7c")]
+
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gpxxo"]
+graph_offset = Vector2(-429.489, 181.486)
 nodes/Hold/node = SubResource("AnimationNodeStateMachine_y86u8")
 nodes/Hold/position = Vector2(-500, 620)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_rpdoq")
@@ -915,7 +941,9 @@ nodes/chop/position = Vector2(-500, 400)
 nodes/griddy/node = SubResource("AnimationNodeStateMachine_rpdoq")
 nodes/griddy/position = Vector2(-500, 860)
 nodes/output/position = Vector2(580, 140)
-node_connections = [&"TimeScale", 0, &"chop", &"TimeScale 2", 0, &"Move ", &"Transition", 0, &"Idle", &"Transition", 1, &"TimeScale 2", &"Transition", 2, &"TimeScale", &"Transition", 3, &"Hold", &"Transition", 4, &"griddy", &"output", 0, &"Transition"]
+nodes/wash/node = SubResource("AnimationNodeStateMachine_3poyc")
+nodes/wash/position = Vector2(-220, 900)
+node_connections = [&"TimeScale", 0, &"chop", &"TimeScale 2", 0, &"Move ", &"Transition", 0, &"Idle", &"Transition", 1, &"TimeScale 2", &"Transition", 2, &"TimeScale", &"Transition", 3, &"Hold", &"Transition", 4, &"griddy", &"Transition", 5, &"wash", &"output", 0, &"Transition"]
 
 [node name="Player" type="CharacterBody3D"]
 safe_margin = 0.08
@@ -1002,6 +1030,7 @@ walkStateName = "walk"
 chopStateName = "chop"
 holdStateName = "hold"
 danceStateName = "griddy"
+washStateName = "wash"
 
 [node name="SFX" type="Node" parent="."]
 
