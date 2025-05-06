@@ -10,10 +10,6 @@ func _ready():
 	for child in get_children():
 		childlist.append(child.name)
 
-func _process(delta: float) -> void:
-	for veg in held_vegetables:
-		print(veg)
-
 func add_to_plate(veg: Node3D):
 	if veg!= null and Global.Platelist.has(veg.name):
 		held_vegetables.append(veg.name)

@@ -7,7 +7,7 @@
 [ext_resource type="Animation" uid="uid://fp51ns7kg255" path="res://Animations/chefAnimations/griddy.res" id="4_3yngf"]
 [ext_resource type="Animation" uid="uid://cms2w7ne4c4d8" path="res://Animations/chefAnimations/walk.res" id="5_1nytf"]
 [ext_resource type="Script" uid="uid://o4yw0o0jcd5b" path="res://Animations/chefAnimations/animManager.gd" id="6_1nqh3"]
-[ext_resource type="Animation" uid="uid://ba6rs8vs1ykam" path="res://Animations/chefAnimations/wash.res" id="7_3411m"]
+[ext_resource type="Animation" uid="uid://kctndtf5qyjx" path="res://Animations/chefAnimations/wash.res" id="7_3411m"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f4xx0"]
 
@@ -793,7 +793,7 @@ transitions = ["Start", "Anim_wash", SubResource("AnimationNodeStateMachineTrans
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_cnw7c"]
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_3poyc"]
-xfade_time = 0.1
+xfade_time = 0.2
 allow_transition_to_self = true
 input_0/name = "idle"
 input_0/auto_advance = false
@@ -855,7 +855,7 @@ states/Anim_griddy/position = Vector2(558, 100)
 transitions = ["Start", "Anim_griddy", SubResource("AnimationNodeStateMachineTransition_a32lt"), "Anim_griddy", "End", SubResource("AnimationNodeStateMachineTransition_y86u8")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_tkgjp"]
-graph_offset = Vector2(-574.237, 137.69)
+graph_offset = Vector2(-610.469, 91.0578)
 nodes/Hold/node = SubResource("AnimationNodeStateMachine_y86u8")
 nodes/Hold/position = Vector2(-500, 620)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_rpdoq")

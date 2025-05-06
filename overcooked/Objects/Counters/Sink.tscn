@@ -4,8 +4,7 @@
 [ext_resource type="Script" uid="uid://ch2hx4oajfeyb" path="res://Objects/Counters/Scripts/Clean_plate_spawn.gd" id="2_4n7t5"]
 [ext_resource type="ArrayMesh" uid="uid://8ql5uoc8g3l2" path="res://Overcooked Assets/Meshes/Environment/Washing Station/WashingStation.obj" id="3_lmiww"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_reikc"]
-size = Vector3(0.723, 0.596, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_u4131"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lmiww"]
 
@@ -20,11 +19,11 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_yvriu")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sink_Rigidbody"]
-transform = Transform3D(1.001, 0, 0, 0, 1.001, 0, 0, 0, 2, 0, 0, 0)
-shape = SubResource("BoxShape3D_reikc")
-
 [node name="Timer" type="Timer" parent="Sink_Rigidbody"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sink_Rigidbody"]
+transform = Transform3D(0.704391, 0, 0, 0, 1, 0, 0, 0, 1.65137, 0, 0, 0)
+shape = SubResource("BoxShape3D_u4131")
 
 [node name="Area3D" type="Area3D" parent="."]
 script = ExtResource("2_4n7t5")

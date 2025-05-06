@@ -1,13 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://brlop6qo3v6ib"]
+[gd_scene load_steps=15 format=3 uid="uid://brlop6qo3v6ib"]
 
 [ext_resource type="Script" uid="uid://c0lkeghq4m1ai" path="res://Objects/Counters/Scripts/service_counter_script.gd" id="1_66ipc"]
 [ext_resource type="Script" uid="uid://7l0l3pu0i6rv" path="res://Objects/Counters/Scripts/PlateCounter(Dirty).gd" id="2_s1wwj"]
 [ext_resource type="PackedScene" uid="uid://c05hibd41ekrj" path="res://Overcooked Assets/Meshes/Environment/CompleteStation/FoodConveyor.FBX" id="3_s1wwj"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_4q843"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ov2ff"]
-albedo_color = Color(0.393316, 0.293962, 0.164876, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_hu2w8"]
 
@@ -41,11 +36,6 @@ albedo_color = Color(0.329412, 0.333333, 0.345098, 1)
 
 [node name="Service_Counter_Rigidbody" type="RigidBody3D" parent="."]
 script = ExtResource("1_66ipc")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Service_Counter_Rigidbody"]
-transform = Transform3D(0.723, 0, 0, 0, 0.596, 0, 0, 0, 3, 0, 0, -0.5)
-mesh = SubResource("BoxMesh_4q843")
-surface_material_override/0 = SubResource("StandardMaterial3D_ov2ff")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Service_Counter_Rigidbody"]
 transform = Transform3D(0.723, 0, 0, 0, 0.596, 0, 0, 0, 2, 0, 1.45, 0)
