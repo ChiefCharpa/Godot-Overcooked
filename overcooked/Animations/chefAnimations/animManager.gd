@@ -38,11 +38,12 @@ func _changeState(val: int):
 		animationTree.set(Transitionpath, danceStateName);
 	elif (val == 6 and !holding):
 		animationTree.set(Transitionpath, washStateName);
-	else:
-		var current = animationTree.get(Transitionpath);
-		if ((hold.get_current_node() != "Anim_Hold" and hold.get_current_node() != "Anim_Unhold") and holding == true):
-			holding = false;
+	#else:
+		#var current = animationTree.get(Transitionpath);
+		#if ((hold.get_current_node() != "Anim_Hold" and hold.get_current_node() != "Anim_Unhold") and holding == true):
+			#holding = false;
 
 
 func _changeHolding():
 	hold.travel(holdingStatusName);
+	holding = false;
