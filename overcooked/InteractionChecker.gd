@@ -64,7 +64,7 @@ func _process(delta):
 		currently_hold = false;
 
 	# Interact logic
-	elif Input.is_action_pressed("Interaction_Select") and body_to_activate and not action_processed:
+	elif Input.is_action_pressed("Interaction_Select") and body_to_activate and not action_processed and !chopping:
 		action_processed = true
 		var held_plate : bool = player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() == "Plate"
 
