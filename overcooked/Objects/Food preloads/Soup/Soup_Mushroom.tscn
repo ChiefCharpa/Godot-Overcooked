@@ -1,18 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://jdgyn0nmw5s6"]
 
 [ext_resource type="Script" uid="uid://cdpgsea5wnnv6" path="res://vegetable.gd" id="1_xhotx"]
+[ext_resource type="PackedScene" uid="uid://cwbubpjgyg845" path="res://Overcooked Assets/Food/Soups/MushroomSoup.glb" id="2_3r350"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qmbqx"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_krj21"]
 
 [node name="Mushroom" type="RigidBody3D"]
 script = ExtResource("1_xhotx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 0)
+transform = Transform3D(0.7, 0, 0, 0, 0.1, 0, 0, 0, 0.7, 0, 0, 0)
 shape = SubResource("SphereShape3D_qmbqx")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 0)
-mesh = SubResource("SphereMesh_krj21")
+[node name="MushroomSoup" parent="." instance=ExtResource("2_3r350")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
