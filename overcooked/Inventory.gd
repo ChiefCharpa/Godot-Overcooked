@@ -52,6 +52,8 @@ func _drop_item(force):
 		# Place the item just in front of the player
 		var drop_position = global_transform.origin + global_transform.basis.z * -1 + Vector3(0, 0.4, 0)
 		heldVegetable.global_transform.origin = drop_position
+		var rng = RandomNumberGenerator.new()
+		var randint = rng.randf_range(0,3)
 		
 		heldVegetable.axis_lock_linear_y = false
 		
@@ -59,6 +61,7 @@ func _drop_item(force):
 		if force > 0 and heldVegetable is RigidBody3D:
 			var direction = -global_transform.basis.z.normalized()
 			heldVegetable.linear_velocity = direction * force + Vector3(0, 2, 0)  # arc upward a bit
+			
 
 		heldVegetable = null
 		 

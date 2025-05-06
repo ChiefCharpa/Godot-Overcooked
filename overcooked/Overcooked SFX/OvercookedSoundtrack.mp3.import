@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://3bvi3jx06iyc"
+path="res://.godot/imported/OvercookedSoundtrack.mp3-05328152e24b6ab4390f61df53e696de.mp3str"
+
+[deps]
+
+source_file="res://Overcooked SFX/OvercookedSoundtrack.mp3"
+dest_files=["res://.godot/imported/OvercookedSoundtrack.mp3-05328152e24b6ab4390f61df53e696de.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

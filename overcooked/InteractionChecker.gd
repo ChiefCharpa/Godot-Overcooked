@@ -37,9 +37,13 @@ func _process(delta):
 				resource_type = body.get_some_variable()
 				body.call("_chop", self.get_parent())
 				##Calls animation Player for action 3
-				animatePlayer.call("_changeState", 3)
+				if "plate" in body:
+					animatePlayer.call("_changeState", 6)
+				else:
+					animatePlayer.call("_changeState", 3)
+				$SFX/Chopping.play()
 
-	##variable simplification for readability
+##variable simplification for readability
 	var press_interact := Input.is_action_just_pressed("Interaction_Select")
 	var press_throw := Input.is_action_just_pressed("Throw_Item")
 	var has_item : bool = player_inventory.resources_inventory.size() != 0
@@ -53,29 +57,31 @@ func _process(delta):
 
 
 	# Drop item if player presses interact/throw with food or nothing
-	if ((press_interact and nothing_or_food) or press_throw) and has_item and held_not_plate and not action_processed:
+	if ((press_interact and nothing_or_food) or press_throw) and has_item and held_not_plate and not action_processed and !chopping:
 		if press_throw:
 			force = 10
 		else:
 			force = 0
 		inventory_node._drop_item(force)
+		$SFX/Pickup_1.play()
 		action_processed = true
 		animatePlayer.call("_changeHolding")
 		currently_hold = false;
 
 	# Interact logic
-	elif Input.is_action_pressed("Interaction_Select") and body_to_activate and not action_processed:
+	elif Input.is_action_pressed("Interaction_Select") and body_to_activate and not action_processed and !chopping:
+		$SFX/Pickup_2.play()
 		action_processed = true
 		var held_plate : bool = player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() == "Plate"
 
 		if held_plate and resource_type == "Food":
-			player_inventory.heldVegetable.add_to_plate(body_to_activate, player_inventory)
+			player_inventory.heldVegetable.add_to_plate(body_to_activate)
 		elif held_plate and body_to_activate.has_method("ispan") and !player_inventory.heldVegetable.has_method("ispan"):
-			player_inventory.heldVegetable.add_to_plate(body_to_activate.take_from_pan(), player_inventory)
+			player_inventory.heldVegetable.add_to_plate(body_to_activate.take_from_pan())
 		elif resource_type == "Food":
 			body_to_activate.call("_activate", player_inventory)
 		elif resource_type in ["Interactable", "containers"]:
-			body_to_activate.call("_activate")
+			body_to_activate.call("_activate", player_inventory)
 		elif resource_type == "Plate":
 			if player_inventory.heldVegetable != null and not held_plate:
 				body_to_activate.call("add_vegetable", player_inventory.heldVegetable, player_inventory)
@@ -89,17 +95,18 @@ func _process(delta):
 				body_to_activate.place(player_inventory)
 
 	# Backup drop logic (optional, could remove if above block covers everything)
-	elif (press_interact and nothing_or_food or press_throw) and has_item:
+	elif (press_interact and nothing_or_food or press_throw) and has_item and !chopping:
 		inventory_node._drop_item(force)
 		action_processed = true
 		animatePlayer.call("_changeHolding")
 		currently_hold = false;
 
 	# Reset interaction flag
-	elif not Input.is_action_pressed("Interaction_Select"):
+	elif not Input.is_action_pressed("Interaction_Select")and !chopping:
 		action_processed = false
 		
 	
-	elif (currently_hold and !has_item):
-		animatePlayer.call("_changeHolding")
+	if (currently_hold and !has_item):
+		animatePlayer.call("_changeHolding");
 		currently_hold = false;
+	

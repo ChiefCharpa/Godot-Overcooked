@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://dral0g73t3p7"]
+[gd_scene load_steps=28 format=3 uid="uid://dral0g73t3p7"]
 
 [ext_resource type="PackedScene" uid="uid://5aocl1ky0vhb" path="res://Objects/Counters/tomato_spawner.tscn" id="1_8o4rb"]
+[ext_resource type="AudioStream" uid="uid://3bvi3jx06iyc" path="res://Overcooked SFX/OvercookedSoundtrack.mp3" id="2_pd0bf"]
 [ext_resource type="PackedScene" uid="uid://cgkmdmvjhvk6t" path="res://Objects/Counters/counter.tscn" id="3_fpono"]
 [ext_resource type="PackedScene" uid="uid://c5cwrng738u2m" path="res://Objects/Containers/bin.tscn" id="3_o45tb"]
 [ext_resource type="PackedScene" uid="uid://hm5rraqj5dr3" path="res://Objects/Counters/cutting_board.tscn" id="4_4a0cr"]
@@ -15,9 +16,15 @@
 [ext_resource type="PackedScene" uid="uid://bnmxv1lamjdyj" path="res://playerChef.tscn" id="17_dcckh"]
 [ext_resource type="PackedScene" uid="uid://3aegjuif6mfk" path="res://Objects/Counters/Stove(Pan).tscn" id="17_jftiw"]
 [ext_resource type="PackedScene" uid="uid://u34pilek63et" path="res://Objects/Counters/Stove(Pot).tscn" id="17_yye10"]
-[ext_resource type="PackedScene" uid="uid://bo52nln3vdv1o" path="res://UI.tscn" id="18_jftiw"]
+[ext_resource type="PackedScene" uid="uid://d4lm8nrceq1id" path="res://playerChef2.tscn" id="18_jftiw"]
 [ext_resource type="PackedScene" uid="uid://ccjshm25fqapr" path="res://Objects/Counters/Sink.tscn" id="18_s1kns"]
 [ext_resource type="PackedScene" uid="uid://dt7af76asgoed" path="res://Objects/Counters/Bun_spawner.tscn" id="19_yye10"]
+[ext_resource type="PackedScene" uid="uid://chdhvl5hsuj8x" path="res://Overcooked Assets/Decorations/Floors/KitchenFloorLarge.glb" id="20_s0cgv"]
+[ext_resource type="PackedScene" uid="uid://c2kj6esayq1kl" path="res://Overcooked Assets/Decorations/KitchenWalls/TripleWallSegment.glb" id="21_3ppgv"]
+[ext_resource type="PackedScene" uid="uid://bx7lqk1at3smh" path="res://Overcooked Assets/Decorations/KitchenWalls/WindowWallSegment.glb" id="22_wesx8"]
+[ext_resource type="PackedScene" uid="uid://cxn2s3upm086n" path="res://Overcooked Assets/Decorations/KitchenWalls/CornerWallSegment.glb" id="23_qqkhr"]
+
+[sub_resource type="GDScript" id="GDScript_jftiw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dppq4"]
 
@@ -29,6 +36,12 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 
 [node name="LevelNode" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.773004)
+script = SubResource("GDScript_jftiw")
+
+[node name="Soundtrack" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_pd0bf")
+autoplay = true
+parameters/looping = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
@@ -47,7 +60,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.1384
 transform = Transform3D(0.999996, 0.000691604, 0.0025906, -0.00246523, 0.617146, 0.786845, -0.00105459, -0.786848, 0.617146, -0.63733, 6.4459, 8.13923)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.883953, 0.467575, 0, -0.467575, 0.883953, 0, 3.7363, 5.13066)
+transform = Transform3D(1, 0, 0, 0, 0.34556, 0.938397, 0, -0.938397, 0.34556, -0.461368, 17.6619, 8.74751)
 
 [node name="Counter" parent="." instance=ExtResource("3_fpono")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.07153, 0.3, 4.18273)
@@ -91,17 +104,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.82476, 0.3, 4.23482)
 [node name="Player" parent="." instance=ExtResource("17_dcckh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38917, 1.36336, 4.07691)
 
-[node name="Skeleton3D" parent="Player/chef2/Armature" index="0"]
-bones/4/rotation = Quaternion(0.00950368, 0.139085, -0.814633, 0.562972)
-bones/5/rotation = Quaternion(0.297282, 0.034143, -0.259519, 0.918209)
-bones/6/rotation = Quaternion(0.503788, -0.120885, 0.107286, 0.848572)
-bones/7/rotation = Quaternion(-0.0529767, -0.136779, 0.810106, 0.567638)
-bones/8/rotation = Quaternion(0.30171, -0.0385104, 0.247632, 0.919873)
-bones/9/rotation = Quaternion(0.534904, -0.0192079, -0.110463, 0.83744)
-
-[node name="Knife" parent="Player/chef2" index="1"]
-transform = Transform3D(0.00124408, 0.00991494, 0.000382445, 0.000169347, -0.000406601, 0.00999029, 0.00992087, -0.0012364, -0.000218491, -0.0134452, 0.407986, -0.00967667)
-
 [node name="Stove(Pan)" parent="." instance=ExtResource("17_yye10")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.18728, 0.298001, 6.31901)
 
@@ -123,7 +125,26 @@ transform = Transform3D(1, 0, 1.74846e-07, -3.66779e-09, 0.99978, 0.0209773, -1.
 [node name="Counter5" parent="." instance=ExtResource("14_dn5x0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.04202, 0.298, 6.36959)
 
-[node name="UI" parent="." instance=ExtResource("18_jftiw")]
+[node name="Player2" parent="." instance=ExtResource("18_jftiw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
 
-[editable path="Player"]
-[editable path="Player/chef2"]
+[node name="KitchenFloorLarge" parent="." instance=ExtResource("20_s0cgv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81488, -0.17, 3.335)
+
+[node name="TripleWallSegment" parent="." instance=ExtResource("21_3ppgv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09723, 1.87892, -0.66187)
+
+[node name="WindowWallSegment" parent="." instance=ExtResource("22_wesx8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.81712, 1.15983, 4.16484)
+
+[node name="CornerWallSegment" parent="." instance=ExtResource("23_qqkhr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.81685, 1.11718, 1.32733)
+
+[node name="CornerWallSegment2" parent="." instance=ExtResource("23_qqkhr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.79959, 1.15983, 7.33105)
+
+[node name="TripleWallSegment2" parent="." instance=ExtResource("21_3ppgv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.16775, 1.87892, 6.16053)
+
+[node name="KitchenFloorLarge2" parent="." instance=ExtResource("20_s0cgv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.168, -0.17, 3.31763)

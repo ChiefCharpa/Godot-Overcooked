@@ -7,10 +7,10 @@ var currentCounter
 var playerref
 var washing = false
 var dirtylist : Array = []
+var plate = true
 @onready var timer = $Timer
 
 func _ready():
-	inventory_node = get_node("/root/LevelNode/Player/Inventory")
 	cleanSpawner  = get_node("/root/LevelNode/Sink/Area3D")
 	currentCounter = self	
 
@@ -30,7 +30,7 @@ func _chop(Player: CharacterBody3D):
 		timer.stop()
 
 # Function to activate and interact with all counter objects
-func _activate():
+func _activate(inventory_node):
 	if inventory_node:
 		if inventory_node.resources_inventory.size() > 0:
 			if inventory_node.heldVegetable.has_method("dirtyPlate"):

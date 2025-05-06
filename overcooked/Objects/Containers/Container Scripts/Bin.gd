@@ -7,11 +7,10 @@ var inventory
 
 func _ready():
 	self.freeze = true
-	inventory_node = get_node("/root/LevelNode/Player/Inventory")
 	currentCounter = self
 
 # Function to activate and interact with all counter objects
-func _activate():
+func _activate(inventory_node):
 	if inventory_node:
 		if inventory_node.resources_inventory.size() > 0:
 			var new_root = get_tree().root.get_node("LevelNode")
