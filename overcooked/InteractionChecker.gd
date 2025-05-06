@@ -5,6 +5,7 @@ var resource_type = null #stores the type of resource
 var inventory_node #stores the inventory node
 var action_processed = false #tracks if the action is processed
 var force = 0
+var chopping = false
 
 
 
@@ -40,7 +41,7 @@ func _process(delta):
 	var nothing_or_food : bool = (body_to_activate == null or resource_type == "Food")
 
 	# Drop item if player presses interact/throw with food or nothing
-	if ((press_interact and nothing_or_food) or press_throw) and has_item and held_not_plate and not action_processed:
+	if ((press_interact and nothing_or_food) or press_throw) and has_item and held_not_plate and not action_processed and !chopping:
 		if press_throw:
 			force = 10
 		else:
@@ -50,7 +51,7 @@ func _process(delta):
 		action_processed = true
 
 	# Interact logic
-	elif Input.is_action_pressed("Interaction_Select") and body_to_activate and not action_processed:
+	elif Input.is_action_pressed("Interaction_Select") and body_to_activate and not action_processed and !chopping::
 		$SFX/Pickup_2.play()
 		action_processed = true
 		var held_plate : bool = player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() == "Plate"
@@ -76,10 +77,10 @@ func _process(delta):
 				body_to_activate.place(player_inventory)
 
 	# Backup drop logic (optional, could remove if above block covers everything)
-	elif (press_interact and nothing_or_food or press_throw) and has_item:
+	elif (press_interact and nothing_or_food or press_throw) and has_item and !chopping:
 		inventory_node._drop_item(force)
 		action_processed = true
 
 	# Reset interaction flag
-	elif not Input.is_action_pressed("Interaction_Select"):
+	elif not Input.is_action_pressed("Interaction_Select") and !chopping:
 		action_processed = false

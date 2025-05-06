@@ -1,13 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgoeow6gqog3o"]
+[gd_scene load_steps=4 format=3 uid="uid://bgoeow6gqog3o"]
 
 [ext_resource type="Script" uid="uid://cdpgsea5wnnv6" path="res://vegetable.gd" id="1_3bmip"]
+[ext_resource type="ArrayMesh" uid="uid://blwfbr23fndqb" path="res://Overcooked Assets/Meshes/Objects/Tomato/Tomato.obj" id="2_02e7q"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mhdnm"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_y8ssd"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdxic"]
-albedo_color = Color(0.662745, 0.027451, 0.0470588, 1)
 
 [node name="Tomato" type="RigidBody3D"]
 script = ExtResource("1_3bmip")
@@ -16,7 +12,6 @@ script = ExtResource("1_3bmip")
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 shape = SubResource("SphereShape3D_mhdnm")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
-mesh = SubResource("SphereMesh_y8ssd")
-surface_material_override/0 = SubResource("StandardMaterial3D_pdxic")
+[node name="Tomato" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.145492, 0)
+mesh = ExtResource("2_02e7q")

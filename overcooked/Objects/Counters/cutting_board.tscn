@@ -1,6 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://hm5rraqj5dr3"]
+[gd_scene load_steps=11 format=3 uid="uid://hm5rraqj5dr3"]
 
 [ext_resource type="Script" uid="uid://ca7eub0di4r1s" path="res://Objects/Counters/Scripts/cutting_board_Script.gd" id="1_ih4ek"]
+[ext_resource type="ArrayMesh" uid="uid://cbxawl30n4o0h" path="res://Overcooked Assets/Meshes/Environment/Chopping Board/ChoppingBoard_Side.obj" id="2_nlsuc"]
+[ext_resource type="PackedScene" uid="uid://crppjhnlynnwm" path="res://Overcooked Assets/Meshes/Environment/Basic_Cabinet/Basic_Cabinet_No_Handle.FBX" id="3_wjy47"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ytds0"]
 
@@ -48,6 +50,13 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_txt3y")
 
 [node name="Timer" type="Timer" parent="CuttingBoard_RigidBody3D"]
-wait_time = 10.0
+wait_time = 6.0
+
+[node name="ChoppingBoardSide" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0851806, 0.175154, 0.0352282)
+mesh = ExtResource("2_nlsuc")
+
+[node name="Basic_Cabinet_No_Handle" parent="." instance=ExtResource("3_wjy47")]
+transform = Transform3D(0.909025, 0, 0, 0, 1.38459, 0, 0, 0, 1.11042, 0.0107201, -0.274328, -0.00407794)
 
 [connection signal="timeout" from="CuttingBoard_RigidBody3D/Timer" to="CuttingBoard_RigidBody3D" method="_on_timer_timeout"]
