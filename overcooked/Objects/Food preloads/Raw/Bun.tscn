@@ -1,22 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://fp7nu113hv0e"]
+[gd_scene load_steps=4 format=3 uid="uid://fp7nu113hv0e"]
 
 [ext_resource type="Script" uid="uid://cdpgsea5wnnv6" path="res://vegetable.gd" id="1_3ujp0"]
+[ext_resource type="PackedScene" uid="uid://dttdnyuu8meyt" path="res://Overcooked Assets/Food/Burgers/BurgerBun.glb" id="2_blwiw"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mhdnm"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_y8ssd"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ujp0"]
-albedo_color = Color(0.742527, 0.357473, 0.0871998, 1)
 
 [node name="Bun" type="RigidBody3D"]
 script = ExtResource("1_3ujp0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+transform = Transform3D(0.500379, 0, 0, 0, 0.3, 0, 0, 0, 0.460944, 0.00464419, 0, 0)
 shape = SubResource("SphereShape3D_mhdnm")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
-mesh = SubResource("SphereMesh_y8ssd")
-surface_material_override/0 = SubResource("StandardMaterial3D_3ujp0")
+[node name="BurgerBun" parent="." instance=ExtResource("2_blwiw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0329271, 0)

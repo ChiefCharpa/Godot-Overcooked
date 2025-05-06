@@ -1,23 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1xpoh1v1o7ub"]
+[gd_scene load_steps=4 format=3 uid="uid://c1xpoh1v1o7ub"]
 
 [ext_resource type="Script" uid="uid://cdpgsea5wnnv6" path="res://vegetable.gd" id="1_vc46t"]
+[ext_resource type="PackedScene" uid="uid://bhb2og3eu41t1" path="res://Overcooked Assets/Food/Soups/OnionSoup.glb" id="2_j4svl"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_35cir"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_og5nn"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e8lhw"]
-albedo_color = Color(0.73, 0.3942, 0.2263, 1)
 
 [node name="Onion" type="RigidBody3D"]
 mass = 0.11
 script = ExtResource("1_vc46t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.3, 0, 0, 0)
+transform = Transform3D(0.7, 0, 0, 0, 0.1, 0, 0, 0, 0.7, 0, 0, 0)
 shape = SubResource("SphereShape3D_35cir")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.3, 0, 0, 0)
-mesh = SubResource("SphereMesh_og5nn")
-surface_material_override/0 = SubResource("StandardMaterial3D_e8lhw")
+[node name="OnionSoup" parent="." instance=ExtResource("2_j4svl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)

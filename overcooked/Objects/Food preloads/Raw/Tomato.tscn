@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bgoeow6gqog3o"]
 
 [ext_resource type="Script" uid="uid://cdpgsea5wnnv6" path="res://vegetable.gd" id="1_3bmip"]
-[ext_resource type="ArrayMesh" uid="uid://blwfbr23fndqb" path="res://Overcooked Assets/Meshes/Objects/Tomato/Tomato.obj" id="2_02e7q"]
+[ext_resource type="PackedScene" uid="uid://baf8bacrmw3uy" path="res://Overcooked Assets/Food/Raw Veg/Tomato.glb" id="2_02e7q"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mhdnm"]
 
@@ -12,6 +12,5 @@ script = ExtResource("1_3bmip")
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 shape = SubResource("SphereShape3D_mhdnm")
 
-[node name="Tomato" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.145492, 0)
-mesh = ExtResource("2_02e7q")
+[node name="Tomato2" parent="." instance=ExtResource("2_02e7q")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.0758615, 0)

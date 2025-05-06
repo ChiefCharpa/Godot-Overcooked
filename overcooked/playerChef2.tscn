@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://d4lm8nrceq1id"]
+[gd_scene load_steps=54 format=3 uid="uid://d4lm8nrceq1id"]
 
 [ext_resource type="Script" uid="uid://01hs8i25f6ey" path="res://player2.gd" id="1_tkgjp"]
 [ext_resource type="Script" uid="uid://d07yimsx645j4" path="res://Inventory2.gd" id="2_3411m"]
@@ -7,6 +7,7 @@
 [ext_resource type="Animation" uid="uid://fp51ns7kg255" path="res://Animations/chefAnimations/griddy.res" id="4_3yngf"]
 [ext_resource type="Animation" uid="uid://cms2w7ne4c4d8" path="res://Animations/chefAnimations/walk.res" id="5_1nytf"]
 [ext_resource type="Script" uid="uid://o4yw0o0jcd5b" path="res://Animations/chefAnimations/animManager.gd" id="6_1nqh3"]
+[ext_resource type="Animation" uid="uid://ba6rs8vs1ykam" path="res://Animations/chefAnimations/wash.res" id="7_3411m"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f4xx0"]
 
@@ -698,7 +699,8 @@ _data = {
 &"chop_001": SubResource("Animation_oprdd"),
 &"griddy": ExtResource("4_3yngf"),
 &"idle": SubResource("Animation_shnck"),
-&"walk": ExtResource("5_1nytf")
+&"walk": ExtResource("5_1nytf"),
+&"wash": ExtResource("7_3411m")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jdnac"]
@@ -767,6 +769,25 @@ states/Anim_walk/node = SubResource("AnimationNodeAnimation_5npo0")
 states/Anim_walk/position = Vector2(545, 100)
 transitions = ["Start", "Anim_walk", SubResource("AnimationNodeStateMachineTransition_ltt70"), "Anim_walk", "End", SubResource("AnimationNodeStateMachineTransition_6h3ag")]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3yngf"]
+animation = &"Anim/wash"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1nytf"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1nqh3"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_buf2m"]
+states/Anim_wash/node = SubResource("AnimationNodeAnimation_3yngf")
+states/Anim_wash/position = Vector2(539, 100)
+transitions = ["Start", "Anim_wash", SubResource("AnimationNodeStateMachineTransition_1nytf"), "Anim_wash", "End", SubResource("AnimationNodeStateMachineTransition_1nqh3")]
+
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_yxfm2"]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_cnw7c"]
@@ -794,6 +815,10 @@ input_4/name = "griddy"
 input_4/auto_advance = false
 input_4/break_loop_at_end = false
 input_4/reset = true
+input_5/name = "wash"
+input_5/auto_advance = false
+input_5/break_loop_at_end = false
+input_5/reset = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8ksqh"]
 animation = &"Anim/chop"
@@ -830,12 +855,15 @@ states/Anim_griddy/position = Vector2(558, 100)
 transitions = ["Start", "Anim_griddy", SubResource("AnimationNodeStateMachineTransition_a32lt"), "Anim_griddy", "End", SubResource("AnimationNodeStateMachineTransition_y86u8")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_tkgjp"]
+graph_offset = Vector2(-574.237, 137.69)
 nodes/Hold/node = SubResource("AnimationNodeStateMachine_y86u8")
 nodes/Hold/position = Vector2(-500, 620)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_rpdoq")
 nodes/Idle/position = Vector2(-220, 0)
 "nodes/Move /node" = SubResource("AnimationNodeStateMachine_8ksqh")
 "nodes/Move /position" = Vector2(-500, 180)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_buf2m")
+nodes/StateMachine/position = Vector2(-260, 980)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_cnw7c")
 nodes/TimeScale/position = Vector2(-200, 380)
 "nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_yxfm2")
@@ -847,7 +875,7 @@ nodes/chop/position = Vector2(-500, 400)
 nodes/griddy/node = SubResource("AnimationNodeStateMachine_rpdoq")
 nodes/griddy/position = Vector2(-500, 860)
 nodes/output/position = Vector2(580, 140)
-node_connections = [&"TimeScale", 0, &"chop", &"TimeScale 2", 0, &"Move ", &"Transition", 0, &"Idle", &"Transition", 1, &"TimeScale 2", &"Transition", 2, &"TimeScale", &"Transition", 3, &"Hold", &"Transition", 4, &"griddy", &"output", 0, &"Transition"]
+node_connections = [&"TimeScale", 0, &"chop", &"TimeScale 2", 0, &"Move ", &"Transition", 0, &"Idle", &"Transition", 1, &"TimeScale 2", &"Transition", 2, &"TimeScale", &"Transition", 3, &"Hold", &"Transition", 4, &"griddy", &"Transition", 5, &"StateMachine", &"output", 0, &"Transition"]
 
 [node name="Player2" type="CharacterBody3D"]
 safe_margin = 0.08
@@ -861,7 +889,7 @@ shape = SubResource("CapsuleShape3D_f4xx0")
 script = ExtResource("2_3411m")
 
 [node name="InteractionCheckerArea3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.6)
+transform = Transform3D(0.4, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.6)
 script = ExtResource("3_3yngf")
 AnimPlayer = "chef2/AnimationTree"
 
@@ -917,6 +945,7 @@ walkStateName = "walk"
 chopStateName = "chop"
 holdStateName = "hold"
 danceStateName = "griddy"
+washStateName = "wash"
 
 [connection signal="timeout" from="InteractionCheckerArea3D/Timer" to="InteractionCheckerArea3D" method="_on_timer_timeout"]
 

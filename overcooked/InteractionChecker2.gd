@@ -37,7 +37,11 @@ func _process(delta):
 			if body.has_method("Iscuttingboard"):
 				resource_type = body.get_some_variable()
 				body.call("_chop", self.get_parent())
-				animatePlayer.call("_changeState", 3)
+				print("ran")
+				if "plate" in body:
+					animatePlayer.call("_changeState", 6)
+				else:
+					animatePlayer.call("_changeState", 3)
 				
 	##variable simplification for readability
 	var press_interact := Input.is_action_just_pressed("Interaction_Select2")

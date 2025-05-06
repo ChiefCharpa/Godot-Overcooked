@@ -7,6 +7,7 @@ var currentCounter
 var playerref
 var washing = false
 var dirtylist : Array = []
+var plate = true
 @onready var timer = $Timer
 
 func _ready():
