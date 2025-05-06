@@ -37,6 +37,7 @@ func _process(delta):
 			if body.has_method("Iscuttingboard"):
 				resource_type = body.get_some_variable()
 				body.call("_chop", self.get_parent())
+				print("ran")
 				if "plate" in body:
 					animatePlayer.call("_changeState", 6)
 				else:

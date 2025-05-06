@@ -855,7 +855,7 @@ states/Anim_griddy/position = Vector2(558, 100)
 transitions = ["Start", "Anim_griddy", SubResource("AnimationNodeStateMachineTransition_a32lt"), "Anim_griddy", "End", SubResource("AnimationNodeStateMachineTransition_y86u8")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_tkgjp"]
-graph_offset = Vector2(-402.853, 222.959)
+graph_offset = Vector2(-574.237, 137.69)
 nodes/Hold/node = SubResource("AnimationNodeStateMachine_y86u8")
 nodes/Hold/position = Vector2(-500, 620)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_rpdoq")
@@ -907,12 +907,12 @@ transform = Transform3D(-1.54509, 0, -0.0287145, 0, 1.44546, 0, 0.028858, 0, -1.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236842, 0)
 
 [node name="Skeleton3D" parent="chef2/Armature" index="0"]
-bones/4/rotation = Quaternion(0.00950368, 0.139085, -0.814633, 0.562972)
-bones/5/rotation = Quaternion(0.297282, 0.034143, -0.259519, 0.918209)
-bones/6/rotation = Quaternion(0.503788, -0.120885, 0.107286, 0.848572)
-bones/7/rotation = Quaternion(-0.0529767, -0.136779, 0.810106, 0.567638)
-bones/8/rotation = Quaternion(0.30171, -0.0385104, 0.247632, 0.919873)
-bones/9/rotation = Quaternion(0.534904, -0.0192079, -0.110463, 0.83744)
+bones/4/rotation = Quaternion(0.150556, -0.181008, -0.87691, 0.419044)
+bones/5/rotation = Quaternion(0.00165588, -0.0550218, -0.0029826, 0.998479)
+bones/6/rotation = Quaternion(0.753097, -0.0153978, -0.0832298, 0.652442)
+bones/7/rotation = Quaternion(0.111438, 0.179759, 0.870789, 0.443841)
+bones/8/rotation = Quaternion(0.00343394, -0.0178398, 0.00207119, 0.999833)
+bones/9/rotation = Quaternion(0.807575, -0.113802, 0.00851561, 0.578618)
 
 [node name="ChefTest1" parent="chef2/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_tkgjp")
