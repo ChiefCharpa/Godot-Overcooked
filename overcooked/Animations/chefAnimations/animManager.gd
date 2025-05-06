@@ -40,7 +40,7 @@ func _changeState(val: int):
 		animationTree.set(Transitionpath, washStateName);
 	else:
 		var current = animationTree.get(Transitionpath);
-		if (hold.get_current_node() == "Anim_idle" and holding == true):
+		if ((hold.get_current_node() != "Anim_Hold" and hold.get_current_node() != "Anim_Unhold") and holding == true):
 			holding = false;
 
 
