@@ -12,7 +12,6 @@ var childlist : Array = []
 func _ready():
 	for child in get_children():
 		childlist.append(child.name)
-	inventory_node = get_node("/root/LevelNode/Player/Inventory")
 	currentCounter = self	
 	
 func _chop(Player: CharacterBody3D):
@@ -26,17 +25,16 @@ func _chop(Player: CharacterBody3D):
 		chopping = true
 		playerref.Freeze()
 		timer.start()
-		Player.get_child(3).chopping = true
+		Player.get_child(2).chopping = true
 	elif chop and chopping:
-		Player.get_child(3).chopping = false
+		Player.get_child(2).chopping = false
 		chopping = false
 		playerref.Freeze()
 		timer.wait_time = timer.time_left
 		timer.stop()
-
 	
 # Function to activate and interact with all counter objects
-func _activate():
+func _activate(inventory_node):
 	if inventory_node:
 		if inventory_node.resources_inventory.size() > 0 and inventory_node.heldVegetable.get_some_variable() == "Food":
 			inventory_node._place_item(currentCounter.get_path())  # Passing the NodePath of the current counter
@@ -64,4 +62,4 @@ func _on_timer_timeout() -> void:
 		timer.stop()
 		timer.wait_time = 6
 		chopping = false
-		playerref.get_child(3).chopping = false
+		playerref.get_child(2).chopping = false
