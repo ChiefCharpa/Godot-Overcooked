@@ -17,6 +17,17 @@ func _ready():
 	for child in get_children():
 		childlist.append(child.name)
 
+func add_to_plate(veg: Node3D):
+	if veg!= null and Global.Platelist.has(veg.name):
+		held_vegetable.append(veg.name)
+		veg.queue_free()
+		var newveg = Global.VegDictionary.get(veg.name).instantiate()
+		add_child(newveg)
+		var offset = Vector3(0, 0.1 + 0.2 * held_vegetable.size(), 0)
+		newveg.freeze = true
+		newveg.get_node("CollisionShape3D").disabled = true
+		newveg.transform.origin = offset
+
 func add_vegetable(veg: Node3D,player_inventory):
 	var parts = veg.name.split("_")
 	if Global.Veglist.has("Soup_"+parts[-1]) and veg.name.begins_with("Chopped") and held_vegetable.size()<3:
