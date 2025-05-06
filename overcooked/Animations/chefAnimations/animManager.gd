@@ -12,9 +12,11 @@ extends Node
 
 var holding: bool;
 var transition: AnimationNodeTransition;
+var hold: AnimationNodeStateMachinePlayback;
 
 func _ready():
 	transition = animationTree.get(TransitionObj) as AnimationNodeTransition;
+	hold = animationTree.get(holdPath) as AnimationNodeStateMachinePlayback;
 	
 
 func _process(delta):
@@ -33,9 +35,11 @@ func _changeState(val: int):
 		holding = true;
 	elif (val == 5 and !holding):
 		animationTree.set(Transitionpath, danceStateName);
+	else:
+		var current = animationTree.get(Transitionpath);
+		if (hold.get_current_node() == "Anim_idle" and holding == true):
+			holding = false;
 
 
 func _changeHolding():
-	var hold = animationTree.get(holdPath) as AnimationNodeStateMachinePlayback;
 	hold.travel(holdingStatusName);
-	holding = false;

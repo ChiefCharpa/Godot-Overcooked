@@ -100,6 +100,7 @@ func _process(delta):
 		action_processed = false
 		
 	
-	elif (currently_hold and !has_item):
-		animatePlayer.call("_changeHolding")
+	if (currently_hold and !has_item):
+		animatePlayer.call("_changeHolding");
 		currently_hold = false;
+	
