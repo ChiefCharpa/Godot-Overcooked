@@ -38,6 +38,7 @@ func _process(delta):
 				body.call("_chop", self.get_parent())
 				##Calls animation Player for action 3
 				animatePlayer.call("_changeState", 3)
+				$SFX/Chopping.play()
 
 ##variable simplification for readability
 	var press_interact := Input.is_action_just_pressed("Interaction_Select")
@@ -59,12 +60,14 @@ func _process(delta):
 		else:
 			force = 0
 		inventory_node._drop_item(force)
+		$SFX/Pickup_1.play()
 		action_processed = true
 		animatePlayer.call("_changeHolding")
 		currently_hold = false;
 
-	elif press_interact and body_to_activate and not action_processed and !chopping:
-
+	# Interact logic
+	elif Input.is_action_pressed("Interaction_Select") and body_to_activate and not action_processed and !chopping:
+		$SFX/Pickup_2.play()
 		action_processed = true
 		var held_plate : bool = player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() == "Plate"
 
