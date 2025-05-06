@@ -55,6 +55,10 @@ func BurgerCheck():
 			held_vegetables.erase("Burger+Lettuce")
 			held_vegetables.erase(&"Chopped_Tomato")
 			held_vegetables.append("Burger+Lettuce+Tomato")
+		if held_vegetables.has("Chopped_Lettuce") and held_vegetables.has("Chopped_Tomato") and !held_vegetables.has("Bun"):
+			held_vegetables.erase(&"Chopped_Tomato")
+			held_vegetables.erase(&"Chopped_Lettuce")
+			held_vegetables.append(("Salad+Tomato"))
 
 func pickup(player_inventory):
 	player_inventory.add_container(self)

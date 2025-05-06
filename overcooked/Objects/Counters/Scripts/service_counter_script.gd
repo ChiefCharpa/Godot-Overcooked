@@ -4,7 +4,7 @@ var resource_type = "Interactable"
 var inventory_node
 var currentCounter
 var cookedDish
-var recipes: Array = [["Soup_Tomato"], ["Soup_Onion"], ["Soup_Mushroom"],["Burger"],["Burger+Lettuce"],["Burger+Lettuce+Tomato"]]
+var recipes: Array = [["Soup_Tomato"], ["Soup_Onion"], ["Soup_Mushroom"],["Burger"],["Burger+Lettuce"],["Burger+Lettuce+Tomato"],["Chopped_Lettuce"],["Salad+Tomato"]]
 var orders: Array = []
 var plateSpawnNode
 var score = 0
@@ -14,10 +14,10 @@ func _ready():
 	inventory_node = get_node("/root/LevelNode/Player/Inventory")
 	plateSpawnNode = get_node("/root/LevelNode/Service_Counter/Counter_Rigidbody")
 	currentCounter = self
-	start_random_timer()
+	_on_place_order_timer_timeout()
 
 func start_random_timer():
-	var new_time = randf_range(20.0, 30.0)
+	var new_time = randf_range(40.0, 60.0)
 	print(new_time)
 	order_Timer.wait_time = new_time
 	order_Timer.start()

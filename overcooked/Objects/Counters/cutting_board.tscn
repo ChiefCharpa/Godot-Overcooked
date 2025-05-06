@@ -50,7 +50,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_txt3y")
 
 [node name="Timer" type="Timer" parent="CuttingBoard_RigidBody3D"]
-wait_time = 10.0
+wait_time = 6.0
 
 [node name="ChoppingBoardSide" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0851806, 0.175154, 0.0352282)
