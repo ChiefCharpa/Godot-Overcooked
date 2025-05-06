@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bnmxv1lamjdyj" path="res://playerChef.tscn" id="17_dcckh"]
 [ext_resource type="PackedScene" uid="uid://3aegjuif6mfk" path="res://Objects/Counters/Stove(Pan).tscn" id="17_jftiw"]
 [ext_resource type="PackedScene" uid="uid://u34pilek63et" path="res://Objects/Counters/Stove(Pot).tscn" id="17_yye10"]
-[ext_resource type="PackedScene" uid="uid://jfq2gfrt5cgn" path="res://playerChef_2.tscn" id="18_jftiw"]
+[ext_resource type="PackedScene" uid="uid://d4lm8nrceq1id" path="res://playerChef2.tscn" id="18_jftiw"]
 [ext_resource type="PackedScene" uid="uid://ccjshm25fqapr" path="res://Objects/Counters/Sink.tscn" id="18_s1kns"]
 [ext_resource type="PackedScene" uid="uid://dt7af76asgoed" path="res://Objects/Counters/Bun_spawner.tscn" id="19_yye10"]
 
@@ -91,17 +91,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.82476, 0.3, 4.23482)
 [node name="Player" parent="." instance=ExtResource("17_dcckh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38917, 1.36336, 4.07691)
 
-[node name="Skeleton3D" parent="Player/chef2/Armature" index="0"]
-bones/4/rotation = Quaternion(0.00950368, 0.139085, -0.814633, 0.562972)
-bones/5/rotation = Quaternion(0.297282, 0.034143, -0.259519, 0.918209)
-bones/6/rotation = Quaternion(0.503788, -0.120885, 0.107286, 0.848572)
-bones/7/rotation = Quaternion(-0.0529767, -0.136779, 0.810106, 0.567638)
-bones/8/rotation = Quaternion(0.30171, -0.0385104, 0.247632, 0.919873)
-bones/9/rotation = Quaternion(0.534904, -0.0192079, -0.110463, 0.83744)
-
-[node name="Knife" parent="Player/chef2" index="1"]
-transform = Transform3D(0.00124408, 0.00991494, 0.000382445, 0.000169347, -0.000406601, 0.00999029, 0.00992087, -0.0012364, -0.000218491, -0.0134452, 0.407986, -0.00967667)
-
 [node name="Stove(Pan)" parent="." instance=ExtResource("17_yye10")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.18728, 0.298001, 6.31901)
 
@@ -124,4 +113,4 @@ transform = Transform3D(1, 0, 1.74846e-07, -3.66779e-09, 0.99978, 0.0209773, -1.
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.04202, 0.298, 6.36959)
 
 [node name="Player2" parent="." instance=ExtResource("18_jftiw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35381, 1.22458, 4.42322)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
