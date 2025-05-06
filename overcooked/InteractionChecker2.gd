@@ -5,12 +5,15 @@ var resource_type = null #stores the type of resource
 var inventory_node #stores the inventory node
 var action_processed = false #tracks if the action is processed
 var force = 0
+var player_node
 
 
 
 func _ready() -> void:
 	player_inventory = get_parent().get_node("Inventory2") #gets the player's inventory
 	inventory_node = get_node("/root/LevelNode/Player2/Inventory2") #gets the inventorys node path
+	
+	player_node = player_inventory.get_parent()
 
 func _process(delta):
 	var overlapping_bodies = get_overlapping_bodies()
@@ -25,7 +28,15 @@ func _process(delta):
 			body_to_activate = body
 
 	# Chopping check
-	if Input.is_action_just_pressed("Chop2"):
+	if Input.is_action_pressed("Chop2") and player_inventory.resources_inventory.has("Extinguisher"):
+		if player_inventory.resources_inventory.has("Extinguisher"):
+			var extinguisher = player_inventory.resources_inventory["Extinguisher"]
+			player_inventory.heldVegetable.spray_foam()
+			player_node.spraying = true
+	else:
+		player_node.spraying = false
+	# Chopping check
+	if Input.is_action_just_pressed("Chop2") and not player_inventory.resources_inventory.has("Extinguisher"):
 		for body in overlapping_bodies:
 			if body.has_method("Iscuttingboard"):
 				resource_type = body.get_some_variable()

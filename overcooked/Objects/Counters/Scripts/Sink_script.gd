@@ -8,7 +8,7 @@ var playerref
 var washing = false
 var dirtylist : Array = []
 @onready var timer = $Timer
-
+var burning = false
 func _ready():
 	cleanSpawner  = get_node("/root/LevelNode/Sink/Area3D")
 	currentCounter = self	
@@ -30,7 +30,7 @@ func _chop(Player: CharacterBody3D):
 
 # Function to activate and interact with all counter objects
 func _activate(inventory_node):
-	if inventory_node:
+	if not burning and inventory_node:
 		if inventory_node.resources_inventory.size() > 0:
 			if inventory_node.heldVegetable.has_method("dirtyPlate"):
 				inventory_node.heldVegetable.call("dirtyPlate") #calls the _activate method
@@ -62,3 +62,8 @@ func _on_timer_timeout() -> void:
 		timer.stop()
 		timer.wait_time = 1  # Reset the timer
 		washing = false
+func onFire():
+	burning = true
+	var fire = preload("res://Fire.tscn").instantiate()
+	add_child(fire)
+	fire.transform.origin = Vector3(0, 1, 0)
