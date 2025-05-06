@@ -37,7 +37,10 @@ func _process(delta):
 				resource_type = body.get_some_variable()
 				body.call("_chop", self.get_parent())
 				##Calls animation Player for action 3
-				animatePlayer.call("_changeState", 3)
+				if "plate" in body:
+					animatePlayer.call("_changeState", 6)
+				else:
+					animatePlayer.call("_changeState", 3)
 				$SFX/Chopping.play()
 
 ##variable simplification for readability

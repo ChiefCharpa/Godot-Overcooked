@@ -1,13 +1,13 @@
-[gd_scene load_steps=47 format=3 uid="uid://bnmxv1lamjdyj"]
+[gd_scene load_steps=52 format=3 uid="uid://bnmxv1lamjdyj"]
 
 [ext_resource type="Script" uid="uid://njawwihyt5mv" path="res://Inventory.gd" id="1_7q55s"]
 [ext_resource type="Script" uid="uid://dkkuh2tj0x18s" path="res://InteractionChecker.gd" id="2_vmk5g"]
 [ext_resource type="PackedScene" uid="uid://c6mpytyndipix" path="res://Overcooked Assets/Chef/ChefAnim/chef2.gltf" id="3_vmk5g"]
+[ext_resource type="AudioStream" uid="uid://klqxp01vojg7" path="res://Overcooked SFX/ItemPickUp1.mp3" id="4_5npo0"]
 [ext_resource type="Animation" uid="uid://fp51ns7kg255" path="res://Animations/chefAnimations/griddy.res" id="4_jghgm"]
+[ext_resource type="AudioStream" uid="uid://xlwtm252slnx" path="res://Overcooked SFX/ItemPickUp2.mp3" id="5_jdnac"]
 [ext_resource type="Animation" uid="uid://cms2w7ne4c4d8" path="res://Animations/chefAnimations/walk.res" id="5_ochdj"]
 [ext_resource type="Script" uid="uid://o4yw0o0jcd5b" path="res://Animations/chefAnimations/animManager.gd" id="6_5npo0"]
-[ext_resource type="AudioStream" uid="uid://klqxp01vojg7" path="res://Overcooked SFX/ItemPickUp1.mp3" id="4_5npo0"]
-[ext_resource type="AudioStream" uid="uid://xlwtm252slnx" path="res://Overcooked SFX/ItemPickUp2.mp3" id="5_jdnac"]
 [ext_resource type="AudioStream" uid="uid://denxftivtll8v" path="res://Overcooked SFX/ItemPickUp3.mp3" id="6_ltt70"]
 [ext_resource type="AudioStream" uid="uid://bwspukhux5yka" path="res://Overcooked SFX/Dash.mp3" id="7_5npo0"]
 [ext_resource type="AudioStream" uid="uid://00mw8owbot60" path="res://Overcooked SFX/SingleChop.mp3" id="7_6h3ag"]
@@ -940,6 +940,27 @@ shape = SubResource("BoxShape3D_5s4uc")
 [node name="Timer" type="Timer" parent="InteractionCheckerArea3D"]
 autostart = true
 
+[node name="SFX" type="Node" parent="InteractionCheckerArea3D"]
+
+[node name="Pickup_1" type="AudioStreamPlayer3D" parent="InteractionCheckerArea3D/SFX"]
+stream = ExtResource("4_5npo0")
+volume_db = -13.0
+bus = &"Pickup"
+
+[node name="Pickup_2" type="AudioStreamPlayer3D" parent="InteractionCheckerArea3D/SFX"]
+stream = ExtResource("5_jdnac")
+volume_db = -3.0
+bus = &"Pickup"
+
+[node name="Pickup_3" type="AudioStreamPlayer3D" parent="InteractionCheckerArea3D/SFX"]
+stream = ExtResource("6_ltt70")
+bus = &"Pickup"
+
+[node name="Chopping" type="AudioStreamPlayer3D" parent="InteractionCheckerArea3D/SFX"]
+stream = ExtResource("7_6h3ag")
+bus = &"Chopping"
+parameters/looping = false
+
 [node name="chef2" parent="." instance=ExtResource("3_vmk5g")]
 transform = Transform3D(-1.54509, 0, -0.0287145, 0, 1.44546, 0, 0.028858, 0, -1.53741, -0.0215359, -1.05174, -0.0241222)
 
@@ -981,26 +1002,6 @@ walkStateName = "walk"
 chopStateName = "chop"
 holdStateName = "hold"
 danceStateName = "griddy"
-[node name="SFX" type="Node" parent="InteractionCheckerArea3D"]
-
-[node name="Pickup_1" type="AudioStreamPlayer3D" parent="InteractionCheckerArea3D/SFX"]
-stream = ExtResource("4_5npo0")
-volume_db = -13.0
-bus = &"Pickup"
-
-[node name="Pickup_2" type="AudioStreamPlayer3D" parent="InteractionCheckerArea3D/SFX"]
-stream = ExtResource("5_jdnac")
-volume_db = -3.0
-bus = &"Pickup"
-
-[node name="Pickup_3" type="AudioStreamPlayer3D" parent="InteractionCheckerArea3D/SFX"]
-stream = ExtResource("6_ltt70")
-bus = &"Pickup"
-
-[node name="Chopping" type="AudioStreamPlayer3D" parent="InteractionCheckerArea3D/SFX"]
-stream = ExtResource("7_6h3ag")
-bus = &"Chopping"
-parameters/looping = false
 
 [node name="SFX" type="Node" parent="."]
 
