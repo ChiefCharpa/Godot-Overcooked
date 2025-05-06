@@ -1,5 +1,6 @@
 extends Node
 @export var Transitionpath: String;
+@export var TransitionObj: String;
 @export var holdPath: String;
 @export var holdingStatusName: String;
 @export var animationTree: AnimationTree;
@@ -10,10 +11,10 @@ extends Node
 @export var danceStateName: String;
 
 var holding: bool;
-
+var transition: AnimationNodeTransition;
 
 func _ready():
-	pass
+	transition = animationTree.get(TransitionObj) as AnimationNodeTransition;
 	
 
 func _process(delta):
@@ -21,19 +22,20 @@ func _process(delta):
 
 
 func _changeState(val: int):
-	var transition = animationTree.get(Transitionpath) as AnimationNodeTransition;
-	if (val == 1):
-		animationTree.set(transition, idleStateName);
-	elif (val == 2):
-		animationTree.set(transition, walkStateName);
-	elif (val == 3):
-		animationTree.set(transition, chopStateName);
-	elif (val == 4):
-		animationTree.set(transition, holdStateName);
-	else:
-		animationTree.set(transition, danceStateName);
+	if (val == 1 and !holding):
+		animationTree.set(Transitionpath, idleStateName);
+	elif (val == 2 and !holding):
+		animationTree.set(Transitionpath, walkStateName);
+	elif (val == 3 and !holding):
+		animationTree.set(Transitionpath, chopStateName);
+	elif (val == 4 and !holding):
+		animationTree.set(Transitionpath, holdStateName);
+		holding = true;
+	elif (val == 5 and !holding):
+		animationTree.set(Transitionpath, danceStateName);
 
 
-func changeHolding():
+func _changeHolding():
 	var hold = animationTree.get(holdPath) as AnimationNodeStateMachinePlayback;
 	hold.travel(holdingStatusName);
+	holding = false;

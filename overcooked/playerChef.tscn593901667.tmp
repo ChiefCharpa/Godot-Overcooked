@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bnmxv1lamjdyj"]
+[gd_scene load_steps=36 format=3 uid="uid://bnmxv1lamjdyj"]
 
 [ext_resource type="Script" uid="uid://njawwihyt5mv" path="res://Inventory.gd" id="1_7q55s"]
 [ext_resource type="Script" uid="uid://dkkuh2tj0x18s" path="res://InteractionChecker.gd" id="2_vmk5g"]
@@ -9,10 +9,6 @@
 
 [sub_resource type="GDScript" id="GDScript_w0ksy"]
 script/source = "extends CharacterBody3D
-
-@export var AnimPlayer: String; # calls the path of the animation player
-
-var animatePlayer = null
 
 const SPEED = 5.0
 const DASH_MULTIPLIER = 2.5
@@ -25,10 +21,6 @@ var dash_timer: float = 0.0
 var last_direction: Vector3 = Vector3.ZERO
 
 @onready var inventory: Inventory = $Inventory
-
-
-func _ready() -> void:
-	animatePlayer = get_node(AnimPlayer);## gets the players animation script
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed(\"print_inventory\"):
@@ -48,8 +40,7 @@ func _physics_process(delta: float) -> void:
 	if not freeze:
 		if move_dir != Vector3.ZERO:
 			last_direction = move_dir  # Update direction only when there's movement
-			
-			
+
 		if dashing:
 			velocity.x = last_direction.x * SPEED * DASH_MULTIPLIER
 			velocity.z = last_direction.z * SPEED * DASH_MULTIPLIER
@@ -63,7 +54,6 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = 0
 			velocity.z = 0
-			animatePlayer.call(\"_changeState\", 2)
 
 		# Smooth rotation toward last direction
 		var target_rotation = atan2(-last_direction.x, -last_direction.z)
@@ -772,39 +762,28 @@ animation = &"Anim/Hold"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6h3ag"]
 animation = &"Anim/Unhold"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ochdj"]
-animation = &"Anim/idle"
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8ksqh"]
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_owvmd"]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cdisw"]
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5npo0"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a32lt"]
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jdnac"]
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_y86u8"]
-reset_ends = true
 states/Anim_ContinueHold/node = SubResource("AnimationNodeAnimation_jdnac")
 states/Anim_ContinueHold/position = Vector2(558, 100)
 states/Anim_Hold/node = SubResource("AnimationNodeAnimation_ltt70")
 states/Anim_Hold/position = Vector2(357, 100)
 states/Anim_Unhold/node = SubResource("AnimationNodeAnimation_6h3ag")
 states/Anim_Unhold/position = Vector2(751, 100)
-states/Anim_idle/node = SubResource("AnimationNodeAnimation_ochdj")
-states/Anim_idle/position = Vector2(927, 100)
-states/End/position = Vector2(1082, 100)
-transitions = ["Start", "Anim_Hold", SubResource("AnimationNodeStateMachineTransition_8ksqh"), "Anim_ContinueHold", "Anim_Unhold", SubResource("AnimationNodeStateMachineTransition_owvmd"), "Anim_Hold", "Anim_ContinueHold", SubResource("AnimationNodeStateMachineTransition_cdisw"), "Anim_Unhold", "Anim_idle", SubResource("AnimationNodeStateMachineTransition_5npo0"), "Anim_idle", "End", SubResource("AnimationNodeStateMachineTransition_jdnac")]
-graph_offset = Vector2(63, -1)
+transitions = ["Start", "Anim_Hold", SubResource("AnimationNodeStateMachineTransition_8ksqh"), "Anim_ContinueHold", "Anim_Unhold", SubResource("AnimationNodeStateMachineTransition_owvmd"), "Anim_Hold", "Anim_ContinueHold", SubResource("AnimationNodeStateMachineTransition_cdisw"), "Anim_Unhold", "End", SubResource("AnimationNodeStateMachineTransition_a32lt")]
+graph_offset = Vector2(-7, -69)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rpdoq"]
 animation = &"Anim/idle"
@@ -833,7 +812,7 @@ input_2/break_loop_at_end = false
 input_2/reset = true
 input_3/name = "hold"
 input_3/auto_advance = false
-input_3/break_loop_at_end = false
+input_3/break_loop_at_end = true
 input_3/reset = true
 input_4/name = "griddy"
 input_4/auto_advance = false
@@ -847,7 +826,7 @@ animation = &"Anim/chop"
 animation = &"Anim/griddy"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gpxxo"]
-graph_offset = Vector2(-560.475, 97.7801)
+graph_offset = Vector2(-263.279, 79.9304)
 nodes/Hold/node = SubResource("AnimationNodeStateMachine_y86u8")
 nodes/Hold/position = Vector2(-500, 620)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_rpdoq")
@@ -870,7 +849,6 @@ node_connections = [&"TimeScale", 0, &"chop", &"TimeScale 2", 0, &"Move", &"Tran
 [node name="Player" type="CharacterBody3D"]
 safe_margin = 0.08
 script = SubResource("GDScript_w0ksy")
-AnimPlayer = "chef2/AnimationTree"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_f4xx0")
@@ -917,9 +895,9 @@ tree_root = SubResource("AnimationNodeBlendTree_gpxxo")
 anim_player = NodePath("../AnimationPlayer")
 parameters/TimeScale/scale = 3.34
 "parameters/TimeScale 2/scale" = 1.26
-parameters/Transition/current_state = "hold"
-parameters/Transition/transition_request = 0.08
-parameters/Transition/current_index = 0.08
+parameters/Transition/current_state = "idle"
+parameters/Transition/transition_request = ""
+parameters/Transition/current_index = 0
 script = ExtResource("6_5npo0")
 Transitionpath = "parameters/Transition/transition_request"
 TransitionObj = "parameters/Transition"
