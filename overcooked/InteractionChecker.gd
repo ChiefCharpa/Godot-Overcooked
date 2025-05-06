@@ -53,7 +53,7 @@ func _process(delta):
 
 
 	# Drop item if player presses interact/throw with food or nothing
-	if ((press_interact and nothing_or_food) or press_throw) and has_item and held_not_plate and not action_processed:
+	if ((press_interact and nothing_or_food) or press_throw) and has_item and held_not_plate and not action_processed and !chopping:
 		if press_throw:
 			force = 10
 		else:
@@ -89,14 +89,14 @@ func _process(delta):
 				body_to_activate.place(player_inventory)
 
 	# Backup drop logic (optional, could remove if above block covers everything)
-	elif (press_interact and nothing_or_food or press_throw) and has_item:
+	elif (press_interact and nothing_or_food or press_throw) and has_item and !chopping:
 		inventory_node._drop_item(force)
 		action_processed = true
 		animatePlayer.call("_changeHolding")
 		currently_hold = false;
 
 	# Reset interaction flag
-	elif not Input.is_action_pressed("Interaction_Select"):
+	elif not Input.is_action_pressed("Interaction_Select")and !chopping:
 		action_processed = false
 		
 	
