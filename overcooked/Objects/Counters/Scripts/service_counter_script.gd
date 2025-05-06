@@ -1,13 +1,16 @@
 extends RigidBody3D
 
 var resource_type = "Interactable"
+var recipeTexture
 var inventory_node
 var currentCounter
 var cookedDish
 var recipes: Array = [["Soup_Tomato"], ["Soup_Onion"], ["Soup_Mushroom"],["Burger"],["Burger+Lettuce"],["Burger+Lettuce+Tomato"],["Chopped_Lettuce"],["Salad+Tomato"]]
 var orders: Array = []
 var plateSpawnNode
-var score = 0
+
+@onready var scoreNode = get_node("/root/LevelNode/UI/StatDisplay/Score")
+@onready var recipe_display: Control = get_node("/root/LevelNode/UI/RecipeDisplay")
 @onready var order_Timer = $place_Order_Timer
 
 func _ready():
@@ -28,6 +31,7 @@ func _on_place_order_timer_timeout() -> void:
 		"recipe": recipes[random_number],
 		"time_added": Time.get_ticks_msec() / 1000.0  # Convert to seconds
 	}
+	displayOrder(new_order)
 	orders.append(new_order)
 	print("new order", new_order)
 	start_random_timer()
@@ -38,7 +42,7 @@ func _process(delta):
 		if current_time - orders[i].time_added >= 60.0:
 			print("Order expired:", orders[i].recipe)
 			orders.remove_at(i)
-			score -= 5  # Penalty
+			scoreNode.addScore(-5)  # Penalty
 
 
 func _activate(inventory_node):
@@ -63,7 +67,7 @@ func _activate(inventory_node):
 						orders.remove_at(i)
 						plateSpawnNode.call("spawn")
 						print("Order completed and removed:", recipe)
-						score += 10
+						scoreNode.addScore(10)
 						return
 					else:
 						print("Order doesn't match:", recipe)
@@ -76,3 +80,25 @@ func _activate(inventory_node):
 
 func get_some_variable():
 	return resource_type
+
+# Displays orders at top of screen
+func displayOrder(order):
+	if order["recipe"][0] == "Soup_Tomato":
+		recipeTexture = load("res://UI/Recipes/Soups/Recipe_Soup_TomatoSoup.png")
+		recipe_display.displayRecipe(recipeTexture)
+	if order["recipe"][0] == "Soup_Mushroom":
+		recipeTexture = load("res://UI/Recipes/Soups/Recipe_Soup_MushroomSoup.png")
+		recipe_display.displayRecipe(recipeTexture)
+	if order["recipe"][0] == "Soup_Onion":
+		recipeTexture = load("res://UI/Recipes/Soups/Recipe_Soup_OnionSoup.png")
+		recipe_display.displayRecipe(recipeTexture)
+
+	if order["recipe"][0] == "Burger":
+		recipeTexture = load("res://UI/Recipes/Burgers/Recipe_Burger_2.png")
+		recipe_display.displayRecipe(recipeTexture)
+	if order["recipe"][0] == "Burger+Lettuce":
+		recipeTexture = load("res://UI/Recipes/Burgers/Recipe_Burger_3.png")
+		recipe_display.displayRecipe(recipeTexture)
+	if order["recipe"][0] == "Burger+Lettuce+Tomato":
+		recipeTexture = load("res://UI/Recipes/Burgers/Recipe_Burger_4.png")
+		recipe_display.displayRecipe(recipeTexture)

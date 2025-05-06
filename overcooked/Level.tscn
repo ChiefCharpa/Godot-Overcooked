@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dral0g73t3p7"]
+[gd_scene load_steps=29 format=3 uid="uid://dral0g73t3p7"]
 
 [ext_resource type="PackedScene" uid="uid://5aocl1ky0vhb" path="res://Objects/Counters/tomato_spawner.tscn" id="1_8o4rb"]
 [ext_resource type="AudioStream" uid="uid://3bvi3jx06iyc" path="res://Overcooked SFX/OvercookedSoundtrack.mp3" id="2_pd0bf"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://c2kj6esayq1kl" path="res://Overcooked Assets/Decorations/KitchenWalls/TripleWallSegment.glb" id="21_3ppgv"]
 [ext_resource type="PackedScene" uid="uid://bx7lqk1at3smh" path="res://Overcooked Assets/Decorations/KitchenWalls/WindowWallSegment.glb" id="22_wesx8"]
 [ext_resource type="PackedScene" uid="uid://cxn2s3upm086n" path="res://Overcooked Assets/Decorations/KitchenWalls/CornerWallSegment.glb" id="23_qqkhr"]
+[ext_resource type="PackedScene" uid="uid://bo52nln3vdv1o" path="res://UI.tscn" id="24_3ppgv"]
 
 [sub_resource type="GDScript" id="GDScript_jftiw"]
 
@@ -148,3 +149,5 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.1677
 
 [node name="KitchenFloorLarge2" parent="." instance=ExtResource("20_s0cgv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.168, -0.17, 3.31763)
+
+[node name="UI" parent="." instance=ExtResource("24_3ppgv")]
