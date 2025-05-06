@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgkmdmvjhvk6t"]
+[gd_scene load_steps=8 format=3 uid="uid://cgkmdmvjhvk6t"]
 
 [ext_resource type="Script" uid="uid://3d2h6e658v6p" path="res://Objects/Counters/Scripts/counter_Script.gd" id="1_xewjb"]
+[ext_resource type="PackedScene" uid="uid://cp705iuhxjfe0" path="res://Overcooked Assets/Meshes/Environment/Basic_Cabinet/Basic_Cabinet.FBX" id="2_hbyhj"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4q843"]
 
@@ -34,3 +35,6 @@ transform = Transform3D(0.8, 0, 0, 0, 0.1, 0, 0, 0, 1, 0.04, 0.35, 0)
 mesh = SubResource("BoxMesh_cot1o")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_255jg")
+
+[node name="Basic_Cabinet" parent="." instance=ExtResource("2_hbyhj")]
+transform = Transform3D(-4.91092e-08, 0, 0.860404, 0, 1.42232, 0, -1.12349, 0, -3.76094e-08, 0.0201441, -0.297642, -0.00148144)

@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bek68bk78ikxn"]
+
+[ext_resource type="Texture2D" uid="uid://cjosy1cvxopd5" path="res://Overcooked Assets/Chef/ChefAnim/ChefTestForTexPaint_M_ChefHead_BaseColor.png" id="1_scimk"]
+
+[resource]
+resource_name = "M_ChefHead.003"
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_scimk")
+metallic = 0.212598
+roughness = 0.552786

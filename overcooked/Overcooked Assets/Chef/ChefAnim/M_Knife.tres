@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://j84uhya7a3x6"]
+
+[resource]
+resource_name = "M_Knife"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.484807, 0.496621, 0.537099, 1)
+metallic = 1.0
+roughness = 0.552786

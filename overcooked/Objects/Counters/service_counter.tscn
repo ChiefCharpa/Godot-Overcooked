@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://brlop6qo3v6ib"]
+[gd_scene load_steps=17 format=3 uid="uid://brlop6qo3v6ib"]
 
 [ext_resource type="Script" uid="uid://dagvc25q1n864" path="res://Objects/Counters/Scripts/PlateCounter.gd" id="1_7qbhm"]
 [ext_resource type="Script" uid="uid://c0lkeghq4m1ai" path="res://Objects/Counters/Scripts/service_counter_script.gd" id="1_66ipc"]
+[ext_resource type="PackedScene" uid="uid://c05hibd41ekrj" path="res://Overcooked Assets/Meshes/Environment/CompleteStation/FoodConveyor.FBX" id="3_s1wwj"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4q843"]
 
@@ -89,6 +90,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_dt300")
 
 [node name="plate_Timer" type="Timer" parent="Counter_Rigidbody"]
 wait_time = 5.0
+
+[node name="FoodConveyor" parent="." instance=ExtResource("3_s1wwj")]
+transform = Transform3D(-4.88039e-08, 0, -1, 0, 1.32158, 0, 1.1165, 0, -4.37114e-08, 0.0355883, -0.249328, -0.00206909)
 
 [connection signal="timeout" from="Service_Counter_Rigidbody/place_Order_Timer" to="Service_Counter_Rigidbody" method="_on_place_order_timer_timeout"]
 [connection signal="timeout" from="Counter_Rigidbody/plate_Timer" to="Counter_Rigidbody" method="_on_plate_timer_timeout"]
