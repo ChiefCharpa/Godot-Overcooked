@@ -21,7 +21,8 @@ var VegDictionary = {
 	"Soup_Tomato" : preload("res://Objects/Food preloads/Soup/Soup_Tomato.tscn"),
 	"Soup_Onion" : preload("res://Objects/Food preloads/Soup/Soup_Onion.tscn"),
 	"Soup_Mushroom" : preload("res://Objects/Food preloads/Soup/Soup_Mushroom.tscn"),
-	
+	"Burnt_Meat" : preload("res://Objects/Food preloads/Cooked/Burnt_meat.tscn"),
+	"Burnt_Fish" : preload("res://Objects/Food preloads/Cooked/Burnt_Fish.tscn")
 	}
 var Veglist = VegDictionary.keys()
 var Platelist = ["Chopped_Tomato","Chopped_Onion","Chopped_Mushroom","Chopped_Lettuce","Cooked_Fish","Cooked_Meat","Soup_Tomato","Soup_Mushroom","Soup_Onion","Bun"]

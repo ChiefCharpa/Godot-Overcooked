@@ -9,7 +9,7 @@ var orders: Array = []
 var plateSpawnNode
 var score = 0
 @onready var order_Timer = $place_Order_Timer
-
+var burning = false
 func _ready():
 	plateSpawnNode = get_node("/root/LevelNode/Service_Counter/Counter_Rigidbody")
 	currentCounter = self
@@ -42,7 +42,7 @@ func _process(delta):
 
 
 func _activate(inventory_node):
-	if inventory_node:
+	if not burning and inventory_node:
 		if inventory_node.resources_inventory.size() > 0:
 			if inventory_node.heldVegetable and inventory_node.heldVegetable.has_method("cleanPlate"):
 				cookedDish = inventory_node.heldVegetable
@@ -76,3 +76,8 @@ func _activate(inventory_node):
 
 func get_some_variable():
 	return resource_type
+func onFire():
+	burning = true
+	var fire = preload("res://Fire.tscn").instantiate()
+	add_child(fire)
+	fire.transform.origin = Vector3(0, 1, 0)

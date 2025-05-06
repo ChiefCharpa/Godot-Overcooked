@@ -8,35 +8,35 @@ var playerref
 var chopping = false
 var childlist : Array = []
 @onready var timer = $Timer
-
+var burning = false
 func _ready():
 	for child in get_children():
 		childlist.append(child.name)
 	currentCounter = self	
 	
 func _chop(Player: CharacterBody3D):
-	var chop = false
-	for child in get_children():
-		if Global.Veglist.has(child.name) and Global.Veglist.has("Chopped_"+child.name) :
-			veg = child
-			chop = true
-	if chop and not chopping:
-		playerref = Player
-		chopping = true
-		playerref.Freeze()
-		timer.start()
-		Player.get_child(3).chopping = true
-	elif chop and chopping:
-		Player.get_child(3).chopping = false
-		chopping = false
-		playerref.Freeze()
-		timer.wait_time = timer.time_left
-		timer.stop()
-
+	if not burning:
+		var chop = false
+		for child in get_children():
+			if Global.Veglist.has(child.name) and Global.Veglist.has("Chopped_"+child.name) :
+				veg = child
+				chop = true
+		if chop and not chopping:
+			playerref = Player
+			chopping = true
+			playerref.Freeze()
+			timer.start()
+			Player.get_child(2).chopping = true
+		elif chop and chopping:
+			Player.get_child(2).chopping = false
+			chopping = false
+			playerref.Freeze()
+			timer.wait_time = timer.time_left
+			timer.stop()
 	
 # Function to activate and interact with all counter objects
 func _activate(inventory_node):
-	if inventory_node:
+	if not burning and inventory_node:
 		if inventory_node.resources_inventory.size() > 0 and inventory_node.heldVegetable.get_some_variable() == "Food":
 			inventory_node._place_item(currentCounter.get_path())  # Passing the NodePath of the current counter
 		elif inventory_node.resources_inventory.size() > 0 and inventory_node.heldVegetable.get_some_variable() == "Plate":
@@ -63,4 +63,9 @@ func _on_timer_timeout() -> void:
 		timer.stop()
 		timer.wait_time = 6
 		chopping = false
-		playerref.get_child(3).chopping = false
+		playerref.get_child(2).chopping = false
+func onFire():
+	burning = true
+	var fire = preload("res://Fire.tscn").instantiate()
+	add_child(fire)
+	fire.transform.origin = Vector3(0, 1, 0)
