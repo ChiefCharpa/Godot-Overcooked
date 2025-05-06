@@ -5,11 +5,10 @@ var inventory_node
 var currentCounter
 
 func _ready():
-	inventory_node = get_node("/root/LevelNode/Player/Inventory")
 	currentCounter = self
 
 # Function to activate and interact with all counter objects
-func _activate():
+func _activate(inventory_node):
 	if inventory_node:
 		if inventory_node.resources_inventory.size() > 0:
 			inventory_node._place_item(currentCounter.get_path())  # Passing the NodePath of the current counter
