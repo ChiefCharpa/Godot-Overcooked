@@ -42,6 +42,7 @@ func add_vegetable(veg: Node3D,player_inventory):
 		var parts = veg.name.split("_")
 		if Global.Veglist.has("Soup_"+parts[-1]) and veg.name.begins_with("Chopped") and held_vegetable.size()<3:
 			held_vegetable.append(veg.name)
+			$potInvt.addVegTex(held_vegetable)
 			var newveg = Global.VegDictionary.get(veg.name).instantiate()
 			player_inventory.deletehelditem()
 			add_child(newveg)
@@ -56,6 +57,7 @@ func take_from_pan():
 		for child in get_children():
 				if child.name == held_vegetable[0]:
 					var returnchild = child
+					$potInvt.emptyPot()
 					clear_plate()
 					partial = false
 					return returnchild
@@ -67,6 +69,7 @@ func clear_plate():
 				if child.name == veg:
 					child.queue_free()
 					held_vegetable = []
+					$potInvt.emptyPot()
 		for child in get_children():
 			if !childlist.has(child.name):
 				child.queue_free()
