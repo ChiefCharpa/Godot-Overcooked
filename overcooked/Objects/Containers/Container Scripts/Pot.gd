@@ -23,9 +23,6 @@ func _ready():
 		childlist.append(child.name)
 	timer.wait_time = 0
 
-func _process(delta: float) -> void:
-	print(timer.time_left)
-
 func add_to_plate(veg: Node3D):
 	if !burnt:
 		if veg!= null and Global.Platelist.has(veg.name):
@@ -52,7 +49,6 @@ func add_vegetable(veg: Node3D,player_inventory):
 			newveg.freeze = true
 			newveg.get_node("CollisionShape3D").disabled = true
 			newveg.transform.origin = offset
-			print("wait time is ",timer.wait_time)
 			if onstove == true:
 				cook(stove)
 func take_from_pan():
