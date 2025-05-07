@@ -17,9 +17,6 @@ func positioning(pos : Vector2):
 	endPos = pos
 	var transition = create_tween()
 	transition.tween_property(self, "position", endPos, slideDur).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	
-func destroyRecipe():
-	queue_free()
 
 # Displays recipe by instantiating it in the top right and then sliding it to the position it should be in
 func displayRecipe(image : Texture2D):
@@ -34,3 +31,14 @@ func displayRecipe(image : Texture2D):
 	
 	recipeSlot.positioning(endPos)
 	displayedRecipes.append(recipeSlot)
+
+# Destroys recipe and moves the others to take its place
+func destroyRecipe():
+	var recipe = displayedRecipes[0]
+	displayedRecipes.remove_at(0)
+
+	for i in range(0, displayedRecipes.size()):
+		var newPos = Vector2((recipeWidth + recipeSpacing) * i, 0)
+		displayedRecipes[i].positioning(newPos)
+		
+	recipe.queue_free()

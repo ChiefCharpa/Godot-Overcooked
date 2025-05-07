@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://4qbrkm3ceewg" path="res://UI/Level2Button.png" id="5_bcalf"]
 [ext_resource type="Texture2D" uid="uid://dtyykgslrf22m" path="res://UI/Level3Button.png" id="6_6viy2"]
 [ext_resource type="Texture2D" uid="uid://b0xytudi2rp7" path="res://UI/Level4Button.png" id="7_4gws7"]
-[ext_resource type="Texture2D" uid="uid://c3sr05wv1vpdb" path="res://UI/Controls/Controls_Keyboard_Solo.png" id="9_6viy2"]
+[ext_resource type="Texture2D" uid="uid://3ewpt6hegowu" path="res://UI/Controls/Controls_Keyboard_Split.png" id="9_6viy2"]
 [ext_resource type="Script" uid="uid://bh86v4tkvn8d7" path="res://controlDisplay.gd" id="9_bcalf"]
 
 [node name="Control" type="Control"]
@@ -145,10 +145,10 @@ texture = ExtResource("7_4gws7")
 
 [node name="ControlDisplay" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 591.0
-offset_top = 282.0
-offset_right = 1685.0
-offset_bottom = 1144.0
+offset_left = 664.0
+offset_top = 288.0
+offset_right = 1864.0
+offset_bottom = 1104.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_6viy2")
 script = ExtResource("9_bcalf")

@@ -3,11 +3,12 @@ var resource_type = "Interactable"
 var inventory_node
 var currentCounter
 var Veg = Global.VegDictionary.get("Lettuce")
+var burning = false
 func _ready():
 	currentCounter = self
 	
 func _activate(inventory_node):
-	if inventory_node:
+	if not burning and inventory_node:
 		if inventory_node.resources_inventory.size() == 0:
 			var newVegetable = Veg.instantiate()
 			get_parent().add_child(newVegetable)
@@ -18,3 +19,8 @@ func _activate(inventory_node):
 		
 func get_some_variable():
 	return resource_type
+func onFire():
+	burning = true
+	var fire = preload("res://Fire.tscn").instantiate()
+	add_child(fire)
+	fire.transform.origin = Vector3(0, 1, 0)
