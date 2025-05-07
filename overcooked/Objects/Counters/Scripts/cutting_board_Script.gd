@@ -26,6 +26,7 @@ func _chop(Player: CharacterBody3D):
 			chopping = true
 			playerref.Freeze()
 			timer.start()
+			$ProgressBar.doChopping()
 			Player.get_child(2).chopping = true
 		elif chop and chopping:
 			Player.get_child(2).chopping = false
@@ -33,6 +34,7 @@ func _chop(Player: CharacterBody3D):
 			playerref.Freeze()
 			timer.wait_time = timer.time_left
 			timer.stop()
+			$ProgressBar.pauseChopping()
 	
 # Function to activate and interact with all counter objects
 func _activate(inventory_node):
