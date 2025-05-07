@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhb8d2j7crk53"]
+[gd_scene load_steps=10 format=3 uid="uid://bhb8d2j7crk53"]
 
 [ext_resource type="Texture2D" uid="uid://nnlt0ta2do8t" path="res://UI/Background.png" id="1_5b7ti"]
 [ext_resource type="Texture2D" uid="uid://whaw44sa1dhr" path="res://UI/Overcooked.png" id="2_dvdtt"]
@@ -7,8 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://swrxul0id7vp" path="res://UI/Level1Button.png" id="4_ht6vt"]
 [ext_resource type="Texture2D" uid="uid://4qbrkm3ceewg" path="res://UI/Level2Button.png" id="5_bcalf"]
 [ext_resource type="Texture2D" uid="uid://dtyykgslrf22m" path="res://UI/Level3Button.png" id="6_6viy2"]
-[ext_resource type="Texture2D" uid="uid://b0xytudi2rp7" path="res://UI/Level4Button.png" id="7_4gws7"]
-[ext_resource type="Texture2D" uid="uid://c3sr05wv1vpdb" path="res://UI/Controls/Controls_Keyboard_Solo.png" id="9_6viy2"]
+[ext_resource type="Texture2D" uid="uid://3ewpt6hegowu" path="res://UI/Controls/Controls_Keyboard_Split.png" id="9_6viy2"]
 [ext_resource type="Script" uid="uid://bh86v4tkvn8d7" path="res://controlDisplay.gd" id="9_bcalf"]
 
 [node name="Control" type="Control"]
@@ -21,8 +20,8 @@ grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
+offset_right = 1928.0
+offset_bottom = 1096.0
 texture = ExtResource("1_5b7ti")
 
 [node name="Overcooked Logo" type="TextureRect" parent="."]
@@ -30,12 +29,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -662.0
-offset_top = 4.0
-offset_right = 618.0
-offset_bottom = 484.0
+offset_left = -640.0
+offset_right = 640.0
+offset_bottom = 480.0
 grow_horizontal = 2
-scale = Vector2(0.575, 0.575)
 texture = ExtResource("2_dvdtt")
 
 [node name="ControlsButton" type="Button" parent="."]
@@ -45,10 +42,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 213.0
-offset_top = -173.0
-offset_right = 495.0
-offset_bottom = -83.0
+offset_left = -168.0
+offset_top = 276.0
+offset_right = 113.64
+offset_bottom = 366.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_bcalf")
@@ -61,9 +58,10 @@ texture = ExtResource("3_wlsky")
 
 [node name="Level1" type="Button" parent="."]
 layout_mode = 0
-offset_top = 315.0
-offset_right = 40.0
-offset_bottom = 355.0
+offset_left = 816.0
+offset_top = 456.0
+offset_right = 1036.0
+offset_bottom = 546.0
 
 [node name="Level1Texture" type="TextureRect" parent="Level1"]
 layout_mode = 1
@@ -72,19 +70,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 202.0
-offset_bottom = 70.0
+offset_left = -110.0
+offset_top = -44.0
+offset_right = 112.0
+offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_ht6vt")
 
 [node name="Level2" type="Button" parent="."]
 layout_mode = 0
-offset_top = 415.0
-offset_right = 40.0
-offset_bottom = 455.0
+offset_left = 816.0
+offset_top = 576.0
+offset_right = 1036.0
+offset_bottom = 666.0
 
 [node name="Level2Texture" type="TextureRect" parent="Level2"]
 layout_mode = 1
@@ -93,19 +92,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 202.0
-offset_bottom = 70.0
+offset_left = -110.0
+offset_top = -44.0
+offset_right = 112.0
+offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_bcalf")
 
 [node name="Level3" type="Button" parent="."]
 layout_mode = 0
-offset_top = 515.0
-offset_right = 40.0
-offset_bottom = 555.0
+offset_left = 816.0
+offset_top = 696.0
+offset_right = 1036.0
+offset_bottom = 786.0
 
 [node name="Level3Texture" type="TextureRect" parent="Level3"]
 layout_mode = 1
@@ -114,41 +114,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 202.0
-offset_bottom = 70.0
+offset_left = -110.0
+offset_top = -44.0
+offset_right = 112.0
+offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_6viy2")
 
-[node name="Level4" type="Button" parent="."]
-layout_mode = 0
-offset_top = 615.0
-offset_right = 40.0
-offset_bottom = 655.0
-
-[node name="Level4Texture" type="TextureRect" parent="Level4"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 202.0
-offset_bottom = 70.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_4gws7")
-
 [node name="ControlDisplay" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 591.0
-offset_top = 282.0
-offset_right = 1685.0
-offset_bottom = 1144.0
+offset_left = 1192.0
+offset_top = 512.0
+offset_right = 2648.0
+offset_bottom = 1680.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_6viy2")
 script = ExtResource("9_bcalf")

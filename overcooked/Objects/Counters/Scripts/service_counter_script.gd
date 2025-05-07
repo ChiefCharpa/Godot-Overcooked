@@ -41,6 +41,7 @@ func _process(delta):
 	for i in range(orders.size() - 1, -1, -1):
 		if current_time - orders[i].time_added >= 60.0:
 			print("Order expired:", orders[i].recipe)
+			recipe_display.destroyRecipe()
 			orders.remove_at(i)
 			scoreNode.addScore(-5)  # Penalty
 

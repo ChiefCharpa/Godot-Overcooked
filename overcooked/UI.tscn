@@ -16,7 +16,12 @@ offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Time" type="TextureRect" parent="StatDisplay"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 15.8
+anchor_top = 8.625
+anchor_right = 15.8
+anchor_bottom = 8.625
 offset_left = 1044.0
 offset_top = 493.0
 offset_right = 1284.0
@@ -44,7 +49,12 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Score" type="TextureRect" parent="StatDisplay"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.225
+anchor_top = 8.675
+anchor_right = 0.225
+anchor_bottom = 8.675
 offset_left = -23.0
 offset_top = 508.0
 offset_right = 217.0
