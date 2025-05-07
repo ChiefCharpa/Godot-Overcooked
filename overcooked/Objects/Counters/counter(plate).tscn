@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://co7p2ru6nijtr"]
+
+[ext_resource type="Script" uid="uid://btd7aditfvor4" path="res://Objects/Counters/Scripts/counter_Script(plate).gd" id="1_cuir1"]
+[ext_resource type="PackedScene" uid="uid://cp705iuhxjfe0" path="res://Overcooked Assets/Meshes/Environment/Basic_Cabinet/Basic_Cabinet.FBX" id="2_pkecf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_reikc"]
+size = Vector3(0.723, 0.596, 1)
+
+[node name="Counter" type="Node3D"]
+
+[node name="Counter_Rigidbody" type="RigidBody3D" parent="."]
+script = ExtResource("1_cuir1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Counter_Rigidbody"]
+transform = Transform3D(1.00067, 0, 0, 0, 1.00067, 0, 0, 0, 1.00067, 0, 0, 0)
+shape = SubResource("BoxShape3D_reikc")
+
+[node name="Basic_Cabinet" parent="." instance=ExtResource("2_pkecf")]
+transform = Transform3D(-4.91092e-08, 0, 0.860404, 0, 1.42232, 0, -1.12349, 0, -3.76094e-08, 0.0201441, -0.297642, -0.00148144)
