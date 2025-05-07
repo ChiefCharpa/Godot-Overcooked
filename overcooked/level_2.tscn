@@ -209,7 +209,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.52771, 1.612, 0.535943)
 [node name="UI" parent="." instance=ExtResource("24_gx3pu")]
 
 [node name="Extinguisher" parent="." instance=ExtResource("25_wleuh")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.21457, 0.840463, 3.65534)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.20717, 0.931307, 3.65534)
 
 [node name="Stove(Pan)" parent="." instance=ExtResource("13_xwl8u")]
 transform = Transform3D(0.999849, 0, 0.0174001, 0, 1, 0, -0.0174001, 0, 0.999849, -2.15872, 0.32092, 0.721294)
