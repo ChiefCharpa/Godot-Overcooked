@@ -46,6 +46,7 @@ mesh = ExtResource("2_l0gx3")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 transform = Transform3D(-0.998323, 0, 0.0578951, 0, 1, 0, -0.0578951, 0, -0.998323, 0.0459388, 0.795737, -0.395016)
+emitting = false
 amount = 30
 lifetime = 0.77
 randomness = 0.1
