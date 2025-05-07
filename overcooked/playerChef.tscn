@@ -29,7 +29,6 @@ var freeze: bool = false
 var dashing: bool = false
 var dash_timer: float = 0.0
 var last_direction: Vector3 = Vector3.ZERO
-var mainMenu = preload(\"res://Main Menu.tscn\")
 
 @onready var inventory: Inventory = $Inventory
 
@@ -47,8 +46,8 @@ func _process(_delta: float) -> void:
 		dash_timer = DASH_DURATION
 		
 	if Input.is_action_just_pressed(\"Exit\"):
-		get_tree().change_scene_to_packed(mainMenu)
-
+		get_tree().change_scene_to_file(\"res://Main menu.tscn\")
+	
 func _physics_process(delta: float) -> void:
 	var input_dir = Input.get_vector(\"Left\", \"Right\", \"Forwards\", \"Backwards\")
 	var move_dir = Vector3(input_dir.x, 0, input_dir.y).normalized()
