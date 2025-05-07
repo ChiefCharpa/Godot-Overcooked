@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://hm5rraqj5dr3"]
 
 [ext_resource type="Script" uid="uid://ca7eub0di4r1s" path="res://Objects/Counters/Scripts/cutting_board_Script.gd" id="1_ih4ek"]
-[ext_resource type="Script" uid="uid://dxhudpdv57hrc" path="res://Objects/Counters/progress_bar.gd" id="2_abucr"]
+[ext_resource type="Script" uid="uid://dxhudpdv57hrc" path="res://Objects/Counters/chop_progress_bar.gd" id="2_abucr"]
 [ext_resource type="ArrayMesh" uid="uid://cbxawl30n4o0h" path="res://Overcooked Assets/Meshes/Environment/Chopping Board/ChoppingBoard_Side.obj" id="2_nlsuc"]
 [ext_resource type="PackedScene" uid="uid://crppjhnlynnwm" path="res://Overcooked Assets/Meshes/Environment/Basic_Cabinet/Basic_Cabinet_No_Handle.FBX" id="3_wjy47"]
 

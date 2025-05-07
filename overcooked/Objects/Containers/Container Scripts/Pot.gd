@@ -75,6 +75,7 @@ func cook(currentCounter: NodePath):
 	if cook and onstove and parts[0] != "Soup":
 		print("cooking")
 		cooking = true
+		$ProgressBar.doCooking()
 		if timer.is_stopped() and not partial : #if timer is stopped and nothing has been cooked
 			timer.wait_time = 5*held_vegetable.size()
 			timer.start()
