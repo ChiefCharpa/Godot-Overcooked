@@ -22,6 +22,8 @@ func recipeSelection():
 	var scene_file_path = get_tree().current_scene.scene_file_path
 	var filename = scene_file_path.get_file()  # e.g., "level_2.tscn"
 	var filename_key = filename.split(".")[0]
+	if filename_key == "Level":
+		recipes = [["Soup_Onion"]]
 	if filename_key == "Level_1":
 		recipes = [["Soup_Onion"]]
 	elif filename_key == "level_2":
