@@ -1,6 +1,7 @@
 [gd_scene load_steps=35 format=3 uid="uid://c8emyqjme6dbm"]
 
 [ext_resource type="AudioStream" uid="uid://3bvi3jx06iyc" path="res://Overcooked SFX/OvercookedSoundtrack.mp3" id="1_3uyy5"]
+[ext_resource type="Script" uid="uid://df2o8sotf7tfx" path="res://levelCoopDecide.gd" id="1_aryo2"]
 [ext_resource type="PackedScene" uid="uid://cgkmdmvjhvk6t" path="res://Objects/Counters/counter.tscn" id="2_c2csi"]
 [ext_resource type="PackedScene" uid="uid://hm5rraqj5dr3" path="res://Objects/Counters/cutting_board.tscn" id="3_tysot"]
 [ext_resource type="PackedScene" uid="uid://c5cwrng738u2m" path="res://Objects/Containers/bin.tscn" id="4_ojddo"]
@@ -9,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bnmxv1lamjdyj" path="res://playerChef.tscn" id="9_2vrm3"]
 [ext_resource type="PackedScene" uid="uid://ccjshm25fqapr" path="res://Objects/Counters/Sink.tscn" id="10_newbq"]
 [ext_resource type="PackedScene" uid="uid://dskgg5ydxt6mi" path="res://Objects/Counters/PlateCounter.tscn" id="12_qs03c"]
-[ext_resource type="PackedScene" uid="uid://d4lm8nrceq1id" path="res://playerChef2.tscn" id="13_r5q04"]
 [ext_resource type="PackedScene" uid="uid://bo52nln3vdv1o" path="res://UI.tscn" id="14_iocgj"]
 [ext_resource type="PackedScene" uid="uid://8m4x2h2rn5ee" path="res://extinguisher.tscn" id="15_qrta2"]
 [ext_resource type="PackedScene" uid="uid://dce53yb3skhp0" path="res://Overcooked Assets/Decorations/KitchenWalls/SingleWallSegment.glb" id="17_5xgpd"]
@@ -45,6 +45,7 @@ albedo_color = Color(0.313726, 0.486275, 0.25098, 1)
 
 [node name="LevelNode" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0237412, -0.0260713, -0.0206084)
+script = ExtResource("1_aryo2")
 
 [node name="Soundtrack" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.15525, 0, 0)
@@ -210,9 +211,6 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 9.1907, 
 
 [node name="Counter5" parent="." instance=ExtResource("12_qs03c")]
 transform = Transform3D(0.989648, 0, 0, 0, 0.989648, 0, 0, 0, 0.989648, 7.62889, 0.298, 0.987028)
-
-[node name="Player2" parent="." instance=ExtResource("13_r5q04")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.52771, 1.612, -0.463219)
 
 [node name="UI" parent="." instance=ExtResource("14_iocgj")]
 
