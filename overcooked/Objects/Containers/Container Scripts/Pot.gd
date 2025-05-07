@@ -114,6 +114,7 @@ func pickup(player_inventory):
 	if !timer.is_stopped():
 		timer.wait_time = timer.time_left
 		timer.stop()
+		$ProgressBar.pauseCooking()
 		partial = true
 	burn_timer.stop()
 	cooking = false
