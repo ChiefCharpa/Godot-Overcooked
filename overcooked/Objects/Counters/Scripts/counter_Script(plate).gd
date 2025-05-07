@@ -7,6 +7,12 @@ var burning = false
 var childList = []
 func _ready():
 	currentCounter = self
+	var spawnedplate = Global.VegDictionary.get("Plate").instantiate()
+	spawnedplate.global_position = Vector3(0,0.6,0)
+	print("Placing plate at:", spawnedplate.global_position)
+	spawnedplate.freeze = true
+	add_child(spawnedplate)
+
 
 # Function to activate and interact with all counter objects
 func _activate(inventory_node):
