@@ -43,6 +43,7 @@ func clear_plate():
 
 func delete_child(deletechild: String):
 	for child in self.get_children():
+		print(child.name)
 		if child.name == deletechild:
 			child.queue_free()
 
@@ -77,13 +78,24 @@ func BurgerCheck():
 			add_child(newveg)
 			var offset = Vector3(0, 0.1 + 0.2 * held_vegetables.size(), 0)
 			newveg.transform.origin = offset
-		if held_vegetables.has("Chopped_Lettuce") and held_vegetables.has("Chopped_Tomato") and !held_vegetables.has("Bun"):
-			held_vegetables.erase(&"Chopped_Tomato")
+		if !held_vegetables.has("Buns") and held_vegetables.has("Chopped_Lettuce"):
 			held_vegetables.erase(&"Chopped_Lettuce")
+			held_vegetables.append("Salad")
+			delete_child("Chopped_Lettuce")
+			var newveg = Global.VegDictionary.get("Salad").instantiate()
+			add_child(newveg)
+			var offset = Vector3(0, 0.2 * held_vegetables.size(), 0)
+			newveg.transform.origin = offset
+		if held_vegetables.has("Salad") and held_vegetables.has("Chopped_Tomato"):
+			held_vegetables.erase(&"Chopped_Tomato")
+			held_vegetables.erase("Salad")
 			held_vegetables.append(("Salad+Tomato"))
 			delete_child("Chopped_Tomato")
-			delete_child("Chopped_Lettuce")
-		var copy = held_vegetables
+			delete_child("SaladPlain")
+			var newveg = Global.VegDictionary.get("Salad+Tomato").instantiate()
+			add_child(newveg)
+			var offset = Vector3(0,0.2 * held_vegetables.size(), 0)
+			newveg.transform.origin = offset
 
 func pickup(player_inventory):
 	player_inventory.add_container(self)
