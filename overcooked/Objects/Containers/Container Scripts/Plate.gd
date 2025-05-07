@@ -43,47 +43,117 @@ func clear_plate():
 
 func delete_child(deletechild: String):
 	for child in self.get_children():
+		print(child.name)
 		if child.name == deletechild:
 			child.queue_free()
 
-func BurgerCheck():
+func BurgerCheck(): #dont look at this
+		#meat line
 		if held_vegetables.has("Bun") and held_vegetables.has("Cooked_Meat"):
-			held_vegetables.erase(&"Bun")
-			held_vegetables.erase(&"Cooked_Meat")
+			clear_plate()
 			held_vegetables.append("Burger")
-			delete_child("Bun")
-			delete_child("Chopped_Meat")#who knows why this is chopped meat instead of cooked meat but here we are
 			var newveg = Global.VegDictionary.get("Burger").instantiate()
 			add_child(newveg)
 			var offset = Vector3(0, 0.1 + 0.2 * held_vegetables.size(), 0)
 			newveg.transform.origin = offset
-		if held_vegetables.has("Chopped_Lettuce") and held_vegetables.has("Burger"):
-			held_vegetables.erase("Burger")
-			held_vegetables.erase(&"Chopped_Lettuce")
-			delete_child("Burger(Plain)")
-			delete_child("Chopped_Lettuce")
+		if held_vegetables.has("Burger") and held_vegetables.has("Chopped_Tomato"):
+			clear_plate()
+			held_vegetables.append("Burger+Tomato")
+			var newveg = Global.VegDictionary.get("Burger+Tomato").instantiate()
+			add_child(newveg)
+			var offset = Vector3(0, 0.1 + 0.2 * held_vegetables.size(), 0)
+			newveg.transform.origin = offset
+		if held_vegetables.has("Burger") and held_vegetables.has("Chopped_Lettuce"):
+			clear_plate()
 			held_vegetables.append("Burger+Lettuce")
 			var newveg = Global.VegDictionary.get("Burger+Lettuce").instantiate()
 			add_child(newveg)
 			var offset = Vector3(0, 0.1 + 0.2 * held_vegetables.size(), 0)
 			newveg.transform.origin = offset
-		if held_vegetables.has("Chopped_Tomato") and held_vegetables.has("Burger+Lettuce"):
-			held_vegetables.erase("Burger+Lettuce")
-			held_vegetables.erase(&"Chopped_Tomato")
+		#tomato line
+		if held_vegetables.has("Bun") and held_vegetables.has("Chopped_Tomato"):
+			clear_plate()
+			held_vegetables.append("BurgerTNM")
+			var newveg = Global.VegDictionary.get("BurgerTNM").instantiate()
+			add_child(newveg)
+			var offset = Vector3(0, 0.1 + 0.2 * held_vegetables.size(), 0)
+			newveg.transform.origin = offset
+		if held_vegetables.has("Chopped_Lettuce") and held_vegetables.has("BurgerTNM"):
+			clear_plate()
+			held_vegetables.append("BurgerTLNM")
+			var newveg = Global.VegDictionary.get("BurgerTLNM").instantiate()
+			add_child(newveg)
+			var offset = Vector3(0, 0.1 + 0.2 * held_vegetables.size(), 0)
+			newveg.transform.origin = offset
+		if held_vegetables.has("Cooked_Meat") and held_vegetables.has("BurgerTNM"):
+			clear_plate()
+			held_vegetables.append("Burger+Tomato")
+			var newveg = Global.VegDictionary.get("Burger+Tomato").instantiate()
+			add_child(newveg)
+			var offset = Vector3(0, 0.1 + 0.2 * held_vegetables.size(), 0)
+			newveg.transform.origin = offset
+		if held_vegetables.has("Chopped_Lettuce") and held_vegetables.has("Burger+Tomato"):
+			clear_plate()
 			held_vegetables.append("Burger+Lettuce+Tomato")
-			delete_child("Burger(Lettuce)")
-			delete_child("Chopped_Tomato")
 			var newveg = Global.VegDictionary.get("Burger+Lettuce+Tomato").instantiate()
 			add_child(newveg)
 			var offset = Vector3(0, 0.1 + 0.2 * held_vegetables.size(), 0)
 			newveg.transform.origin = offset
-		if held_vegetables.has("Chopped_Lettuce") and held_vegetables.has("Chopped_Tomato") and !held_vegetables.has("Bun"):
-			held_vegetables.erase(&"Chopped_Tomato")
+		#lettuce line
+		if held_vegetables.has("Bun") and held_vegetables.has("Chopped_Lettuce"):
+			clear_plate()
+			held_vegetables.append("BurgerLNM")
+			var newveg = Global.VegDictionary.get("BurgerLNM").instantiate()
+			add_child(newveg)
+			var offset = Vector3(0, 0.1 + 0.2 * held_vegetables.size(), 0)
+			newveg.transform.origin = offset
+		if held_vegetables.has("Chopped_Tomato") and held_vegetables.has("BurgerLNM"):
+			clear_plate()
+			held_vegetables.append("BurgerTLNM")
+			var newveg = Global.VegDictionary.get("BurgerTLNM").instantiate()
+			add_child(newveg)
+			var offset = Vector3(0, 0.1 + 0.2 * held_vegetables.size(), 0)
+			newveg.transform.origin = offset
+		if held_vegetables.has("Cooked_Meat") and held_vegetables.has("BurgerLNM"):
+			clear_plate()
+			held_vegetables.append("Burger+Lettuce")
+			var newveg = Global.VegDictionary.get("Burger+Lettuce").instantiate()
+			add_child(newveg)
+			var offset = Vector3(0, 0.1 + 0.2 * held_vegetables.size(), 0)
+			newveg.transform.origin = offset
+		if held_vegetables.has("Cooked_Meat") and held_vegetables.has("BurgerTLNM"):
+			clear_plate()
+			held_vegetables.append("Burger+Lettuce+Tomato")
+			var newveg = Global.VegDictionary.get("Burger+Lettuce+Tomato").instantiate()
+			add_child(newveg)
+			var offset = Vector3(0, 0.1 + 0.2 * held_vegetables.size(), 0)
+			newveg.transform.origin = offset
+		if held_vegetables.has("Chopped+Tomato") and held_vegetables.has("Burger+Lettuce"):
+			clear_plate()
+			held_vegetables.append("Burger+Lettuce+Tomato")
+			var newveg = Global.VegDictionary.get("Burger+Lettuce+Tomato").instantiate()
+			add_child(newveg)
+			var offset = Vector3(0, 0.1 + 0.2 * held_vegetables.size(), 0)
+			newveg.transform.origin = offset
+			#salad stuff
+		if !held_vegetables.has("Buns") and held_vegetables.has("Chopped_Lettuce"):
 			held_vegetables.erase(&"Chopped_Lettuce")
+			held_vegetables.append("Salad")
+			delete_child("Chopped_Lettuce")
+			var newveg = Global.VegDictionary.get("Salad").instantiate()
+			add_child(newveg)
+			var offset = Vector3(0, 0.2 * held_vegetables.size(), 0)
+			newveg.transform.origin = offset
+		if held_vegetables.has("Salad") and held_vegetables.has("Chopped_Tomato"):
+			held_vegetables.erase(&"Chopped_Tomato")
+			held_vegetables.erase("Salad")
 			held_vegetables.append(("Salad+Tomato"))
 			delete_child("Chopped_Tomato")
-			delete_child("Chopped_Lettuce")
-		var copy = held_vegetables
+			delete_child("SaladPlain")
+			var newveg = Global.VegDictionary.get("Salad+Tomato").instantiate()
+			add_child(newveg)
+			var offset = Vector3(0,0.2 * held_vegetables.size(), 0)
+			newveg.transform.origin = offset
 
 func pickup(player_inventory):
 	player_inventory.add_container(self)
