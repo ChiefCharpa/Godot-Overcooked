@@ -1,5 +1,6 @@
-[gd_scene load_steps=31 format=3 uid="uid://dral0g73t3p7"]
+[gd_scene load_steps=30 format=3 uid="uid://dral0g73t3p7"]
 
+[ext_resource type="Script" uid="uid://df2o8sotf7tfx" path="res://levelCoopDecide.gd" id="1_4vjci"]
 [ext_resource type="PackedScene" uid="uid://5aocl1ky0vhb" path="res://Objects/Counters/tomato_spawner.tscn" id="1_8o4rb"]
 [ext_resource type="AudioStream" uid="uid://3bvi3jx06iyc" path="res://Overcooked SFX/OvercookedSoundtrack.mp3" id="2_pd0bf"]
 [ext_resource type="PackedScene" uid="uid://cgkmdmvjhvk6t" path="res://Objects/Counters/counter.tscn" id="3_fpono"]
@@ -16,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://bnmxv1lamjdyj" path="res://playerChef.tscn" id="17_dcckh"]
 [ext_resource type="PackedScene" uid="uid://3aegjuif6mfk" path="res://Objects/Counters/Stove(Pan).tscn" id="17_jftiw"]
 [ext_resource type="PackedScene" uid="uid://u34pilek63et" path="res://Objects/Counters/Stove(Pot).tscn" id="17_yye10"]
-[ext_resource type="PackedScene" uid="uid://d4lm8nrceq1id" path="res://playerChef2.tscn" id="18_jftiw"]
 [ext_resource type="PackedScene" uid="uid://ccjshm25fqapr" path="res://Objects/Counters/Sink.tscn" id="18_s1kns"]
 [ext_resource type="PackedScene" uid="uid://8m4x2h2rn5ee" path="res://extinguisher.tscn" id="19_pd0bf"]
 [ext_resource type="PackedScene" uid="uid://dt7af76asgoed" path="res://Objects/Counters/Bun_spawner.tscn" id="19_yye10"]
@@ -26,8 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://cxn2s3upm086n" path="res://Overcooked Assets/Decorations/KitchenWalls/CornerWallSegment.glb" id="23_qqkhr"]
 [ext_resource type="PackedScene" uid="uid://bo52nln3vdv1o" path="res://UI.tscn" id="24_3ppgv"]
 [ext_resource type="PackedScene" uid="uid://co7p2ru6nijtr" path="res://Objects/Counters/counter(plate).tscn" id="26_qqkhr"]
-
-[sub_resource type="GDScript" id="GDScript_jftiw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dppq4"]
 
@@ -39,7 +37,7 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 
 [node name="LevelNode" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.773004)
-script = SubResource("GDScript_jftiw")
+script = ExtResource("1_4vjci")
 
 [node name="Soundtrack" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_pd0bf")
@@ -126,9 +124,6 @@ transform = Transform3D(1, 0, 1.74846e-07, -3.66779e-09, 0.99978, 0.0209773, -1.
 
 [node name="Counter5" parent="." instance=ExtResource("14_dn5x0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.04202, 0.298, 6.36959)
-
-[node name="Player2" parent="." instance=ExtResource("18_jftiw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
 
 [node name="KitchenFloorLarge" parent="." instance=ExtResource("20_s0cgv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81488, -0.17, 3.335)

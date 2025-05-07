@@ -151,6 +151,28 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_4gws7")
 
+[node name="coop" type="Button" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 456.0
+offset_right = 660.0
+offset_bottom = 546.0
+
+[node name="Level4Texture" type="TextureRect" parent="coop"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -44.0
+offset_right = 112.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_4gws7")
+
 [node name="ControlDisplay" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 1192.0
@@ -165,3 +187,4 @@ script = ExtResource("9_bcalf")
 [connection signal="pressed" from="Level2" to="ControlsButton" method="_on_level_2_pressed"]
 [connection signal="pressed" from="Level3" to="ControlsButton" method="_on_level_3_pressed"]
 [connection signal="pressed" from="Level4" to="ControlsButton" method="_on_level_4_pressed"]
+[connection signal="pressed" from="coop" to="ControlsButton" method="_on_coop_pressed"]

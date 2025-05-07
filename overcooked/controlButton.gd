@@ -23,3 +23,8 @@ func _on_level_3_pressed() -> void:
 
 func _on_level_4_pressed() -> void:
 	get_tree().change_scene_to_packed(GameScene4)
+
+
+func _on_coop_pressed() -> void:
+	Global.coop = not Global.coop
+	print(Global.coop)
