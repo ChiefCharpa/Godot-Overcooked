@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhb8d2j7crk53"]
+[gd_scene load_steps=12 format=3 uid="uid://bhb8d2j7crk53"]
 
 [ext_resource type="Texture2D" uid="uid://nnlt0ta2do8t" path="res://UI/Background.png" id="1_5b7ti"]
 [ext_resource type="Texture2D" uid="uid://whaw44sa1dhr" path="res://UI/Overcooked.png" id="2_dvdtt"]
+[ext_resource type="AudioStream" uid="uid://c3oai8nv7frup" path="res://Overcooked SFX/OvercookedMenu.mp3" id="3_4gws7"]
 [ext_resource type="Texture2D" uid="uid://crqnulujmn6nn" path="res://UI/ControlsButton.png" id="3_wlsky"]
 [ext_resource type="Script" uid="uid://cikj2sydc4y5o" path="res://controlButton.gd" id="4_bcalf"]
 [ext_resource type="Texture2D" uid="uid://swrxul0id7vp" path="res://UI/Level1Button.png" id="4_ht6vt"]
@@ -37,6 +38,11 @@ offset_bottom = 484.0
 grow_horizontal = 2
 scale = Vector2(0.575, 0.575)
 texture = ExtResource("2_dvdtt")
+
+[node name="Main Menu Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4gws7")
+autoplay = true
+parameters/looping = true
 
 [node name="ControlsButton" type="Button" parent="."]
 layout_mode = 1
