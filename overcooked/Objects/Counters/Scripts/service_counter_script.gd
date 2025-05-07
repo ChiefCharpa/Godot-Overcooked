@@ -123,6 +123,14 @@ func displayOrder(order):
 	if order["recipe"][0] == "Burger+Lettuce+Tomato":
 		recipeTexture = load("res://UI/Recipes/Burgers/Recipe_Burger_4.png")
 		recipe_display.displayRecipe(recipeTexture)
+	
+	if order["recipe"][0] == "Chopped_Lettuce":
+		recipeTexture = load("res://UI/Recipes/Salads/Recipe_Salad_1.png")
+		recipe_display.displayRecipe(recipeTexture)
+	if order["recipe"][0] == "Salad+Tomato":
+		recipeTexture = load("res://UI/Recipes/Salads/Recipe_Salad_2.png")
+		recipe_display.displayRecipe(recipeTexture)
+		
 func onFire():
 	burning = true
 	var fire = preload("res://Fire.tscn").instantiate()

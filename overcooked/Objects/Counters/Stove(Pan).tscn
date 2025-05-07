@@ -21,7 +21,7 @@ albedo_color = Color(0.364706, 0, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cueyg"]
 albedo_color = Color(0, 0, 0, 1)
 
-[node name="Stove(Pan)" type="Node3D"]
+[node name="Stove(Pan)2" type="Node3D"]
 
 [node name="Stove_RigidBody3D" type="RigidBody3D" parent="."]
 script = ExtResource("1_a3nav")

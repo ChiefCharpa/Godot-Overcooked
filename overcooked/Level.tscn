@@ -25,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://bx7lqk1at3smh" path="res://Overcooked Assets/Decorations/KitchenWalls/WindowWallSegment.glb" id="22_wesx8"]
 [ext_resource type="PackedScene" uid="uid://cxn2s3upm086n" path="res://Overcooked Assets/Decorations/KitchenWalls/CornerWallSegment.glb" id="23_qqkhr"]
 [ext_resource type="PackedScene" uid="uid://bo52nln3vdv1o" path="res://UI.tscn" id="24_3ppgv"]
-[ext_resource type="PackedScene" uid="uid://co7p2ru6nijtr" path="res://Objects/Counters/counter(plate).tscn" id="26_qqkhr"]
+[ext_resource type="PackedScene" path="res://Objects/Counters/counter(plate).tscn" id="26_qqkhr"]
 
 [sub_resource type="GDScript" id="GDScript_jftiw"]
 
@@ -62,7 +62,7 @@ shape = SubResource("ConcavePolygonShape3D_f1ml4")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.13846, 0.313928, 2.16709)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.999996, 0.000691604, 0.0025906, -0.00246523, 0.617146, 0.786845, -0.00105459, -0.786848, 0.617146, -0.63733, 6.4459, 8.13923)
+transform = Transform3D(0.999996, 0.000691608, 0.0025906, -0.00246523, 0.617146, 0.786845, -0.00105459, -0.786848, 0.617146, -0.63733, 6.4459, 8.13923)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.34556, 0.938397, 0, -0.938397, 0.34556, -0.461368, 17.6619, 8.74751)

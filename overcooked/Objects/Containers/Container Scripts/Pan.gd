@@ -56,6 +56,7 @@ func cook(currentCounter: NodePath):
 	if cook and not cooking and parts[0] != "Cooked":
 		print("cooking")
 		cooking = true
+		$ProgressBar.doCooking()
 		timer.start()
 	elif cook and cooking:
 		print("Not cooking")
@@ -70,6 +71,7 @@ func cook(currentCounter: NodePath):
 
 func pickup(player_inventory):
 	cooking = false
+	$ProgressBar.pauseCooking()
 	burning = false
 	onstove = false
 	stove = null

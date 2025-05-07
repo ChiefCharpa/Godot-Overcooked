@@ -1,11 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://hm5rraqj5dr3"]
+[gd_scene load_steps=8 format=3 uid="uid://hm5rraqj5dr3"]
 
 [ext_resource type="Script" uid="uid://ca7eub0di4r1s" path="res://Objects/Counters/Scripts/cutting_board_Script.gd" id="1_ih4ek"]
+[ext_resource type="Script" path="res://Objects/Counters/chop_progress_bar.gd" id="2_abucr"]
 [ext_resource type="ArrayMesh" uid="uid://cbxawl30n4o0h" path="res://Overcooked Assets/Meshes/Environment/Chopping Board/ChoppingBoard_Side.obj" id="2_nlsuc"]
 [ext_resource type="PackedScene" uid="uid://crppjhnlynnwm" path="res://Overcooked Assets/Meshes/Environment/Basic_Cabinet/Basic_Cabinet_No_Handle.FBX" id="3_wjy47"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5csdr"]
 size = Vector3(0.723, 0.596, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_mrcjs"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7f2ec"]
+specular_color = Color(0.310617, 0.310617, 0.310617, 1)
 
 [node name="Cutting_board" type="Node3D"]
 
@@ -18,6 +24,19 @@ shape = SubResource("BoxShape3D_5csdr")
 
 [node name="Timer" type="Timer" parent="CuttingBoard_RigidBody3D"]
 wait_time = 6.0
+
+[node name="ProgressBar" type="Node3D" parent="CuttingBoard_RigidBody3D"]
+transform = Transform3D(50, 0, 0, 0, 15, 0, 0, 0, 1.005, 0, 1.27891, 0)
+script = ExtResource("2_abucr")
+
+[node name="ProgressBarFill" type="Sprite3D" parent="CuttingBoard_RigidBody3D/ProgressBar"]
+modulate = Color(0.0789961, 0.831296, 4.62055e-06, 1)
+texture = SubResource("CanvasTexture_mrcjs")
+
+[node name="ProgressBarBack" type="Sprite3D" parent="CuttingBoard_RigidBody3D/ProgressBar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.000320258)
+modulate = Color(0.270222, 0.270222, 0.270222, 1)
+texture = SubResource("CanvasTexture_7f2ec")
 
 [node name="ChoppingBoardSide" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0851806, 0.175154, 0.0352282)

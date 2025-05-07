@@ -1,9 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfe3tv3qc0jnn"]
+[gd_scene load_steps=7 format=3 uid="uid://bfe3tv3qc0jnn"]
 
 [ext_resource type="Script" uid="uid://d0uyeyrwebkal" path="res://Objects/Containers/Container Scripts/Pan.gd" id="1_d3jei"]
 [ext_resource type="ArrayMesh" uid="uid://df1es4h7g30sk" path="res://Overcooked Assets/Meshes/Objects/Frying Pan/FryingPan.obj" id="2_ko0d4"]
+[ext_resource type="Script" uid="uid://dc3mcixlfs1hf" path="res://Objects/Containers/cook_pan_progress_bar.gd" id="3_jqqbq"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_d3jei"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_6rjjc"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_70lsh"]
+specular_color = Color(0.310617, 0.310617, 0.310617, 1)
 
 [node name="Pan" type="RigidBody3D"]
 script = ExtResource("1_d3jei")
@@ -23,6 +29,19 @@ one_shot = true
 [node name="FryingPan" type="MeshInstance3D" parent="."]
 transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, -0.380065, 0)
 mesh = ExtResource("2_ko0d4")
+
+[node name="ProgressBar" type="Node3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 15, 0, 0, 0, 1.005, 0, 0.714679, 0)
+script = ExtResource("3_jqqbq")
+
+[node name="ProgressBarFill" type="Sprite3D" parent="ProgressBar"]
+modulate = Color(0.0789961, 0.831296, 4.62055e-06, 1)
+texture = SubResource("CanvasTexture_6rjjc")
+
+[node name="ProgressBarBack" type="Sprite3D" parent="ProgressBar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.000320258)
+modulate = Color(0.270222, 0.270222, 0.270222, 1)
+texture = SubResource("CanvasTexture_70lsh")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerBurn" to="." method="_on_timer_burn_timeout"]
