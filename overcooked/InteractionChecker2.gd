@@ -11,6 +11,7 @@ var action_processed = false #tracks if the action is processed
 var currently_hold = false # records if the player if currently holding item
 var chopping = false
 var force = 0
+var player_node
 
 
 
@@ -18,6 +19,8 @@ func _ready() -> void:
 	player_inventory = get_parent().get_node("Inventory2") #gets the player's inventory
 	inventory_node = get_node("/root/LevelNode/Player2/Inventory2") #gets the inventorys node path
 	animatePlayer = get_parent().get_node(AnimPlayer);## gets the players animation script
+	
+	player_node = player_inventory.get_parent()
 
 func _process(delta):
 	var overlapping_bodies = get_overlapping_bodies()
@@ -32,7 +35,15 @@ func _process(delta):
 			body_to_activate = body
 
 	# Chopping check
-	if Input.is_action_just_pressed("Chop2"):
+	if Input.is_action_pressed("Chop2") and player_inventory.resources_inventory.has("Extinguisher"):
+		if player_inventory.resources_inventory.has("Extinguisher"):
+			var extinguisher = player_inventory.resources_inventory["Extinguisher"]
+			player_inventory.heldVegetable.spray_foam()
+			player_node.spraying = true
+	else:
+		player_node.spraying = false
+	# Chopping check
+	if Input.is_action_just_pressed("Chop2") and not player_inventory.resources_inventory.has("Extinguisher"):
 		for body in overlapping_bodies:
 			if body.has_method("Iscuttingboard"):
 				resource_type = body.get_some_variable()
@@ -73,7 +84,7 @@ func _process(delta):
 
 		if held_plate and resource_type == "Food":
 			player_inventory.heldVegetable.add_to_plate(body_to_activate, player_inventory)
-		elif held_plate and body_to_activate.has_method("ispan") and !player_inventory.heldVegetable.has_method("ispan"):
+		elif held_plate and body_to_activate.has_method("ispan") and !player_inventory.heldVegetable.has_method("ispan") and not player_inventory.heldVegetable.name == "Extinguisher":
 			player_inventory.heldVegetable.add_to_plate(body_to_activate.take_from_pan(), player_inventory)
 		elif resource_type == "Food":
 			body_to_activate.call("_activate", player_inventory)
@@ -84,19 +95,8 @@ func _process(delta):
 				body_to_activate.call("add_vegetable", player_inventory.heldVegetable, player_inventory)
 			elif player_inventory.heldVegetable == null:
 				body_to_activate.call("pickup", player_inventory)
-				if player_inventory.heldVegetable.has_method("ispot"):
-					body_to_activate.onstove = false
-				if player_inventory.heldVegetable.has_method("ispan"):
-					body_to_activate.call("cook")
-			elif player_inventory.heldVegetable != null:
+			elif player_inventory.heldVegetable != null and not body_to_activate.name == "Extinguisher":
 				body_to_activate.place(player_inventory)
-
-	# Backup drop logic (optional, could remove if above block covers everything)
-	elif (press_interact and nothing_or_food or press_throw) and has_item and !chopping:
-		inventory_node._drop_item(force)
-		action_processed = true
-		animatePlayer.call("_changeHolding")
-		currently_hold = false;
 
 	# Reset interaction flag
 	elif not Input.is_action_pressed("Interaction_Select") and !chopping:

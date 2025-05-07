@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhlh5rwogqopn"]
+
+[ext_resource type="Material" uid="uid://6p336tbxw12x" path="res://finreMats/fireOrange.tres" id="1_xvp3t"]
+[ext_resource type="Material" uid="uid://b5b4vakrv85td" path="res://finreMats/firered.tres" id="2_7f4bd"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_yj7xl"]
+material = ExtResource("1_xvp3t")
+uv2_padding = 3.29
+radius = 0.05
+height = 0.1
+radial_segments = 24
+rings = 21
+
+[sub_resource type="SphereMesh" id="SphereMesh_4js34"]
+material = ExtResource("2_7f4bd")
+radius = 0.05
+height = 0.1
+radial_segments = 40
+rings = 22
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.256908, 0)
+amount = 100
+lifetime = 0.16
+randomness = 1.0
+mesh = SubResource("SphereMesh_yj7xl")
+emission_shape = 3
+emission_box_extents = Vector3(0.3, 0.3, 0.3)
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_max = 7.0
+linear_accel_min = -1.0
+linear_accel_max = -1.0
+hue_variation_min = -0.3
+hue_variation_max = 1.0
+
+[node name="CPUParticles3D2" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.400696, 0)
+amount = 50
+lifetime = 0.1
+randomness = 1.0
+mesh = SubResource("SphereMesh_4js34")
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(0, 1, 0)
+spread = 14.67
+flatness = 0.62
+initial_velocity_max = 9.19
+hue_variation_min = -0.28
+hue_variation_max = 0.46

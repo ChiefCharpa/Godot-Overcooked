@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=3 uid="uid://b885rp5tqwcl"]
+
+[ext_resource type="Script" uid="uid://g2d0w3xcfyil" path="res://fireScript.gd" id="1_2pqqt"]
+[ext_resource type="Script" uid="uid://c1nvneajy88lw" path="res://fireCollision.gd" id="2_5ltu8"]
+[ext_resource type="Material" uid="uid://6p336tbxw12x" path="res://finreMats/fireOrange.tres" id="3_icfi2"]
+[ext_resource type="Material" uid="uid://b5b4vakrv85td" path="res://finreMats/firered.tres" id="4_eo6dx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ufe0f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2pqqt"]
+albedo_color = Color(0.672356, 0.321844, 0.0947415, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ufe0f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x6ecg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_r2yji"]
+material = ExtResource("3_icfi2")
+uv2_padding = 3.29
+radius = 0.05
+height = 0.1
+radial_segments = 24
+rings = 21
+
+[sub_resource type="SphereMesh" id="SphereMesh_qjybw"]
+material = ExtResource("4_eo6dx")
+radius = 0.05
+height = 0.1
+radial_segments = 40
+rings = 22
+
+[node name="Fire" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_ufe0f")
+surface_material_override/0 = SubResource("StandardMaterial3D_2pqqt")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("1_2pqqt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_ufe0f")
+
+[node name="Timer" type="Timer" parent="Area3D"]
+wait_time = 10.0
+autostart = true
+
+[node name="Area3D2" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_5ltu8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+shape = SubResource("BoxShape3D_x6ecg")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.256908, 0)
+amount = 100
+lifetime = 0.16
+randomness = 1.0
+mesh = SubResource("SphereMesh_r2yji")
+emission_shape = 3
+emission_box_extents = Vector3(0.3, 0.3, 0.3)
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_max = 7.0
+linear_accel_min = -1.0
+linear_accel_max = -1.0
+hue_variation_min = -0.3
+hue_variation_max = 1.0
+
+[node name="CPUParticles3D2" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.400696, 0)
+amount = 50
+lifetime = 0.1
+randomness = 1.0
+mesh = SubResource("SphereMesh_qjybw")
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(0, 1, 0)
+spread = 14.67
+flatness = 0.62
+initial_velocity_max = 9.19
+hue_variation_min = -0.28
+hue_variation_max = 0.46
+
+[connection signal="timeout" from="Area3D/Timer" to="Area3D" method="_on_timer_timeout"]

@@ -20,11 +20,11 @@ script/source = "extends CharacterBody3D
 
 var animatePlayer = null
 
-const SPEED = 5.0
+var SPEED = 5.0
 const DASH_MULTIPLIER = 2.5
 const GRAVITY = 2.0
 const DASH_DURATION = 0.3  # Dash lasts 0.3 seconds
-
+var spraying = false
 var freeze: bool = false
 var dashing: bool = false
 var dash_timer: float = 0.0
@@ -48,7 +48,10 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	var input_dir = Input.get_vector(\"Left\", \"Right\", \"Forwards\", \"Backwards\")
 	var move_dir = Vector3(input_dir.x, 0, input_dir.y).normalized()
-
+	if spraying:
+		SPEED = 0.0
+	else:
+		SPEED = 5.0
 	# Apply gravity
 	velocity.y -= GRAVITY
 
@@ -842,7 +845,7 @@ transitions = ["Start", "Anim_walk", SubResource("AnimationNodeStateMachineTrans
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_cnw7c"]
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_3poyc"]
-xfade_time = 0.1
+xfade_time = 0.2
 allow_transition_to_self = true
 input_0/name = "idle"
 input_0/auto_advance = false
@@ -923,7 +926,6 @@ states/Anim_wash/position = Vector2(567, 101)
 transitions = ["Start", "Anim_wash", SubResource("AnimationNodeStateMachineTransition_yxfm2"), "Anim_wash", "End", SubResource("AnimationNodeStateMachineTransition_cnw7c")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gpxxo"]
-graph_offset = Vector2(-648.731, 120.823)
 nodes/Hold/node = SubResource("AnimationNodeStateMachine_y86u8")
 nodes/Hold/position = Vector2(-500, 620)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_rpdoq")
