@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhb8d2j7crk53"]
+[gd_scene load_steps=12 format=3 uid="uid://bhb8d2j7crk53"]
 
 [ext_resource type="Texture2D" uid="uid://nnlt0ta2do8t" path="res://UI/Background.png" id="1_5b7ti"]
 [ext_resource type="AudioStream" uid="uid://cdhias30pedj7" path="res://Overcooked SFX/OvercookedMenu.mp3" id="1_6viy2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cikj2sydc4y5o" path="res://controlButton.gd" id="4_bcalf"]
 [ext_resource type="Texture2D" uid="uid://swrxul0id7vp" path="res://UI/Level1Button.png" id="4_ht6vt"]
 [ext_resource type="Texture2D" uid="uid://4qbrkm3ceewg" path="res://UI/Level2Button.png" id="5_bcalf"]
+[ext_resource type="AudioStream" uid="uid://btq0qdqjcxvq6" path="res://Overcooked SFX/Button.wav" id="6_4gws7"]
 [ext_resource type="Texture2D" uid="uid://dtyykgslrf22m" path="res://UI/Level3Button.png" id="6_6viy2"]
 [ext_resource type="Texture2D" uid="uid://3ewpt6hegowu" path="res://UI/Controls/Controls_Keyboard_Split.png" id="9_6viy2"]
 [ext_resource type="Script" uid="uid://bh86v4tkvn8d7" path="res://controlDisplay.gd" id="9_bcalf"]
@@ -62,7 +63,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_wlsky")
 
-[node name="ButtonSFX" type="AudioStreamPlayer" parent="ControlsButton"]
+[node name="SFX" type="Node" parent="ControlsButton"]
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="ControlsButton/SFX"]
+stream = ExtResource("6_4gws7")
+bus = &"Button"
 
 [node name="Level1" type="Button" parent="."]
 layout_mode = 0

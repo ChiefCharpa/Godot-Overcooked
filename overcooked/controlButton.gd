@@ -4,10 +4,11 @@ var GameScene2 = preload("res://level_2.tscn")
 var GameScene3 = preload("res://level.tscn")
 func buttonPressed():
 	$"../ControlDisplay".displayControls()
+	$"SFX/ButtonSFX".play()
 
 func _ready():
 	self.pressed.connect(buttonPressed)
-
+	#%SFX/ButtonSFX.play()
 
 func _on_level_1_pressed() -> void:
 	get_tree().change_scene_to_packed(GameScene1)
