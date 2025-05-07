@@ -26,7 +26,7 @@ func start_random_timer():
 	
 func _on_place_order_timer_timeout() -> void:
 	print("hiodw")
-	var random_number = randi_range(0, 5)
+	var random_number = randi_range(0, 7)
 	var new_order = {
 		"recipe": recipes[random_number],
 		"time_added": Time.get_ticks_msec() / 1000.0  # Convert to seconds

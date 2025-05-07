@@ -92,7 +92,7 @@ func _process(delta):
 		elif resource_type in ["Interactable", "containers"]:
 			body_to_activate.call("_activate", player_inventory)
 		elif resource_type == "Plate":
-			if player_inventory.heldVegetable != null and not held_plate:
+			if player_inventory.heldVegetable != null and not held_plate and body_to_activate.has_method("add_vegetable"):
 				body_to_activate.call("add_vegetable", player_inventory.heldVegetable, player_inventory)
 			elif player_inventory.heldVegetable == null:
 				body_to_activate.call("pickup", player_inventory)
