@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://hamf526417po"
+uid="uid://cc4x1jgb6n5m5"
 path="res://.godot/imported/PepperoniChopped.glb-7f992b85cf204aa647b2ce3a4210ee18.scn"
 
 [deps]
@@ -33,5 +33,5 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-gltf/naming_version=1
+gltf/naming_version=0
 gltf/embedded_image_handling=1

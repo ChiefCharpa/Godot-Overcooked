@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b885rp5tqwcl"]
+[gd_scene load_steps=7 format=3 uid="uid://b885rp5tqwcl"]
 
 [ext_resource type="Script" uid="uid://g2d0w3xcfyil" path="res://fireScript.gd" id="1_2pqqt"]
+[ext_resource type="Script" uid="uid://c1nvneajy88lw" path="res://fireCollision.gd" id="2_5ltu8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ufe0f"]
 
@@ -8,6 +9,8 @@
 albedo_color = Color(0.672356, 0.321844, 0.0947415, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ufe0f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x6ecg"]
 
 [node name="Fire" type="Node3D"]
 
@@ -25,5 +28,13 @@ shape = SubResource("BoxShape3D_ufe0f")
 [node name="Timer" type="Timer" parent="Area3D"]
 wait_time = 10.0
 autostart = true
+
+[node name="Area3D2" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_5ltu8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+shape = SubResource("BoxShape3D_x6ecg")
 
 [connection signal="timeout" from="Area3D/Timer" to="Area3D" method="_on_timer_timeout"]
