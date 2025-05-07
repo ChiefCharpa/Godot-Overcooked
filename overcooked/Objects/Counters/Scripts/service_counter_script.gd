@@ -20,14 +20,14 @@ func _ready():
 
 func recipeSelection():
 	var scene_file_path = get_tree().current_scene.scene_file_path
-	var filename = scene_file_path.get_file()  # e.g., "level_2.tscn"
+	var filename = scene_file_path.get_file()
 	var filename_key = filename.split(".")[0]
 	if filename_key == "Level":
 		recipes = [["Soup_Onion"]]
 	if filename_key == "Level_1":
 		recipes = [["Soup_Onion"]]
 	elif filename_key == "level_2":
-		recipes = [["Soup_Tomato"], ["Soup_Onion"]]
+		recipes = [["Chopped_Lettuce"], ["Salad+Tomato"]]
 	elif filename_key == "Level3":
 		recipes = [["Soup_Tomato"], ["Soup_Onion"], ["Soup_Mushroom"]]
 	elif filename_key == "level_4":
