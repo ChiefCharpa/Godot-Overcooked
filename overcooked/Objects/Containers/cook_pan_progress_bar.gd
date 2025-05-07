@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var barFill := $ProgressBarFill
 @onready var barRoot := self
-var cookingTime := 5.0
+var cookingTime := 10.0
 var cookingProgress := 0.0
 var cooking := false
 

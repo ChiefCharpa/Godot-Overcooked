@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://byvu6vtsbde0k" path="res://Img/onion.jpg" id="4_c8qmu"]
 [ext_resource type="Texture2D" uid="uid://c80jcpto3yu41" path="res://Img/Tomato.jpg" id="5_848bv"]
 [ext_resource type="PackedScene" uid="uid://btw2es4tt52te" path="res://Overcooked Assets/Meshes/Objects/CookPot/CookPot.FBX" id="5_c8qmu"]
-[ext_resource type="Script" uid="uid://bwpfaynvhpv2x" path="res://Objects/Containers/cook_pot_progress_bar.gd" id="6_848bv"]
+[ext_resource type="Script" path="res://Objects/Containers/cook_pot_progress_bar.gd" id="6_848bv"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_otkmc"]
 
