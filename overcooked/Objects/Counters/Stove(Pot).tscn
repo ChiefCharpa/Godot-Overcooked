@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://u34pilek63et"]
 
-[ext_resource type="Script" uid="uid://rvv5i1sm606o" path="res://Objects/Counters/Scripts/stove(Pot).gd" id="1_1mgh3"]
+[ext_resource type="Script" uid="uid://rvv5i1sm606o" path="res://Objects/stove(Pot).gd" id="1_1mgh3"]
 [ext_resource type="PackedScene" uid="uid://cs5c5x3hl1qe0" path="res://Overcooked Assets/Meshes/Environment/Cooker/Cooker.FBX" id="2_ne6n6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ytds0"]
