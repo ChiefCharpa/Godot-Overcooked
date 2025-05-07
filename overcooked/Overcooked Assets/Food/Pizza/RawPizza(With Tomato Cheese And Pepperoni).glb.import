@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://due2m0077yneu"
+uid="uid://pwtyq6p6i386"
 path="res://.godot/imported/RawPizza(With Tomato Cheese And Pepperoni).glb-b6d556638f1f6d674fff0f8c786746e1.scn"
 
 [deps]
@@ -33,5 +33,5 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-gltf/naming_version=1
+gltf/naming_version=0
 gltf/embedded_image_handling=1
