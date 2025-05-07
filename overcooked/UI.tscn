@@ -81,4 +81,14 @@ autowrap_mode = 0
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="GO" type="TextureRect" parent="StatDisplay"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TIMEUP" type="TextureRect" parent="StatDisplay"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="RecipeDisplay" parent="." instance=ExtResource("4_qui0h")]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d0uyeyrwebkal" path="res://Objects/Containers/Container Scripts/Pan.gd" id="1_d3jei"]
 [ext_resource type="ArrayMesh" uid="uid://df1es4h7g30sk" path="res://Overcooked Assets/Meshes/Objects/Frying Pan/FryingPan.obj" id="2_ko0d4"]
-[ext_resource type="Script" path="res://Objects/Containers/cook_pan_progress_bar.gd" id="3_jqqbq"]
+[ext_resource type="Script" uid="uid://dc3mcixlfs1hf" path="res://Objects/Containers/cook_pan_progress_bar.gd" id="3_jqqbq"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_d3jei"]
 
