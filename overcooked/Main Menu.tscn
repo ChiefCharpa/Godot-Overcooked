@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bhb8d2j7crk53"]
+[gd_scene load_steps=12 format=3 uid="uid://baahqa3wl8kca"]
 
 [ext_resource type="Texture2D" uid="uid://nnlt0ta2do8t" path="res://UI/Background.png" id="1_5b7ti"]
 [ext_resource type="AudioStream" uid="uid://cdhias30pedj7" path="res://Overcooked SFX/OvercookedMenu.mp3" id="1_6viy2"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://b0xytudi2rp7" path="res://UI/Level4Button.png" id="9_4gws7"]
 [ext_resource type="Texture2D" uid="uid://3ewpt6hegowu" path="res://UI/Controls/Controls_Keyboard_Split.png" id="9_6viy2"]
 [ext_resource type="Script" uid="uid://bh86v4tkvn8d7" path="res://controlDisplay.gd" id="9_bcalf"]
-[ext_resource type="Texture2D" uid="uid://dgdujou0tb856" path="res://UI/CoopButton.png" id="10_u78o4"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -154,12 +153,12 @@ texture = ExtResource("9_4gws7")
 
 [node name="coop" type="Button" parent="."]
 layout_mode = 0
-offset_left = 434.0
-offset_top = 463.0
-offset_right = 654.0
-offset_bottom = 588.0
+offset_left = 440.0
+offset_top = 456.0
+offset_right = 660.0
+offset_bottom = 546.0
 
-[node name="CoopTexture" type="TextureRect" parent="coop"]
+[node name="Level4Texture" type="TextureRect" parent="coop"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -172,7 +171,7 @@ offset_right = 112.0
 offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("10_u78o4")
+texture = ExtResource("9_4gws7")
 
 [node name="ControlDisplay" type="TextureRect" parent="."]
 layout_mode = 0
