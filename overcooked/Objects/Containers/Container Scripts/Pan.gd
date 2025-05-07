@@ -125,3 +125,6 @@ func _on_timer_burn_timeout():
 			burnt_veg.get_node("CollisionShape3D").disabled = true
 		veg.queue_free()
 		veg = null
+
+func add_to_plate(body_to_activate: Node):
+	pass
