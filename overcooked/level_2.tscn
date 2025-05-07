@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c21ok2kyf8cnw"]
+[gd_scene load_steps=39 format=3 uid="uid://c21ok2kyf8cnw"]
 
 [ext_resource type="AudioStream" uid="uid://3bvi3jx06iyc" path="res://Overcooked SFX/OvercookedSoundtrack.mp3" id="1_2pufk"]
 [ext_resource type="PackedScene" uid="uid://cgkmdmvjhvk6t" path="res://Objects/Counters/counter.tscn" id="3_ikghu"]
@@ -32,7 +32,11 @@
 [ext_resource type="PackedScene" uid="uid://b00o2vv5njvw0" path="res://Overcooked Assets/Decorations/Nature/Tree.glb" id="31_41lt0"]
 [ext_resource type="PackedScene" uid="uid://hu6etre3wr0q" path="res://Overcooked Assets/Decorations/Nature/PottedPlant.glb" id="31_t8cg7"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jr02t"]
+albedo_color = Color(0.283725, 0.12066, 0, 1)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_2lakv"]
+material = SubResource("StandardMaterial3D_jr02t")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46val"]
 albedo_color = Color(0.978474, 0.809377, 0.478812, 1)
@@ -40,13 +44,16 @@ albedo_color = Color(0.978474, 0.809377, 0.478812, 1)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_prm7a"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_41lt0"]
+size = Vector3(1.90552, 13.4619, 35.4891)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_ldfcd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41lt0"]
 albedo_color = Color(0.313726, 0.486275, 0.25098, 1)
 
 [node name="LevelNode" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0237412, -0.0260713, -0.0206084)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0261735, -0.0653665, 0.00426056)
 
 [node name="Soundtrack" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.15525, 0, 0)
@@ -63,7 +70,7 @@ mesh = SubResource("PlaneMesh_2lakv")
 surface_material_override/0 = SubResource("StandardMaterial3D_46val")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1.00098, 0, 0, 0, 1.00098, 0, 0, 0, 1.00098, 0, 0, 0)
+transform = Transform3D(1.666, 0, 0, 0, 1.001, 0, 0, 0, 1.301, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_prm7a")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -171,7 +178,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.52771, 1.612, 0.535943)
 [node name="UI" parent="." instance=ExtResource("24_gx3pu")]
 
 [node name="Extinguisher" parent="." instance=ExtResource("25_wleuh")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.98015, 0.931307, 3.12514)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.156119, 0.898383, 3.30561)
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.93552, -1.14035, -19.0615)
@@ -181,6 +188,62 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.1492, 0, -0.328096)
 
 [node name="RoadStraight" parent="." instance=ExtResource("21_sgm4o")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 21.3617, 0.0260713, -0.319303)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, -8.01821, 0.0260713, -0.319303)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76833, 6.23093, -1.90103)
+shape = SubResource("BoxShape3D_41lt0")
+debug_color = Color(0.986903, 0, 0.318732, 0.42)
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 17.3703, 0.0260713, -0.319305)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76833, 6.23093, -1.90103)
+shape = SubResource("BoxShape3D_41lt0")
+debug_color = Color(0.986903, 0, 0.318732, 0.42)
+
+[node name="RigidBody3D3" type="RigidBody3D" parent="."]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 9.44729, 0.0260694, -6.5517)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76833, 6.23093, -11.5078)
+shape = SubResource("BoxShape3D_41lt0")
+debug_color = Color(0.986903, 0, 0.318732, 0.42)
+
+[node name="RigidBody3D4" type="RigidBody3D" parent="."]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 9.44729, 0.0260694, 9.47614)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76833, 6.23093, -11.5078)
+shape = SubResource("BoxShape3D_41lt0")
+debug_color = Color(0.986903, 0, 0.318732, 0.42)
 
 [node name="RoadStraight3" parent="." instance=ExtResource("21_sgm4o")]
 transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, -8.01821, 0.0260713, -0.319303)
