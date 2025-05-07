@@ -1,7 +1,8 @@
 extends Control
-var GameScene1 = preload("res://Level.tscn")
+var GameScene1 = preload("res://Level_1.tscn")
 var GameScene2 = preload("res://level_2.tscn")
-var GameScene3 = preload("res://level.tscn")
+var GameScene3 = preload("res://Level3.tscn")
+var GameScene4 = preload("res://level_4.tscn")
 func buttonPressed():
 	$"../ControlDisplay".displayControls()
 
@@ -19,3 +20,11 @@ func _on_level_2_pressed() -> void:
 
 func _on_level_3_pressed() -> void:
 	get_tree().change_scene_to_packed(GameScene3)
+
+func _on_level_4_pressed() -> void:
+	get_tree().change_scene_to_packed(GameScene4)
+
+
+func _on_coop_pressed() -> void:
+	Global.coop = not Global.coop
+	print(Global.coop)

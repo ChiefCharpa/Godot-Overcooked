@@ -5,7 +5,7 @@ var recipeTexture
 var inventory_node
 var currentCounter
 var cookedDish
-var recipes: Array = [["Soup_Tomato"], ["Soup_Onion"], ["Soup_Mushroom"],["Burger"],["Burger+Lettuce"],["Burger+Lettuce+Tomato"],["Chopped_Lettuce"],["Salad+Tomato"]]
+var recipes: Array = []
 var orders: Array = []
 var plateSpawnNode
 
@@ -18,15 +18,34 @@ func _ready():
 	currentCounter = self
 	_on_place_order_timer_timeout()
 
+func recipeSelection():
+	var scene_file_path = get_tree().current_scene.scene_file_path
+	var filename = scene_file_path.get_file()  # e.g., "level_2.tscn"
+	var filename_key = filename.split(".")[0]
+	if filename_key == "Level_1":
+		recipes = [["Soup_Onion"]]
+	elif filename_key == "level_2":
+		recipes = [["Soup_Tomato"], ["Soup_Onion"]]
+	elif filename_key == "Level3":
+		recipes = [["Soup_Tomato"], ["Soup_Onion"], ["Soup_Mushroom"]]
+	elif filename_key == "level_4":
+		recipes = [["Burger"],["Burger+Lettuce"],["Burger+Lettuce+Tomato"]]
+	print(recipes)
+		
+
 func start_random_timer():
 	var new_time = randf_range(40.0, 60.0)
-	print(new_time)
 	order_Timer.wait_time = new_time
 	order_Timer.start()
 	
 func _on_place_order_timer_timeout() -> void:
-	print("hiodw")
-	var random_number = randi_range(0, 7)
+	if recipes == []:
+		recipeSelection()
+	var random_number = null
+	if recipes.size() == 0:
+		random_number = 0
+	else:
+		random_number = randi_range(0, recipes.size() - 1)
 	var new_order = {
 		"recipe": recipes[random_number],
 		"time_added": Time.get_ticks_msec() / 1000.0  # Convert to seconds
