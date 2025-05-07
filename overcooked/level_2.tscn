@@ -83,7 +83,7 @@ transform = Transform3D(1.666, 0, 0, 0, 1.001, 0, 0, 0, 1.301, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_prm7a")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.999932, 0.0103577, -0.00538459, -0.000602875, 0.50646, 0.862263, 0.0116582, -0.862201, 0.506432, 4.0575, 8.23239, 6.30207)
+transform = Transform3D(1, 0, 0, 0, 0.506034, 0.862514, 0, -0.862513, 0.506034, 4.0575, 8.23239, 6.30207)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.99993, 0.00410109, 0.0111369, -0.0117959, 0.240204, 0.970651, 0.00130562, -0.970714, 0.240235, -0.461368, 9.42295, 8.74751)
