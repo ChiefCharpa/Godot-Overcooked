@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Overcooked"
-run/main_scene="uid://baahqa3wl8kca"
+run/main_scene="uid://bhb8d2j7crk53"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
