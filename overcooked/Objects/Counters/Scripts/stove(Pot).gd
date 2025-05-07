@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func spawn():
 		var spawned = preload("res://Objects/Containers/Pot.tscn").instantiate()
-		spawned.global_position = self.global_position + Vector3(0,0.6,0.78)
+		spawned.global_position = self.global_position + Vector3(0,0.8,0)
 		get_parent().get_parent().add_child(spawned)
 		spawned.onstove = true
 		spawned.stove = currentCounter.get_path()
