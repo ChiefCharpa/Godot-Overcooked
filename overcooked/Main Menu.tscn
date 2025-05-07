@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhb8d2j7crk53"]
+[gd_scene load_steps=12 format=3 uid="uid://bhb8d2j7crk53"]
 
 [ext_resource type="Texture2D" uid="uid://nnlt0ta2do8t" path="res://UI/Background.png" id="1_5b7ti"]
 [ext_resource type="AudioStream" uid="uid://cdhias30pedj7" path="res://Overcooked SFX/OvercookedMenu.mp3" id="1_6viy2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://swrxul0id7vp" path="res://UI/Level1Button.png" id="4_ht6vt"]
 [ext_resource type="Texture2D" uid="uid://4qbrkm3ceewg" path="res://UI/Level2Button.png" id="5_bcalf"]
 [ext_resource type="Texture2D" uid="uid://dtyykgslrf22m" path="res://UI/Level3Button.png" id="6_6viy2"]
+[ext_resource type="Texture2D" uid="uid://b0xytudi2rp7" path="res://UI/Level4Button.png" id="9_4gws7"]
 [ext_resource type="Texture2D" uid="uid://3ewpt6hegowu" path="res://UI/Controls/Controls_Keyboard_Split.png" id="9_6viy2"]
 [ext_resource type="Script" uid="uid://bh86v4tkvn8d7" path="res://controlDisplay.gd" id="9_bcalf"]
 
@@ -48,10 +49,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -168.0
-offset_top = 276.0
-offset_right = 113.64
-offset_bottom = 366.0
+offset_left = 232.0
+offset_top = -84.0
+offset_right = 513.64
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_bcalf")
@@ -128,6 +129,28 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_6viy2")
 
+[node name="Level4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 816.0
+offset_top = 816.0
+offset_right = 1036.0
+offset_bottom = 906.0
+
+[node name="Level4Texture" type="TextureRect" parent="Level4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -44.0
+offset_right = 112.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_4gws7")
+
 [node name="ControlDisplay" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 1192.0
@@ -141,3 +164,4 @@ script = ExtResource("9_bcalf")
 [connection signal="pressed" from="Level1" to="ControlsButton" method="_on_level_1_pressed"]
 [connection signal="pressed" from="Level2" to="ControlsButton" method="_on_level_2_pressed"]
 [connection signal="pressed" from="Level3" to="ControlsButton" method="_on_level_3_pressed"]
+[connection signal="pressed" from="Level4" to="ControlsButton" method="_on_level_4_pressed"]
