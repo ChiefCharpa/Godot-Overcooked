@@ -35,6 +35,7 @@ func take_from_pan():
 				if child.name == held_vegetable:
 					var returnchild = child
 					clear_plate()
+					burning = false
 					cooking = false
 					parts = null
 					return returnchild
