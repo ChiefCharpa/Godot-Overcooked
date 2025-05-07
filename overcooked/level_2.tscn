@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c21ok2kyf8cnw"]
+[gd_scene load_steps=38 format=3 uid="uid://c21ok2kyf8cnw"]
 
 [ext_resource type="AudioStream" uid="uid://3bvi3jx06iyc" path="res://Overcooked SFX/OvercookedSoundtrack.mp3" id="1_2pufk"]
 [ext_resource type="PackedScene" uid="uid://cgkmdmvjhvk6t" path="res://Objects/Counters/counter.tscn" id="3_ikghu"]
@@ -9,14 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://bnmxv1lamjdyj" path="res://playerChef.tscn" id="14_3pas5"]
 [ext_resource type="PackedScene" uid="uid://ccjshm25fqapr" path="res://Objects/Counters/Sink.tscn" id="16_51w4t"]
 [ext_resource type="PackedScene" uid="uid://d1o0h6k5v2kmm" path="res://Overcooked Assets/Decorations/Modular Road/RoadIntersection.glb" id="16_i558w"]
-[ext_resource type="PackedScene" uid="uid://c7lxi3gungtv8" path="res://Objects/Counters/onion_spawner.tscn" id="18_5kfcu"]
 [ext_resource type="PackedScene" uid="uid://cmg7tmkstbinj" path="res://Overcooked Assets/Decorations/Modular Road/RoadCrossing.glb" id="18_cuxq2"]
 [ext_resource type="PackedScene" uid="uid://dskgg5ydxt6mi" path="res://Objects/Counters/PlateCounter.tscn" id="18_qh630"]
 [ext_resource type="PackedScene" uid="uid://5aocl1ky0vhb" path="res://Objects/Counters/tomato_spawner.tscn" id="19_i558w"]
 [ext_resource type="PackedScene" uid="uid://d4lm8nrceq1id" path="res://playerChef2.tscn" id="19_uv8er"]
 [ext_resource type="PackedScene" uid="uid://cwgnqviqmagg7" path="res://Overcooked Assets/Decorations/Modular Sidewalk/6SegmentSidewalk.glb" id="19_wvr33"]
 [ext_resource type="PackedScene" uid="uid://2eb0otx7caec" path="res://Overcooked Assets/Decorations/Cars/BlueCar.glb" id="20_2pufk"]
-[ext_resource type="PackedScene" uid="uid://u34pilek63et" path="res://Objects/Counters/Stove(Pot).tscn" id="20_sgm4o"]
 [ext_resource type="PackedScene" uid="uid://dryy3hknutj8w" path="res://Overcooked Assets/Decorations/Modular Road/RoadStraight.glb" id="21_sgm4o"]
 [ext_resource type="PackedScene" uid="uid://bx7lqk1at3smh" path="res://Overcooked Assets/Decorations/KitchenWalls/WindowWallSegment.glb" id="22_qm6bn"]
 [ext_resource type="PackedScene" uid="uid://xeyu1o5jf6am" path="res://Overcooked Assets/Decorations/Modular Road Extras/TrafficCone.glb" id="23_2pufk"]
@@ -30,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://cjg2m7ais1y8x" path="res://Overcooked Assets/Decorations/Modular Road Extras/BlueMarketStand.glb" id="27_i6smf"]
 [ext_resource type="PackedScene" uid="uid://bdbgbsb77k4m7" path="res://Overcooked Assets/Decorations/Modular Sidewalk/CornerSegmentSidewalk.glb" id="28_i6smf"]
 [ext_resource type="PackedScene" uid="uid://b00o2vv5njvw0" path="res://Overcooked Assets/Decorations/Nature/Tree.glb" id="31_41lt0"]
+[ext_resource type="PackedScene" uid="uid://pl3q7upb7b28" path="res://Objects/Counters/lettuce_spawner.tscn" id="31_o5ykh"]
 [ext_resource type="PackedScene" uid="uid://hu6etre3wr0q" path="res://Overcooked Assets/Decorations/Nature/PottedPlant.glb" id="31_t8cg7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jr02t"]
@@ -92,13 +91,13 @@ transform = Transform3D(0.00291474, 0, -0.999996, 0, 1, 0, 0.999996, 0, 0.002914
 transform = Transform3D(0.00291474, 0, -0.999996, 0, 1, 0, 0.999996, 0, 0.00291474, 8.66746, 0.3, -3.00956)
 
 [node name="Counter2" parent="." instance=ExtResource("3_ikghu")]
-transform = Transform3D(0.999941, 0, -0.010908, 0, 1, 0, 0.010908, 0, 0.999941, 5.31255, 0.294587, 1.68619)
+transform = Transform3D(0.999941, 0, -0.010908, 0, 1, 0, 0.010908, 0, 0.999941, 5.31202, 0.294587, 1.7346)
 
 [node name="Counter6" parent="." instance=ExtResource("3_ikghu")]
-transform = Transform3D(0.999941, 0, -0.010908, 0, 1, 0, 0.010908, 0, 0.999941, 5.30845, 0.294587, 0.603566)
+transform = Transform3D(0.999941, 0, -0.010908, 0, 1, 0, 0.010908, 0, 0.999941, 5.3082, 0.294587, 0.62636)
 
 [node name="Counter12" parent="." instance=ExtResource("3_ikghu")]
-transform = Transform3D(0.999941, 0, -0.010908, 0, 1, 0, 0.010908, 0, 0.999941, 5.32079, 0.294587, -0.526952)
+transform = Transform3D(0.999941, 0, -0.010908, 0, 1, 0, 0.010908, 0, 0.999941, 5.32047, 0.294587, -0.497373)
 
 [node name="Counter17" parent="." instance=ExtResource("3_ikghu")]
 transform = Transform3D(0.0133688, 0, 0.999911, 0, 1, 0, -0.999911, 0, 0.0133688, 5.46347, 0.294587, 3.84844)
@@ -113,7 +112,7 @@ transform = Transform3D(0.0133688, 0, 0.999911, 0, 1, 0, -0.999911, 0, 0.0133688
 transform = Transform3D(0.0133688, 0, 0.999911, 0, 1, 0, -0.999911, 0, 0.0133688, 10.8839, 0.294587, 3.92091)
 
 [node name="Counter11" parent="." instance=ExtResource("3_ikghu")]
-transform = Transform3D(0.999941, 0, -0.010908, 0, 1, 0, 0.010908, 0, 0.999941, 5.30053, 0.294587, 2.78634)
+transform = Transform3D(0.999941, 0, -0.010908, 0, 1, 0, 0.010908, 0, 0.999941, 5.29982, 0.294587, 2.85139)
 
 [node name="Cutting_board2" parent="." instance=ExtResource("4_i6smf")]
 transform = Transform3D(-0.0027052, 0, 0.999996, 0, 1, 0, -0.999996, 0, -0.0027052, -0.77198, 0.3, 3.36195)
@@ -131,7 +130,7 @@ script = ExtResource("6_ldfcd")
 transform = Transform3D(0.999893, 0, -0.014573, 0, 1, 0, 0.014573, 0, 0.999893, 13.5346, 0.3, 1.40034)
 
 [node name="Player" parent="." instance=ExtResource("14_3pas5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.522595, 2.55535, 0.422401)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44992, 2.55535, 0.422401)
 
 [node name="Sink" parent="." instance=ExtResource("16_51w4t")]
 transform = Transform3D(-0.999973, 0, 0.0074002, 0, 1, 0, -0.0074002, 0, -0.999973, -6.19746, 0.298, 0.640271)
@@ -144,6 +143,12 @@ transform = Transform3D(-0.999901, 0, 0.0141017, 0, 1, 0, -0.0141017, 0, -0.9999
 
 [node name="Counter37" parent="." instance=ExtResource("3_ikghu")]
 transform = Transform3D(-0.999901, 0, 0.0141017, 0, 1, 0, -0.0141017, 0, -0.999901, 0.811732, 0.3, -1.22933)
+
+[node name="Counter38" parent="." instance=ExtResource("3_ikghu")]
+transform = Transform3D(-0.999901, 0, 0.0141017, 0, 1, 0, -0.0141017, 0, -0.999901, 0.797554, 0.3, -0.224038)
+
+[node name="Counter39" parent="." instance=ExtResource("3_ikghu")]
+transform = Transform3D(-0.999901, 0, 0.0141017, 0, 1, 0, -0.0141017, 0, -0.999901, 0.781983, 0.3, 0.880062)
 
 [node name="Counter29" parent="." instance=ExtResource("3_ikghu")]
 transform = Transform3D(0.00153575, 0, 0.999999, 0, 1, 0, -0.999999, 0, 0.00153575, -1.87526, 0.3, 3.4056)
@@ -162,6 +167,12 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0.672818
 
 [node name="Counter27" parent="." instance=ExtResource("3_ikghu")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -1.45865, 0.3, -3.26445)
+
+[node name="Counter28" parent="." instance=ExtResource("3_ikghu")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -2.47455, 0.3, -3.26445)
+
+[node name="Counter30" parent="." instance=ExtResource("3_ikghu")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -0.411998, 0.3, -3.26445)
 
 [node name="Counter44" parent="." instance=ExtResource("3_ikghu")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -4.72555, 0.3, -3.29134)
@@ -268,15 +279,6 @@ transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 
 
 [node name="6SegmentSidewalk4" parent="." instance=ExtResource("19_wvr33")]
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -6.16337, -0.359083, 5.46164)
-
-[node name="Stove(Pan)" parent="." instance=ExtResource("20_sgm4o")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.52713, 0.298, -3.26334)
-
-[node name="Stove(Pan)2" parent="." instance=ExtResource("20_sgm4o")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.397725, 0.298, -3.26334)
-
-[node name="OnionSpawner" parent="." instance=ExtResource("18_5kfcu")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.67402, 0.298, 3.85647)
 
 [node name="TomatoSpawner" parent="." instance=ExtResource("19_i558w")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.53959, 0.298, 3.82203)
@@ -489,3 +491,6 @@ transform = Transform3D(-0.983102, 0, -0.183059, 0, 1, 0, 0.183059, 0, -0.983102
 
 [node name="PottedPlant" parent="." instance=ExtResource("31_t8cg7")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -9.4673, 0.725251, -5.88265)
+
+[node name="LettuceSpawner" parent="." instance=ExtResource("31_o5ykh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.69162, 0.298, 3.90795)
