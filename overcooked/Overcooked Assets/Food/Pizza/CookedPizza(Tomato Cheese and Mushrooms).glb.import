@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b7pm1xgas7t1d"
+uid="uid://bs5gn848rnl2m"
 path="res://.godot/imported/CookedPizza(Tomato Cheese and Mushrooms).glb-b763c4566eeb53a42ef911c961a1ab70.scn"
 
 [deps]
@@ -33,5 +33,5 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-gltf/naming_version=1
+gltf/naming_version=0
 gltf/embedded_image_handling=1

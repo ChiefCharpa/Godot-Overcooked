@@ -23,7 +23,7 @@ func _activate(inventory_node):
 					if resource_type == "Food":
 						inventory.resources_inventory.clear()
 						child.queue_free() # Delete the item
-					elif resource_type =="Plate":
+					elif resource_type =="Plate" and inventory_node.heldVegetable.name != "Extinguisher":
 						child.clear_plate() 
 	else:
 		print("Player node is not set")

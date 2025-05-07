@@ -61,7 +61,7 @@ texture = ExtResource("5_848bv")
 expand_mode = 1
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.001
+wait_time = 5.0
 
 [node name="CookPot" parent="." instance=ExtResource("5_c8qmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21342, 0)
