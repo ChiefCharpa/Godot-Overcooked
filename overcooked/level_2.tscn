@@ -1,6 +1,7 @@
-[gd_scene load_steps=37 format=3 uid="uid://ds6as26tjkbv8"]
+[gd_scene load_steps=39 format=3 uid="uid://ds6as26tjkbv8"]
 
 [ext_resource type="AudioStream" uid="uid://3bvi3jx06iyc" path="res://Overcooked SFX/OvercookedSoundtrack.mp3" id="1_2pufk"]
+[ext_resource type="AudioStream" uid="uid://bay82hqngh6pw" path="res://Overcooked SFX/CrowdTalking.mp3" id="2_t8cg7"]
 [ext_resource type="PackedScene" uid="uid://cgkmdmvjhvk6t" path="res://Objects/Counters/counter.tscn" id="3_ikghu"]
 [ext_resource type="PackedScene" uid="uid://hm5rraqj5dr3" path="res://Objects/Counters/cutting_board.tscn" id="4_i6smf"]
 [ext_resource type="PackedScene" uid="uid://c5cwrng738u2m" path="res://Objects/Containers/bin.tscn" id="5_d4rhq"]
@@ -27,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://bo52nln3vdv1o" path="res://UI.tscn" id="24_gx3pu"]
 [ext_resource type="PackedScene" uid="uid://8m4x2h2rn5ee" path="res://extinguisher.tscn" id="25_wleuh"]
 [ext_resource type="PackedScene" uid="uid://dwgaoxdccm2nl" path="res://Overcooked Assets/Decorations/Floors/CarpetSegment.glb" id="26_btc8u"]
+[ext_resource type="AudioStream" uid="uid://b05q2al3ocdcp" path="res://Overcooked SFX/CarPassing.mp3" id="26_o5ykh"]
 [ext_resource type="PackedScene" uid="uid://b825aqy88nqxv" path="res://Overcooked Assets/Decorations/People/RestarauntPeople3.glb" id="27_i6smf"]
 [ext_resource type="PackedScene" uid="uid://bt3jagv2tqljv" path="res://Overcooked Assets/Decorations/People/RestarauntPeople1.glb" id="28_d4rhq"]
 [ext_resource type="PackedScene" uid="uid://ba25bvrcfqde5" path="res://Overcooked Assets/Decorations/Modular Road Extras/RoadLamp.glb" id="30_ldfcd"]
@@ -52,6 +54,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0237412, -0.0260713, -0.02
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.15525, 0, 0)
 stream = ExtResource("1_2pufk")
 autoplay = true
+parameters/looping = true
+
+[node name="Crowd" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_t8cg7")
+autoplay = true
+bus = &"Crowd"
 parameters/looping = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -332,8 +340,21 @@ transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, 
 [node name="GreenCar2" parent="." instance=ExtResource("24_2pufk")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.9905, 0.424094, -10.193)
 
+[node name="Car Passing" type="AudioStreamPlayer3D" parent="GreenCar2"]
+stream = ExtResource("26_o5ykh")
+autoplay = true
+bus = &"Cars"
+doppler_tracking = 2
+
 [node name="GreenCar3" parent="." instance=ExtResource("24_2pufk")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -18.7555, 0.424094, -10.193)
+
+[node name="Car Passing2" type="AudioStreamPlayer3D" parent="GreenCar3"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 33.53, 0, 0)
+stream = ExtResource("26_o5ykh")
+autoplay = true
+bus = &"Cars"
+doppler_tracking = 2
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.93552, -1.14035, -19.0615)
