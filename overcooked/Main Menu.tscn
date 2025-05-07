@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://baahqa3wl8kca"]
+[gd_scene load_steps=12 format=3 uid="uid://bhb8d2j7crk53"]
 
 [ext_resource type="Texture2D" uid="uid://nnlt0ta2do8t" path="res://UI/Background.png" id="1_5b7ti"]
 [ext_resource type="AudioStream" uid="uid://cdhias30pedj7" path="res://Overcooked SFX/OvercookedMenu.mp3" id="1_6viy2"]

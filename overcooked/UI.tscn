@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://bo52nln3vdv1o"]
+[gd_scene load_steps=11 format=3 uid="uid://bo52nln3vdv1o"]
 
 [ext_resource type="Texture2D" uid="uid://bee8vpcuides5" path="res://UI/Time.png" id="1_tks4x"]
 [ext_resource type="Texture2D" uid="uid://4pv6heclgo8p" path="res://UI/ScoreCoin.png" id="2_ln680"]
 [ext_resource type="Script" uid="uid://377sarpqwofw" path="res://Timer.gd" id="2_vrfts"]
 [ext_resource type="PackedScene" uid="uid://ckv45ee2whk4d" path="res://ui_recipe_display.tscn" id="4_qui0h"]
 [ext_resource type="Script" uid="uid://dtn7tpfixj66k" path="res://Score.gd" id="4_vrfts"]
+[ext_resource type="Script" uid="uid://dxgk1yjvtg7kc" path="res://resultsScore.gd" id="6_0mc3e"]
+[ext_resource type="Script" uid="uid://c2axtlpyhnaav" path="res://displayResults.gd" id="6_q77pa"]
+[ext_resource type="Texture2D" uid="uid://buvhgq8d4c6ip" path="res://UI/Level Complete.png" id="7_27c8x"]
+[ext_resource type="Texture2D" uid="uid://dhdce57eaex4t" path="res://UI/DoneButton.png" id="9_i1vam"]
+[ext_resource type="Script" uid="uid://chwc4vvro4wtj" path="res://resultsStars.gd" id="10_n8582"]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -92,3 +97,72 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="RecipeDisplay" parent="." instance=ExtResource("4_qui0h")]
+
+[node name="ResultsDisplay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 633.0
+offset_top = 262.0
+offset_right = 673.0
+offset_bottom = 302.0
+script = ExtResource("6_q77pa")
+
+[node name="Background" type="TextureRect" parent="ResultsDisplay"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_27c8x")
+
+[node name="ScoreText" type="RichTextLabel" parent="ResultsDisplay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.275
+anchor_top = 1.725
+anchor_right = -0.275
+anchor_bottom = 1.725
+offset_left = 24.0
+offset_top = 58.0
+offset_right = 229.0
+offset_bottom = 168.0
+theme_override_colors/default_color = Color(0.992675, 1, 0.86778, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/normal_font_size = 80
+text = "0
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+script = ExtResource("6_0mc3e")
+metadata/_edit_use_anchors_ = true
+
+[node name="Stars" type="TextureRect" parent="ResultsDisplay"]
+layout_mode = 0
+offset_left = 262.0
+offset_top = 127.0
+offset_right = 582.0
+offset_bottom = 247.0
+script = ExtResource("10_n8582")
+
+[node name="QuitButton" type="Button" parent="ResultsDisplay"]
+layout_mode = 0
+offset_left = 265.0
+offset_top = 337.0
+offset_right = 485.0
+offset_bottom = 427.0
+
+[node name="QuitButtonTexture" type="TextureRect" parent="ResultsDisplay/QuitButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -44.0
+offset_right = 112.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_i1vam")

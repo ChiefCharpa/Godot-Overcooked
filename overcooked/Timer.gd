@@ -24,8 +24,10 @@ func startTimer(levelDuration : float):
 
 # Finish timer (flag to end level and show results)
 func finishTimer():
-	# End level
-	print("")
+	get_node("../../ResultsDisplay/ScoreText").displayResultScore()
+	get_node("../../ResultsDisplay").makeVisible()
+	get_node("../../ResultsDisplay/Stars").displayStars()
+	print("Level end")
 
 func _ready() -> void:
 	startTimer(levelDuration)
