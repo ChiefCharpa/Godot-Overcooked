@@ -166,3 +166,5 @@ offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_i1vam")
+
+[connection signal="pressed" from="ResultsDisplay/QuitButton" to="ResultsDisplay" method="_on_quit_button_pressed"]

@@ -25,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://bx7lqk1at3smh" path="res://Overcooked Assets/Decorations/KitchenWalls/WindowWallSegment.glb" id="22_wesx8"]
 [ext_resource type="PackedScene" uid="uid://cxn2s3upm086n" path="res://Overcooked Assets/Decorations/KitchenWalls/CornerWallSegment.glb" id="23_qqkhr"]
 [ext_resource type="PackedScene" uid="uid://bo52nln3vdv1o" path="res://UI.tscn" id="24_3ppgv"]
-[ext_resource type="PackedScene" path="res://Objects/Counters/counter(plate).tscn" id="26_qqkhr"]
+[ext_resource type="PackedScene" uid="uid://co7p2ru6nijtr" path="res://Objects/Counters/counter(plate).tscn" id="26_qqkhr"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dppq4"]
 
