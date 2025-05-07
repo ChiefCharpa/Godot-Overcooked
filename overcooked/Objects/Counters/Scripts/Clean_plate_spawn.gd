@@ -22,7 +22,7 @@ func spawnPlate():
 	
 	# Position the new plate
 	var vertical_offset = 0.1 * plate_count + 0.4
-	plate_obj.global_transform.origin = Vector3(0, vertical_offset, -.7)
+	plate_obj.global_transform.origin = Vector3(0, vertical_offset, .7)
 
 	get_parent().add_child(plate_obj)  # Add after it's positioned
 

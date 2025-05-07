@@ -35,6 +35,7 @@ func take_from_pan():
 				if child.name == held_vegetable:
 					var returnchild = child
 					clear_plate()
+					burning = false
 					cooking = false
 					parts = null
 					return returnchild
@@ -55,6 +56,7 @@ func cook(currentCounter: NodePath):
 	if cook and not cooking and parts[0] != "Cooked":
 		print("cooking")
 		cooking = true
+		$ProgressBar.doCooking()
 		timer.start()
 	elif cook and cooking:
 		print("Not cooking")
@@ -69,6 +71,7 @@ func cook(currentCounter: NodePath):
 
 func pickup(player_inventory):
 	cooking = false
+	$ProgressBar.pauseCooking()
 	burning = false
 	onstove = false
 	stove = null

@@ -84,6 +84,7 @@ func cook(currentCounter: NodePath):
 	if cook and onstove and !burnt:
 		print("cooking")
 		cooking = true
+		$ProgressBar.doCooking()
 		if timer.is_stopped() and not partial : #if timer is stopped and nothing has been cooked
 			burning = false
 			burn_timer.stop()
@@ -113,6 +114,7 @@ func pickup(player_inventory):
 	if !timer.is_stopped():
 		timer.wait_time = timer.time_left
 		timer.stop()
+		$ProgressBar.pauseCooking()
 		partial = true
 	burn_timer.stop()
 	cooking = false
