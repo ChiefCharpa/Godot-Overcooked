@@ -1,6 +1,6 @@
 [gd_scene load_steps=34 format=3 uid="uid://t40jprtoy1o8"]
 
-[ext_resource type="Script" path="res://levelCoopDecide.gd" id="1_0n564"]
+[ext_resource type="Script" uid="uid://df2o8sotf7tfx" path="res://levelCoopDecide.gd" id="1_0n564"]
 [ext_resource type="AudioStream" uid="uid://3bvi3jx06iyc" path="res://Overcooked SFX/OvercookedSoundtrack.mp3" id="1_kah4x"]
 [ext_resource type="PackedScene" uid="uid://cgkmdmvjhvk6t" path="res://Objects/Counters/counter.tscn" id="2_8jspn"]
 [ext_resource type="PackedScene" uid="uid://hm5rraqj5dr3" path="res://Objects/Counters/cutting_board.tscn" id="3_80vsr"]
