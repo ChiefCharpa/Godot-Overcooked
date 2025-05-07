@@ -22,11 +22,11 @@ func recipeSelection():
 	var scene_file_path = get_tree().current_scene.scene_file_path
 	var filename = scene_file_path.get_file()  # e.g., "level_2.tscn"
 	var filename_key = filename.split(".")[0]
-	if filename_key == "Level":
+	if filename_key == "Level_1":
 		recipes = [["Soup_Onion"]]
 	elif filename_key == "level_2":
 		recipes = [["Soup_Tomato"], ["Soup_Onion"]]
-	elif filename_key == "level_3":
+	elif filename_key == "Level3":
 		recipes = [["Soup_Tomato"], ["Soup_Onion"], ["Soup_Mushroom"]]
 	elif filename_key == "level_4":
 		recipes = [["Burger"],["Burger+Lettuce"],["Burger+Lettuce+Tomato"]]
@@ -35,7 +35,6 @@ func recipeSelection():
 
 func start_random_timer():
 	var new_time = randf_range(40.0, 60.0)
-	print(new_time)
 	order_Timer.wait_time = new_time
 	order_Timer.start()
 	
