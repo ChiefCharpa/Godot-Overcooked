@@ -107,7 +107,7 @@ func _on_timer_timeout():
 		burn_timer.start()
 
 func _on_timer_burn_timeout():
-	if burning and not cooking:
+	if burning and not cooking and veg!= null:
 		var stoveNode = get_node(stove)
 		stoveNode.onFire()
 		print("Food is burnt!")

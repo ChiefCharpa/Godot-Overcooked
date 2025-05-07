@@ -21,13 +21,15 @@ var VegDictionary = {
 	"Soup_Tomato" : preload("res://Objects/Food preloads/Soup/Soup_Tomato.tscn"),
 	"Soup_Onion" : preload("res://Objects/Food preloads/Soup/Soup_Onion.tscn"),
 	"Soup_Mushroom" : preload("res://Objects/Food preloads/Soup/Soup_Mushroom.tscn"),
-
 	"Burger" : preload ("res://Overcooked Assets/Food/Burgers/Burger(Plain).glb"),
 	"Burger+Lettuce" : preload("res://Overcooked Assets/Food/Burgers/Burger(Lettuce).glb"),
 	"Burger+Lettuce+Tomato" : preload("res://Overcooked Assets/Food/Burgers/Burger(TomatoAndLettuce).glb"),
 	"Burger+Tomato" : preload("res://Overcooked Assets/Food/Burgers/Burger(Tomato).glb"),
 	"Burnt_Meat" : preload("res://Objects/Food preloads/Cooked/Burnt_meat.tscn"),
-	"Burnt_Fish" : preload("res://Objects/Food preloads/Cooked/Burnt_Fish.tscn")
+	"Burnt_Fish" : preload("res://Objects/Food preloads/Cooked/Burnt_Fish.tscn"),
+	"Burnt_Soup" : preload("res://Objects/Food preloads/Soup/Burnt_Soup.tscn"),
+	"Salad" : preload("res://Overcooked Assets/Food/Salad/SaladPlain.glb"),
+	"Salad+Tomato" : preload("res://Overcooked Assets/Food/Salad/SaladTomato.glb")
 
 	}
 var Veglist = VegDictionary.keys()
