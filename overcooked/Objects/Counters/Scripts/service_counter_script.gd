@@ -13,6 +13,7 @@ var plateSpawnNode
 @onready var recipe_display: Control = get_node("/root/LevelNode/UI/RecipeDisplay")
 @onready var order_Timer = $place_Order_Timer
 var burning = false
+var filename_key
 func _ready():
 	plateSpawnNode = get_node("/root/LevelNode/Service_Counter/Counter_Rigidbody")
 	currentCounter = self
@@ -21,7 +22,7 @@ func _ready():
 func recipeSelection():
 	var scene_file_path = get_tree().current_scene.scene_file_path
 	var filename = scene_file_path.get_file()
-	var filename_key = filename.split(".")[0]
+	filename_key = filename.split(".")[0]
 	if filename_key == "Level":
 		recipes = [["Soup_Onion"]]
 	if filename_key == "Level_1":
@@ -106,32 +107,32 @@ func get_some_variable():
 
 # Displays orders at top of screen
 func displayOrder(order):
-	if order["recipe"][0] == "Soup_Tomato":
-		recipeTexture = load("res://UI/Recipes/Soups/Recipe_Soup_TomatoSoup.png")
-		recipe_display.displayRecipe(recipeTexture)
-	if order["recipe"][0] == "Soup_Mushroom":
-		recipeTexture = load("res://UI/Recipes/Soups/Recipe_Soup_MushroomSoup.png")
-		recipe_display.displayRecipe(recipeTexture)
-	if order["recipe"][0] == "Soup_Onion":
-		recipeTexture = load("res://UI/Recipes/Soups/Recipe_Soup_OnionSoup.png")
-		recipe_display.displayRecipe(recipeTexture)
-
-	if order["recipe"][0] == "Burger":
-		recipeTexture = load("res://UI/Recipes/Burgers/Recipe_Burger_2.png")
-		recipe_display.displayRecipe(recipeTexture)
-	if order["recipe"][0] == "Burger+Lettuce":
-		recipeTexture = load("res://UI/Recipes/Burgers/Recipe_Burger_3.png")
-		recipe_display.displayRecipe(recipeTexture)
-	if order["recipe"][0] == "Burger+Lettuce+Tomato":
-		recipeTexture = load("res://UI/Recipes/Burgers/Recipe_Burger_4.png")
-		recipe_display.displayRecipe(recipeTexture)
-	
-	if order["recipe"][0] == "Salad":
-		recipeTexture = load("res://UI/Recipes/Salads/Recipe_Salad_1.png")
-		recipe_display.displayRecipe(recipeTexture)
-	if order["recipe"][0] == "Salad+Tomato":
-		recipeTexture = load("res://UI/Recipes/Salads/Recipe_Salad_2.png")
-		recipe_display.displayRecipe(recipeTexture)
+	if filename_key != "Level":
+		if order["recipe"][0] == "Soup_Tomato":
+			recipeTexture = load("res://UI/Recipes/Soups/Recipe_Soup_TomatoSoup.png")
+			recipe_display.displayRecipe(recipeTexture)
+		if order["recipe"][0] == "Soup_Mushroom":
+			recipeTexture = load("res://UI/Recipes/Soups/Recipe_Soup_MushroomSoup.png")
+			recipe_display.displayRecipe(recipeTexture)
+		if order["recipe"][0] == "Soup_Onion":
+			recipeTexture = load("res://UI/Recipes/Soups/Recipe_Soup_OnionSoup.png")
+			recipe_display.displayRecipe(recipeTexture)
+		if order["recipe"][0] == "Burger":
+			recipeTexture = load("res://UI/Recipes/Burgers/Recipe_Burger_2.png")
+			recipe_display.displayRecipe(recipeTexture)
+		if order["recipe"][0] == "Burger+Lettuce":
+			recipeTexture = load("res://UI/Recipes/Burgers/Recipe_Burger_3.png")
+			recipe_display.displayRecipe(recipeTexture)
+		if order["recipe"][0] == "Burger+Lettuce+Tomato":
+			recipeTexture = load("res://UI/Recipes/Burgers/Recipe_Burger_4.png")
+			recipe_display.displayRecipe(recipeTexture)
+		
+		if order["recipe"][0] == "Salad":
+			recipeTexture = load("res://UI/Recipes/Salads/Recipe_Salad_1.png")
+			recipe_display.displayRecipe(recipeTexture)
+		if order["recipe"][0] == "Salad+Tomato":
+			recipeTexture = load("res://UI/Recipes/Salads/Recipe_Salad_2.png")
+			recipe_display.displayRecipe(recipeTexture)
 		
 func onFire():
 	burning = true
