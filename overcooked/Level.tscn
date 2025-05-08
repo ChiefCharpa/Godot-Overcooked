@@ -25,7 +25,11 @@
 [ext_resource type="PackedScene" uid="uid://bx7lqk1at3smh" path="res://Overcooked Assets/Decorations/KitchenWalls/WindowWallSegment.glb" id="22_wesx8"]
 [ext_resource type="PackedScene" uid="uid://cxn2s3upm086n" path="res://Overcooked Assets/Decorations/KitchenWalls/CornerWallSegment.glb" id="23_qqkhr"]
 [ext_resource type="PackedScene" uid="uid://bo52nln3vdv1o" path="res://UI.tscn" id="24_3ppgv"]
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://co7p2ru6nijtr" path="res://Objects/Counters/counter(plate).tscn" id="26_qqkhr"]
+=======
+[ext_resource type="PackedScene" uid="uid://co7p2ru6nijtr" path="res://Overcooked Assets/Workstations/counter(plate).tscn" id="26_qqkhr"]
+>>>>>>> Stashed changes
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dppq4"]
 
@@ -35,7 +39,7 @@ albedo_color = Color(0.978474, 0.809377, 0.478812, 1)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_f1ml4"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
-[node name="LevelNode" type="Node3D"]
+[node name="LevelNode2" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.773004)
 script = ExtResource("1_4vjci")
 
