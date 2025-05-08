@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bs5rcma3ntlmk"
+path="res://.godot/imported/FireSFX.mp3-23cbd0eeab32d88678fd1024d75672bd.mp3str"
+
+[deps]
+
+source_file="res://Overcooked SFX/FireSFX.mp3"
+dest_files=["res://.godot/imported/FireSFX.mp3-23cbd0eeab32d88678fd1024d75672bd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

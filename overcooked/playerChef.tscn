@@ -994,7 +994,7 @@ bus = &"Pickup"
 [node name="Chopping" type="AudioStreamPlayer3D" parent="InteractionCheckerArea3D/SFX"]
 stream = ExtResource("7_6h3ag")
 bus = &"Chopping"
-parameters/looping = false
+parameters/looping = true
 
 [node name="chef2" parent="." instance=ExtResource("3_vmk5g")]
 transform = Transform3D(-1.54509, 0, -0.0287145, 0, 1.44546, 0, 0.028858, 0, -1.53741, -0.0215359, -1.05174, -0.0241222)

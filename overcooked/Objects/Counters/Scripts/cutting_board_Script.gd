@@ -28,8 +28,10 @@ func _chop(Player: CharacterBody3D):
 			timer.start()
 			$ProgressBar.doChopping()
 			Player.get_child(2).chopping = true
+			$"Chopping".play()
 		elif chop and chopping:
 			Player.get_child(2).chopping = false
+			$"Chopping".stop()
 			chopping = false
 			playerref.Freeze()
 			timer.wait_time = timer.time_left
@@ -65,6 +67,7 @@ func _on_timer_timeout() -> void:
 		timer.stop()
 		timer.wait_time = 6
 		chopping = false
+		$"Chopping".stop()
 		playerref.get_child(2).chopping = false
 func onFire():
 	burning = true

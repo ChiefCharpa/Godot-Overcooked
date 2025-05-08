@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b885rp5tqwcl"]
+[gd_scene load_steps=12 format=3 uid="uid://b885rp5tqwcl"]
 
 [ext_resource type="Script" uid="uid://g2d0w3xcfyil" path="res://fireScript.gd" id="1_2pqqt"]
 [ext_resource type="Script" uid="uid://c1nvneajy88lw" path="res://fireCollision.gd" id="2_5ltu8"]
 [ext_resource type="Material" uid="uid://6p336tbxw12x" path="res://finreMats/fireOrange.tres" id="3_icfi2"]
 [ext_resource type="Material" uid="uid://b5b4vakrv85td" path="res://finreMats/firered.tres" id="4_eo6dx"]
+[ext_resource type="AudioStream" uid="uid://bs5rcma3ntlmk" path="res://Overcooked SFX/FireSFX.mp3" id="5_eo6dx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ufe0f"]
 
@@ -86,5 +87,10 @@ flatness = 0.62
 initial_velocity_max = 9.19
 hue_variation_min = -0.28
 hue_variation_max = 0.46
+
+[node name="FireSFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_eo6dx")
+bus = &"Fire"
+parameters/looping = true
 
 [connection signal="timeout" from="Area3D/Timer" to="Area3D" method="_on_timer_timeout"]
