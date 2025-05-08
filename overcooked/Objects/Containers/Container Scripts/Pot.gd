@@ -89,6 +89,7 @@ func cook(currentCounter: NodePath):
 			print(parts[0])
 	if cook and onstove and !burnt:
 		print("cooking")
+		$"PotSFX".play()
 		cooking = true
 		$ProgressBar.pauseCooking()
 		if timer.is_stopped() and not partial : #if timer is stopped and nothing has been cooked
@@ -119,6 +120,7 @@ func cook(currentCounter: NodePath):
 	elif cook and not onstove:
 		print("Not cooking")
 		$ProgressBar.pauseCooking()
+		$"PotSFX".stop()
 		cooking = false
 		timer.wait_time = timer.time_left
 		timer.stop()
@@ -136,6 +138,7 @@ func pickup(player_inventory):
 		timer.wait_time = timer.time_left
 		timer.stop()
 		$ProgressBar.pauseCooking()
+		$"PotSFX".stop()
 		partial = true
 	burn_timer.stop()
 	cooking = false
