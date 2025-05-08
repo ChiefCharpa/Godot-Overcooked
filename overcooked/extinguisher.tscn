@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://8m4x2h2rn5ee"]
+[gd_scene load_steps=9 format=3 uid="uid://8m4x2h2rn5ee"]
 
 [ext_resource type="Script" uid="uid://2q20o7o6oyxi" path="res://extinguisherScript.gd" id="1_fu2pk"]
 [ext_resource type="ArrayMesh" uid="uid://brs1y8ka658mn" path="res://Overcooked Assets/Meshes/Objects/Fire Extinguisher/FireExtinguisher.obj" id="2_l0gx3"]
+[ext_resource type="AudioStream" uid="uid://ytioggirs4t7" path="res://Overcooked SFX/ExtinguisherSFX.mp3" id="3_vjmxs"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_aawy0"]
 height = 1.92285
@@ -56,3 +57,8 @@ spread = 13.2
 gravity = Vector3(0, -9.445, 0)
 initial_velocity_min = 4.0
 initial_velocity_max = 6.0
+
+[node name="ExtinguisherSFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_vjmxs")
+bus = &"Extinguisher"
+parameters/looping = true

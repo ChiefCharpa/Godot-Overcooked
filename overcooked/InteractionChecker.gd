@@ -52,7 +52,6 @@ func _process(delta):
 					animatePlayer.call("_changeState", 6)
 				else:
 					animatePlayer.call("_changeState", 3)
-				$SFX/Chopping.play()
 
 ##variable simplification for readability
 	var press_interact := Global.ended == false and Input.is_action_just_pressed("Interaction_Select")
