@@ -42,6 +42,7 @@ func displayRecipe(image : Texture2D):
 	var recipeSlot = UI_RECIPE_DISPLAY.instantiate()
 	add_child(recipeSlot)
 	recipeSlot.recipeImage(image)
+	$"Bell".play()
 	
 	recipeSlot.get_node("ProgressBar").show()
 	

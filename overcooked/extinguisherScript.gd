@@ -16,7 +16,7 @@ func _ready() -> void:
 func _process(delta):
 	if spray_cooldown.is_stopped():
 		self.get_child(5).emitting = false;
-		
+		$"ExtinguisherSFX".stop()
 
 func _activate(player_inventory):
 	pass
@@ -35,4 +35,5 @@ func spray_foam():
 		var direction = -sprayPoint.global_transform.basis.z.normalized()
 		foam_instance.linear_velocity = direction * 10
 		self.get_child(5).emitting = true;
+		$"ExtinguisherSFX".play()
 		spray_cooldown.start(0.05)  # Wait 0.05 seconds before allowing another spray

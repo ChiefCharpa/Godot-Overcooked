@@ -6,6 +6,7 @@ var GameScene4 = preload("res://level_4.tscn")
 var target_child
 func buttonPressed():
 	$"../ControlDisplay".displayControls()
+	$"ButtonSFX".play()
 
 func _ready():
 	target_child = get_parent().get_node("coop/Level4Texture")
@@ -13,21 +14,26 @@ func _ready():
 
 
 func _on_level_1_pressed() -> void:
+	$"ButtonSFX".play()
 	get_tree().change_scene_to_packed(GameScene1)
 
 
 func _on_level_2_pressed() -> void:
+	$"ButtonSFX".play()
 	get_tree().change_scene_to_packed(GameScene2)
 
 
 func _on_level_3_pressed() -> void:
+	$"ButtonSFX".play()
 	get_tree().change_scene_to_packed(GameScene3)
 
 func _on_level_4_pressed() -> void:
+	$"ButtonSFX".play()
 	get_tree().change_scene_to_packed(GameScene4)
 
 
 func _on_coop_pressed() -> void:
+	$"ButtonSFX".play()
 	Global.coop = not Global.coop
 	if Global.coop == true:
 		target_child.modulate = Color(0, 1, 0)  # Green

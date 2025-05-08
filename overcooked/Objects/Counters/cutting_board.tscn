@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://hm5rraqj5dr3"]
+[gd_scene load_steps=9 format=3 uid="uid://hm5rraqj5dr3"]
 
 [ext_resource type="Script" uid="uid://ca7eub0di4r1s" path="res://Objects/Counters/Scripts/cutting_board_Script.gd" id="1_ih4ek"]
 [ext_resource type="Script" uid="uid://dxhudpdv57hrc" path="res://Objects/Counters/chop_progress_bar.gd" id="2_abucr"]
 [ext_resource type="ArrayMesh" uid="uid://cbxawl30n4o0h" path="res://Overcooked Assets/Meshes/Environment/Chopping Board/ChoppingBoard_Side.obj" id="2_nlsuc"]
+[ext_resource type="AudioStream" uid="uid://00mw8owbot60" path="res://Overcooked SFX/SingleChop.mp3" id="3_mrcjs"]
 [ext_resource type="PackedScene" uid="uid://my4u46awvlva" path="res://Overcooked Assets/Workstations/Cabinet.glb" id="5_mrcjs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5csdr"]
@@ -37,6 +38,10 @@ texture = SubResource("CanvasTexture_mrcjs")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.000320258)
 modulate = Color(0.270222, 0.270222, 0.270222, 1)
 texture = SubResource("CanvasTexture_7f2ec")
+
+[node name="Chopping" type="AudioStreamPlayer3D" parent="CuttingBoard_RigidBody3D"]
+stream = ExtResource("3_mrcjs")
+parameters/looping = true
 
 [node name="ChoppingBoardSide" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0851806, 0.175154, 0.0352282)

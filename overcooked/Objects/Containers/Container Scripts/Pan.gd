@@ -58,10 +58,12 @@ func cook(currentCounter: NodePath):
 		print("cooking")
 		cooking = true
 		$ProgressBar.doCooking()
+		$"PanSFX".play()
 		timer.start()
 	elif cook and cooking:
 		print("Not cooking")
 		cooking = false
+		$"PanSFX".stop()
 		timer.wait_time = timer.time_left
 		$ProgressBar.cookingTime = timer.wait_time
 		$ProgressBar.pauseCooking()
@@ -75,6 +77,7 @@ func cook(currentCounter: NodePath):
 func pickup(player_inventory):
 	cooking = false
 	$ProgressBar.pauseCooking()
+	$"PanSFX".stop()
 	burning = false
 	onstove = false
 	stove = null
@@ -116,6 +119,7 @@ func _on_timer_burn_timeout():
 	if burning and not cooking and veg!= null:
 		var stoveNode = get_node(stove)
 		stoveNode.onFire()
+		$"FireSFX".play()
 		print("Food is burnt!")
 		var burnt_key = "Burnt_" + veg.name.split("_")[1]
 		if Global.VegDictionary.has(burnt_key):

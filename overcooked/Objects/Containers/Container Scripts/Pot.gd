@@ -87,6 +87,7 @@ func cook(currentCounter: NodePath):
 			print(parts[0])
 	if cook and onstove and !burnt:
 		print("cooking")
+		$"PotSFX".play()
 		cooking = true
 		$ProgressBar.pauseCooking()
 		if timer.is_stopped() and not partial : #if timer is stopped and nothing has been cooked
@@ -117,6 +118,7 @@ func cook(currentCounter: NodePath):
 	elif cook and not onstove:
 		print("Not cooking")
 		$ProgressBar.pauseCooking()
+		$"PotSFX".stop()
 		cooking = false
 		timer.wait_time = timer.time_left
 		timer.stop()
@@ -125,6 +127,7 @@ func cook(currentCounter: NodePath):
 	elif cook and parts[0] == "Soup":
 		print("Burning")
 		burning = true
+		
 		burn_timer.start()
 
 
@@ -133,6 +136,7 @@ func pickup(player_inventory):
 		timer.wait_time = timer.time_left
 		timer.stop()
 		$ProgressBar.pauseCooking()
+		$"PotSFX".stop()
 		partial = true
 	burn_timer.stop()
 	cooking = false
@@ -182,6 +186,7 @@ func _on_timer_burn_timeout():
 	if burning and not cooking and held_vegetable.size() > 0:
 		var stoveNode = get_node(stove)
 		stoveNode.onFire()
+		$"FireSFX".play()
 		print("Food is burnt!")
 		var burnt_key = "Burnt_Soup"
 		clear_plate()
