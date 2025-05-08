@@ -35,7 +35,7 @@ func _process(delta):
 			body_to_activate = body
 
 	# Chopping check
-	if Input.is_action_pressed("Chop2") and player_inventory.resources_inventory.has("Extinguisher"):
+	if Global.ended == false and Input.is_action_pressed("Chop2") and player_inventory.resources_inventory.has("Extinguisher"):
 		if player_inventory.resources_inventory.has("Extinguisher"):
 			var extinguisher = player_inventory.resources_inventory["Extinguisher"]
 			player_inventory.heldVegetable.spray_foam()
@@ -43,7 +43,7 @@ func _process(delta):
 	else:
 		player_node.spraying = false
 	# Chopping check
-	if Input.is_action_just_pressed("Chop2") and not player_inventory.resources_inventory.has("Extinguisher"):
+	if Global.ended == false and Input.is_action_just_pressed("Chop2") and not player_inventory.resources_inventory.has("Extinguisher"):
 		for body in overlapping_bodies:
 			if body.has_method("Iscuttingboard"):
 				resource_type = body.get_some_variable()
@@ -55,8 +55,8 @@ func _process(delta):
 					animatePlayer.call("_changeState", 3)
 				
 	##variable simplification for readability
-	var press_interact := Input.is_action_just_pressed("Interaction_Select2")
-	var press_throw := Input.is_action_just_pressed("Throw_Item2")
+	var press_interact := Global.ended == false and Input.is_action_just_pressed("Interaction_Select2")
+	var press_throw := Global.ended == false and Input.is_action_just_pressed("Throw_Item2")
 	var has_item : bool = player_inventory.resources_inventory.size() != 0
 	var held_not_plate : bool = player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() != "Plate"
 	var nothing_or_food : bool = (body_to_activate == null or resource_type == "Food")
