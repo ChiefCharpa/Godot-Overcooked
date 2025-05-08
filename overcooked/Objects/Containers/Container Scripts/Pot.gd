@@ -110,9 +110,8 @@ func cook(currentCounter: NodePath):
 			$ProgressBar.doCooking()
 			timer.start()
 		elif partial and !burnt:
-			var temp = timer.time_left
+			timer.wait_time = timer.time_left+5
 			timer.stop()
-			timer.wait_time = temp +5
 			$ProgressBar.cookingTime
 			$ProgressBar.cookingProgress=0
 			$ProgressBar.doCooking()

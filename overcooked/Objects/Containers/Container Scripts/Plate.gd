@@ -16,7 +16,7 @@ func add_to_plate(veg: Node3D):
 		veg.queue_free()
 		var newveg = Global.VegDictionary.get(veg.name).instantiate()
 		add_child(newveg)
-		var offset = Vector3(0, 0.1 + 0.2 * held_vegetables.size(), 0)
+		var offset = Vector3(0, 0.1 * held_vegetables.size(), 0)
 		newveg.freeze = true
 		newveg.get_node("CollisionShape3D").disabled = true
 		newveg.transform.origin = offset
