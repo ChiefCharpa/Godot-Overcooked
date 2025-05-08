@@ -58,10 +58,12 @@ func cook(currentCounter: NodePath):
 		print("cooking")
 		cooking = true
 		$ProgressBar.doCooking()
+		$"PanSFX".play()
 		timer.start()
 	elif cook and cooking:
 		print("Not cooking")
 		cooking = false
+		$"PanSFX".stop()
 		timer.wait_time = timer.time_left
 		$ProgressBar.cookingTime = timer.wait_time
 		$ProgressBar.pauseCooking()
@@ -75,6 +77,7 @@ func cook(currentCounter: NodePath):
 func pickup(player_inventory):
 	cooking = false
 	$ProgressBar.pauseCooking()
+	$"PanSFX".stop()
 	burning = false
 	onstove = false
 	stove = null
