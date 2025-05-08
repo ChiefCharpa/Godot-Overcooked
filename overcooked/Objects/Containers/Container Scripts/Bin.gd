@@ -14,7 +14,9 @@ func _activate(inventory_node):
 	if not burning and inventory_node:
 		if inventory_node.resources_inventory.size() > 0:
 			var new_root = get_tree().root.get_node("LevelNode")
-			var parent = new_root.get_node("Player") # Get the player
+			if new_root == null:
+				new_root = get_tree().root.get_node("LevelNode2")
+			var parent = inventory_node.get_parent() # Get the player
 			for child in parent.get_children(): # Look through all the children
 				if child.name == "Inventory": # Get the inventory child
 					inventory = child

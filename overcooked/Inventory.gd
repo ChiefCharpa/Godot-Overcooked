@@ -47,6 +47,8 @@ func _drop_item(force):
 		print("Dropping", heldVegetable)
 		heldVegetable.get_parent().remove_child(heldVegetable)
 		var new_root = get_tree().root.get_node("LevelNode")
+		if new_root == null:
+			new_root = get_tree().root.get_node("LevelNode2")
 		new_root.add_child(heldVegetable)
 		
 		# Place the item just in front of the player
