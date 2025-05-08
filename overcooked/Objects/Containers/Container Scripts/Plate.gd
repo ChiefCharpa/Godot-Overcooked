@@ -128,7 +128,7 @@ func BurgerCheck(): #dont look at this
 			add_child(newveg)
 			var offset = Vector3(0, 0.1 + 0.2 * held_vegetables.size(), 0)
 			newveg.transform.origin = offset
-		if held_vegetables.has("Chopped+Tomato") and held_vegetables.has("Burger+Lettuce"):
+		if held_vegetables.has("Chopped_Tomato") and held_vegetables.has("Burger+Lettuce"):
 			clear_plate()
 			held_vegetables.append("Burger+Lettuce+Tomato")
 			var newveg = Global.VegDictionary.get("Burger+Lettuce+Tomato").instantiate()
