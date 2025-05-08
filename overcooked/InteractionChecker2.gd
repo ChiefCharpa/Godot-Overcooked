@@ -85,7 +85,7 @@ func _process(delta):
 		if held_plate and resource_type == "Food":
 			player_inventory.heldVegetable.add_to_plate(body_to_activate, player_inventory)
 		elif held_plate and body_to_activate.has_method("ispan") and !player_inventory.heldVegetable.has_method("ispan") and not player_inventory.heldVegetable.name == "Extinguisher":
-			player_inventory.heldVegetable.add_to_plate(body_to_activate.take_from_pan(), player_inventory)
+			player_inventory.heldVegetable.add_to_plate(body_to_activate.take_from_pan())
 		elif resource_type == "Food":
 			body_to_activate.call("_activate", player_inventory)
 		elif resource_type in ["Interactable", "containers"]:
