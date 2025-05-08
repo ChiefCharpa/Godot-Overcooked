@@ -1,8 +1,9 @@
-[gd_scene load_steps=34 format=3 uid="uid://t40jprtoy1o8"]
+[gd_scene load_steps=35 format=3 uid="uid://t40jprtoy1o8"]
 
 [ext_resource type="Script" uid="uid://df2o8sotf7tfx" path="res://levelCoopDecide.gd" id="1_0n564"]
 [ext_resource type="AudioStream" uid="uid://3bvi3jx06iyc" path="res://Overcooked SFX/OvercookedSoundtrack.mp3" id="1_kah4x"]
 [ext_resource type="PackedScene" uid="uid://cgkmdmvjhvk6t" path="res://Objects/Counters/counter.tscn" id="2_8jspn"]
+[ext_resource type="AudioStream" uid="uid://bb5xu4p56axf0" path="res://Overcooked SFX/OceanSFX.mp3" id="3_0n564"]
 [ext_resource type="PackedScene" uid="uid://hm5rraqj5dr3" path="res://Objects/Counters/cutting_board.tscn" id="3_80vsr"]
 [ext_resource type="PackedScene" uid="uid://c5cwrng738u2m" path="res://Objects/Containers/bin.tscn" id="4_kyqi5"]
 [ext_resource type="Script" uid="uid://cuskgh4l3byo0" path="res://global.gd" id="5_vje1a"]
@@ -54,6 +55,13 @@ script = ExtResource("1_0n564")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.15525, 0, 0)
 stream = ExtResource("1_kah4x")
 autoplay = true
+parameters/looping = true
+
+[node name="Ocean" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.15525, 0, 0)
+stream = ExtResource("3_0n564")
+autoplay = true
+bus = &"Ocean"
 parameters/looping = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
