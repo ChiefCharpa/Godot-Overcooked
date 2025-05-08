@@ -66,7 +66,7 @@ func _process(delta):
 
 	# Drop item if player presses interact/throw with food or nothing
 	if ((press_interact and nothing_or_food) or press_throw) and has_item and not action_processed and !chopping:
-		if player_inventory.heldVegetable.get_some_variable() != "Plate":
+		if player_inventory.heldVegetable != null and player_inventory.heldVegetable.get_some_variable() != "Plate":
 			if press_throw:
 				force = 10
 			else:
