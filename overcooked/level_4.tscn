@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://c2kj6esayq1kl" path="res://Overcooked Assets/Decorations/KitchenWalls/TripleWallSegment.glb" id="21_eqpf5"]
 [ext_resource type="PackedScene" uid="uid://dryy3hknutj8w" path="res://Overcooked Assets/Decorations/Modular Road/RoadStraight.glb" id="21_sgm4o"]
 [ext_resource type="PackedScene" uid="uid://cxn2s3upm086n" path="res://Overcooked Assets/Decorations/KitchenWalls/CornerWallSegment.glb" id="23_cugil"]
-[ext_resource type="PackedScene" uid="uid://dl53i68i3koj4" path="res://Overcooked Assets/Decorations/Cars/GreenCar.glb" id="24_2pufk"]
 [ext_resource type="PackedScene" uid="uid://bo52nln3vdv1o" path="res://UI.tscn" id="24_gx3pu"]
 [ext_resource type="PackedScene" uid="uid://8m4x2h2rn5ee" path="res://extinguisher.tscn" id="25_wleuh"]
 [ext_resource type="PackedScene" uid="uid://dwgaoxdccm2nl" path="res://Overcooked Assets/Decorations/Floors/CarpetSegment.glb" id="26_btc8u"]
@@ -33,8 +32,9 @@
 [ext_resource type="PackedScene" uid="uid://hu6etre3wr0q" path="res://Overcooked Assets/Decorations/Nature/PottedPlant.glb" id="32_ywdb0"]
 [ext_resource type="PackedScene" uid="uid://c2dybqvbfovfw" path="res://Overcooked Assets/Decorations/Modular Road Extras/MailBox.glb" id="33_p7cwt"]
 [ext_resource type="PackedScene" uid="uid://cwgnqviqmagg7" path="res://Overcooked Assets/Decorations/Modular Sidewalk/6SegmentSidewalk.glb" id="33_ywdb0"]
-[ext_resource type="PackedScene" uid="uid://dfdurxwytipee" path="res://Overcooked Assets/Decorations/Cars/OrangeCar.glb" id="34_p7cwt"]
-[ext_resource type="PackedScene" uid="uid://co7p2ru6nijtr" path="res://Objects/Counters/counter(plate).tscn" id="35_rprjf"]
+[ext_resource type="PackedScene" uid="uid://vd2fjybw52nr" path="res://blueCar.tscn" id="35_beulo"]
+[ext_resource type="PackedScene" uid="uid://co7p2ru6nijtr" path="res://Overcooked Assets/Workstations/counter(plate).tscn" id="35_rprjf"]
+[ext_resource type="PackedScene" uid="uid://bip2hxbwrhd2t" path="res://orangeCar.tscn" id="35_v6tvd"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2lakv"]
 
@@ -109,12 +109,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -13.6335, 0.0419948, -1
 [node name="RoadStraight4" parent="." instance=ExtResource("21_sgm4o")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -23.5825, 0.0419948, -12.506)
 
-[node name="GreenCar2" parent="." instance=ExtResource("24_2pufk")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.9905, 0.424094, -10.193)
-
-[node name="GreenCar3" parent="." instance=ExtResource("24_2pufk")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -18.7555, 0.424094, -10.193)
-
 [node name="RoadLamp" parent="." instance=ExtResource("30_ldfcd")]
 transform = Transform3D(-1.14492e-08, 0, -0.261928, 0, 0.261928, 0, 0.261928, 0, -1.14492e-08, -6.405, 5.18161, -6.94864)
 
@@ -172,9 +166,6 @@ transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 
 
 [node name="MailBox" parent="." instance=ExtResource("33_p7cwt")]
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 2.11979, 0.874902, -18.0077)
-
-[node name="OrangeCar" parent="." instance=ExtResource("34_p7cwt")]
-transform = Transform3D(-0.49999, 0, -0.00312417, 0, 0.5, 0, 0.00312417, 0, -0.49999, 14.4454, 0.185085, -15.5119)
 
 [node name="Tree" parent="." instance=ExtResource("31_41lt0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.546, 5.081, 0.473263)
@@ -537,3 +528,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75264, 0.297642, 4.01052)
 
 [node name="Counter12" parent="." instance=ExtResource("35_rprjf")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.00861, 0.297642, 3.94103)
+
+[node name="Node3D2" parent="." instance=ExtResource("35_beulo")]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 39.5732, 0.301511, -15.26)
+
+[node name="Node3D3" parent="." instance=ExtResource("35_v6tvd")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -27.2017, 0.361026, -10.1598)

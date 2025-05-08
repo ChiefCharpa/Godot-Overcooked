@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://vd2fjybw52nr"]
+
+[ext_resource type="PackedScene" uid="uid://2eb0otx7caec" path="res://Overcooked Assets/Decorations/Cars/BlueCar.glb" id="1_86uf4"]
+[ext_resource type="Script" uid="uid://cfa2w5802igo7" path="res://blue_car.gd" id="1_d3c3o"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_d3c3o")
+
+[node name="BlueCar" parent="." instance=ExtResource("1_86uf4")]

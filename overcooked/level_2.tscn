@@ -104,16 +104,16 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.5516
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.66746, 0.3, -3.00956)
 
 [node name="Counter2" parent="." instance=ExtResource("3_ikghu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.31202, 0.294587, 1.7346)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.43546, 0.294587, 1.7346)
 
 [node name="Counter6" parent="." instance=ExtResource("3_ikghu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3082, 0.294587, 0.62636)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.43164, 0.294587, 0.62636)
 
 [node name="Counter12" parent="." instance=ExtResource("3_ikghu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3067, 0.294587, -0.493743)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.43014, 0.294587, -0.493743)
 
 [node name="Counter17" parent="." instance=ExtResource("3_ikghu")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.46559, 0.294587, 3.81668)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.45862, 0.294587, 3.81668)
 
 [node name="Counter18" parent="." instance=ExtResource("3_ikghu")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.59139, 0.294587, 3.81995)
@@ -125,7 +125,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.7247
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.8512, 0.294587, 3.81927)
 
 [node name="Counter11" parent="." instance=ExtResource("3_ikghu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.31041, 0.294587, 2.85139)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.43385, 0.294587, 2.85139)
 
 [node name="Cutting_board2" parent="." instance=ExtResource("4_i6smf")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.725296, 0.3, 3.44287)

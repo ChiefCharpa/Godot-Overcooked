@@ -101,7 +101,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.2635
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.03069, 0.294587, 3.95375)
 
 [node name="Counter11" parent="." instance=ExtResource("2_8jspn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.34621, 0.294587, 3.00902)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.35438, 0.294587, 3.00902)
 
 [node name="Counter13" parent="." instance=ExtResource("2_8jspn")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.3913, 0.294587, 3.9793)
