@@ -89,6 +89,7 @@ func _activate(inventory_node):
 						orders.remove_at(i)
 						plateSpawnNode.call("spawn")
 						print("Order completed and removed:", recipe)
+						recipe_display.destroyRecipe()
 						scoreNode.addScore(10)
 						return
 					else:

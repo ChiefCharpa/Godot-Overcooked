@@ -57,6 +57,7 @@ func displayRecipe(image : Texture2D):
 func destroyRecipe():
 	var recipe = displayedRecipes[0]
 	displayedRecipes.remove_at(0)
+	
 
 	for i in range(0, displayedRecipes.size()):
 		var newPos = Vector2((recipeWidth + recipeSpacing) * i, 0)
