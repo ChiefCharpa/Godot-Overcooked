@@ -79,7 +79,7 @@ transform = Transform3D(1.00098, 0, 0, 0, 1.00098, 0, 0, 0, 1.00098, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_prm7a")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.999931, 0.0103577, -0.00538459, -0.00215386, 0.617032, 0.786935, 0.0114733, -0.78687, 0.617013, 3.43752, 7.30466, 5.66826)
+transform = Transform3D(0.999999, 0, 0, 0, 0.617036, 0.786935, 0, -0.786935, 0.617036, 3.43752, 7.30466, 5.66826)
 
 [node name="Global" type="Node3D" parent="."]
 script = ExtResource("6_ldfcd")
