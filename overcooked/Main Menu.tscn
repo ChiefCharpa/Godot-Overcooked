@@ -176,10 +176,10 @@ texture = ExtResource("10_u78o4")
 
 [node name="ControlDisplay" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 1192.0
-offset_top = 512.0
-offset_right = 2648.0
-offset_bottom = 1680.0
+offset_left = 1206.0
+offset_top = 550.0
+offset_right = 2634.0
+offset_bottom = 1642.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_6viy2")
 script = ExtResource("9_bcalf")
