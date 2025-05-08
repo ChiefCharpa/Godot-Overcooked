@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ytioggirs4t7"
+path="res://.godot/imported/ExtinguisherSFX.mp3-54f94427f004522222b2cd373eb00e51.mp3str"
+
+[deps]
+
+source_file="res://Overcooked SFX/ExtinguisherSFX.mp3"
+dest_files=["res://.godot/imported/ExtinguisherSFX.mp3-54f94427f004522222b2cd373eb00e51.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

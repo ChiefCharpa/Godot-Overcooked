@@ -125,6 +125,7 @@ func cook(currentCounter: NodePath):
 	elif cook and parts[0] == "Soup":
 		print("Burning")
 		burning = true
+		
 		burn_timer.start()
 
 
@@ -182,6 +183,7 @@ func _on_timer_burn_timeout():
 	if burning and not cooking and held_vegetable.size() > 0:
 		var stoveNode = get_node(stove)
 		stoveNode.onFire()
+		$"FireSFX".play()
 		print("Food is burnt!")
 		var burnt_key = "Burnt_Soup"
 		clear_plate()

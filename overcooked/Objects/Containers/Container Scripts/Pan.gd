@@ -116,6 +116,7 @@ func _on_timer_burn_timeout():
 	if burning and not cooking and veg!= null:
 		var stoveNode = get_node(stove)
 		stoveNode.onFire()
+		$"FireSFX".play()
 		print("Food is burnt!")
 		var burnt_key = "Burnt_" + veg.name.split("_")[1]
 		if Global.VegDictionary.has(burnt_key):
