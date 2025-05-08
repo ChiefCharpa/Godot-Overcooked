@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bjxvlsos6duun"]
+[gd_scene load_steps=40 format=3 uid="uid://bjxvlsos6duun"]
 
 [ext_resource type="AudioStream" uid="uid://3bvi3jx06iyc" path="res://Overcooked SFX/OvercookedSoundtrack.mp3" id="1_2pufk"]
 [ext_resource type="Script" uid="uid://df2o8sotf7tfx" path="res://levelCoopDecide.gd" id="1_lypob"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://bnmxv1lamjdyj" path="res://playerChef.tscn" id="14_3pas5"]
 [ext_resource type="PackedScene" uid="uid://ccjshm25fqapr" path="res://Objects/Counters/Sink.tscn" id="16_51w4t"]
 [ext_resource type="PackedScene" uid="uid://dt7af76asgoed" path="res://Objects/Counters/Bun_spawner.tscn" id="17_ddgyg"]
-[ext_resource type="PackedScene" uid="uid://dskgg5ydxt6mi" path="res://Objects/Counters/PlateCounter.tscn" id="18_qh630"]
 [ext_resource type="PackedScene" uid="uid://dce53yb3skhp0" path="res://Overcooked Assets/Decorations/KitchenWalls/SingleWallSegment.glb" id="19_5kfcu"]
 [ext_resource type="PackedScene" uid="uid://chdhvl5hsuj8x" path="res://Overcooked Assets/Decorations/Floors/KitchenFloorLarge.glb" id="20_653n8"]
 [ext_resource type="PackedScene" uid="uid://cj3lk81fowdwt" path="res://Overcooked Assets/Decorations/People/RestarauntPeople2.glb" id="20_cuxq2"]
@@ -497,9 +496,6 @@ transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 9.85053, 0.3, 0
 [node name="Counter7" parent="." instance=ExtResource("3_ikghu")]
 transform = Transform3D(-0.999997, 0, -0.00239104, 0, 1, 0, 0.00239104, 0, -0.999997, 9.91213, 0.3, 3.05632)
 
-[node name="Counter5" parent="." instance=ExtResource("18_qh630")]
-transform = Transform3D(-1.05908, 0, -0.00343809, 0, 0.989648, 0, 0.00367842, 0, -0.989883, 9.93088, 0.298, 4.06232)
-
 [node name="SingleWallSegment27" parent="." instance=ExtResource("19_5kfcu")]
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 10.8025, 1.36474, 4.28359)
 
@@ -534,3 +530,6 @@ transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 
 
 [node name="Node3D3" parent="." instance=ExtResource("35_v6tvd")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -27.2017, 0.361026, -10.1598)
+
+[node name="Counter5" parent="." instance=ExtResource("35_rprjf")]
+transform = Transform3D(-1.14558, 0, -8.74228e-08, 0, 1, 0, 1.0015e-07, 0, -1, 9.97049, 0.29034, 4.05002)
