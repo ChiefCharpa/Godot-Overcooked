@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnfwqkdkbsy1j"]
+[gd_scene load_steps=4 format=3 uid="uid://co7p2ru6nijtr"]
 
 [ext_resource type="Script" uid="uid://btd7aditfvor4" path="res://Objects/Counters/Scripts/counter_Script(plate).gd" id="1_cuir1"]
 [ext_resource type="PackedScene" uid="uid://my4u46awvlva" path="res://Overcooked Assets/Workstations/Cabinet.glb" id="3_j13li"]

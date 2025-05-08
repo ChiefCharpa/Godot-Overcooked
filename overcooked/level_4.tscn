@@ -33,7 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://c2dybqvbfovfw" path="res://Overcooked Assets/Decorations/Modular Road Extras/MailBox.glb" id="33_p7cwt"]
 [ext_resource type="PackedScene" uid="uid://cwgnqviqmagg7" path="res://Overcooked Assets/Decorations/Modular Sidewalk/6SegmentSidewalk.glb" id="33_ywdb0"]
 [ext_resource type="PackedScene" uid="uid://vd2fjybw52nr" path="res://blueCar.tscn" id="35_beulo"]
-[ext_resource type="PackedScene" uid="uid://co7p2ru6nijtr" path="res://Overcooked Assets/Workstations/counter(plate).tscn" id="35_rprjf"]
+[ext_resource type="PackedScene" uid="uid://co7p2ru6nijtr" path="res://Objects/Counters/counter(plate).tscn" id="35_rprjf"]
 [ext_resource type="PackedScene" uid="uid://bip2hxbwrhd2t" path="res://orangeCar.tscn" id="35_v6tvd"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2lakv"]
