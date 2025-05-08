@@ -17,6 +17,7 @@ func updateTimer(timeLeft : float):
 # Start timer and initialise display
 func startTimer(levelDuration : float):
 	timerOn = true
+	Global.ended = false
 	timeLeft = levelDuration
 	
 	print("Timer started at " + str(timeLeft) + " Seconds")
@@ -24,6 +25,7 @@ func startTimer(levelDuration : float):
 
 # Finish timer (flag to end level and show results)
 func finishTimer():
+	Global.ended = true
 	get_node("../../ResultsDisplay/ScoreText").displayResultScore()
 	get_node("../../ResultsDisplay").makeVisible()
 	get_node("../../ResultsDisplay/Stars").displayStars()
