@@ -5,8 +5,10 @@ extends Node3D
 var choppingTime := 6.0
 var choppingProgress := 0.0
 var chopping := false
+var end = false
 
 func doChopping():
+	end = false
 	resumeChopping()
 	chopping = true
 	barRoot.visible = true
@@ -30,7 +32,9 @@ func _process(delta):
 		barFill.scale.x = 1.0 - ratiod  # Gets smaller
 
 		# Chopping done
-		if choppingProgress >= choppingTime:
+		if choppingProgress >= choppingTime and end == false:
+			end = true
+			choppingProgress = 0.0 
 			chopping = false
 			barRoot.visible = false
 			set_process(false)

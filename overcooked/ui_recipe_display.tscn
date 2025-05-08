@@ -23,6 +23,7 @@ offset_bottom = 40.0
 stretch_mode = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
 layout_mode = 1
 offset_left = 7.0
 offset_top = 4.0

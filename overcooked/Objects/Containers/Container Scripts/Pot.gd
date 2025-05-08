@@ -23,6 +23,9 @@ func _ready():
 		childlist.append(child.name)
 	timer.wait_time = 0
 
+func _process(delta: float) -> void:
+	print(timer.time_left)
+
 func add_to_plate(veg: Node3D):
 	if !burnt:
 		if veg!= null and Global.Platelist.has(veg.name):
@@ -87,11 +90,14 @@ func cook(currentCounter: NodePath):
 	if cook and onstove and !burnt:
 		print("cooking")
 		cooking = true
-		$ProgressBar.doCooking()
+		$ProgressBar.pauseCooking()
 		if timer.is_stopped() and not partial : #if timer is stopped and nothing has been cooked
 			burning = false
 			burn_timer.stop()
 			timer.wait_time = 5*held_vegetable.size()
+			$ProgressBar.cookingTime = timer.wait_time
+			$ProgressBar.cookingProgress=0
+			$ProgressBar.doCooking()
 			timer.start()
 			partial = true
 		elif timer.is_stopped() and partial and !burnt:
@@ -99,9 +105,20 @@ func cook(currentCounter: NodePath):
 			burning = false
 			burn_timer.stop()
 			timer.wait_time+=5
+			$ProgressBar.cookingTime = timer.wait_time
+			$ProgressBar.cookingProgress=0
+			$ProgressBar.doCooking()
+			timer.start()
+		elif partial and !burnt:
+			timer.wait_time = timer.time_left+5
+			timer.stop()
+			$ProgressBar.cookingTime
+			$ProgressBar.cookingProgress=0
+			$ProgressBar.doCooking()
 			timer.start()
 	elif cook and not onstove:
 		print("Not cooking")
+		$ProgressBar.pauseCooking()
 		cooking = false
 		timer.wait_time = timer.time_left
 		timer.stop()

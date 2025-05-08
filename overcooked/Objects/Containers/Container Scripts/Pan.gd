@@ -38,6 +38,7 @@ func take_from_pan():
 					burning = false
 					cooking = false
 					parts = null
+					$ProgressBar.cookingProgress=0
 					return returnchild
 func clear_plate():
 	if held_vegetable != null:
@@ -62,6 +63,8 @@ func cook(currentCounter: NodePath):
 		print("Not cooking")
 		cooking = false
 		timer.wait_time = timer.time_left
+		$ProgressBar.cookingTime = timer.wait_time
+		$ProgressBar.pauseCooking()
 		timer.stop()
 	elif cook and parts[0] == "Cooked":
 		print("Burning")
@@ -102,12 +105,12 @@ func _on_timer_timeout():
 		cooked_veg.freeze = true
 		cooked_veg.get_node("CollisionShape3D").disabled = true
 		veg.queue_free()
-		timer.stop()
-		timer.wait_time = 10
 		veg = cooked_veg
 		burning = true
 		cooking = false
 		burn_timer.start()
+		$ProgressBar.cookingTime = timer.wait_time
+		
 
 func _on_timer_burn_timeout():
 	if burning and not cooking and veg!= null:
