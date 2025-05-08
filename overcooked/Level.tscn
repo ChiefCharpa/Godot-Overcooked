@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dral0g73t3p7"]
+[gd_scene load_steps=31 format=3 uid="uid://dral0g73t3p7"]
 
 [ext_resource type="Script" uid="uid://df2o8sotf7tfx" path="res://levelCoopDecide.gd" id="1_4vjci"]
 [ext_resource type="PackedScene" uid="uid://5aocl1ky0vhb" path="res://Objects/Counters/tomato_spawner.tscn" id="1_8o4rb"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://cxn2s3upm086n" path="res://Overcooked Assets/Decorations/KitchenWalls/CornerWallSegment.glb" id="23_qqkhr"]
 [ext_resource type="PackedScene" uid="uid://bo52nln3vdv1o" path="res://UI.tscn" id="24_3ppgv"]
 [ext_resource type="PackedScene" uid="uid://co7p2ru6nijtr" path="res://Objects/Counters/counter(plate).tscn" id="26_qqkhr"]
+[ext_resource type="PackedScene" uid="uid://d4lm8nrceq1id" path="res://playerChef2.tscn" id="27_4vjci"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dppq4"]
 
@@ -153,3 +154,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.32549, 0.25, 4.5614)
 
 [node name="Counter7" parent="." instance=ExtResource("26_qqkhr")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.072, 0.3, 4.186)
+
+[node name="Player2" parent="." instance=ExtResource("27_4vjci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0210381, 1.05174, 4.88962)

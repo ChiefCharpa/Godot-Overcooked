@@ -16,6 +16,8 @@ var player_node
 func _ready() -> void:
 	player_inventory = get_parent().get_node("Inventory") #gets the player's inventory
 	inventory_node = get_node("/root/LevelNode/Player/Inventory") #gets the inventorys node path
+	if inventory_node == null:
+		inventory_node = get_node("/root/LevelNode2/Player/Inventory")
 	animatePlayer = get_parent().get_node(AnimPlayer);## gets the players animation script
 	player_node = player_inventory.get_parent()
 
