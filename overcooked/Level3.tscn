@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://brlop6qo3v6ib" path="res://Objects/Counters/service_counter.tscn" id="6_qb3ey"]
 [ext_resource type="PackedScene" uid="uid://bnmxv1lamjdyj" path="res://playerChef.tscn" id="7_8d7kt"]
 [ext_resource type="PackedScene" uid="uid://ccjshm25fqapr" path="res://Objects/Counters/Sink.tscn" id="8_20yf3"]
-[ext_resource type="PackedScene" uid="uid://dskgg5ydxt6mi" path="res://Objects/Counters/PlateCounter.tscn" id="9_ulu3c"]
 [ext_resource type="PackedScene" uid="uid://bo52nln3vdv1o" path="res://UI.tscn" id="11_6xfkj"]
 [ext_resource type="PackedScene" uid="uid://8m4x2h2rn5ee" path="res://extinguisher.tscn" id="12_0n564"]
 [ext_resource type="PackedScene" uid="uid://u34pilek63et" path="res://Objects/Counters/Stove(Pot).tscn" id="13_6v2wh"]
@@ -26,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://4wxdxe24k3si" path="res://Objects/Counters/mushroom_spawner.tscn" id="24_ulu3c"]
 [ext_resource type="PackedScene" uid="uid://bqgl27060t4p3" path="res://Overcooked Assets/Decorations/Pirate Objects/Cannon.glb" id="25_6xfkj"]
 [ext_resource type="PackedScene" uid="uid://dehwswkkda25b" path="res://Overcooked Assets/Decorations/Pirate Objects/BoatBarrel.glb" id="26_0n564"]
+[ext_resource type="PackedScene" uid="uid://co7p2ru6nijtr" path="res://Objects/Counters/counter(plate).tscn" id="26_6xfkj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jr02t"]
 albedo_color = Color(0.283725, 0.12066, 0, 1)
@@ -82,14 +82,8 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.3839
 [node name="Counter2" parent="." instance=ExtResource("2_8jspn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.35501, 0.294587, 1.87991)
 
-[node name="Counter6" parent="." instance=ExtResource("2_8jspn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.35413, 0.294587, 0.758646)
-
 [node name="Counter12" parent="." instance=ExtResource("2_8jspn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.35644, 0.294587, -0.364327)
-
-[node name="Counter14" parent="." instance=ExtResource("2_8jspn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.36172, 0.294587, -1.48762)
 
 [node name="Counter16" parent="." instance=ExtResource("2_8jspn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.36336, 0.294587, -2.60979)
@@ -156,9 +150,6 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.13452,
 
 [node name="Counter47" parent="." instance=ExtResource("2_8jspn")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -0.986092, 0.3, -3.59575)
-
-[node name="Counter5" parent="." instance=ExtResource("9_ulu3c")]
-transform = Transform3D(-0.989648, 0, 8.65178e-08, 0, 0.989648, 0, -8.65178e-08, 0, -0.989648, 9.41316, 0.298, 0.174164)
 
 [node name="UI" parent="." instance=ExtResource("11_6xfkj")]
 
@@ -458,3 +449,12 @@ transform = Transform3D(0.249994, 0, 0.00179331, 0, 0.25, 0, -0.00179331, 0, 0.2
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6xfkj")
 camera_attributes = SubResource("CameraAttributesPractical_0n564")
+
+[node name="Counter" parent="." instance=ExtResource("26_6xfkj")]
+transform = Transform3D(-1.14558, 0, -8.74228e-08, 0, 1, 0, 1.0015e-07, 0, -1, 9.45884, 0.307014, 0.0968652)
+
+[node name="Counter3" parent="." instance=ExtResource("26_6xfkj")]
+transform = Transform3D(1.14558, 0, 0, 0, 1, 0, 0, 0, 1, 4.29967, 0.307014, -1.48057)
+
+[node name="Counter4" parent="." instance=ExtResource("26_6xfkj")]
+transform = Transform3D(1.14558, 0, 0, 0, 1, 0, 0, 0, 1, 4.29967, 0.307014, 0.757945)

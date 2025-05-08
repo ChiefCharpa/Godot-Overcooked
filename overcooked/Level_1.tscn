@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://brlop6qo3v6ib" path="res://Objects/Counters/service_counter.tscn" id="8_cypcg"]
 [ext_resource type="PackedScene" uid="uid://bnmxv1lamjdyj" path="res://playerChef.tscn" id="9_2vrm3"]
 [ext_resource type="PackedScene" uid="uid://ccjshm25fqapr" path="res://Objects/Counters/Sink.tscn" id="10_newbq"]
-[ext_resource type="PackedScene" uid="uid://dskgg5ydxt6mi" path="res://Objects/Counters/PlateCounter.tscn" id="12_qs03c"]
 [ext_resource type="PackedScene" uid="uid://bo52nln3vdv1o" path="res://UI.tscn" id="14_iocgj"]
 [ext_resource type="PackedScene" uid="uid://8m4x2h2rn5ee" path="res://extinguisher.tscn" id="15_qrta2"]
 [ext_resource type="PackedScene" uid="uid://dce53yb3skhp0" path="res://Overcooked Assets/Decorations/KitchenWalls/SingleWallSegment.glb" id="17_5xgpd"]
@@ -32,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://d1o0h6k5v2kmm" path="res://Overcooked Assets/Decorations/Modular Road/RoadIntersection.glb" id="31_3uyy5"]
 [ext_resource type="PackedScene" uid="uid://b00o2vv5njvw0" path="res://Overcooked Assets/Decorations/Nature/Tree.glb" id="31_fjpyu"]
 [ext_resource type="PackedScene" uid="uid://hu6etre3wr0q" path="res://Overcooked Assets/Decorations/Nature/PottedPlant.glb" id="32_c2csi"]
+[ext_resource type="PackedScene" uid="uid://co7p2ru6nijtr" path="res://Objects/Counters/counter(plate).tscn" id="33_ojddo"]
 [ext_resource type="PackedScene" uid="uid://c2dybqvbfovfw" path="res://Overcooked Assets/Decorations/Modular Road Extras/MailBox.glb" id="33_tysot"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2lakv"]
@@ -98,9 +98,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.1448
 [node name="Counter60" parent="." instance=ExtResource("2_c2csi")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.43483, 0.294587, 6.34625)
 
-[node name="Counter61" parent="." instance=ExtResource("2_c2csi")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.35336, 0.294587, 6.34625)
-
 [node name="Counter62" parent="." instance=ExtResource("2_c2csi")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.24913, 0.294587, 6.34625)
 
@@ -162,22 +159,22 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -0.49287
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0.618931, 0.314962, 2.11134)
 
 [node name="Counter71" parent="." instance=ExtResource("2_c2csi")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 4.90308, 0.314962, 2.11134)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5.05958, 0.314962, 2.11134)
 
 [node name="Counter72" parent="." instance=ExtResource("2_c2csi")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 2.72052, 0.314962, 2.11134)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 2.87702, 0.314962, 2.11134)
 
 [node name="Counter73" parent="." instance=ExtResource("2_c2csi")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 8.17625, 0.314962, 2.11134)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 8.33275, 0.314962, 2.11134)
 
 [node name="Counter78" parent="." instance=ExtResource("2_c2csi")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 7.09478, 0.314962, 2.11134)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 7.25128, 0.314962, 2.11134)
 
 [node name="Counter76" parent="." instance=ExtResource("2_c2csi")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 6.02184, 0.314962, 2.11134)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 6.17834, 0.314962, 2.11134)
 
 [node name="Counter77" parent="." instance=ExtResource("2_c2csi")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3.79346, 0.314962, 2.11134)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3.94996, 0.314962, 2.11134)
 
 [node name="Counter47" parent="." instance=ExtResource("2_c2csi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5109, 0.314962, -0.137832)
@@ -217,9 +214,6 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 9.5167, 
 
 [node name="Counter55" parent="." instance=ExtResource("2_c2csi")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 10.6053, 0.314962, -1.34129)
-
-[node name="Counter5" parent="." instance=ExtResource("12_qs03c")]
-transform = Transform3D(-4.32589e-08, 0, -0.989648, 0, 0.989648, 0, 0.989648, 0, -4.32589e-08, 1.67742, 0.298, 2.09516)
 
 [node name="UI" parent="." instance=ExtResource("14_iocgj")]
 
@@ -435,3 +429,9 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 5.40358, 0.575543, 8
 
 [node name="MailBox2" parent="." instance=ExtResource("33_tysot")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 6.92812, 0.575543, 8.54002)
+
+[node name="Counter" parent="." instance=ExtResource("33_ojddo")]
+transform = Transform3D(-5.0075e-08, 0, -1, 0, 1, 0, 1.14558, 0, -4.37114e-08, 1.74656, 0.307014, 2.04751)
+
+[node name="Counter2" parent="." instance=ExtResource("33_ojddo")]
+transform = Transform3D(-5.0075e-08, 0, 1, 0, 1, 0, -1.14558, 0, -4.37114e-08, 8.32716, 0.307014, 6.40935)
