@@ -27,7 +27,7 @@ func recipeSelection():
 	if filename_key == "Level_1":
 		recipes = [["Soup_Onion"]]
 	elif filename_key == "level_2":
-		recipes = [["Chopped_Lettuce"], ["Salad+Tomato"]]
+		recipes = [["Salad"], ["Salad+Tomato"]]
 	elif filename_key == "Level3":
 		recipes = [["Soup_Tomato"], ["Soup_Onion"], ["Soup_Mushroom"]]
 	elif filename_key == "level_4":
@@ -125,7 +125,7 @@ func displayOrder(order):
 		recipeTexture = load("res://UI/Recipes/Burgers/Recipe_Burger_4.png")
 		recipe_display.displayRecipe(recipeTexture)
 	
-	if order["recipe"][0] == "Chopped_Lettuce":
+	if order["recipe"][0] == "Salad":
 		recipeTexture = load("res://UI/Recipes/Salads/Recipe_Salad_1.png")
 		recipe_display.displayRecipe(recipeTexture)
 	if order["recipe"][0] == "Salad+Tomato":
