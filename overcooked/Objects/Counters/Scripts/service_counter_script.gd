@@ -33,7 +33,6 @@ func recipeSelection():
 		recipes = [["Soup_Tomato"], ["Soup_Onion"], ["Soup_Mushroom"]]
 	elif filename_key == "level_4":
 		recipes = [["Burger"],["Burger+Lettuce"],["Burger+Lettuce+Tomato"]]
-	print(recipes)
 		
 
 func start_random_timer():
@@ -61,7 +60,7 @@ func _on_place_order_timer_timeout() -> void:
 func _process(delta):
 	var current_time = Time.get_ticks_msec() / 1000.0
 	for i in range(orders.size() - 1, -1, -1):
-		if current_time - orders[i].time_added >= 60.0:
+		if current_time - orders[i].time_added >= 60.0 and filename_key != "Level":
 			print("Order expired:", orders[i].recipe)
 			recipe_display.destroyRecipe()
 			orders.remove_at(i)

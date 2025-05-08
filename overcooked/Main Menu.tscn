@@ -160,6 +160,7 @@ offset_right = 658.0
 offset_bottom = 601.0
 
 [node name="Level4Texture" type="TextureRect" parent="coop"]
+modulate = Color(1, 0.0235294, 0, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
