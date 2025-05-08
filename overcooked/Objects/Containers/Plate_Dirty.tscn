@@ -1,10 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://dki8m5mfco4f3"]
 
 [ext_resource type="Script" uid="uid://b7t6fyf3h3hu6" path="res://Objects/Containers/Container Scripts/plate_dirty.gd" id="1_wyc47"]
+[ext_resource type="PackedScene" uid="uid://b1hpkb2qykjch" path="res://Overcooked Assets/Meshes/Objects/Plate/Plate.FBX" id="2_mcky8"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xik1j"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_76ljj"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wyc47"]
 
@@ -18,31 +17,29 @@ script = ExtResource("1_wyc47")
 transform = Transform3D(0.5, 0, 0, 0, 0.1, 0, 0, 0, 0.5, 0, 0.05, 0)
 shape = SubResource("CylinderShape3D_xik1j")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.8, 0, 0, 0, 0.05, 0, 0, 0, 0.8, 0, 0, 0)
-mesh = SubResource("CylinderMesh_76ljj")
-
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.05, 0, 0, 0, 0.1, 0, 0, 0, 0.05, 0, 0.0505034, 0.25786)
+transform = Transform3D(0.05, 0, 0, 0, 0.0969355, 0.0122831, 0, -0.0245663, 0.0484678, 0, 0.0981461, 0.25786)
 mesh = SubResource("PlaneMesh_wyc47")
 surface_material_override/0 = SubResource("StandardMaterial3D_mcky8")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.05, 0, 0, 0, 0.1, 0, 0, 0, 0.05, -0.197893, 0.0505034, 0.105298)
+transform = Transform3D(0.0461561, 0.0384505, 0, -0.0192252, 0.0923123, 0, 0, 0, 0.05, -0.197893, 0.0843013, 0.105298)
 mesh = SubResource("PlaneMesh_wyc47")
 surface_material_override/0 = SubResource("StandardMaterial3D_mcky8")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.05, 0, 0, 0, 0.1, 0, 0, 0, 0.05, 0.236786, 0.0505034, 0.105298)
+transform = Transform3D(0.0483186, -0.025715, -5.55112e-18, 0.0127693, 0.0959744, 0.00584567, -0.00150321, -0.0112982, 0.0496571, 0.236786, 0.0917569, 0.105298)
 mesh = SubResource("PlaneMesh_wyc47")
 surface_material_override/0 = SubResource("StandardMaterial3D_mcky8")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.05, 0, 0, 0, 0.1, 0, 0, 0, 0.05, 0.115745, 0.0505034, -0.0486662)
+transform = Transform3D(0.05, 0, 0, 0, 0.1, 0, 0, 0, 0.05, 0.115745, 0.0410918, -0.0486662)
 mesh = SubResource("PlaneMesh_wyc47")
 surface_material_override/0 = SubResource("StandardMaterial3D_mcky8")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.05, 0, 0, 0, 0.1, 0, 0, 0, 0.05, -0.0687181, 0.0505034, -0.185466)
+transform = Transform3D(0.0483434, 0.0251754, -0.00211323, -0.0127639, 0.0953524, -0.00800393, 0, 0.0165564, 0.04931, -0.0687181, 0.0924566, -0.244972)
 mesh = SubResource("PlaneMesh_wyc47")
 surface_material_override/0 = SubResource("StandardMaterial3D_mcky8")
+
+[node name="Plate" parent="." instance=ExtResource("2_mcky8")]
