@@ -15,7 +15,7 @@ func _activate(inventory_node):
 
 func spawn():
 	var spawnedplate = Global.VegDictionary.get("Plate_Dirty").instantiate()
-	spawnedplate.global_position = self.global_position + Vector3(0,0.6,0.8)
+	spawnedplate.global_position = self.global_position + Vector3(0,0.6,0)
 	spawnedplate.freeze = true
 	get_parent().get_parent().add_child(spawnedplate)
 
