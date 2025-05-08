@@ -1,9 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://vd2fjybw52nr"]
+[gd_scene load_steps=4 format=3 uid="uid://vd2fjybw52nr"]
 
 [ext_resource type="PackedScene" uid="uid://2eb0otx7caec" path="res://Overcooked Assets/Decorations/Cars/BlueCar.glb" id="1_86uf4"]
 [ext_resource type="Script" uid="uid://cfa2w5802igo7" path="res://blue_car.gd" id="1_d3c3o"]
+[ext_resource type="AudioStream" uid="uid://b05q2al3ocdcp" path="res://Overcooked SFX/CarPassing.mp3" id="3_5f6tb"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_d3c3o")
 
 [node name="BlueCar" parent="." instance=ExtResource("1_86uf4")]
+
+[node name="Car SFX" type="AudioStreamPlayer3D" parent="BlueCar"]
+stream = ExtResource("3_5f6tb")
+autoplay = true
+doppler_tracking = 2
+parameters/looping = true
