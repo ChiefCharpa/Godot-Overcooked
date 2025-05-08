@@ -424,7 +424,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.1195
 [node name="Counter50" parent="." instance=ExtResource("3_ikghu")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.64119, 0.290908, 1.94818)
 
-[node name="Extinguisher2" parent="." instance=ExtResource("25_wleuh")]
+[node name="Extinguisher" parent="." instance=ExtResource("25_wleuh")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.93921, 0.9272, 1.85916)
 
 [node name="SingleWallSegment28" parent="." instance=ExtResource("19_5kfcu")]
