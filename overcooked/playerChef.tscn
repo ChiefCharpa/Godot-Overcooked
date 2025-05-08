@@ -47,6 +47,7 @@ func _process(_delta: float) -> void:
 			dash_timer = DASH_DURATION
 			
 		if Input.is_action_just_pressed(\"Exit\"):
+			Global.coop = false
 			get_tree().change_scene_to_file(\"res://Main menu.tscn\")
 	
 func _physics_process(delta: float) -> void:
